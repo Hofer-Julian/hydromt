@@ -754,6 +754,11 @@
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="_generated/hydromt.DataArray.raster.gdal_compliant.html">
+   hydromt.DataArray.raster.gdal_compliant
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="_generated/hydromt.DataArray.raster.idx_to_xy.html">
    hydromt.DataArray.raster.idx_to_xy
   </a>
@@ -1913,7 +1918,7 @@
 <table class="autosummary longtable table autosummary">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="_generated/hydromt.io.open_raster.html#hydromt.io.open_raster" title="hydromt.io.open_raster"><code class="xref py py-obj docutils literal notranslate"><span class="pre">io.open_raster</span></code></a>(filename[, mask_nodata, ...])</p></td>
-<td><p>Open a gdal-readable file with rasterio based on <code class="xref py py-meth docutils literal notranslate"><span class="pre">xarray.open_rasterio()</span></code> and parse geospatial attributes.</p></td>
+<td><p>Open a gdal-readable file with rasterio based on <code class="xref py py-meth docutils literal notranslate"><span class="pre">rioxarray.open_rasterio()</span></code>, but return squeezed DataArray.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="_generated/hydromt.io.open_mfraster.html#hydromt.io.open_mfraster" title="hydromt.io.open_mfraster"><code class="xref py py-obj docutils literal notranslate"><span class="pre">io.open_mfraster</span></code></a>(paths[, chunks, concat, ...])</p></td>
 <td><p>Open multiple gdal-readable files as single Dataset with geospatial attributes.</p></td>
@@ -2064,25 +2069,28 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="_generated/hydromt.DataArray.raster.aligned_grid.html#hydromt.DataArray.raster.aligned_grid" title="hydromt.DataArray.raster.aligned_grid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataArray.raster.aligned_grid</span></code></a>(other)</p></td>
 <td><p>Return True if other grid aligns with object grid (crs, resolution, origin), but with a smaller extent</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="_generated/hydromt.DataArray.raster.idx_to_xy.html#hydromt.DataArray.raster.idx_to_xy" title="hydromt.DataArray.raster.idx_to_xy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataArray.raster.idx_to_xy</span></code></a>(idx[, mask, ...])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="_generated/hydromt.DataArray.raster.gdal_compliant.html#hydromt.DataArray.raster.gdal_compliant" title="hydromt.DataArray.raster.gdal_compliant"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataArray.raster.gdal_compliant</span></code></a>([...])</p></td>
+<td><p>Updates attributes to get GDAL compliant NetCDF files.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="_generated/hydromt.DataArray.raster.idx_to_xy.html#hydromt.DataArray.raster.idx_to_xy" title="hydromt.DataArray.raster.idx_to_xy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataArray.raster.idx_to_xy</span></code></a>(idx[, mask, ...])</p></td>
 <td><p>Return x,y coordinates at linear index</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="_generated/hydromt.DataArray.raster.xy_to_idx.html#hydromt.DataArray.raster.xy_to_idx" title="hydromt.DataArray.raster.xy_to_idx"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataArray.raster.xy_to_idx</span></code></a>(xs, ys[, mask, ...])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="_generated/hydromt.DataArray.raster.xy_to_idx.html#hydromt.DataArray.raster.xy_to_idx" title="hydromt.DataArray.raster.xy_to_idx"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataArray.raster.xy_to_idx</span></code></a>(xs, ys[, mask, ...])</p></td>
 <td><p>Return linear index of x, y coordinates</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="_generated/hydromt.DataArray.raster.rowcol.html#hydromt.DataArray.raster.rowcol" title="hydromt.DataArray.raster.rowcol"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataArray.raster.rowcol</span></code></a>(xs, ys[, mask, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="_generated/hydromt.DataArray.raster.rowcol.html#hydromt.DataArray.raster.rowcol" title="hydromt.DataArray.raster.rowcol"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataArray.raster.rowcol</span></code></a>(xs, ys[, mask, ...])</p></td>
 <td><p>Return row, col indices of x, y coordinates</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="_generated/hydromt.DataArray.raster.xy.html#hydromt.DataArray.raster.xy" title="hydromt.DataArray.raster.xy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataArray.raster.xy</span></code></a>(r, c[, mask, ...])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="_generated/hydromt.DataArray.raster.xy.html#hydromt.DataArray.raster.xy" title="hydromt.DataArray.raster.xy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataArray.raster.xy</span></code></a>(r, c[, mask, ...])</p></td>
 <td><p>Return x,y coordinates at cell center of row, col indices</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="_generated/hydromt.DataArray.raster.flipud.html#hydromt.DataArray.raster.flipud" title="hydromt.DataArray.raster.flipud"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataArray.raster.flipud</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="_generated/hydromt.DataArray.raster.flipud.html#hydromt.DataArray.raster.flipud" title="hydromt.DataArray.raster.flipud"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataArray.raster.flipud</span></code></a>()</p></td>
 <td><p>Returns raster flipped along y-axis</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="_generated/hydromt.DataArray.raster.area_grid.html#hydromt.DataArray.raster.area_grid" title="hydromt.DataArray.raster.area_grid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataArray.raster.area_grid</span></code></a>([dtype])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="_generated/hydromt.DataArray.raster.area_grid.html#hydromt.DataArray.raster.area_grid" title="hydromt.DataArray.raster.area_grid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataArray.raster.area_grid</span></code></a>([dtype])</p></td>
 <td><p>Returns the grid cell area [m2].</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="_generated/hydromt.DataArray.raster.density_grid.html#hydromt.DataArray.raster.density_grid" title="hydromt.DataArray.raster.density_grid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataArray.raster.density_grid</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="_generated/hydromt.DataArray.raster.density_grid.html#hydromt.DataArray.raster.density_grid" title="hydromt.DataArray.raster.density_grid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataArray.raster.density_grid</span></code></a>()</p></td>
 <td><p>Returns the density in [unit/m2] of raster(s).</p></td>
 </tr>
 </tbody>
@@ -2092,7 +2100,7 @@
 <h3>Nodata handling and interpolation<a class="headerlink" href="#nodata-handling-and-interpolation" title="Permalink to this heading">#</a></h3>
 <table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="_generated/hydromt.DataArray.raster.set_nodata.html#hydromt.DataArray.raster.set_nodata" title="hydromt.DataArray.raster.set_nodata"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataArray.raster.set_nodata</span></code></a>([nodata])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="_generated/hydromt.DataArray.raster.set_nodata.html#hydromt.DataArray.raster.set_nodata" title="hydromt.DataArray.raster.set_nodata"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataArray.raster.set_nodata</span></code></a>([nodata, logger])</p></td>
 <td><p>Set the nodata value as CF compliant attribute of the DataArray.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="_generated/hydromt.DataArray.raster.mask_nodata.html#hydromt.DataArray.raster.mask_nodata" title="hydromt.DataArray.raster.mask_nodata"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataArray.raster.mask_nodata</span></code></a>([fill_value])</p></td>

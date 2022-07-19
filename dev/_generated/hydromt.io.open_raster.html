@@ -754,6 +754,11 @@
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.DataArray.raster.gdal_compliant.html">
+   hydromt.DataArray.raster.gdal_compliant
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="hydromt.DataArray.raster.idx_to_xy.html">
    hydromt.DataArray.raster.idx_to_xy
   </a>
@@ -1271,21 +1276,23 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="hydromt.io.open_raster">
 <span class="sig-prename descclassname"><span class="pre">hydromt.io.</span></span><span class="sig-name descname"><span class="pre">open_raster</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask_nodata=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chunks={}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodata=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logger=&lt;Logger</span> <span class="pre">hydromt.io</span> <span class="pre">(WARNING)&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hydromt/io.html#open_raster"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hydromt.io.open_raster" title="Permalink to this definition">#</a></dt>
-<dd><p>Open a gdal-readable file with rasterio based on <code class="xref py py-meth docutils literal notranslate"><span class="pre">xarray.open_rasterio()</span></code>
-and parse geospatial attributes.</p>
+<dd><p>Open a gdal-readable file with rasterio based on
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">rioxarray.open_rasterio()</span></code>, but return squeezed DataArray.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em>, </em><em>rasterio.DatasetReader</em><em>, or </em><em>rasterio.WarpedVRT</em>) – Path to the file to open. Or already open rasterio dataset.</p></li>
 <li><p><strong>mask_nodata</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a><em>, </em><em>optional</em>) – set nodata values to np.nan (xarray default nodata value)</p></li>
+<li><p><strong>nodata</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a><em>, </em><em>optional</em>) – Set nodata value if missing</p></li>
 <li><p><strong>chunks</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.10)"><em>tuple</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.10)"><em>dict</em></a><em>, </em><em>optional</em>) – Chunk sizes along each dimension, e.g., <code class="docutils literal notranslate"><span class="pre">5</span></code>, <code class="docutils literal notranslate"><span class="pre">(5,</span> <span class="pre">5)</span></code> or
 <code class="docutils literal notranslate"><span class="pre">{'x':</span> <span class="pre">5,</span> <span class="pre">'y':</span> <span class="pre">5}</span></code>. If chunks is provided, it used to load the new
 DataArray into a dask array.</p></li>
-<li><p><strong>**kwargs</strong> – key-word arguments are passed to <code class="xref py py-meth docutils literal notranslate"><span class="pre">xarray.open_rasterio()</span></code></p></li>
+<li><p><strong>**kwargs</strong> – key-word arguments are passed to <code class="xref py py-meth docutils literal notranslate"><span class="pre">xarray.open_dataset()</span></code> with
+“rasterio” engine.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>data</strong> – The newly created DataArray.</p>
+<dd class="field-even"><p><strong>data</strong> – DataArray</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>DataArray</p>

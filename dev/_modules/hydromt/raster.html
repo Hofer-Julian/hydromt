@@ -206,22 +206,13 @@
 <span class="kn">import</span> <span class="nn">tempfile</span>
 <span class="kn">import</span> <span class="nn">pyproj</span>
 <span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">rioxarray</span>
 
 <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">gis_utils</span><span class="p">,</span> <span class="n">HAS_PCRASTER</span>
 
 <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 <span class="n">XDIMS</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;longitude&quot;</span><span class="p">,</span> <span class="s2">&quot;lon&quot;</span><span class="p">,</span> <span class="s2">&quot;long&quot;</span><span class="p">)</span>
 <span class="n">YDIMS</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="s2">&quot;latitude&quot;</span><span class="p">,</span> <span class="s2">&quot;lat&quot;</span><span class="p">)</span>
-<span class="n">FILL_VALUE_NAMES</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;_FillValue&quot;</span><span class="p">,</span> <span class="s2">&quot;missing_value&quot;</span><span class="p">,</span> <span class="s2">&quot;fill_value&quot;</span><span class="p">,</span> <span class="s2">&quot;nodata&quot;</span><span class="p">,</span> <span class="s2">&quot;nodatavals&quot;</span><span class="p">)</span>
-<span class="n">UNWANTED_RIO_ATTRS</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="s2">&quot;nodatavals&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;crs&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;is_tiled&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;res&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;transform&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;scales&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;offsets&quot;</span><span class="p">,</span>
-<span class="p">)</span>
 <span class="n">GEO_MAP_COORD</span> <span class="o">=</span> <span class="s2">&quot;spatial_ref&quot;</span>
 
 
@@ -366,10 +357,7 @@
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">crs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return Coordinate Reference System as :py:meth:`pyproj.CRS` object.&quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_attrs</span><span class="p">(</span><span class="s2">&quot;crs_wkt&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">set_crs</span><span class="p">()</span>
-        <span class="n">crs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_attrs</span><span class="p">(</span><span class="s2">&quot;crs_wkt&quot;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">CRS</span><span class="o">.</span><span class="n">from_wkt</span><span class="p">(</span><span class="n">crs</span><span class="p">)</span> <span class="k">if</span> <span class="n">crs</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">crs</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_obj</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">crs</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">x_dim</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -472,7 +460,7 @@
                     <span class="k">except</span><span class="p">:</span>
                         <span class="k">pass</span>
         <span class="k">if</span> <span class="n">input_crs</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">set_attrs</span><span class="p">(</span><span class="n">crs_wkt</span><span class="o">=</span><span class="n">input_crs</span><span class="o">.</span><span class="n">wkt</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_obj</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">write_crs</span><span class="p">(</span><span class="n">input_crs</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">reset_spatial_dims_attrs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Reset spatial dimension names and attributes to make CF-compliant</span>
@@ -630,6 +618,45 @@
             <span class="ow">and</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">dy</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">or</span> <span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">dy</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
             <span class="ow">and</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_and</span><span class="o">.</span><span class="n">reduce</span><span class="p">((</span><span class="n">w</span> <span class="o">&lt;=</span> <span class="n">w1</span><span class="p">,</span> <span class="n">s</span> <span class="o">&lt;=</span> <span class="n">s1</span><span class="p">,</span> <span class="n">e</span> <span class="o">&gt;=</span> <span class="n">e1</span><span class="p">,</span> <span class="n">n</span> <span class="o">&gt;=</span> <span class="n">n1</span><span class="p">))</span>
         <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">gdal_compliant</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rename_dims</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">force_sn</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Updates attributes to get GDAL compliant NetCDF files.</span>
+
+<span class="sd">        Arguments</span>
+<span class="sd">        ----------</span>
+<span class="sd">        rename_dims: bool, optional</span>
+<span class="sd">            If True, rename x_dim and y_dim to standard names depending on the CRS</span>
+<span class="sd">            (x/y for projected and lat/lon for geographic).</span>
+<span class="sd">        force_sn: bool, optional</span>
+<span class="sd">            If True, forces the dataset to have South -&gt; North orientation.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        ojb_out: xr.Dataset or xr.DataArray</span>
+<span class="sd">            GDAL compliant object</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">obj_out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_obj</span>
+        <span class="n">crs</span> <span class="o">=</span> <span class="n">obj_out</span><span class="o">.</span><span class="n">raster</span><span class="o">.</span><span class="n">crs</span>
+        <span class="k">if</span> <span class="p">(</span>
+            <span class="n">obj_out</span><span class="o">.</span><span class="n">raster</span><span class="o">.</span><span class="n">res</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">force_sn</span>
+        <span class="p">):</span>  <span class="c1"># write data with South -&gt; North orientation</span>
+            <span class="n">obj_out</span> <span class="o">=</span> <span class="n">obj_out</span><span class="o">.</span><span class="n">raster</span><span class="o">.</span><span class="n">flipud</span><span class="p">()</span>
+        <span class="n">x_dim</span><span class="p">,</span> <span class="n">y_dim</span><span class="p">,</span> <span class="n">x_attrs</span><span class="p">,</span> <span class="n">y_attrs</span> <span class="o">=</span> <span class="n">gis_utils</span><span class="o">.</span><span class="n">axes_attrs</span><span class="p">(</span><span class="n">crs</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">rename_dims</span><span class="p">:</span>
+            <span class="n">obj_out</span> <span class="o">=</span> <span class="n">obj_out</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span>
+                <span class="p">{</span><span class="n">obj_out</span><span class="o">.</span><span class="n">raster</span><span class="o">.</span><span class="n">x_dim</span><span class="p">:</span> <span class="n">x_dim</span><span class="p">,</span> <span class="n">obj_out</span><span class="o">.</span><span class="n">raster</span><span class="o">.</span><span class="n">y_dim</span><span class="p">:</span> <span class="n">y_dim</span><span class="p">}</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">x_dim</span> <span class="o">=</span> <span class="n">obj_out</span><span class="o">.</span><span class="n">raster</span><span class="o">.</span><span class="n">x_dim</span>
+            <span class="n">y_dim</span> <span class="o">=</span> <span class="n">obj_out</span><span class="o">.</span><span class="n">raster</span><span class="o">.</span><span class="n">y_dim</span>
+        <span class="n">obj_out</span><span class="p">[</span><span class="n">x_dim</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">x_attrs</span><span class="p">)</span>
+        <span class="n">obj_out</span><span class="p">[</span><span class="n">y_dim</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">y_attrs</span><span class="p">)</span>
+        <span class="n">obj_out</span> <span class="o">=</span> <span class="n">obj_out</span><span class="o">.</span><span class="n">drop_vars</span><span class="p">([</span><span class="s2">&quot;spatial_ref&quot;</span><span class="p">],</span> <span class="n">errors</span><span class="o">=</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+        <span class="n">obj_out</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">write_crs</span><span class="p">(</span><span class="n">crs</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">obj_out</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">write_transform</span><span class="p">(</span><span class="n">obj_out</span><span class="o">.</span><span class="n">raster</span><span class="o">.</span><span class="n">transform</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">obj_out</span><span class="o">.</span><span class="n">raster</span><span class="o">.</span><span class="n">set_spatial_dims</span><span class="p">()</span>
+
+        <span class="k">return</span> <span class="n">obj_out</span>
 
     <span class="k">def</span> <span class="nf">transform_bounds</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dst_crs</span><span class="p">,</span> <span class="n">densify_pts</span><span class="o">=</span><span class="mi">21</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Transform bounds from object to destination CRS.</span>
@@ -1383,14 +1410,14 @@
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">nodata</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Nodata value of the DataArray.&quot;&quot;&quot;</span>
-        <span class="n">_attrs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_obj</span><span class="o">.</span><span class="n">attrs</span>
-        <span class="n">_encoding</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_obj</span><span class="o">.</span><span class="n">encoding</span>
-        <span class="k">if</span> <span class="n">_attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;_FillValue&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">set_nodata</span><span class="p">()</span>
         <span class="c1"># first check attrs, then encoding</span>
-        <span class="k">return</span> <span class="n">_attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;_FillValue&quot;</span><span class="p">,</span> <span class="n">_encoding</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;_FillValue&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
+        <span class="n">nodata</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_obj</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">nodata</span>
+        <span class="k">if</span> <span class="n">nodata</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">nodata</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_obj</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">encoded_nodata</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">set_nodata</span><span class="p">(</span><span class="n">nodata</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">nodata</span>
 
-    <span class="k">def</span> <span class="nf">set_nodata</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nodata</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">set_nodata</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nodata</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="n">logger</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Set the nodata value as CF compliant attribute of the DataArray.</span>
 
 <span class="sd">        Arguments</span>
@@ -1400,23 +1427,17 @@
 <span class="sd">            If the nodata property and argument are both None, the _FillValue</span>
 <span class="sd">            attribute will be removed.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">dtype</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_obj</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">nodata</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">FILL_VALUE_NAMES</span><span class="p">:</span>
-                <span class="k">if</span> <span class="n">name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_obj</span><span class="o">.</span><span class="n">attrs</span><span class="p">:</span>
-                    <span class="c1"># remove from attrs and set property</span>
-                    <span class="n">nodata</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_obj</span><span class="o">.</span><span class="n">attrs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
-                    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">nodata</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">):</span>
-                        <span class="n">nodata</span> <span class="o">=</span> <span class="n">nodata</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-                    <span class="k">try</span><span class="p">:</span>
-                        <span class="n">nodata</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">np</span><span class="p">,</span> <span class="n">dtype</span><span class="p">)(</span><span class="n">nodata</span><span class="p">)</span>
-                        <span class="k">break</span>
-                    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
-                        <span class="n">nodata</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="k">if</span> <span class="n">nodata</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>  <span class="c1"># keep attribute property</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_obj</span><span class="o">.</span><span class="n">attrs</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s2">&quot;_FillValue&quot;</span><span class="p">:</span> <span class="n">nodata</span><span class="p">})</span>
-        <span class="k">elif</span> <span class="s2">&quot;_FillValue&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_obj</span><span class="o">.</span><span class="n">attrs</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_obj</span><span class="o">.</span><span class="n">attrs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;_FillValue&quot;</span><span class="p">)</span>
+            <span class="n">nodata</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_obj</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">nodata</span>
+            <span class="k">if</span> <span class="n">nodata</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">nodata</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_obj</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">encoded_nodata</span>
+        <span class="c1"># Only numerical nodata values are supported</span>
+        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">issubdtype</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">nodata</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">number</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_obj</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">set_nodata</span><span class="p">(</span><span class="n">nodata</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_obj</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">write_nodata</span><span class="p">(</span><span class="n">nodata</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;No numerical nodata value found, skipping set_nodata&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_obj</span><span class="o">.</span><span class="n">attrs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;_FillValue&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">mask_nodata</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fill_value</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Mask nodata values with fill_value (default np.nan).</span>
@@ -1435,7 +1456,7 @@
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">nodata</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">da_masked</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_obj</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">mask</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nodata</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">logger</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;Nodata value missing, skipping mask&quot;</span><span class="p">)</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Nodata value missing, skipping mask&quot;</span><span class="p">)</span>
             <span class="n">da_masked</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_obj</span>
         <span class="k">return</span> <span class="n">da_masked</span>
 
