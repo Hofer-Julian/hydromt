@@ -63,7 +63,7 @@ A full list of **data source options** is given below
   based on the get_data request in the form of ``"path/to/my/files/{variable}_{year}_{month:02d}.nc"``
 - **data_type** (required): type of input data. Either *RasterDataset*, *GeoDataset* or *GeoDataFrame*.
 - **crs** (required if missing in the data): EPSG code or WKT string of the reference coordinate system of the data. 
-- **driver** (required): data_type specific driver to read a dataset, see overview below.
+- **driver** (required): data_type specific driver to read a dataset, see :ref:`here <data_types>`.
 - **kwargs** (optional): pairs of key value arguments to pass to the driver specific open data method (eg xr.open_mfdataset for netdcf raster, see the full list below).
   Only used if not crs can be inferred from the input data.
 - **rename** (optional): pairs of variable names in the input data (*old_variable_name*) and the corresponding 
