@@ -341,7 +341,7 @@ as well as meta data for reproducibility.</p>
 <a class="reference internal" href="data_prepare_cat.html#own-catalog"><span class="std std-ref">prepare your own data catalog</span></a> (e.g. to include local data) or use a combination of both.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>If no yaml file is provided to the CLI build or update methods or to <a class="reference internal" href="../_generated/hydromt.data_adapter.DataCatalog.html#hydromt.data_adapter.DataCatalog" title="hydromt.data_adapter.DataCatalog"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataCatalog</span></code></a>,
+<p>If no yaml file is provided to the CLI build or update methods or to <a class="reference internal" href="../_generated/hydromt.data_catalog.DataCatalog.html#hydromt.data_catalog.DataCatalog" title="hydromt.data_catalog.DataCatalog"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataCatalog</span></code></a>,
 HydroMT will use the data stored in the <a class="reference external" href="https://github.com/DirkEilander/hydromt-artifacts">hydromt-artifacts</a>
 which contains an extract of global data for a small region around the Piave river in Northern Italy.</p>
 </div>
@@ -364,7 +364,7 @@ Multiple yaml files can be added by reusing the <code class="docutils literal no
 <span id="get-data-python"></span><h2>From Python<a class="headerlink" href="#from-python" title="Permalink to this heading">#</a></h2>
 <p>To read a dataset in Python using the HydroMT requires two steps:</p>
 <ol class="arabic simple">
-<li><p>Initialize a <a class="reference internal" href="../_generated/hydromt.data_adapter.DataCatalog.html#hydromt.data_adapter.DataCatalog" title="hydromt.data_adapter.DataCatalog"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataCatalog</span></code></a> with references to user- or pre-defined data catalog yaml files</p></li>
+<li><p>Initialize a <a class="reference internal" href="../_generated/hydromt.data_catalog.DataCatalog.html#hydromt.data_catalog.DataCatalog" title="hydromt.data_catalog.DataCatalog"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataCatalog</span></code></a> with references to user- or pre-defined data catalog yaml files</p></li>
 <li><p>Use <a class="reference internal" href="../api.html#api-data-catalog-get"><span class="std std-ref">one of the DataCatalog.get_* methods</span></a> to access (a temporal or spatial region of) the data.</p></li>
 </ol>
 <p>For example to retrieve a raster dataset use <code class="xref py py-func docutils literal notranslate"><span class="pre">get_rasterdataset()</span></code>:</p>

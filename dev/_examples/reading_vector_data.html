@@ -601,7 +601,7 @@ div.rendered_html tbody tr:hover {
 </div></div>
 <section id="Example:-Reading-vector-data">
 <h1>Example: Reading vector data<a class="headerlink" href="#Example:-Reading-vector-data" title="Permalink to this heading">#</a></h1>
-<p>This example illustrates the how to read raster data using the HydroMT <a class="reference internal" href="../_generated/hydromt.data_adapter.DataCatalog.html"><span class="doc">DataCatalog</span></a> with the <code class="docutils literal notranslate"><span class="pre">vector</span></code> or <code class="docutils literal notranslate"><span class="pre">vector_table</span></code> drivers.</p>
+<p>This example illustrates the how to read raster data using the HydroMT <a class="reference internal" href="../_generated/hydromt.data_catalog.DataCatalog.html"><span class="doc">DataCatalog</span></a> with the <code class="docutils literal notranslate"><span class="pre">vector</span></code> or <code class="docutils literal notranslate"><span class="pre">vector_table</span></code> drivers.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
@@ -621,7 +621,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-2022-07-27 07:34:25,551 - read vector data - log - INFO - HydroMT version: 0.4.6.dev
+2022-07-27 08:33:36,974 - read vector data - log - INFO - HydroMT version: 0.4.6.dev
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -639,7 +639,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-2022-07-27 07:34:25,557 - read vector data - data_adapter - INFO - Adding sample data v0.0.6 from artifacts
+2022-07-27 08:33:36,982 - read vector data - data_catalog - INFO - Adding sample data v0.0.6 from artifacts
 </pre></div></div>
 </div>
 </section>
@@ -695,7 +695,7 @@ meta:
 path: /home/runner/.hydromt_data/data/v0.0.6/gadm_level3.gpkg
 </pre></div></div>
 </div>
-<p>We can load any GeoDataFrame using the <a class="reference internal" href="../_generated/hydromt.data_adapter.DataCatalog.get_geodataframe.html"><span class="doc">get_geodataframe()</span></a> method of the DataCatalog. Note that if we don’t provide any arguments it returns the full dataset with nine data variables and for the full spatial domain. Only the data coordinates are actually read, the data variables are still loaded lazy.</p>
+<p>We can load any GeoDataFrame using the <a class="reference internal" href="../_generated/hydromt.data_catalog.DataCatalog.get_geodataframe.html"><span class="doc">get_geodataframe()</span></a> method of the DataCatalog. Note that if we don’t provide any arguments it returns the full dataset with nine data variables and for the full spatial domain. Only the data coordinates are actually read, the data variables are still loaded lazy.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
@@ -711,8 +711,8 @@ path: /home/runner/.hydromt_data/data/v0.0.6/gadm_level3.gpkg
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-2022-07-27 07:34:25,651 - read vector data - data_adapter - INFO - DataCatalog: Getting gadm_level3 GeoDataFrame vector data from /home/runner/.hydromt_data/data/v0.0.6/gadm_level3.gpkg
-2022-07-27 07:34:25,651 - read vector data - data_adapter - INFO - GeoDataFrame: Read vector data.
+2022-07-27 08:33:37,084 - read vector data - data_catalog - INFO - DataCatalog: Getting gadm_level3 GeoDataFrame vector data from /home/runner/.hydromt_data/data/v0.0.6/gadm_level3.gpkg
+2022-07-27 08:33:37,085 - read vector data - geodataframe - INFO - GeoDataFrame: Read vector data.
 number of rows: 509
 </pre></div></div>
 </div>
@@ -881,8 +881,8 @@ number of rows: 509
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-2022-07-27 07:34:25,711 - read vector data - data_adapter - INFO - DataCatalog: Getting gadm_level3 GeoDataFrame vector data from /home/runner/.hydromt_data/data/v0.0.6/gadm_level3.gpkg
-2022-07-27 07:34:25,715 - read vector data - data_adapter - INFO - GeoDataFrame: Read vector data and clip to bbox (epsg:4326) [11.557, 46.096, 11.851, 46.477].
+2022-07-27 08:33:37,157 - read vector data - data_catalog - INFO - DataCatalog: Getting gadm_level3 GeoDataFrame vector data from /home/runner/.hydromt_data/data/v0.0.6/gadm_level3.gpkg
+2022-07-27 08:33:37,161 - read vector data - geodataframe - INFO - GeoDataFrame: Read vector data and clip to bbox (epsg:4326) [11.557, 46.096, 11.851, 46.477].
 number of rows: 28
 </pre></div></div>
 </div>
@@ -1085,8 +1085,8 @@ path: /home/runner/work/hydromt/hydromt/docs/_examples/tmpdir/xy.csv
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-2022-07-27 07:34:25,887 - read vector data - data_adapter - INFO - DataCatalog: Getting GADM_level3_centroids GeoDataFrame vector_table data from /home/runner/work/hydromt/hydromt/docs/_examples/tmpdir/xy.csv
-2022-07-27 07:34:25,888 - read vector data - data_adapter - INFO - GeoDataFrame: Read vector_table data.
+2022-07-27 08:33:37,405 - read vector data - data_catalog - INFO - DataCatalog: Getting GADM_level3_centroids GeoDataFrame vector_table data from /home/runner/work/hydromt/hydromt/docs/_examples/tmpdir/xy.csv
+2022-07-27 08:33:37,406 - read vector data - geodataframe - INFO - GeoDataFrame: Read vector_table data.
 CRS: epsg:4326
 </pre></div></div>
 </div>

@@ -622,7 +622,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
-<p>Here, we illustrate some common GIS problems and how the functionality of the DataArray/Dataset <a class="reference internal" href="../api.html#raster-methods"><span class="std std-ref">raster</span></a> accessor can be used. The data is accessed using the HydroMT <a class="reference internal" href="../_generated/hydromt.data_adapter.DataCatalog.html"><span class="doc">DataCatalog</span></a>. For more information see the <a class="reference internal" href="reading_raster_data.html"><span class="doc">Reading raster data</span></a> example.</p>
+<p>Here, we illustrate some common GIS problems and how the functionality of the DataArray/Dataset <a class="reference internal" href="../api.html#raster-methods"><span class="std std-ref">raster</span></a> accessor can be used. The data is accessed using the HydroMT <a class="reference internal" href="../_generated/hydromt.data_catalog.DataCatalog.html"><span class="doc">DataCatalog</span></a>. For more information see the <a class="reference internal" href="reading_raster_data.html"><span class="doc">Reading raster data</span></a> example.</p>
 <p>Note that this implementation is based on a very earlier version of <a class="reference external" href="https://corteva.github.io/rioxarray/stable/">rioxarray</a> and in fact we are using some of rioxarray functionality and working towards replacing our duplicated functionality with that of rioxarray and will try to contribute new functionality to rioxarray. The original reason for the raster data accessor was that we needed some changes in the internals of the writing methods for PCRaster data which is not fully supported by its
 GDAL driver. Currently the key difference between both packages, besides the naming of the accessor and some methods, are in new methods that have been added over time by both packages and the way that the raster attribute data is stored. In HydroMT this attribute data is always stored in the <code class="docutils literal notranslate"><span class="pre">spatial_ref</span></code> coordinate of the DataArray/Dataset whereas rioxarray uses additional attributes of the RasterDataset class.</p>
 <section id="Geospatial-attributes">
@@ -644,7 +644,7 @@ GDAL driver. Currently the key difference between both packages, besides the nam
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.collections.QuadMesh at 0x7f19b13957b0&gt;
+&lt;matplotlib.collections.QuadMesh at 0x7fa3be6d2170&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -780,7 +780,7 @@ Error: 0.033%
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.collections.QuadMesh at 0x7f19b00f8880&gt;
+&lt;matplotlib.collections.QuadMesh at 0x7fa3bd429600&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1459,7 +1459,7 @@ build using voronoi triangulation. Then, values are calculated for each grid cel
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.collections.QuadMesh at 0x7f19997c7c10&gt;
+&lt;matplotlib.collections.QuadMesh at 0x7fa3a6bba4d0&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1484,7 +1484,7 @@ build using voronoi triangulation. Then, values are calculated for each grid cel
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.collections.QuadMesh at 0x7f1999087940&gt;
+&lt;matplotlib.collections.QuadMesh at 0x7fa3a6245b70&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1538,7 +1538,7 @@ resolution MDT: 0.12500
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.collections.QuadMesh at 0x7f1998f74fd0&gt;
+&lt;matplotlib.collections.QuadMesh at 0x7fa3a60d18d0&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1584,7 +1584,7 @@ resolution reprojected GEBCO: 0.00083
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.collections.QuadMesh at 0x7f1998d05330&gt;
+&lt;matplotlib.collections.QuadMesh at 0x7fa3a5fba2c0&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
