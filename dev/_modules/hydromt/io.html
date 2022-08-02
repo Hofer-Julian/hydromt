@@ -445,6 +445,8 @@
     <span class="p">)</span>
     <span class="c1"># clip to extent</span>
     <span class="n">ds_out</span> <span class="o">=</span> <span class="n">ds_out</span><span class="o">.</span><span class="n">raster</span><span class="o">.</span><span class="n">clip_geom</span><span class="p">(</span><span class="n">geom</span><span class="p">)</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;.&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">basename</span><span class="p">(</span><span class="n">fn_tindex</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">ds_out</span> <span class="o">=</span> <span class="n">ds_out</span><span class="o">.</span><span class="n">rename</span><span class="p">({</span><span class="n">ds_out</span><span class="o">.</span><span class="n">raster</span><span class="o">.</span><span class="n">vars</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span> <span class="n">name</span><span class="p">})</span>
     <span class="k">return</span> <span class="n">ds_out</span>  <span class="c1"># dataset to be consitent with open_mfraster</span></div>
 
 
