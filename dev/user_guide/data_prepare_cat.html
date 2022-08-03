@@ -374,7 +374,11 @@ The <code class="docutils literal notranslate"><span class="pre">rename</span></
 Relative paths are combined with the global <code class="docutils literal notranslate"><span class="pre">root</span></code> option of the yaml file (if available) or the directory of the yaml file itself.
 To read multiple files in a single dataset (if supported by the driver) a string glob in the form of <code class="docutils literal notranslate"><span class="pre">&quot;path/to/my/files/*.nc&quot;</span></code> can be used.
 The filenames can be further specified with <code class="docutils literal notranslate"><span class="pre">{variable}</span></code>, <code class="docutils literal notranslate"><span class="pre">{year}</span></code> and <code class="docutils literal notranslate"><span class="pre">{month}</span></code> keys to limit which files are being read
-based on the get_data request in the form of <code class="docutils literal notranslate"><span class="pre">&quot;path/to/my/files/{variable}_{year}_{month:02d}.nc&quot;</span></code></p></li>
+based on the get_data request in the form of <code class="docutils literal notranslate"><span class="pre">&quot;path/to/my/files/{variable}_{year}_{month}.nc&quot;</span></code>.
+Note that <code class="docutils literal notranslate"><span class="pre">month</span></code> is by default <em>not</em> zero-padded (e.g. January 2012 is stored as <code class="docutils literal notranslate"><span class="pre">&quot;path/to/my/files/{variable}_2012_1.nc&quot;</span></code>).
+Users can optionally add a formatting string to define how the key should be read.
+For example, in a path written as <code class="docutils literal notranslate"><span class="pre">&quot;path/to/my/files/{variable}_{year}_{month:02d}.nc&quot;</span></code>,
+the month always has two digits and is zero-padded for Jan-Sep (e.g. January 2012 is stored as <code class="docutils literal notranslate"><span class="pre">&quot;path/to/my/files/{variable}_2012_01.nc&quot;</span></code>).</p></li>
 <li><p><strong>data_type</strong> (required): type of input data. Either <em>RasterDataset</em>, <em>GeoDataset</em> or <em>GeoDataFrame</em>.</p></li>
 <li><p><strong>crs</strong> (required if missing in the data): EPSG code or WKT string of the reference coordinate system of the data.</p></li>
 <li><p><strong>driver</strong> (required): data_type specific driver to read a dataset, see overview below.</p></li>
