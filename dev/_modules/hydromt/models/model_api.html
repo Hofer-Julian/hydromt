@@ -556,7 +556,7 @@
             <span class="c1"># check directory</span>
             <span class="k">elif</span> <span class="ow">not</span> <span class="n">isdir</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_root</span><span class="p">):</span>
                 <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;model root not found at &quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_root</span><span class="si">}</span><span class="s1">&quot;&#39;</span><span class="p">)</span>
-            <span class="c1"># read hydromt_data yml file and add to data catalog</span>
+            <span class="c1"># read hydromt_data yaml file and add to data catalog</span>
             <span class="n">data_fn</span> <span class="o">=</span> <span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_root</span><span class="p">,</span> <span class="s2">&quot;hydromt_data.yml&quot;</span><span class="p">)</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read</span> <span class="ow">and</span> <span class="n">isfile</span><span class="p">(</span><span class="n">data_fn</span><span class="p">):</span>
                 <span class="c1"># read data and mark as used</span>
@@ -604,8 +604,8 @@
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        root: str, Path, optional</span>
-<span class="sd">            Global root for all relative paths in yml file.</span>
-<span class="sd">            If &quot;auto&quot; the data source paths are relative to the yml output ``path``.</span>
+<span class="sd">            Global root for all relative paths in yaml file.</span>
+<span class="sd">            If &quot;auto&quot; the data source paths are relative to the yaml output ``path``.</span>
 <span class="sd">        used_only: bool</span>
 <span class="sd">            If True, export only data entries kept in used_data list.</span>
 <span class="sd">        &quot;&quot;&quot;</span>

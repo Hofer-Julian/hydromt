@@ -451,6 +451,8 @@
 <li><p>New raster method for adding gdal_compliant() attributes to xarray object.</p></li>
 <li><p>Function <code class="docutils literal notranslate"><span class="pre">to_datetimeindex</span></code> in available preprocess functions for xr.open_dataset in the data adapter.</p></li>
 <li><p>Function <code class="docutils literal notranslate"><span class="pre">remove_duplicates</span></code> in available preprocess functions for xr.open_dataset in the data adapter.</p></li>
+<li><p>New <code class="docutils literal notranslate"><span class="pre">DataCatalog.from_predefined_catalogs</span></code> and <code class="docutils literal notranslate"><span class="pre">DataCatalog.from_archive</span></code> to support predefined data catalogs and archive
+in a generic way through the data/predefined_catalogs.yml file.</p></li>
 <li><p>Optional formatting for year and month variables in path of data sources.</p></li>
 </ul>
 </section>
@@ -481,6 +483,7 @@ Changes have been observed when <cite>nearest</cite> method is used but this sho
 <h3>Deprecated<a class="headerlink" href="#deprecated" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Automatic renaming of single var dataset if variables is provided in get_rasterdataset. Data catalog should be used instead.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DataCatalog.from_artifacts</span></code>. Use <code class="docutils literal notranslate"><span class="pre">DataCatalog.from_predefined_catalogs</span></code> instead.</p></li>
 </ul>
 </section>
 </section>

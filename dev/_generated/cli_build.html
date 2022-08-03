@@ -208,10 +208,10 @@
 <span class="go">  --------------</span>
 
 <span class="go">  To build a wflow model for a subbasin using and point coordinates snapped to cells with stream order &gt;= 4</span>
-<span class="go">  hydromt build wflow /path/to/model_root &quot;{&#39;subbasin&#39;: [-7.24, 62.09], &#39;strord&#39;: 4}&quot; -i /path/to/wflow_config.ini -d /path/to/data_catalog.yaml -v</span>
+<span class="go">  hydromt build wflow /path/to/model_root &quot;{&#39;subbasin&#39;: [-7.24, 62.09], &#39;strord&#39;: 4}&quot; -i /path/to/wflow_config.ini -d deltares_data -d /path/to/data_catalog.yml -v</span>
 
 <span class="go">  To build a sfincs model based on a bbox</span>
-<span class="go">  hydromt build sfincs /path/to/model_root &quot;{&#39;bbox&#39;: [4.6891,52.9750,4.9576,53.1994]}&quot; -i /path/to/sfincs_config.ini -d /path/to/data_catalog.yaml -v</span>
+<span class="go">  hydromt build sfincs /path/to/model_root &quot;{&#39;bbox&#39;: [4.6891,52.9750,4.9576,53.1994]}&quot; -i /path/to/sfincs_config.ini -d /path/to/data_catalog.yml -v</span>
 
 <span class="go">Options:</span>
 <span class="go">  -r, --res FLOAT             Model resolution in model src.</span>
@@ -221,11 +221,9 @@
 <span class="go">                              information about the arguments.</span>
 <span class="go">  -i, --config PATH           Path to hydroMT configuration file, for the model</span>
 <span class="go">                              specific implementation.</span>
-<span class="go">  -d, --data PATH             File path to yml data sources file. See</span>
-<span class="go">                              documentation for required yml file format.</span>
-<span class="go">  --dd, --deltares-data       Parse default deltares data yml from</span>
-<span class="go">                              https://github.com/DirkEilander/hydromt-</span>
-<span class="go">                              artifacts/releases</span>
+<span class="go">  -d, --data TEXT             Path to local yaml data catalog file OR name of</span>
+<span class="go">                              predefined data catalog.</span>
+<span class="go">  --dd, --deltares-data       Shortcut to add the &quot;deltares_data&quot; catalog</span>
 <span class="go">  -q, --quiet                 Decrease verbosity.</span>
 <span class="go">  -v, --verbose               Increase verbosity.</span>
 <span class="go">  --help                      Show this message and exit.</span>

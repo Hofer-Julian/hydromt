@@ -344,8 +344,11 @@ and examples per <a class="reference internal" href="data_types.html#data-types"
 The <code class="docutils literal notranslate"><span class="pre">path</span></code>, <code class="docutils literal notranslate"><span class="pre">data_type</span></code> and <code class="docutils literal notranslate"><span class="pre">driver</span></code> options are required and the <code class="docutils literal notranslate"><span class="pre">meta</span></code> option with the shown keys is highly recommended.
 The <code class="docutils literal notranslate"><span class="pre">rename</span></code>, <code class="docutils literal notranslate"><span class="pre">nodata</span></code>, <code class="docutils literal notranslate"><span class="pre">unit_add</span></code> and <code class="docutils literal notranslate"><span class="pre">unit_mult</span></code> options are set per variable (or attribute table column in case of a GeoDataFrame).
 <code class="docutils literal notranslate"><span class="pre">kwargs</span></code> contain any options passed to different drivers.</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">my_dataset</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/path/to/my_dataset.extension</span><span class="w"></span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">meta</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">version</span><span class="w"></span>
+<span class="w">  </span><span class="nt">root</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/path/to/data_root/</span><span class="w"></span>
+<span class="nt">my_dataset</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/absolut_path/to/my_dataset.extension OR relative_path/to_my_dataset.extension</span><span class="w"></span>
 <span class="w">  </span><span class="nt">data_type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RasterDataset/GeoDataset/GeoDataFrame</span><span class="w"></span>
 <span class="w">  </span><span class="nt">driver</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">raster/raster_tindex/netcdf/zarr/vector/vector_table</span><span class="w"></span>
 <span class="w">  </span><span class="nt">crs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EPSG/WKT</span><span class="w"></span>
@@ -368,6 +371,16 @@ The <code class="docutils literal notranslate"><span class="pre">rename</span></
 <span class="w">    </span><span class="nt">category</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">category</span><span class="w"></span>
 </pre></div>
 </div>
+<p>The yaml file has a global <strong>meta</strong> data section:</p>
+<ul class="simple">
+<li><p><strong>version</strong> (recommended): data catalog version; we recommend <cite>calendar versioning &lt;https://calver.org/&gt;</cite></p></li>
+<li><p><strong>root</strong> (optional): root folder for all the data sources in the yaml file.
+If not provided the folder of where the yaml file is located will be used as root.
+This is used in combination with each data source <strong>path</strong> argument to avoid repetition.</p></li>
+<li><p><strong>category</strong> (optional): used if all data source in catalog belong to the same category. Usual categories within HydroMT are
+<em>geography</em>, <em>topography</em>, <em>hydrography</em>, <em>meteo</em>, <em>landuse</em>, <em>ocean</em>, <em>socio-economic</em>, <em>observed data</em>
+but the user is free to define its own categories.</p></li>
+</ul>
 <p>A full list of <strong>data source options</strong> is given below</p>
 <ul class="simple">
 <li><p><strong>path</strong> (required): path to the data file.
@@ -398,12 +411,6 @@ Good meta data includes a <em>source_url</em>, <em>source_license</em>, <em>sour
 Usual categories within HydroMT are <em>geography</em>, <em>topography</em>, <em>hydrography</em>, <em>meteo</em>, <em>landuse</em>, <em>ocean</em>, <em>socio-economic</em>, <em>observed data</em>
 but the user is free to define its own categories.</p></li>
 </ul>
-<p>Apart from the data entries, the yaml file also has <strong>global options</strong>:</p>
-<ul class="simple">
-<li><p><strong>root</strong> (optional): root folder for all the data sources in the yaml file.
-If not provided the folder of where the yaml fil is located will be used as root.
-This is used in combination with each data source <strong>path</strong> argument to avoid repetition.</p></li>
-</ul>
 </section>
 <section id="placeholder-and-alias">
 <h2>Placeholder and alias<a class="headerlink" href="#placeholder-and-alias" title="Permalink to this heading">#</a></h2>
@@ -418,6 +425,10 @@ The alias source should also be provided in the same file. Note that this only w
 the current data source it overwrites all rename entries of the alias data source. In the example below <em>ghs_pop</em> is short for a specific version (epoch=2015; epsg=54009)
 of that dataset.</p></li>
 </ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Alias is deprecated and will be removed soon, see <a class="reference external" href="https://github.com/Deltares/hydromt/issues/148">github issue for more information</a></p>
+</div>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">ghs_pop</span><span class="p">:</span><span class="w"></span>
 <span class="w">  </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ghs_pop_2015_54009</span><span class="w"></span>
 <span class="l l-Scalar l-Scalar-Plain">ghs_pop_{epoch}_{epsg}</span><span class="p p-Indicator">:</span><span class="w"></span>

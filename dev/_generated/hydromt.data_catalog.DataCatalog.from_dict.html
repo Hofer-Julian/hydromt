@@ -40,8 +40,8 @@
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="hydromt.data_catalog.DataCatalog.from_yml" href="hydromt.data_catalog.DataCatalog.from_yml.html" />
-    <link rel="prev" title="hydromt.data_catalog.DataCatalog.from_artifacts" href="hydromt.data_catalog.DataCatalog.from_artifacts.html" />
+    <link rel="next" title="hydromt.data_catalog.DataCatalog.update" href="hydromt.data_catalog.DataCatalog.update.html" />
+    <link rel="prev" title="hydromt.data_catalog.DataCatalog.from_yml" href="hydromt.data_catalog.DataCatalog.from_yml.html" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="docsearch:language" content="en">
   </head>
@@ -170,6 +170,11 @@
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.data_catalog.DataCatalog.predefined_catalogs.html">
+   hydromt.data_catalog.DataCatalog.predefined_catalogs
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="hydromt.data_catalog.DataCatalog.to_dict.html">
    hydromt.data_catalog.DataCatalog.to_dict
   </a>
@@ -187,18 +192,28 @@
 </ul>
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="hydromt.data_catalog.DataCatalog.from_artifacts.html">
-   hydromt.data_catalog.DataCatalog.from_artifacts
+  <a class="reference internal" href="hydromt.data_catalog.DataCatalog.set_predefined_catalogs.html">
+   hydromt.data_catalog.DataCatalog.set_predefined_catalogs
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   hydromt.data_catalog.DataCatalog.from_dict
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.data_catalog.DataCatalog.from_predefined_catalogs.html">
+   hydromt.data_catalog.DataCatalog.from_predefined_catalogs
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.data_catalog.DataCatalog.from_archive.html">
+   hydromt.data_catalog.DataCatalog.from_archive
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="hydromt.data_catalog.DataCatalog.from_yml.html">
    hydromt.data_catalog.DataCatalog.from_yml
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   hydromt.data_catalog.DataCatalog.from_dict
   </a>
  </li>
  <li class="toctree-l1">
@@ -1273,13 +1288,14 @@
 <h1>hydromt.data_catalog.DataCatalog.from_dict<a class="headerlink" href="#hydromt-data-catalog-datacatalog-from-dict" title="Permalink to this heading">#</a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="hydromt.data_catalog.DataCatalog.from_dict">
-<span class="sig-prename descclassname"><span class="pre">DataCatalog.</span></span><span class="sig-name descname"><span class="pre">from_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">root</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mark_used</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hydromt/data_catalog.html#DataCatalog.from_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hydromt.data_catalog.DataCatalog.from_dict" title="Permalink to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">DataCatalog.</span></span><span class="sig-name descname"><span class="pre">from_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_dict</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.10)"><span class="pre">Dict</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">root</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.10)"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.10)"><span class="pre">Union</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.10)"><span class="pre">Path</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">category</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.10)"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mark_used</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/hydromt/data_catalog.html#DataCatalog.from_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hydromt.data_catalog.DataCatalog.from_dict" title="Permalink to this definition">#</a></dt>
 <dd><p>Add data sources based on dictionary.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>data_dict</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.10)"><em>dict</em></a>) – Dictionary of data_sources.</p></li>
 <li><p><strong>root</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em>, </em><em>Path</em><em>, </em><em>optional</em>) – Global root for all relative paths in <cite>data_dict</cite>.</p></li>
+<li><p><strong>category</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em>, </em><em>optional</em>) – Global category for all sources in <cite>data_dict</cite>.</p></li>
 <li><p><strong>mark_used</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – If True, append to used_data list.</p></li>
 </ul>
 </dd>
@@ -1320,17 +1336,17 @@ for more information about the required and optional arguments.</p>
               <footer class="bd-footer-article">
                   <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-  <a class='left-prev' id="prev-link" href="hydromt.data_catalog.DataCatalog.from_artifacts.html" title="previous page">
+  <a class='left-prev' id="prev-link" href="hydromt.data_catalog.DataCatalog.from_yml.html" title="previous page">
       <i class="fas fa-angle-left"></i>
       <div class="prev-next-info">
           <p class="prev-next-subtitle">previous</p>
-          <p class="prev-next-title">hydromt.data_catalog.DataCatalog.from_artifacts</p>
+          <p class="prev-next-title">hydromt.data_catalog.DataCatalog.from_yml</p>
       </div>
   </a>
-  <a class='right-next' id="next-link" href="hydromt.data_catalog.DataCatalog.from_yml.html" title="next page">
+  <a class='right-next' id="next-link" href="hydromt.data_catalog.DataCatalog.update.html" title="next page">
   <div class="prev-next-info">
       <p class="prev-next-subtitle">next</p>
-      <p class="prev-next-title">hydromt.data_catalog.DataCatalog.from_yml</p>
+      <p class="prev-next-title">hydromt.data_catalog.DataCatalog.update</p>
   </div>
   <i class="fas fa-angle-right"></i>
   </a>

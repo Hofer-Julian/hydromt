@@ -342,22 +342,34 @@ as well as meta data for reproducibility.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>If no yaml file is provided to the CLI build or update methods or to <a class="reference internal" href="../_generated/hydromt.data_catalog.DataCatalog.html#hydromt.data_catalog.DataCatalog" title="hydromt.data_catalog.DataCatalog"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataCatalog</span></code></a>,
-HydroMT will use the data stored in the <a class="reference external" href="https://github.com/DirkEilander/hydromt-artifacts">hydromt-artifacts</a>
+HydroMT will use the data stored in the <a class="reference internal" href="data_existing_cat.html#existing-catalog"><span class="std std-ref">artifact_data</span></a>
 which contains an extract of global data for a small region around the Piave river in Northern Italy.</p>
 </div>
 <section id="from-cli">
 <span id="get-data-cli"></span><h2>From CLI<a class="headerlink" href="#from-cli" title="Permalink to this heading">#</a></h2>
 <p>When using the HydroMT command line interface (CLI), one can provide a data catalog by specifying the
 path to the yaml file with the <code class="docutils literal notranslate"><span class="pre">-d</span> <span class="pre">(--data)</span></code> option.
-Multiple yaml files can be added by reusing the <code class="docutils literal notranslate"><span class="pre">-d</span></code> option.</p>
+Multiple yaml files can be added by reusing the <code class="docutils literal notranslate"><span class="pre">-d</span></code> option. If the yaml files have data sources with
+the same name, the source from the last catalog in the list is used.</p>
 <p>For example when using the <a class="reference internal" href="model_build.html#cli-build"><span class="std std-ref">build</span></a> CLI method:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">hydromt build MODEL REGION -d /path/to/data_catalog1.yaml -d /path/to/data_catalog1.yaml</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">hydromt build MODEL REGION -d /path/to/data_catalog1.yml -d /path/to/data_catalog2.yml</span>
+</pre></div>
+</div>
+<p>Alternatively, you can also use names and versions of the <a class="reference internal" href="data_existing_cat.html#existing-catalog"><span class="std std-ref">predefined data catalogs</span></a>.
+If no version is specified, the latest version available is used.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">hydromt build MODEL REGION -d deltares_data=v2022.5 -d artifact_data</span>
 </pre></div>
 </div>
 <p>A special exception is made for the Deltares data catalog which can be accessed with the
 <code class="docutils literal notranslate"><span class="pre">--dd</span> <span class="pre">(--deltares-data)</span></code> flag (requires access to the Deltares P-drive).</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">hydromt build MODEL REGION -dd</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">hydromt build MODEL REGION --dd</span>
 </pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When using several data catalogs, the order in which they are listed is important! If several catalogs contain
+data sources with the same names, the sources from the last catalog in the list are used.
+If the <code class="docutils literal notranslate"><span class="pre">--dd</span> <span class="pre">(--deltares-data)</span></code> flag is used the deltares_data catalog is read first.</p>
 </div>
 </section>
 <section id="from-python">
@@ -369,7 +381,7 @@ Multiple yaml files can be added by reusing the <code class="docutils literal no
 </ol>
 <p>For example to retrieve a raster dataset use <code class="xref py py-func docutils literal notranslate"><span class="pre">get_rasterdataset()</span></code>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">hydromt</span>
-<span class="n">data_cat</span> <span class="o">=</span> <span class="n">hydromt</span><span class="o">.</span><span class="n">DataCatalog</span><span class="p">(</span><span class="n">data_libs</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;/path/to/data-catalog.yaml&#39;</span><span class="p">)</span>
+<span class="n">data_cat</span> <span class="o">=</span> <span class="n">hydromt</span><span class="o">.</span><span class="n">DataCatalog</span><span class="p">(</span><span class="n">data_libs</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;/path/to/data-catalog.yml&#39;</span><span class="p">)</span>
 <span class="n">ds</span> <span class="o">=</span> <span class="n">data_cat</span><span class="o">.</span><span class="n">get_rasterdataset</span><span class="p">(</span><span class="s1">&#39;source_name&#39;</span><span class="p">,</span> <span class="n">bbox</span><span class="o">=</span><span class="p">[</span><span class="n">xmin</span><span class="p">,</span> <span class="n">ymin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="n">ymax</span><span class="p">])</span>  <span class="c1"># returns xarray.dataset</span>
 </pre></div>
 </div>

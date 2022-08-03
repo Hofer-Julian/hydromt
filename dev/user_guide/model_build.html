@@ -348,8 +348,8 @@ To actually build a specific model the associated <a class="reference internal" 
 </div>
 <p><strong>Example usage</strong></p>
 <p>The following line of code builds a SFINCS model for a region defined by a bounding box <code class="docutils literal notranslate"><span class="pre">bbox</span></code> and based on the model methods
-in the <code class="docutils literal notranslate"><span class="pre">sfincs_config.ini</span></code> file and the data sources in the <code class="docutils literal notranslate"><span class="pre">data_catalog.yaml</span></code> file.</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">hydromt build sfincs /path/to/model_root &quot;{&#39;bbox&#39;: [4.6891,52.9750,4.9576,53.1994]}&quot; -i /path/to/sfincs_config.ini -d /path/to/data_catalog.yaml -v</span>
+in the <code class="docutils literal notranslate"><span class="pre">sfincs_config.ini</span></code> file and the data sources in the <code class="docutils literal notranslate"><span class="pre">data_catalog.yml</span></code> file.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">hydromt build sfincs /path/to/model_root &quot;{&#39;bbox&#39;: [4.6891,52.9750,4.9576,53.1994]}&quot; -i /path/to/sfincs_config.ini -d /path/to/data_catalog.yml -v</span>
 </pre></div>
 </div>
 <div class="admonition tip">
@@ -369,10 +369,10 @@ in the <code class="docutils literal notranslate"><span class="pre">sfincs_confi
 <span class="go">  --------------</span>
 
 <span class="go">  To build a wflow model for a subbasin using and point coordinates snapped to cells with stream order &gt;= 4</span>
-<span class="go">  hydromt build wflow /path/to/model_root &quot;{&#39;subbasin&#39;: [-7.24, 62.09], &#39;strord&#39;: 4}&quot; -i /path/to/wflow_config.ini -d /path/to/data_catalog.yaml -v</span>
+<span class="go">  hydromt build wflow /path/to/model_root &quot;{&#39;subbasin&#39;: [-7.24, 62.09], &#39;strord&#39;: 4}&quot; -i /path/to/wflow_config.ini -d deltares_data -d /path/to/data_catalog.yml -v</span>
 
 <span class="go">  To build a sfincs model based on a bbox</span>
-<span class="go">  hydromt build sfincs /path/to/model_root &quot;{&#39;bbox&#39;: [4.6891,52.9750,4.9576,53.1994]}&quot; -i /path/to/sfincs_config.ini -d /path/to/data_catalog.yaml -v</span>
+<span class="go">  hydromt build sfincs /path/to/model_root &quot;{&#39;bbox&#39;: [4.6891,52.9750,4.9576,53.1994]}&quot; -i /path/to/sfincs_config.ini -d /path/to/data_catalog.yml -v</span>
 
 <span class="go">Options:</span>
 <span class="go">  -r, --res FLOAT             Model resolution in model src.</span>
@@ -382,11 +382,9 @@ in the <code class="docutils literal notranslate"><span class="pre">sfincs_confi
 <span class="go">                              information about the arguments.</span>
 <span class="go">  -i, --config PATH           Path to hydroMT configuration file, for the model</span>
 <span class="go">                              specific implementation.</span>
-<span class="go">  -d, --data PATH             File path to yml data sources file. See</span>
-<span class="go">                              documentation for required yml file format.</span>
-<span class="go">  --dd, --deltares-data       Parse default deltares data yml from</span>
-<span class="go">                              https://github.com/DirkEilander/hydromt-</span>
-<span class="go">                              artifacts/releases</span>
+<span class="go">  -d, --data TEXT             Path to local yaml data catalog file OR name of</span>
+<span class="go">                              predefined data catalog.</span>
+<span class="go">  --dd, --deltares-data       Shortcut to add the &quot;deltares_data&quot; catalog</span>
 <span class="go">  -q, --quiet                 Decrease verbosity.</span>
 <span class="go">  -v, --verbose               Increase verbosity.</span>
 <span class="go">  --help                      Show this message and exit.</span>
@@ -402,7 +400,7 @@ The configuration file can be parsed using <a class="reference internal" href=".
 <p>To create the same SFINCS model as shown above in the CLI example the following block of Python code is required.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">hydromt_sfincs</span> <span class="kn">import</span> <span class="n">SfincsModel</span>
 <span class="kn">from</span> <span class="nn">hydromt.config</span> <span class="kn">import</span> <span class="n">configread</span>
-<span class="n">data_libs</span> <span class="o">=</span> <span class="p">[</span><span class="sa">r</span><span class="s1">&#39;/path/to/data_catalog.yaml&#39;</span><span class="p">]</span>
+<span class="n">data_libs</span> <span class="o">=</span> <span class="p">[</span><span class="sa">r</span><span class="s1">&#39;/path/to/data_catalog.yml&#39;</span><span class="p">]</span>
 <span class="n">model_root</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;/path/to/model_root</span>
 <span class="n">opt</span><span class="o">=</span><span class="n">configread</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;/path/to/sfincs_config.ini&#39;</span><span class="p">)</span>  <span class="c1"># parse .ini configuration</span>
 <span class="n">mod</span> <span class="o">=</span> <span class="n">SfincsModel</span><span class="p">(</span><span class="n">model_root</span><span class="p">,</span> <span class="n">data_libs</span><span class="o">=</span><span class="n">data_libs</span><span class="p">)</span>  <span class="c1"># initialize model with default logger</span>

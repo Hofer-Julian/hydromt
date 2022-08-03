@@ -170,6 +170,11 @@
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.data_catalog.DataCatalog.predefined_catalogs.html">
+   hydromt.data_catalog.DataCatalog.predefined_catalogs
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="hydromt.data_catalog.DataCatalog.to_dict.html">
    hydromt.data_catalog.DataCatalog.to_dict
   </a>
@@ -187,18 +192,28 @@
 </ul>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="hydromt.data_catalog.DataCatalog.from_artifacts.html">
-   hydromt.data_catalog.DataCatalog.from_artifacts
+  <a class="reference internal" href="hydromt.data_catalog.DataCatalog.set_predefined_catalogs.html">
+   hydromt.data_catalog.DataCatalog.set_predefined_catalogs
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="hydromt.data_catalog.DataCatalog.from_dict.html">
-   hydromt.data_catalog.DataCatalog.from_dict
+  <a class="reference internal" href="hydromt.data_catalog.DataCatalog.from_predefined_catalogs.html">
+   hydromt.data_catalog.DataCatalog.from_predefined_catalogs
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.data_catalog.DataCatalog.from_archive.html">
+   hydromt.data_catalog.DataCatalog.from_archive
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="hydromt.data_catalog.DataCatalog.from_yml.html">
    hydromt.data_catalog.DataCatalog.from_yml
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.data_catalog.DataCatalog.from_dict.html">
+   hydromt.data_catalog.DataCatalog.from_dict
   </a>
  </li>
  <li class="toctree-l1">
@@ -1278,8 +1293,8 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>root</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em>, </em><em>Path</em><em>, </em><em>optional</em>) – Global root for all relative paths in yml file.
-If “auto” the data source paths are relative to the yml output <code class="docutils literal notranslate"><span class="pre">path</span></code>.</p></li>
+<li><p><strong>root</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em>, </em><em>Path</em><em>, </em><em>optional</em>) – Global root for all relative paths in yaml file.
+If “auto” the data source paths are relative to the yaml output <code class="docutils literal notranslate"><span class="pre">path</span></code>.</p></li>
 <li><p><strong>used_only</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – If True, export only data entries kept in used_data list.</p></li>
 </ul>
 </dd>
