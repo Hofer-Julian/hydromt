@@ -189,6 +189,11 @@
    hydromt.data_catalog.DataCatalog.to_yml
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.data_catalog.DataCatalog.export_data.html">
+   hydromt.data_catalog.DataCatalog.export_data
+  </a>
+ </li>
 </ul>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
@@ -246,11 +251,6 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="hydromt.data_adapter.RasterDatasetAdapter.to_dict.html">
-   hydromt.data_adapter.RasterDatasetAdapter.to_dict
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="hydromt.data_adapter.RasterDatasetAdapter.summary.html">
    hydromt.data_adapter.RasterDatasetAdapter.summary
   </a>
@@ -260,16 +260,21 @@
    hydromt.data_adapter.RasterDatasetAdapter.get_data
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.data_adapter.RasterDatasetAdapter.to_dict.html">
+   hydromt.data_adapter.RasterDatasetAdapter.to_dict
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.data_adapter.RasterDatasetAdapter.to_file.html">
+   hydromt.data_adapter.RasterDatasetAdapter.to_file
+  </a>
+ </li>
 </ul>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="hydromt.data_adapter.GeoDatasetAdapter.html">
    hydromt.data_adapter.GeoDatasetAdapter
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="hydromt.data_adapter.GeoDatasetAdapter.to_dict.html">
-   hydromt.data_adapter.GeoDatasetAdapter.to_dict
   </a>
  </li>
  <li class="toctree-l1">
@@ -282,16 +287,21 @@
    hydromt.data_adapter.GeoDatasetAdapter.get_data
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.data_adapter.GeoDatasetAdapter.to_dict.html">
+   hydromt.data_adapter.GeoDatasetAdapter.to_dict
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.data_adapter.GeoDatasetAdapter.to_file.html">
+   hydromt.data_adapter.GeoDatasetAdapter.to_file
+  </a>
+ </li>
 </ul>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="hydromt.data_adapter.GeoDataFrameAdapter.html">
    hydromt.data_adapter.GeoDataFrameAdapter
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="hydromt.data_adapter.GeoDataFrameAdapter.to_dict.html">
-   hydromt.data_adapter.GeoDataFrameAdapter.to_dict
   </a>
  </li>
  <li class="toctree-l1">
@@ -302,6 +312,43 @@
  <li class="toctree-l1">
   <a class="reference internal" href="hydromt.data_adapter.GeoDataFrameAdapter.get_data.html">
    hydromt.data_adapter.GeoDataFrameAdapter.get_data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.data_adapter.GeoDataFrameAdapter.to_dict.html">
+   hydromt.data_adapter.GeoDataFrameAdapter.to_dict
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.data_adapter.GeoDataFrameAdapter.to_file.html">
+   hydromt.data_adapter.GeoDataFrameAdapter.to_file
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.data_adapter.DataFrameAdapter.html">
+   hydromt.data_adapter.DataFrameAdapter
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.data_adapter.DataFrameAdapter.summary.html">
+   hydromt.data_adapter.DataFrameAdapter.summary
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.data_adapter.DataFrameAdapter.get_data.html">
+   hydromt.data_adapter.DataFrameAdapter.get_data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.data_adapter.DataFrameAdapter.to_dict.html">
+   hydromt.data_adapter.DataFrameAdapter.to_dict
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.data_adapter.DataFrameAdapter.to_file.html">
+   hydromt.data_adapter.DataFrameAdapter.to_file
   </a>
  </li>
 </ul>
@@ -1288,8 +1335,15 @@
 <h1>hydromt.Model.write_states<a class="headerlink" href="#hydromt-model-write-states" title="Permalink to this heading">#</a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="hydromt.Model.write_states">
-<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">Model.</span></span><span class="sig-name descname"><span class="pre">write_states</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hydromt/models/model_api.html#Model.write_states"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hydromt.Model.write_states" title="Permalink to this definition">#</a></dt>
-<dd><p>write states at &lt;root/?/&gt; in model ready format</p>
+<span class="sig-prename descclassname"><span class="pre">Model.</span></span><span class="sig-name descname"><span class="pre">write_states</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'states/{name}.nc'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/hydromt/models/model_api.html#Model.write_states"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hydromt.Model.write_states" title="Permalink to this definition">#</a></dt>
+<dd><p>Write states to netcdf file at &lt;root&gt;/&lt;fn&gt;</p>
+<p>key-word arguments are passed to <a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.Dataset.to_netcdf.html#xarray.Dataset.to_netcdf" title="(in xarray v2022.6.1.dev0)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">xarray.Dataset.to_netcdf()</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>fn</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em>, </em><em>optional</em>) – filename relative to model root and should contain a {name} placeholder,
+by default ‘states/{name}.nc’</p>
+</dd>
+</dl>
 </dd></dl>
 
 </section>

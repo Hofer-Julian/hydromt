@@ -189,6 +189,11 @@
    hydromt.data_catalog.DataCatalog.to_yml
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.data_catalog.DataCatalog.export_data.html">
+   hydromt.data_catalog.DataCatalog.export_data
+  </a>
+ </li>
 </ul>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
@@ -246,11 +251,6 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="hydromt.data_adapter.RasterDatasetAdapter.to_dict.html">
-   hydromt.data_adapter.RasterDatasetAdapter.to_dict
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="hydromt.data_adapter.RasterDatasetAdapter.summary.html">
    hydromt.data_adapter.RasterDatasetAdapter.summary
   </a>
@@ -260,16 +260,21 @@
    hydromt.data_adapter.RasterDatasetAdapter.get_data
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.data_adapter.RasterDatasetAdapter.to_dict.html">
+   hydromt.data_adapter.RasterDatasetAdapter.to_dict
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.data_adapter.RasterDatasetAdapter.to_file.html">
+   hydromt.data_adapter.RasterDatasetAdapter.to_file
+  </a>
+ </li>
 </ul>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="hydromt.data_adapter.GeoDatasetAdapter.html">
    hydromt.data_adapter.GeoDatasetAdapter
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="hydromt.data_adapter.GeoDatasetAdapter.to_dict.html">
-   hydromt.data_adapter.GeoDatasetAdapter.to_dict
   </a>
  </li>
  <li class="toctree-l1">
@@ -282,16 +287,21 @@
    hydromt.data_adapter.GeoDatasetAdapter.get_data
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.data_adapter.GeoDatasetAdapter.to_dict.html">
+   hydromt.data_adapter.GeoDatasetAdapter.to_dict
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.data_adapter.GeoDatasetAdapter.to_file.html">
+   hydromt.data_adapter.GeoDatasetAdapter.to_file
+  </a>
+ </li>
 </ul>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="hydromt.data_adapter.GeoDataFrameAdapter.html">
    hydromt.data_adapter.GeoDataFrameAdapter
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="hydromt.data_adapter.GeoDataFrameAdapter.to_dict.html">
-   hydromt.data_adapter.GeoDataFrameAdapter.to_dict
   </a>
  </li>
  <li class="toctree-l1">
@@ -302,6 +312,43 @@
  <li class="toctree-l1">
   <a class="reference internal" href="hydromt.data_adapter.GeoDataFrameAdapter.get_data.html">
    hydromt.data_adapter.GeoDataFrameAdapter.get_data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.data_adapter.GeoDataFrameAdapter.to_dict.html">
+   hydromt.data_adapter.GeoDataFrameAdapter.to_dict
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.data_adapter.GeoDataFrameAdapter.to_file.html">
+   hydromt.data_adapter.GeoDataFrameAdapter.to_file
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.data_adapter.DataFrameAdapter.html">
+   hydromt.data_adapter.DataFrameAdapter
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.data_adapter.DataFrameAdapter.summary.html">
+   hydromt.data_adapter.DataFrameAdapter.summary
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.data_adapter.DataFrameAdapter.get_data.html">
+   hydromt.data_adapter.DataFrameAdapter.get_data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.data_adapter.DataFrameAdapter.to_dict.html">
+   hydromt.data_adapter.DataFrameAdapter.to_dict
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.data_adapter.DataFrameAdapter.to_file.html">
+   hydromt.data_adapter.DataFrameAdapter.to_file
   </a>
  </li>
 </ul>
@@ -1288,7 +1335,7 @@
 <h1>hydromt.data_catalog.DataCatalog.get_geodataset<a class="headerlink" href="#hydromt-data-catalog-datacatalog-get-geodataset" title="Permalink to this heading">#</a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="hydromt.data_catalog.DataCatalog.get_geodataset">
-<span class="sig-prename descclassname"><span class="pre">DataCatalog.</span></span><span class="sig-name descname"><span class="pre">get_geodataset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path_or_key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.10)"><span class="pre">Union</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.10)"><span class="pre">Path</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bbox</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.10)"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.10)"><span class="pre">List</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">geom</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.10)"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://geopandas.org/en/stable/docs/reference/api/geopandas.GeoDataFrame.html#geopandas.GeoDataFrame" title="(in GeoPandas v0.11.0)"><span class="pre">GeoDataFrame</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">buffer</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.10)"><span class="pre">Union</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><span class="pre">float</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variables</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.10)"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.10)"><span class="pre">List</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_tuple</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.10)"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.10)"><span class="pre">Tuple</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">single_var_as_array</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://xarray.pydata.org/en/stable/generated/xarray.Dataset.html#xarray.Dataset" title="(in xarray v2022.6.1.dev0)"><span class="pre">Dataset</span></a></span></span><a class="reference internal" href="../_modules/hydromt/data_catalog.html#DataCatalog.get_geodataset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hydromt.data_catalog.DataCatalog.get_geodataset" title="Permalink to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">DataCatalog.</span></span><span class="sig-name descname"><span class="pre">get_geodataset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path_or_key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.10)"><span class="pre">Union</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.10)"><span class="pre">Path</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bbox</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.10)"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.10)"><span class="pre">List</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">geom</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.10)"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://geopandas.org/en/stable/docs/reference/api/geopandas.GeoDataFrame.html#geopandas.GeoDataFrame" title="(in GeoPandas v0.11.0)"><span class="pre">GeoDataFrame</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">buffer</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.10)"><span class="pre">Union</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><span class="pre">float</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variables</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.10)"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.10)"><span class="pre">List</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_tuple</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.10)"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.10)"><span class="pre">Tuple</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">single_var_as_array</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.Dataset.html#xarray.Dataset" title="(in xarray v2022.6.1.dev0)"><span class="pre">Dataset</span></a></span></span><a class="reference internal" href="../_modules/hydromt/data_catalog.html#DataCatalog.get_geodataset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hydromt.data_catalog.DataCatalog.get_geodataset" title="Permalink to this definition">#</a></dt>
 <dd><p>Returns a clipped, sliced and unified GeoDataset from the data catalog.</p>
 <p>To clip the data to the area of interest, provide a <cite>bbox</cite> or <cite>geom</cite>,
 with optional additional <cite>buffer</cite> and <cite>align</cite> arguments.
@@ -1318,7 +1365,7 @@ If False, always return a Dataset. By default True.</p></li>
 <dd class="field-even"><p><strong>obj</strong> – GeoDataset</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference external" href="https://xarray.pydata.org/en/stable/generated/xarray.Dataset.html#xarray.Dataset" title="(in xarray v2022.6.1.dev0)">xarray.Dataset</a> or <a class="reference external" href="https://xarray.pydata.org/en/stable/generated/xarray.DataArray.html#xarray.DataArray" title="(in xarray v2022.6.1.dev0)">xarray.DataArray</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.Dataset.html#xarray.Dataset" title="(in xarray v2022.6.1.dev0)">xarray.Dataset</a> or <a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.DataArray.html#xarray.DataArray" title="(in xarray v2022.6.1.dev0)">xarray.DataArray</a></p>
 </dd>
 </dl>
 </dd></dl>

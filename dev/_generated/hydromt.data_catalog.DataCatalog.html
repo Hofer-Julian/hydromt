@@ -189,6 +189,11 @@
    hydromt.data_catalog.DataCatalog.to_yml
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.data_catalog.DataCatalog.export_data.html">
+   hydromt.data_catalog.DataCatalog.export_data
+  </a>
+ </li>
 </ul>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
@@ -246,11 +251,6 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="hydromt.data_adapter.RasterDatasetAdapter.to_dict.html">
-   hydromt.data_adapter.RasterDatasetAdapter.to_dict
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="hydromt.data_adapter.RasterDatasetAdapter.summary.html">
    hydromt.data_adapter.RasterDatasetAdapter.summary
   </a>
@@ -260,16 +260,21 @@
    hydromt.data_adapter.RasterDatasetAdapter.get_data
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.data_adapter.RasterDatasetAdapter.to_dict.html">
+   hydromt.data_adapter.RasterDatasetAdapter.to_dict
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.data_adapter.RasterDatasetAdapter.to_file.html">
+   hydromt.data_adapter.RasterDatasetAdapter.to_file
+  </a>
+ </li>
 </ul>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="hydromt.data_adapter.GeoDatasetAdapter.html">
    hydromt.data_adapter.GeoDatasetAdapter
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="hydromt.data_adapter.GeoDatasetAdapter.to_dict.html">
-   hydromt.data_adapter.GeoDatasetAdapter.to_dict
   </a>
  </li>
  <li class="toctree-l1">
@@ -282,16 +287,21 @@
    hydromt.data_adapter.GeoDatasetAdapter.get_data
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.data_adapter.GeoDatasetAdapter.to_dict.html">
+   hydromt.data_adapter.GeoDatasetAdapter.to_dict
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.data_adapter.GeoDatasetAdapter.to_file.html">
+   hydromt.data_adapter.GeoDatasetAdapter.to_file
+  </a>
+ </li>
 </ul>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="hydromt.data_adapter.GeoDataFrameAdapter.html">
    hydromt.data_adapter.GeoDataFrameAdapter
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="hydromt.data_adapter.GeoDataFrameAdapter.to_dict.html">
-   hydromt.data_adapter.GeoDataFrameAdapter.to_dict
   </a>
  </li>
  <li class="toctree-l1">
@@ -302,6 +312,43 @@
  <li class="toctree-l1">
   <a class="reference internal" href="hydromt.data_adapter.GeoDataFrameAdapter.get_data.html">
    hydromt.data_adapter.GeoDataFrameAdapter.get_data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.data_adapter.GeoDataFrameAdapter.to_dict.html">
+   hydromt.data_adapter.GeoDataFrameAdapter.to_dict
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.data_adapter.GeoDataFrameAdapter.to_file.html">
+   hydromt.data_adapter.GeoDataFrameAdapter.to_file
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.data_adapter.DataFrameAdapter.html">
+   hydromt.data_adapter.DataFrameAdapter
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.data_adapter.DataFrameAdapter.summary.html">
+   hydromt.data_adapter.DataFrameAdapter.summary
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.data_adapter.DataFrameAdapter.get_data.html">
+   hydromt.data_adapter.DataFrameAdapter.get_data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.data_adapter.DataFrameAdapter.to_dict.html">
+   hydromt.data_adapter.DataFrameAdapter.to_dict
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.data_adapter.DataFrameAdapter.to_file.html">
+   hydromt.data_adapter.DataFrameAdapter.to_file
   </a>
  </li>
 </ul>
@@ -1324,7 +1371,7 @@ See <code class="xref py py-func docutils literal notranslate"><span class="pre"
 <tr class="row-odd"><td><p><a class="reference internal" href="#hydromt.data_catalog.DataCatalog.__init__" title="hydromt.data_catalog.DataCatalog.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>([data_libs, logger])</p></td>
 <td><p>Catalog of DataAdapter sources to easily read from different files and keep track of files which have been accessed.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">export_data</span></code>(data_root, bbox, time_tuple[, ...])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="hydromt.data_catalog.DataCatalog.export_data.html#hydromt.data_catalog.DataCatalog.export_data" title="hydromt.data_catalog.DataCatalog.export_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">export_data</span></code></a>(data_root[, bbox, time_tuple, ...])</p></td>
 <td><p>Export a data slice of each dataset and a data_catalog.yml file to disk.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="hydromt.data_catalog.DataCatalog.from_archive.html#hydromt.data_catalog.DataCatalog.from_archive" title="hydromt.data_catalog.DataCatalog.from_archive"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_archive</span></code></a>(urlpath[, version, name])</p></td>
@@ -1342,7 +1389,7 @@ See <code class="xref py py-func docutils literal notranslate"><span class="pre"
 <tr class="row-odd"><td><p><a class="reference internal" href="hydromt.data_catalog.DataCatalog.from_yml.html#hydromt.data_catalog.DataCatalog.from_yml" title="hydromt.data_catalog.DataCatalog.from_yml"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_yml</span></code></a>(urlpath[, root, mark_used])</p></td>
 <td><p>Add data sources based on yaml file.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_dataframe</span></code>(path_or_key[, bbox, geom, ...])</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_dataframe</span></code>(path_or_key[, variables, ...])</p></td>
 <td><p></p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="hydromt.data_catalog.DataCatalog.get_geodataframe.html#hydromt.data_catalog.DataCatalog.get_geodataframe" title="hydromt.data_catalog.DataCatalog.get_geodataframe"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_geodataframe</span></code></a>(path_or_key[, bbox, geom, ...])</p></td>

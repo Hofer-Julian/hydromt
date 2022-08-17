@@ -189,6 +189,11 @@
    hydromt.data_catalog.DataCatalog.to_yml
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.data_catalog.DataCatalog.export_data.html">
+   hydromt.data_catalog.DataCatalog.export_data
+  </a>
+ </li>
 </ul>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
@@ -246,11 +251,6 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="hydromt.data_adapter.RasterDatasetAdapter.to_dict.html">
-   hydromt.data_adapter.RasterDatasetAdapter.to_dict
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="hydromt.data_adapter.RasterDatasetAdapter.summary.html">
    hydromt.data_adapter.RasterDatasetAdapter.summary
   </a>
@@ -260,16 +260,21 @@
    hydromt.data_adapter.RasterDatasetAdapter.get_data
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.data_adapter.RasterDatasetAdapter.to_dict.html">
+   hydromt.data_adapter.RasterDatasetAdapter.to_dict
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.data_adapter.RasterDatasetAdapter.to_file.html">
+   hydromt.data_adapter.RasterDatasetAdapter.to_file
+  </a>
+ </li>
 </ul>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="hydromt.data_adapter.GeoDatasetAdapter.html">
    hydromt.data_adapter.GeoDatasetAdapter
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="hydromt.data_adapter.GeoDatasetAdapter.to_dict.html">
-   hydromt.data_adapter.GeoDatasetAdapter.to_dict
   </a>
  </li>
  <li class="toctree-l1">
@@ -282,16 +287,21 @@
    hydromt.data_adapter.GeoDatasetAdapter.get_data
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.data_adapter.GeoDatasetAdapter.to_dict.html">
+   hydromt.data_adapter.GeoDatasetAdapter.to_dict
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.data_adapter.GeoDatasetAdapter.to_file.html">
+   hydromt.data_adapter.GeoDatasetAdapter.to_file
+  </a>
+ </li>
 </ul>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="hydromt.data_adapter.GeoDataFrameAdapter.html">
    hydromt.data_adapter.GeoDataFrameAdapter
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="hydromt.data_adapter.GeoDataFrameAdapter.to_dict.html">
-   hydromt.data_adapter.GeoDataFrameAdapter.to_dict
   </a>
  </li>
  <li class="toctree-l1">
@@ -302,6 +312,43 @@
  <li class="toctree-l1">
   <a class="reference internal" href="hydromt.data_adapter.GeoDataFrameAdapter.get_data.html">
    hydromt.data_adapter.GeoDataFrameAdapter.get_data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.data_adapter.GeoDataFrameAdapter.to_dict.html">
+   hydromt.data_adapter.GeoDataFrameAdapter.to_dict
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.data_adapter.GeoDataFrameAdapter.to_file.html">
+   hydromt.data_adapter.GeoDataFrameAdapter.to_file
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.data_adapter.DataFrameAdapter.html">
+   hydromt.data_adapter.DataFrameAdapter
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.data_adapter.DataFrameAdapter.summary.html">
+   hydromt.data_adapter.DataFrameAdapter.summary
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.data_adapter.DataFrameAdapter.get_data.html">
+   hydromt.data_adapter.DataFrameAdapter.get_data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.data_adapter.DataFrameAdapter.to_dict.html">
+   hydromt.data_adapter.DataFrameAdapter.to_dict
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.data_adapter.DataFrameAdapter.to_file.html">
+   hydromt.data_adapter.DataFrameAdapter.to_file
   </a>
  </li>
 </ul>
@@ -1298,7 +1345,7 @@ be provided.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>ds</strong> (<a class="reference external" href="https://xarray.pydata.org/en/stable/generated/xarray.Dataset.html#xarray.Dataset" title="(in xarray v2022.6.1.dev0)"><em>xarray.Dataset</em></a>) – dataset containing basin and flow direction variables</p></li>
+<li><p><strong>ds</strong> (<a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.Dataset.html#xarray.Dataset" title="(in xarray v2022.6.1.dev0)"><em>xarray.Dataset</em></a>) – dataset containing basin and flow direction variables</p></li>
 <li><p><strong>basin_index</strong> (<a class="reference external" href="https://geopandas.org/en/stable/docs/reference/api/geopandas.GeoDataFrame.html#geopandas.GeoDataFrame" title="(in GeoPandas v0.11.0)"><em>geopandas.GeoDataFrame</em></a><em> or </em><a class="reference internal" href="hydromt.data_adapter.GeoDataFrameAdapter.html#hydromt.data_adapter.GeoDataFrameAdapter" title="hydromt.data_adapter.GeoDataFrameAdapter"><em>GeoDataFrameAdapter</em></a>) – Dataframe with basin geomtries or bounding boxes with “basid” column
 corresponding to the <code class="docutils literal notranslate"><span class="pre">ds[&lt;basins_name&gt;]</span></code> map.</p></li>
 <li><p><strong>kind</strong> (<em>{&quot;basin&quot;</em><em>, </em><em>&quot;subbasin&quot;</em><em>, </em><em>&quot;interbasin&quot;}</em>) – kind of basin description</p></li>

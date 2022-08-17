@@ -247,7 +247,7 @@
 <span class="sd">            Scaling multiplication and addition to change to map from the native data unit</span>
 <span class="sd">            to the output data unit as required by hydroMT.</span>
 <span class="sd">        meta: dict, optional</span>
-<span class="sd">            Metadata information of dataset, prefably containing the following keys:</span>
+<span class="sd">            Metadata information of dataset, preferably containing the following keys:</span>
 <span class="sd">            {&#39;source_version&#39;, &#39;source_url&#39;, &#39;source_license&#39;, &#39;paper_ref&#39;, &#39;paper_doi&#39;, &#39;category&#39;}</span>
 <span class="sd">        placeholders: dict, optional</span>
 <span class="sd">            Placeholders to expand yaml entry to multiple entries (name and path) based on placeholder values</span>
@@ -269,12 +269,12 @@
         <span class="c1"># TODO: see if the units argument can be solved with unit_mult/unit_add</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">units</span> <span class="o">=</span> <span class="n">units</span></div>
 
-    <span class="k">def</span> <span class="nf">to_file</span><span class="p">(</span>
+<div class="viewcode-block" id="RasterDatasetAdapter.to_file"><a class="viewcode-back" href="../../../_generated/hydromt.data_adapter.RasterDatasetAdapter.to_file.html#hydromt.data_adapter.RasterDatasetAdapter.to_file">[docs]</a>    <span class="k">def</span> <span class="nf">to_file</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">data_root</span><span class="p">,</span>
         <span class="n">data_name</span><span class="p">,</span>
-        <span class="n">bbox</span><span class="p">,</span>
-        <span class="n">time_tuple</span><span class="p">,</span>
+        <span class="n">bbox</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">time_tuple</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">driver</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">variables</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">logger</span><span class="o">=</span><span class="n">logger</span><span class="p">,</span>
@@ -346,7 +346,7 @@
                 <span class="p">)</span>
             <span class="n">driver</span> <span class="o">=</span> <span class="s2">&quot;raster&quot;</span>
 
-        <span class="k">return</span> <span class="n">fn_out</span><span class="p">,</span> <span class="n">driver</span>
+        <span class="k">return</span> <span class="n">fn_out</span><span class="p">,</span> <span class="n">driver</span></div>
 
 <div class="viewcode-block" id="RasterDatasetAdapter.get_data"><a class="viewcode-back" href="../../../_generated/hydromt.data_adapter.RasterDatasetAdapter.get_data.html#hydromt.data_adapter.RasterDatasetAdapter.get_data">[docs]</a>    <span class="k">def</span> <span class="nf">get_data</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
@@ -384,9 +384,12 @@
                 <span class="p">)</span>
             <span class="n">ds_out</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_zarr</span><span class="p">(</span><span class="n">fns</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">driver</span> <span class="o">==</span> <span class="s2">&quot;raster_tindex&quot;</span><span class="p">:</span>
-            <span class="n">kwargs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">nodata</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">nodata</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">issubdtype</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nodata</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">number</span><span class="p">):</span>
+                <span class="n">kwargs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">nodata</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">nodata</span><span class="p">)</span>
             <span class="n">ds_out</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">open_raster_from_tindex</span><span class="p">(</span><span class="n">fns</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">bbox</span><span class="o">=</span><span class="n">bbox</span><span class="p">,</span> <span class="n">geom</span><span class="o">=</span><span class="n">geom</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">driver</span> <span class="o">==</span> <span class="s2">&quot;raster&quot;</span><span class="p">:</span>  <span class="c1"># rasterio files</span>
+            <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">issubdtype</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nodata</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">number</span><span class="p">):</span>
+                <span class="n">kwargs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">nodata</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">nodata</span><span class="p">)</span>
             <span class="n">ds_out</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">open_mfraster</span><span class="p">(</span><span class="n">fns</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="n">logger</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;RasterDataset: Driver </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="si">}</span><span class="s2"> unknown&quot;</span><span class="p">)</span>
