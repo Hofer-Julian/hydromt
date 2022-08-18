@@ -205,10 +205,14 @@
 <span class="k">class</span> <span class="nc">AuxmapsMixin</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="c1"># mixin class to add an auxiliary maps object</span>
     <span class="c1"># contains maps needed for model building but not model data</span>
-    <span class="n">_auxmaps</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>  <span class="c1"># dictionary of xr.DataArray and/or xr.Dataset</span>
     <span class="n">_API</span> <span class="o">=</span> <span class="p">{</span>
         <span class="s2">&quot;auxmaps&quot;</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Union</span><span class="p">[</span><span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">,</span> <span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">]],</span>
     <span class="p">}</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_auxmaps</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>  <span class="c1"># dictionary of xr.DataArray and/or xr.Dataset</span>
+
     <span class="c1"># model auxiliary map files</span>
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">auxmaps</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Union</span><span class="p">[</span><span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">,</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">]]:</span>
@@ -1531,6 +1535,25 @@
     <span class="k">except</span> <span class="ne">AssertionError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
         <span class="n">errors</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="n">name</span><span class="p">:</span> <span class="n">e</span><span class="p">})</span>
     <span class="k">return</span> <span class="n">errors</span>
+
+
+<span class="k">class</span> <span class="nc">AuxmapsModel</span><span class="p">(</span><span class="n">AuxmapsMixin</span><span class="p">,</span> <span class="n">Model</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">root</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span>
+        <span class="n">config_fn</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">data_libs</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">logger</span><span class="o">=</span><span class="n">logger</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="c1"># Initialize with the Model class</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="n">root</span><span class="o">=</span><span class="n">root</span><span class="p">,</span>
+            <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span>
+            <span class="n">config_fn</span><span class="o">=</span><span class="n">config_fn</span><span class="p">,</span>
+            <span class="n">data_libs</span><span class="o">=</span><span class="n">data_libs</span><span class="p">,</span>
+            <span class="n">logger</span><span class="o">=</span><span class="n">logger</span><span class="p">,</span>
+        <span class="p">)</span>
 </pre></div>
 
               </article>
