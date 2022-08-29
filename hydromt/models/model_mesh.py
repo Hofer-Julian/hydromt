@@ -1,21 +1,124 @@
-import pytest
-import sys, os
-from .model_api import Model
+from typing import Union, Optional, List, Tuple
+import logging
+import os
+from os.path import join, isdir, dirname, isfile
 import xarray as xr
-import numpy as np
+import xugrid as xu
 import geopandas as gpd
 from shapely.geometry import box
 
-from typing import Tuple, Union, Optional
-
-import logging
-import os
+from ..raster import GEO_MAP_COORD
+from .model_api import Model
 
 __all__ = ["MeshModel"]
 logger = logging.getLogger(__name__)
 
 
-class MeshModel(Model):
+class MeshMixin(object):
+    # placeholders
+    # We cannot initialize an empty xu.UgridDataArray
+    _API = {
+        "mesh": Union[xu.UgridDataArray, xu.UgridDataset],
+    }
+
+    def __init__(self, *args, **kwargs) -> None:
+        super().__init__(*args, **kwargs)
+        self._mesh = None
+
+    @property
+    def mesh(self) -> Union[xu.UgridDataArray, xu.UgridDataset]:
+        """Model mesh data. Returns a xarray.Dataset."""
+        # XU grid data type Xarray dataset with xu sampling.
+        if self._mesh is None:
+            if self._read:
+                self.read_mesh()
+        return self._mesh
+
+    def set_mesh(
+        self,
+        data: Union[xu.UgridDataArray, xu.UgridDataset],
+        name: Optional[str] = None,
+    ) -> None:
+        """Add data to mesh.
+
+        All layers of mesh have identical spatial coordinates in Ugrid conventions.
+
+        Parameters
+        ----------
+        data: xugrid.UgridDataArray or xugrid.UgridDataset
+            new layer to add to mesh
+        name: str, optional
+            Name of new object layer, this is used to overwrite the name of a UgridDataArray.
+        """
+        if not isinstance(data, (xu.UgridDataArray, xu.UgridDataset)):
+            raise ValueError(
+                "New mesh data in set_mesh should be of type xu.UgridDataArray or xu.UgridDataset"
+            )
+        if isinstance(data, xu.UgridDataArray):
+            if name is not None:
+                data.name = data
+            elif data.name is None:
+                raise ValueError(
+                    f"Cannot set mesh from {str(type(data).__name__)} without a name."
+                )
+            data = data.to_dataset()
+        if self._mesh is None:  # NOTE: mesh is initialized with None
+            self._mesh = data
+        else:
+            for dvar in data.data_vars:
+                if dvar in self._mesh:
+                    self.logger.warning(f"Replacing mesh parameter: {dvar}")
+                self._mesh[dvar] = data[dvar]
+
+    def read_mesh(self, fn: str = "mesh/mesh.nc", **kwargs) -> None:
+        """Read model mesh data at <root>/<fn> and add to mesh property
+
+        key-word arguments are passed to :py:func:`xr.open_dataset`
+
+        Parameters
+        ----------
+        fn : str, optional
+            filename relative to model root, by default 'mesh/mesh.nc'
+        """
+        for ds in self._read_nc(fn, **kwargs).values():
+            uds = xu.UgridDataset(ds)
+            if ds.rio.crs is not None:  # parse crs
+                uds.ugrid.grid.set_crs(ds.rio.crs)
+                uds = uds.drop_vars(GEO_MAP_COORD, errors="ignore")
+            self.set_mesh(uds)
+
+    def write_mesh(self, fn: str = "mesh/mesh.nc", **kwargs) -> None:
+        """Write model grid data to netcdf file at <root>/<fn>
+
+        key-word arguments are passed to :py:meth:`xarray.Dataset.ugrid.to_netcdf`
+
+        Parameters
+        ----------
+        fn : str, optional
+            filename relative to model root, by default 'grid/grid.nc'
+        """
+        if not self._write:
+            raise IOError("Model opened in read-only mode")
+        elif self._mesh is None:
+            self.logger.warning("No mesh to write - Exiting")
+            return
+        # filename
+        _fn = join(self.root, fn)
+        if not isdir(dirname(_fn)):
+            os.makedirs(dirname(_fn))
+        self.logger.debug(f"Writing file {fn}")
+        # ds_new = xu.UgridDataset(grid=ds_out.ugrid.grid) # bug in xugrid?
+        ds_out = self.mesh.ugrid.to_dataset()
+        if self.mesh.ugrid.crs is not None:
+            # save crs to spatial_ref coordinate
+            ds_out = ds_out.rio.write_crs(self.mesh.ugrid.crs)
+        ds_out.to_netcdf(_fn, **kwargs)
+
+
+class MeshModel(MeshMixin, Model):
+
+    _CLI_ARGS = {"region": "setup_region"}
+
     def __init__(
         self,
         root: str = None,
@@ -33,107 +136,59 @@ class MeshModel(Model):
             logger=logger,
         )
 
-        # placeholders
-        self._mesh = xr.Dataset()  # xr.Dataset representation of all mesh parameter
-
-    def read(self):
-        """Method to read the complete model schematization and configuration from file."""
-        super().read()
-        self.read_mesh()
-        # Other specifics to MeshModel...
-
-    def write(self):
-        """Method to write the complete model schematization and configuration to file."""
-        super().write()
-        self.write_mesh()
-        # Other specifics to MeshModel...
-
-    @property
-    def mesh(self):
-        """xarray.Dataset representation of all mesh parameters"""
-        # XU grid data type Xarray dataset with xu sampling.
-        if len(self._mesh) == 0:
-            if self._read:
-                self.read_mesh()
-        return self._mesh
-
-    def read_mesh(self):
-        """Read mesh at <root/?/> and parse to xarray Dataset"""
-        if not self._write:
-            # start fresh in read-only mode
-            self._mesh = xr.Dataset()
-        if isfile(
-            join(self.root, "mesh", "mesh.nc")
-        ):  # Change of file not implemented yet
-            self._mesh = xr.open_dataset(join(self.root, "mesh", "mesh.nc"))
-
-    def write_mesh(self):
-        """Write grid at <root/?/> in xarray.Dataset"""
-        if not self._write:
-            raise IOError("Model opened in read-only mode")
-        elif not self._mesh:
-            self.logger.warning("No mesh to write - Exiting")
-            return
-        # filename
-        fn_default = join(self.root, "mesh", "mesh.nc")
-        self.logger.info(f"Write mesh to {self.root}")
-        ds_out = self.mesh
-        ds_out.to_netcdf(fn_default)
-
-    def set_mesh(
-        self, data: Union[xr.DataArray, xr.Dataset], name: Optional[str] = None
-    ):
-        """Add data to mesh object.
-
-        -Describe specifics of the mesh object (for example related to the network and ugrid representation)
+    def read(
+        self,
+        components: List = [
+            "config",
+            "mesh",
+            "geoms",
+            "forcing",
+            "states",
+            "results",
+        ],
+    ) -> None:
+        """Read the complete model schematization and configuration from model files.
 
         Parameters
         ----------
-        data: xarray.DataArray or xarray.Dataset
-            new layer to add to mesh
-        name: str, optional
-            Name of new object layer, this is used to overwrite the name of a DataArray
-            or to select a variable from a Dataset.
+        components : List, optional
+            List of model components to read, each should have an associated read_<component> method.
+            By default ['config', 'maps', 'mesh', 'geoms', 'forcing', 'states', 'results']
         """
-        if name is None:
-            if isinstance(data, xr.DataArray) and data.name is not None:
-                name = data.name
-            elif not isinstance(data, xr.Dataset):
-                raise ValueError("Setting a mesh parameter requires a name")
-        elif name is not None and isinstance(data, xr.Dataset):
-            data_vars = list(data.data_vars)
-            if len(data_vars) == 1 and name not in data_vars:
-                data = data.rename_vars({data_vars[0]: name})
-            elif name not in data_vars:
-                raise ValueError("Name not found in DataSet")
-            else:
-                data = data[[name]]
-        if isinstance(data, xr.DataArray):
-            data.name = name
-            data = data.to_dataset()
-        if len(self._mesh) == 0:  # new data
-            self._mesh = data
-        else:
-            for dvar in data.data_vars.keys():
-                if dvar in self._mesh:
-                    if self._read:
-                        self.logger.warning(f"Replacing mesh parameter: {dvar}")
-                self._mesh[dvar] = data[dvar]
+        super().read(components=components)
 
-    # Possible other properties: related to the network and ugrid representation
-    # ....
+    def write(
+        self,
+        components: List = ["config", "mesh", "geoms", "forcing", "states"],
+    ) -> None:
+        """Write the complete model schematization and configuration to model files.
 
-    def test_subclass_mesh(self):
-        """Test compliance to model Mesh instances.
-
-        Returns
-        -------
-        non_compliant: list
-            List of objects that are non-compliant with the model API structure.
+        Parameters
+        ----------
+        components : List, optional
+            List of model components to write, each should have an associated write_<component> method.
+            By default ['config', 'maps', 'mesh', 'geoms', 'forcing', 'states']
         """
-        non_compliant = []
-        # Mesh instance
-        if not isinstance(self.mesh, xr.Dataset):
-            non_compliant.append("mesh")
+        super().write(components=components)
 
-        return non_compliant
+    # MeshModel specific methods
+
+    # MeshModel properties
+    @property
+    def bounds(self) -> Tuple:
+        """Returns model mesh bounds."""
+        if self._mesh is not None:
+            return self._mesh.ugrid.grid.bounds
+
+    @property
+    def region(self) -> gpd.GeoDataFrame:
+        """Returns geometry of region of the model area of interest."""
+        region = gpd.GeoDataFrame()
+        if "region" in self.geoms:
+            region = self.geoms["region"]
+        elif self.mesh is not None:
+            crs = self.mesh.ugrid.crs
+            if crs is None and hasattr(crs, "to_epsg"):
+                crs = crs.to_epsg()  # not all CRS have an EPSG code
+            region = gpd.GeoDataFrame(geometry=[box(*self.bounds)], crs=crs)
+        return region
