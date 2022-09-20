@@ -318,20 +318,22 @@
   <h1>Source code for hydromt.data_adapter.geodataframe</h1><div class="highlight"><pre>
 <span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">join</span>
-<span class="kn">from</span> <span class="nn">..</span> <span class="kn">import</span> <span class="n">io</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>
 <span class="kn">from</span> <span class="nn">shapely.geometry</span> <span class="kn">import</span> <span class="n">box</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Union</span><span class="p">,</span> <span class="n">NewType</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
 
 <span class="kn">from</span> <span class="nn">.data_adapter</span> <span class="kn">import</span> <span class="n">DataAdapter</span>
+<span class="kn">from</span> <span class="nn">..</span> <span class="kn">import</span> <span class="n">io</span>
 
-<span class="kn">import</span> <span class="nn">logging</span>
 
 <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 
-<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s2">&quot;GeoDataFrameAdapter&quot;</span><span class="p">,</span>
-<span class="p">]</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;GeoDataFrameAdapter&quot;</span><span class="p">,</span> <span class="s2">&quot;GeoDataframeSource&quot;</span><span class="p">]</span>
+
+<span class="n">GeoDataframeSource</span> <span class="o">=</span> <span class="n">NewType</span><span class="p">(</span><span class="s2">&quot;GeoDataframeSource&quot;</span><span class="p">,</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Path</span><span class="p">])</span>
 
 
 <div class="viewcode-block" id="GeoDataFrameAdapter"><a class="viewcode-back" href="../../../_generated/hydromt.data_adapter.GeoDataFrameAdapter.html#hydromt.data_adapter.GeoDataFrameAdapter">[docs]</a><span class="k">class</span> <span class="nc">GeoDataFrameAdapter</span><span class="p">(</span><span class="n">DataAdapter</span><span class="p">):</span>
