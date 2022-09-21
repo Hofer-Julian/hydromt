@@ -374,11 +374,21 @@
 <ul class="simple">
 <li><p>Support for 2-dimensional tabular data through the new DataFrameAdapter. <a class="reference external" href="https://github.com/Deltares/hydromt/pull/153">PR #153</a></p></li>
 <li><p>API calls to get info about model components and dataset for the dashboard. <a class="reference external" href="https://github.com/Deltares/hydromt/pull/118">PR #118</a></p></li>
+<li><p>New submodelclasses in hydromt: <code class="docutils literal notranslate"><span class="pre">GridModel</span></code>, <code class="docutils literal notranslate"><span class="pre">LumpedModel</span></code>, <code class="docutils literal notranslate"><span class="pre">MeshModel</span></code>, <code class="docutils literal notranslate"><span class="pre">NetworkModel</span></code>, <code class="docutils literal notranslate"><span class="pre">MapsModel</span></code></p></li>
 <li><p>Added entrypoints for lumped_model, mesh_model, grid_model</p></li>
+<li><p>New mixin classes created for model specific object: <code class="docutils literal notranslate"><span class="pre">GridMixin</span></code> for self.grid, <code class="docutils literal notranslate"><span class="pre">LumpedMixin</span></code> for self.response_units, <code class="docutils literal notranslate"><span class="pre">MeshMixin</span></code> for self.mesh,
+<code class="docutils literal notranslate"><span class="pre">MapsMixin</span></code> for self.maps</p></li>
+<li><p>New high-level object: self.maps for storing regular rasters data (which can have resolution and / or projection).</p></li>
+<li><p>Maps generic setup methods: <code class="docutils literal notranslate"><span class="pre">MapsMixin.setup_maps_from_raster</span></code> and <code class="docutils literal notranslate"><span class="pre">MapsMixin.setup_maps_from_rastermapping</span></code></p></li>
+<li><p>Mesh generic setup methods: <code class="docutils literal notranslate"><span class="pre">MeshModel.setup_mesh</span></code>, <code class="docutils literal notranslate"><span class="pre">MeshMixin.setup_maps_from_raster</span></code> and <code class="docutils literal notranslate"><span class="pre">MeshMixin.setup_maps_from_rastermapping</span></code></p></li>
 </ul>
 </section>
 <section id="changed">
 <h3>Changed<a class="headerlink" href="#changed" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>self.staticgeoms object and methods renamed to self.geoms</p></li>
+<li><p>self.staticmaps object and methods renamed to self.grid and moved into GridModel and GridMixin</p></li>
+</ul>
 </section>
 <section id="fixed">
 <h3>Fixed<a class="headerlink" href="#fixed" title="Permalink to this heading">#</a></h3>
@@ -389,6 +399,9 @@
 </section>
 <section id="deprecated">
 <h3>Deprecated<a class="headerlink" href="#deprecated" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>self.staticgeoms and self.staticmaps are deprecated.</p></li>
+</ul>
 </section>
 </section>
 <section id="v0-5-0-4-august-2022">
