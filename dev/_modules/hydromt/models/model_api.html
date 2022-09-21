@@ -1228,6 +1228,9 @@
             <span class="s2">&quot;The staticgeoms method will be deprecated in future versions, use geoms instead.&quot;</span><span class="p">,</span>
             <span class="ne">DeprecationWarning</span><span class="p">,</span>
         <span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_geoms</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">read_staticgeoms</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_staticgeoms</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_geoms</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_staticgeoms</span>
 
