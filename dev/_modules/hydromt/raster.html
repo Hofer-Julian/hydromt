@@ -349,7 +349,7 @@
 <span class="kn">import</span> <span class="nn">logging</span>
 <span class="kn">import</span> <span class="nn">rioxarray</span>
 
-<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">gis_utils</span><span class="p">,</span> <span class="n">HAS_PCRASTER</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">gis_utils</span><span class="p">,</span> <span class="n">_compat</span>
 
 <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 <span class="n">XDIMS</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;longitude&quot;</span><span class="p">,</span> <span class="s2">&quot;lon&quot;</span><span class="p">,</span> <span class="s2">&quot;long&quot;</span><span class="p">)</span>
@@ -2030,7 +2030,7 @@
             <span class="n">count</span> <span class="o">=</span> <span class="n">da_out</span><span class="p">[</span><span class="n">dim0</span><span class="p">]</span><span class="o">.</span><span class="n">size</span>
             <span class="n">da_out</span> <span class="o">=</span> <span class="n">da_out</span><span class="o">.</span><span class="n">sortby</span><span class="p">(</span><span class="n">dim0</span><span class="p">)</span>
         <span class="c1"># write</span>
-        <span class="k">if</span> <span class="n">driver</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;pcraster&quot;</span> <span class="ow">and</span> <span class="n">HAS_PCRASTER</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">driver</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;pcraster&quot;</span> <span class="ow">and</span> <span class="n">_compat</span><span class="o">.</span><span class="n">HAS_PCRASTER</span><span class="p">:</span>
             <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">count</span><span class="p">):</span>
                 <span class="k">if</span> <span class="n">dim0</span><span class="p">:</span>
                     <span class="n">bname</span> <span class="o">=</span> <span class="n">basename</span><span class="p">(</span><span class="n">raster_path</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
@@ -2384,7 +2384,7 @@
         <span class="k">if</span> <span class="ow">not</span> <span class="n">isdir</span><span class="p">(</span><span class="n">root</span><span class="p">):</span>
             <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
         <span class="k">with</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">TemporaryDirectory</span><span class="p">()</span> <span class="k">as</span> <span class="n">tmpdir</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">driver</span> <span class="o">==</span> <span class="s2">&quot;PCRaster&quot;</span> <span class="ow">and</span> <span class="n">HAS_PCRASTER</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">driver</span> <span class="o">==</span> <span class="s2">&quot;PCRaster&quot;</span> <span class="ow">and</span> <span class="n">_compat</span><span class="o">.</span><span class="n">HAS_PCRASTER</span><span class="p">:</span>
                 <span class="n">clone_path</span> <span class="o">=</span> <span class="n">gis_utils</span><span class="o">.</span><span class="n">write_clone</span><span class="p">(</span>
                     <span class="n">tmpdir</span><span class="p">,</span>
                     <span class="n">gdal_transform</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">to_gdal</span><span class="p">(),</span>
