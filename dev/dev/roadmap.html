@@ -36,6 +36,7 @@
     <script src="../_static/underscore.js"></script>
     <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/design-tabs.js"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'dev/roadmap';</script>
@@ -367,32 +368,27 @@
 <section id="ambition">
 <h2>Ambition<a class="headerlink" href="#ambition" title="Permalink to this heading">#</a></h2>
 <p>This package aims to make the building process of any <em>hydro</em> model <strong>fast</strong>, <strong>modular</strong> and <strong>reproducible</strong>.</p>
+<p>We always have ideas about how the package could be <a class="reference external" href="https://github.com/Deltares/hydromt/labels/enhancement">improved</a> in the future and welcome
+contribution from the (hydro) geoscientific community. If you would like to help with any of these developments or have ideas, consider reading the <a class="reference internal" href="contributing.html#contributing"><span class="std std-ref">developer’s guide</span></a>.</p>
 </section>
 <section id="short-term-plans">
 <h2>Short-term plans<a class="headerlink" href="#short-term-plans" title="Permalink to this heading">#</a></h2>
 <section id="support-for-lumped-mesh-and-network-models">
 <h3>Support for lumped, mesh and network models<a class="headerlink" href="#support-for-lumped-mesh-and-network-models" title="Permalink to this heading">#</a></h3>
-<p>Currently, the Model class implementation requires some regular grid data in the staticmaps attribute.
-We will relax these requirements and implement model classes tailored for grid, lumped, mesh and network models.
-More info in <a class="reference external" href="https://github.com/Deltares/hydromt/issues/86">https://github.com/Deltares/hydromt/issues/86</a></p>
+<p>Before version 0.5.9, the Model class implementation assumed regular grid data in the staticmaps attribute (grid attribute of the Grid model from v0.5.9).
+These requirements have been relaxed from v0.5.9 by implementing model classes tailored for grid, lumped, mesh and network models. Advanced testing and submodel specific attributes
+and generic workflows to support specific submodel class methods are still missing and are planned to be added in future releases.</p>
 </section>
 <section id="sharing-data-and-support-for-more-data-formats">
 <h3>Sharing data and support for more data formats<a class="headerlink" href="#sharing-data-and-support-for-more-data-formats" title="Permalink to this heading">#</a></h3>
 <p>Currently, many useful datasets have been downloaded and prepared for the Deltares data catalog which is only accessible within the Deltares network.
-We will work towards making these download and (if any) the preprocessing of these datasets more transparent.
-At the same time we will look for alternative open and analysis ready hosts of these data, such as through the pangeo data initiative.</p>
-<p>Furthermore, we will add a new data type for (non spatial) tabular data
-To be able to intake more data formats we will support the intake python module, see discussion in <a class="reference external" href="https://github.com/Deltares/hydromt/issues/113">https://github.com/Deltares/hydromt/issues/113</a></p>
-<p><em>Note: You can find the Deltares data catalog in the</em> <a class="reference external" href="https://github.com/DirkEilander/hydromt-artifacts">hydromt artifacts repository</a> <em>. In this catalog, all links to directly download the data are listed under the “source_url” meta attribute.</em></p>
+We are working towards making these download and (if any) the preprocessing of these datasets more transparent.
+At the same time we are looking for alternative open and analysis ready hosts of these data, such as through the pangeo data initiative.</p>
+<p>To be able to intake more data formats we will support the intake python module, see discussion in <a class="reference external" href="https://github.com/Deltares/hydromt/issues/113">https://github.com/Deltares/hydromt/issues/113</a></p>
 </section>
 <section id="dashboard-web-interface">
 <h3>Dashboard / web interface<a class="headerlink" href="#dashboard-web-interface" title="Permalink to this heading">#</a></h3>
-<p>Besides the CLI and Python Interface, we will build a web based interface to HydroMT to make the tool more user friendly.</p>
-</section>
-<section id="integration-with-other-scientific-python-packages">
-<h3>Integration with other scientific python packages<a class="headerlink" href="#integration-with-other-scientific-python-packages" title="Permalink to this heading">#</a></h3>
-<p>For raster data we aim to replace all duplicate functionality from our raster accessor for xarray Dataset objects with rioxarray and contribute
-with new solutions to that package where those fit the rioxarray scope.</p>
+<p>Besides the CLI and Python Interface, we are building a web based interface to HydroMT to make the tool more user friendly.</p>
 </section>
 <section id="plugins-in-development">
 <h3>Plugins in development<a class="headerlink" href="#plugins-in-development" title="Permalink to this heading">#</a></h3>
@@ -402,7 +398,7 @@ with new solutions to that package where those fit the rioxarray scope.</p>
 <li><p>RIBASIM: water allocation model.</p></li>
 <li><p>iMOD: groundwater model.</p></li>
 </ul>
-<p>If you wish to add new model plugins, please check out the Developer’s guide.</p>
+<p>If you wish to add new model plugins, please check out the <a class="reference internal" href="contributing.html#contributing"><span class="std std-ref">Developer’s guide</span></a>.</p>
 </section>
 </section>
 </section>
@@ -468,11 +464,6 @@ with new solutions to that package where those fit the rioxarray scope.</p>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#dashboard-web-interface">
      Dashboard / web interface
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#integration-with-other-scientific-python-packages">
-     Integration with other scientific python packages
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -542,7 +533,7 @@ with new solutions to that package where those fit the rioxarray scope.</p>
   <div class="footer-item">
     
 <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.1.1.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.2.2.<br>
 </p>
 
   </div>

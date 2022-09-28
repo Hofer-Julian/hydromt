@@ -36,13 +36,14 @@
     <script src="../_static/underscore.js"></script>
     <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/design-tabs.js"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_generated/hydromt.workflows.basin_mask.get_basin_geometry';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="hydromt.workflows.basin_mask.parse_region" href="hydromt.workflows.basin_mask.parse_region.html" />
-    <link rel="prev" title="hydromt.Model.read_results" href="hydromt.Model.read_results.html" />
+    <link rel="prev" title="hydromt.Model.setup_maps_from_raster_reclass" href="hydromt.Model.setup_maps_from_raster_reclass.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="docsearch:language" content="en">
   </head>
@@ -508,6 +509,16 @@
    hydromt.Model
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.GridModel.html">
+   hydromt.GridModel
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.LumpedModel.html">
+   hydromt.LumpedModel
+  </a>
+ </li>
 </ul>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
@@ -536,16 +547,6 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="hydromt.Model.setup_region.html">
-   hydromt.Model.setup_region
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="hydromt.Model.setup_config.html">
-   hydromt.Model.setup_config
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="hydromt.Model.write_data_catalog.html">
    hydromt.Model.write_data_catalog
   </a>
@@ -558,13 +559,13 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="hydromt.Model.staticmaps.html">
-   hydromt.Model.staticmaps
+  <a class="reference internal" href="hydromt.Model.maps.html">
+   hydromt.Model.maps
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="hydromt.Model.staticgeoms.html">
-   hydromt.Model.staticgeoms
+  <a class="reference internal" href="hydromt.Model.geoms.html">
+   hydromt.Model.geoms
   </a>
  </li>
  <li class="toctree-l1">
@@ -580,6 +581,21 @@
  <li class="toctree-l1">
   <a class="reference internal" href="hydromt.Model.results.html">
    hydromt.Model.results
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.MeshModel.mesh.html">
+   hydromt.MeshModel.mesh
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.GridModel.grid.html">
+   hydromt.GridModel.grid
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.LumpedModel.response_units.html">
+   hydromt.LumpedModel.response_units
   </a>
  </li>
 </ul>
@@ -605,33 +621,33 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="hydromt.Model.set_staticmaps.html">
-   hydromt.Model.set_staticmaps
+  <a class="reference internal" href="hydromt.Model.set_maps.html">
+   hydromt.Model.set_maps
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="hydromt.Model.read_staticmaps.html">
-   hydromt.Model.read_staticmaps
+  <a class="reference internal" href="hydromt.Model.read_maps.html">
+   hydromt.Model.read_maps
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="hydromt.Model.write_staticmaps.html">
-   hydromt.Model.write_staticmaps
+  <a class="reference internal" href="hydromt.Model.write_maps.html">
+   hydromt.Model.write_maps
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="hydromt.Model.set_staticgeoms.html">
-   hydromt.Model.set_staticgeoms
+  <a class="reference internal" href="hydromt.Model.set_geoms.html">
+   hydromt.Model.set_geoms
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="hydromt.Model.read_staticgeoms.html">
-   hydromt.Model.read_staticgeoms
+  <a class="reference internal" href="hydromt.Model.read_geoms.html">
+   hydromt.Model.read_geoms
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="hydromt.Model.write_staticgeoms.html">
-   hydromt.Model.write_staticgeoms
+  <a class="reference internal" href="hydromt.Model.write_geoms.html">
+   hydromt.Model.write_geoms
   </a>
  </li>
  <li class="toctree-l1">
@@ -672,6 +688,73 @@
  <li class="toctree-l1">
   <a class="reference internal" href="hydromt.Model.read_results.html">
    hydromt.Model.read_results
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.MeshModel.set_mesh.html">
+   hydromt.MeshModel.set_mesh
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.MeshModel.read_mesh.html">
+   hydromt.MeshModel.read_mesh
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.MeshModel.write_mesh.html">
+   hydromt.MeshModel.write_mesh
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.GridModel.set_grid.html">
+   hydromt.GridModel.set_grid
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.GridModel.read_grid.html">
+   hydromt.GridModel.read_grid
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.GridModel.write_grid.html">
+   hydromt.GridModel.write_grid
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.LumpedModel.set_response_units.html">
+   hydromt.LumpedModel.set_response_units
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.LumpedModel.read_response_units.html">
+   hydromt.LumpedModel.read_response_units
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.LumpedModel.write_response_units.html">
+   hydromt.LumpedModel.write_response_units
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.Model.setup_config.html">
+   hydromt.Model.setup_config
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.Model.setup_region.html">
+   hydromt.Model.setup_region
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.Model.setup_maps_from_raster.html">
+   hydromt.Model.setup_maps_from_raster
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.Model.setup_maps_from_raster_reclass.html">
+   hydromt.Model.setup_maps_from_raster_reclass
   </a>
  </li>
 </ul>
@@ -1482,12 +1565,12 @@ be provided.</p>
 <li><p><strong>basin_index</strong> (<a class="reference external" href="https://geopandas.org/en/stable/docs/reference/api/geopandas.GeoDataFrame.html#geopandas.GeoDataFrame" title="(in GeoPandas v0.11.0)"><em>geopandas.GeoDataFrame</em></a><em> or </em><a class="reference internal" href="hydromt.data_adapter.GeoDataFrameAdapter.html#hydromt.data_adapter.GeoDataFrameAdapter" title="hydromt.data_adapter.GeoDataFrameAdapter"><em>GeoDataFrameAdapter</em></a>) – Dataframe with basin geomtries or bounding boxes with “basid” column
 corresponding to the <code class="docutils literal notranslate"><span class="pre">ds[&lt;basins_name&gt;]</span></code> map.</p></li>
 <li><p><strong>kind</strong> (<em>{&quot;basin&quot;</em><em>, </em><em>&quot;subbasin&quot;</em><em>, </em><em>&quot;interbasin&quot;}</em>) – kind of basin description</p></li>
-<li><p><strong>bounds</strong> (<em>array_like of float</em><em>, </em><em>optional</em>) – [xmin, ymin, xmax, ymax] coordinates of total bounding box, i.e. the data is
+<li><p><strong>bounds</strong> (<em>array_like</em><em> of </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a><em>, </em><em>optional</em>) – [xmin, ymin, xmax, ymax] coordinates of total bounding box, i.e. the data is
 clipped to this domain before futher processing.</p></li>
-<li><p><strong>bbox</strong> (<em>array_like of float</em><em>, </em><em>optional</em>) – [xmin, ymin, xmax, ymax] coordinates to infer (sub)(inter)basin(s)</p></li>
+<li><p><strong>bbox</strong> (<em>array_like</em><em> of </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a><em>, </em><em>optional</em>) – [xmin, ymin, xmax, ymax] coordinates to infer (sub)(inter)basin(s)</p></li>
 <li><p><strong>geom</strong> (<a class="reference external" href="https://geopandas.org/en/stable/docs/reference/api/geopandas.GeoDataFrame.html#geopandas.GeoDataFrame" title="(in GeoPandas v0.11.0)"><em>geopandas.GeoDataFrame</em></a><em>, </em><em>optional</em>) – polygon geometry describing area of interest</p></li>
-<li><p><strong>xy</strong> (<em>tuple of array_like of float</em><em>, </em><em>optional</em>) – x, y coordinates of (sub)basin outlet locations</p></li>
-<li><p><strong>basid</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a><em> or </em><em>array_like of int</em><em>, </em><em>optional</em>) – basin IDs, must match values in basin maps</p></li>
+<li><p><strong>xy</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.10)"><em>tuple</em></a><em> of </em><em>array_like</em><em> of </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a><em>, </em><em>optional</em>) – x, y coordinates of (sub)basin outlet locations</p></li>
+<li><p><strong>basid</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a><em> or </em><em>array_like</em><em> of </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a><em>, </em><em>optional</em>) – basin IDs, must match values in basin maps</p></li>
 <li><p><strong>outlets</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a><em>, </em><em>optional</em>) – If True, include (sub)basins of outlets within domain only.</p></li>
 <li><p><strong>flwdir_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em>, </em><em>optional</em>) – Name of flow direction variable in source, by default “flwdir”</p></li>
 <li><p><strong>basins_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em>, </em><em>optional</em>) – Name of flow direction variable in source, by default “basins”</p></li>
@@ -1515,11 +1598,11 @@ clipped to this domain before futher processing.</p></li>
             <footer class="bd-footer-article">
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-  <a class='left-prev' id="prev-link" href="hydromt.Model.read_results.html" title="previous page">
+  <a class='left-prev' id="prev-link" href="hydromt.Model.setup_maps_from_raster_reclass.html" title="previous page">
       <i class="fas fa-angle-left"></i>
       <div class="prev-next-info">
           <p class="prev-next-subtitle">previous</p>
-          <p class="prev-next-title">hydromt.Model.read_results</p>
+          <p class="prev-next-title">hydromt.Model.setup_maps_from_raster_reclass</p>
       </div>
   </a>
   <a class='right-next' id="next-link" href="hydromt.workflows.basin_mask.parse_region.html" title="next page">
@@ -1538,6 +1621,27 @@ clipped to this domain before futher processing.</p></li>
           
             <div class="bd-sidebar-secondary bd-toc">
               
+<div class="toc-item">
+  
+<div class="tocsection onthispage">
+    <i class="fas fa-list"></i> On this page
+</div>
+<nav id="bd-toc-nav" class="page-toc">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#hydromt.workflows.basin_mask.get_basin_geometry">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     get_basin_geometry()
+    </span>
+   </code>
+  </a>
+ </li>
+</ul>
+
+</nav>
+</div>
+
 <div class="toc-item">
   
 
@@ -1593,7 +1697,7 @@ clipped to this domain before futher processing.</p></li>
   <div class="footer-item">
     
 <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.1.1.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.2.2.<br>
 </p>
 
   </div>

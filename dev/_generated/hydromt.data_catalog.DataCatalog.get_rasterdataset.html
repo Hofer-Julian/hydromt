@@ -36,6 +36,7 @@
     <script src="../_static/underscore.js"></script>
     <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/design-tabs.js"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_generated/hydromt.data_catalog.DataCatalog.get_rasterdataset';</script>
@@ -508,6 +509,16 @@
    hydromt.Model
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.GridModel.html">
+   hydromt.GridModel
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.LumpedModel.html">
+   hydromt.LumpedModel
+  </a>
+ </li>
 </ul>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
@@ -536,16 +547,6 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="hydromt.Model.setup_region.html">
-   hydromt.Model.setup_region
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="hydromt.Model.setup_config.html">
-   hydromt.Model.setup_config
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="hydromt.Model.write_data_catalog.html">
    hydromt.Model.write_data_catalog
   </a>
@@ -558,13 +559,13 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="hydromt.Model.staticmaps.html">
-   hydromt.Model.staticmaps
+  <a class="reference internal" href="hydromt.Model.maps.html">
+   hydromt.Model.maps
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="hydromt.Model.staticgeoms.html">
-   hydromt.Model.staticgeoms
+  <a class="reference internal" href="hydromt.Model.geoms.html">
+   hydromt.Model.geoms
   </a>
  </li>
  <li class="toctree-l1">
@@ -580,6 +581,21 @@
  <li class="toctree-l1">
   <a class="reference internal" href="hydromt.Model.results.html">
    hydromt.Model.results
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.MeshModel.mesh.html">
+   hydromt.MeshModel.mesh
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.GridModel.grid.html">
+   hydromt.GridModel.grid
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.LumpedModel.response_units.html">
+   hydromt.LumpedModel.response_units
   </a>
  </li>
 </ul>
@@ -605,33 +621,33 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="hydromt.Model.set_staticmaps.html">
-   hydromt.Model.set_staticmaps
+  <a class="reference internal" href="hydromt.Model.set_maps.html">
+   hydromt.Model.set_maps
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="hydromt.Model.read_staticmaps.html">
-   hydromt.Model.read_staticmaps
+  <a class="reference internal" href="hydromt.Model.read_maps.html">
+   hydromt.Model.read_maps
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="hydromt.Model.write_staticmaps.html">
-   hydromt.Model.write_staticmaps
+  <a class="reference internal" href="hydromt.Model.write_maps.html">
+   hydromt.Model.write_maps
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="hydromt.Model.set_staticgeoms.html">
-   hydromt.Model.set_staticgeoms
+  <a class="reference internal" href="hydromt.Model.set_geoms.html">
+   hydromt.Model.set_geoms
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="hydromt.Model.read_staticgeoms.html">
-   hydromt.Model.read_staticgeoms
+  <a class="reference internal" href="hydromt.Model.read_geoms.html">
+   hydromt.Model.read_geoms
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="hydromt.Model.write_staticgeoms.html">
-   hydromt.Model.write_staticgeoms
+  <a class="reference internal" href="hydromt.Model.write_geoms.html">
+   hydromt.Model.write_geoms
   </a>
  </li>
  <li class="toctree-l1">
@@ -672,6 +688,73 @@
  <li class="toctree-l1">
   <a class="reference internal" href="hydromt.Model.read_results.html">
    hydromt.Model.read_results
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.MeshModel.set_mesh.html">
+   hydromt.MeshModel.set_mesh
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.MeshModel.read_mesh.html">
+   hydromt.MeshModel.read_mesh
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.MeshModel.write_mesh.html">
+   hydromt.MeshModel.write_mesh
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.GridModel.set_grid.html">
+   hydromt.GridModel.set_grid
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.GridModel.read_grid.html">
+   hydromt.GridModel.read_grid
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.GridModel.write_grid.html">
+   hydromt.GridModel.write_grid
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.LumpedModel.set_response_units.html">
+   hydromt.LumpedModel.set_response_units
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.LumpedModel.read_response_units.html">
+   hydromt.LumpedModel.read_response_units
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.LumpedModel.write_response_units.html">
+   hydromt.LumpedModel.write_response_units
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.Model.setup_config.html">
+   hydromt.Model.setup_config
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.Model.setup_region.html">
+   hydromt.Model.setup_region
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.Model.setup_maps_from_raster.html">
+   hydromt.Model.setup_maps_from_raster
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.Model.setup_maps_from_raster_reclass.html">
+   hydromt.Model.setup_maps_from_raster_reclass
   </a>
  </li>
 </ul>
@@ -1482,13 +1565,13 @@ will be returned as <a class="reference external" href="https://docs.xarray.dev/
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>path_or_key</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – Data catalog key. If a path to a raster file is provided it will be added
 to the data_catalog with its based on the file basename without extension.</p></li>
-<li><p><strong>bbox</strong> (<em>array-like of floats</em>) – (xmin, ymin, xmax, ymax) bounding box of area of interest.</p></li>
+<li><p><strong>bbox</strong> (<em>array-like</em><em> of </em><em>floats</em>) – (xmin, ymin, xmax, ymax) bounding box of area of interest.</p></li>
 <li><p><strong>geom</strong> (<em>geopandas.GeoDataFrame/Series</em><em>,</em>) – A geometry defining the area of interest.</p></li>
 <li><p><strong>buffer</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a><em>, </em><em>optional</em>) – Buffer around the <cite>bbox</cite> or <cite>geom</cite> area of interest in pixels. By default 0.</p></li>
 <li><p><strong>align</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a><em>, </em><em>optional</em>) – Resolution to align the bounding box, by default None</p></li>
-<li><p><strong>variables</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em> or </em><em>list of str</em><em>, </em><em>optional.</em>) – Names of RasterDataset variables to return. By default all dataset variables
+<li><p><strong>variables</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><em>list</em></a><em> of </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em>, </em><em>optional.</em>) – Names of RasterDataset variables to return. By default all dataset variables
 are returned.</p></li>
-<li><p><strong>time_tuple</strong> (<em>tuple of str</em><em>, </em><em>datetime</em><em>, </em><em>optional</em>) – Start and end date of period of interest. By default the entire time period
+<li><p><strong>time_tuple</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.10)"><em>tuple</em></a><em> of </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em>, </em><em>datetime</em><em>, </em><em>optional</em>) – Start and end date of period of interest. By default the entire time period
 of the dataset is returned.</p></li>
 <li><p><strong>single_var_as_array</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a><em>, </em><em>optional</em>) – If True, return a DataArray if the dataset consists of a single variable.
 If False, always return a Dataset. By default True.</p></li>
@@ -1536,6 +1619,27 @@ If False, always return a Dataset. By default True.</p></li>
           
             <div class="bd-sidebar-secondary bd-toc">
               
+<div class="toc-item">
+  
+<div class="tocsection onthispage">
+    <i class="fas fa-list"></i> On this page
+</div>
+<nav id="bd-toc-nav" class="page-toc">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#hydromt.data_catalog.DataCatalog.get_rasterdataset">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     DataCatalog.get_rasterdataset()
+    </span>
+   </code>
+  </a>
+ </li>
+</ul>
+
+</nav>
+</div>
+
 <div class="toc-item">
   
 
@@ -1591,7 +1695,7 @@ If False, always return a Dataset. By default True.</p></li>
   <div class="footer-item">
     
 <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.1.1.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.2.2.<br>
 </p>
 
   </div>

@@ -36,13 +36,14 @@
     <script src="../_static/underscore.js"></script>
     <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/design-tabs.js"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'getting_started/quick_overview';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Examples" href="examples_index.html" />
-    <link rel="prev" title="Installation guide" href="installation.html" />
+    <link rel="next" title="Installation guide" href="installation.html" />
+    <link rel="prev" title="Getting started" href="intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="docsearch:language" content="en">
   </head>
@@ -309,14 +310,19 @@
  </span>
 </p>
 <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Quick overview
+  </a>
+ </li>
  <li class="toctree-l1">
   <a class="reference internal" href="installation.html">
    Installation guide
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Quick overview
+ <li class="toctree-l1">
+  <a class="reference internal" href="faq.html">
+   Frequently asked questions
   </a>
  </li>
  <li class="toctree-l1">
@@ -327,11 +333,6 @@
  <li class="toctree-l1">
   <a class="reference internal" href="user_stories.html">
    User’s stories
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="faq.html">
-   Frequently asked questions
   </a>
  </li>
  <li class="toctree-l1">
@@ -369,10 +370,30 @@
               
   <section id="quick-overview">
 <span id="id1"></span><h1>Quick overview<a class="headerlink" href="#quick-overview" title="Permalink to this heading">#</a></h1>
-<p>Typically, we use HydroMT together with a <a class="reference internal" href="../plugins.html#plugins"><span class="std std-ref">plugin</span></a> to build a model from scratch.
+<section id="common-usage">
+<h2>Common usage<a class="headerlink" href="#common-usage" title="Permalink to this heading">#</a></h2>
+<p>The most common usage of HydroMT is to build a model from scratch and to update and visualize an existing model.
+Here, a high-level example of how to build a model using HydroMT is provided. Building a model from scratch with
+HydroMT involves the following generic steps:</p>
+<ol class="arabic simple">
+<li><p>Define the input data in a <a class="reference internal" href="../user_guide/data_prepare_cat.html#own-catalog"><span class="std std-ref">yaml data catalog file</span></a> or selects available datasets from a
+<a class="reference internal" href="../user_guide/data_existing_cat.html#existing-catalog"><span class="std std-ref">pre-defined data catalog</span></a>.</p></li>
+<li><p>Define the model <a class="reference internal" href="../user_guide/model_region.html#region"><span class="std std-ref">region</span></a> which describes the area of interest. The model region can be based on a
+simple bounding box or geometry, but also a (sub)(inter)basin that is delineated on-the-fly based on available
+hydrography data.</p></li>
+<li><p>Configure the model setup in an <a class="reference internal" href="../user_guide/model_config.html#model-config"><span class="std std-ref">ini configuration file</span></a>. A HydroMT ini configuration file
+represents a reproducible recipe to build a model by listing (in order of execution) the model methods and
+their arguments. These methods and their arguments are described in the documentation.</p></li>
+<li><p>Run the HydroMT <a class="reference internal" href="../user_guide/model_build.html#model-build"><span class="std std-ref">build method</span></a> from either command line (as shown in the figure) or Python.</p></li>
+</ol>
+<img alt="../_images/getting_started.png" src="../_images/getting_started.png" />
+</section>
+<section id="wflow-build-example">
+<h2>Wflow build example<a class="headerlink" href="#wflow-build-example" title="Permalink to this heading">#</a></h2>
+<p>Often, we use HydroMT together with a <a class="reference internal" href="../plugins.html#plugins"><span class="std std-ref">plugin</span></a> to build a model from scratch.
 Here, we illustrate this for the <a class="reference external" href="https://deltares.github.io/Wflow.jl/dev">Wflow</a> rainfall-runoff model, but the procedure is identical for other models.</p>
 <section id="install-hydromt-model-plugin">
-<h2>Install HydroMT &amp; model plugin<a class="headerlink" href="#install-hydromt-model-plugin" title="Permalink to this heading">#</a></h2>
+<h3>Install HydroMT &amp; model plugin<a class="headerlink" href="#install-hydromt-model-plugin" title="Permalink to this heading">#</a></h3>
 <p>If you haven’t already done so, first install HydroMT and the <a class="reference external" href="https://deltares.github.io/hydromt_wflow/">HydroMT-Wflow plugin</a>
 in a new <strong>hydromt</strong> environment and activate this environment.
 For more information about the installation, please refer to the <a class="reference internal" href="installation.html#installation-guide"><span class="std std-ref">installation guide</span></a>.</p>
@@ -389,7 +410,7 @@ This returns the available models for HydroMT and should at least contain wflow 
 </div>
 </section>
 <section id="build-a-model">
-<h2>Build a model<a class="headerlink" href="#build-a-model" title="Permalink to this heading">#</a></h2>
+<h3>Build a model<a class="headerlink" href="#build-a-model" title="Permalink to this heading">#</a></h3>
 <p>Now you can create a model from raw data. To do so, you need to define</p>
 <ol class="arabic simple">
 <li><p>the <strong>source data</strong>: To try out HydroMT, you can make use of the publicly available <a class="reference internal" href="../user_guide/data_existing_cat.html#existing-catalog"><span class="std std-ref">HydroMT artifacts data catalog</span></a>
@@ -407,6 +428,7 @@ in the <cite>wflow_test</cite> folder. This Wflow model instance is ready to be 
 </div>
 </section>
 </section>
+</section>
 
 
             </article>
@@ -416,17 +438,17 @@ in the <cite>wflow_test</cite> folder. This Wflow model instance is ready to be 
             <footer class="bd-footer-article">
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-  <a class='left-prev' id="prev-link" href="installation.html" title="previous page">
+  <a class='left-prev' id="prev-link" href="intro.html" title="previous page">
       <i class="fas fa-angle-left"></i>
       <div class="prev-next-info">
           <p class="prev-next-subtitle">previous</p>
-          <p class="prev-next-title">Installation guide</p>
+          <p class="prev-next-title">Getting started</p>
       </div>
   </a>
-  <a class='right-next' id="next-link" href="examples_index.html" title="next page">
+  <a class='right-next' id="next-link" href="installation.html" title="next page">
   <div class="prev-next-info">
       <p class="prev-next-subtitle">next</p>
-      <p class="prev-next-title">Examples</p>
+      <p class="prev-next-title">Installation guide</p>
   </div>
   <i class="fas fa-angle-right"></i>
   </a>
@@ -447,14 +469,26 @@ in the <cite>wflow_test</cite> folder. This Wflow model instance is ready to be 
 <nav id="bd-toc-nav" class="page-toc">
     <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#install-hydromt-model-plugin">
-   Install HydroMT &amp; model plugin
+  <a class="reference internal nav-link" href="#common-usage">
+   Common usage
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#build-a-model">
-   Build a model
+  <a class="reference internal nav-link" href="#wflow-build-example">
+   Wflow build example
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#install-hydromt-model-plugin">
+     Install HydroMT &amp; model plugin
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#build-a-model">
+     Build a model
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -516,7 +550,7 @@ in the <cite>wflow_test</cite> folder. This Wflow model instance is ready to be 
   <div class="footer-item">
     
 <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.1.1.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.2.2.<br>
 </p>
 
   </div>

@@ -36,13 +36,14 @@
     <script src="../_static/underscore.js"></script>
     <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/design-tabs.js"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'getting_started/faq';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Publications" href="publications.html" />
-    <link rel="prev" title="User’s stories" href="user_stories.html" />
+    <link rel="next" title="Examples" href="examples_index.html" />
+    <link rel="prev" title="Installation guide" href="installation.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="docsearch:language" content="en">
   </head>
@@ -310,13 +311,18 @@
 </p>
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
+  <a class="reference internal" href="quick_overview.html">
+   Quick overview
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="installation.html">
    Installation guide
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="quick_overview.html">
-   Quick overview
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Frequently asked questions
   </a>
  </li>
  <li class="toctree-l1">
@@ -327,11 +333,6 @@
  <li class="toctree-l1">
   <a class="reference internal" href="user_stories.html">
    User’s stories
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Frequently asked questions
   </a>
  </li>
  <li class="toctree-l1">
@@ -390,13 +391,13 @@ of the method name. For instance, the second time that you use the setup_config 
 the sequence in which these are in the .ini file determines the sequence in which these are called.</p>
 <blockquote>
 <div><div class="line-block">
-<div class="line"><strong>Q</strong>: How can I just write specific <a class="reference internal" href="../user_guide/model_main.html#model-interface"><span class="std std-ref">model data component</span></a>
-(i.e.: staticmaps, staticgeoms, forcing, config or states) instead of the all model data when updating?</div>
+<div class="line"><strong>Q</strong>: How can I just write specific <a class="reference internal" href="../user_guide/model_overview.html#model-interface"><span class="std std-ref">model data component</span></a>
+(i.e.: grid, geoms, forcing, config or states) instead of the all model data when updating?</div>
 </div>
 </div></blockquote>
 <p>Each model plugin implements a combined <cite>write()</cite> method that writes the entire model and is
 called by default at the end of a build or update. If you however add a write method
-(e.g. <cite>write_staticmaps</cite>, <cite>write_forcing</cite>, <cite>write_config</cite>, etc.) to the .ini file the call to the
+(e.g. <cite>write_grid</cite> for a Grid model, <cite>write_forcing</cite>, <cite>write_config</cite>, etc.) to the .ini file the call to the
 general write method is disabled and only the selected model data attributes are written.</p>
 <blockquote>
 <div><div class="line-block">
@@ -404,7 +405,7 @@ general write method is disabled and only the selected model data attributes are
 </div>
 </div></blockquote>
 <p>Yes! You can provide several datasets by repeating the <cite>-d</cite>
-<a class="reference internal" href="../user_guide/data_main.html#get-data-cli"><span class="std std-ref">option in the command line interface</span></a></p>
+<a class="reference internal" href="../user_guide/data_overview.html#get-data-cli"><span class="std std-ref">option in the command line interface</span></a></p>
 </section>
 <section id="working-with-data-in-hydromt">
 <h2>Working with data in HydroMT<a class="headerlink" href="#working-with-data-in-hydromt" title="Permalink to this heading">#</a></h2>
@@ -416,7 +417,7 @@ general write method is disabled and only the selected model data attributes are
 <p>HydroMT does not contain any datasets. A small spatial subset for the Piava basin in northern Italy
 of some data that is often used in combination with HydroMT is made available for testing purposes.
 The data will automatically be downloaded to the “~/.hydromt_data” folder on your machine if no
-other data catalogs are provided. See also <a class="reference internal" href="../user_guide/data_main.html#get-data"><span class="std std-ref">Working with data in HydroMT</span></a> page.
+other data catalogs are provided. See also <a class="reference internal" href="../user_guide/data_overview.html#get-data"><span class="std std-ref">Working with data in HydroMT</span></a> page.
 We are working on creating more data catalogs from (cloud optimized analysis read) open data sources.</p>
 <blockquote>
 <div><div class="line-block">
@@ -435,17 +436,17 @@ We are working on creating more data catalogs from (cloud optimized analysis rea
             <footer class="bd-footer-article">
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-  <a class='left-prev' id="prev-link" href="user_stories.html" title="previous page">
+  <a class='left-prev' id="prev-link" href="installation.html" title="previous page">
       <i class="fas fa-angle-left"></i>
       <div class="prev-next-info">
           <p class="prev-next-subtitle">previous</p>
-          <p class="prev-next-title">User’s stories</p>
+          <p class="prev-next-title">Installation guide</p>
       </div>
   </a>
-  <a class='right-next' id="next-link" href="publications.html" title="next page">
+  <a class='right-next' id="next-link" href="examples_index.html" title="next page">
   <div class="prev-next-info">
       <p class="prev-next-subtitle">next</p>
-      <p class="prev-next-title">Publications</p>
+      <p class="prev-next-title">Examples</p>
   </div>
   <i class="fas fa-angle-right"></i>
   </a>
@@ -535,7 +536,7 @@ We are working on creating more data catalogs from (cloud optimized analysis rea
   <div class="footer-item">
     
 <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.1.1.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.2.2.<br>
 </p>
 
   </div>

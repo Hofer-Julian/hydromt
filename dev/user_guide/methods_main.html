@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>Methods and workflows &#8212; HydroMT  documentation</title>
+    <title>Overview methods and workflows &#8212; HydroMT  documentation</title>
   <script>
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
@@ -36,12 +36,13 @@
     <script src="../_static/underscore.js"></script>
     <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/design-tabs.js"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'user_guide/methods_main';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Example: Delineating basins" href="../_examples/delineate_basin.html" />
+    <link rel="next" title="Statistical methods" href="methods_stats.html" />
     <link rel="prev" title="Defining a model region" href="model_region.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="docsearch:language" content="en">
@@ -305,115 +306,108 @@
   <div class="bd-toc-item navbar-nav">
     <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Table of Contents
+  Working with data in HydroMT
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="data_overview.html">
+   Overview data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="data_prepare_cat.html">
+   Preparing a Data Catalog
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="data_types.html">
+   Supported data types
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="data_existing_cat.html">
+   Pre-defined data catalogs
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="data_conventions.html">
+   Data conventions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../_examples/reading_raster_data.html">
+   Example: Reading raster data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../_examples/reading_vector_data.html">
+   Example: Reading vector data
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Working with models in HydroMT
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="model_overview.html">
+   Overview models
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="model_build.html">
+   Building a model
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="model_update.html">
+   Updating a model
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="model_clip.html">
+   Clipping a model
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="model_config.html">
+   Preparing a model configuration
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="model_region.html">
+   Defining a model region
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Methods and workflows
  </span>
 </p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="data_main.html">
-   Working with data in HydroMT
-  </a>
-  <input checked class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label class="toctree-toggle" for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="data_prepare_cat.html">
-     Preparing a Data Catalog
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="data_types.html">
-     Supported data types
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="data_existing_cat.html">
-     Pre-defined data catalogs
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="data_conventions.html">
-     Data conventions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../_examples/reading_raster_data.html">
-     Example: Reading raster data
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../_examples/reading_vector_data.html">
-     Example: Reading vector data
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="model_main.html">
-   Working with models in HydroMT
-  </a>
-  <input checked class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label class="toctree-toggle" for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="model_build.html">
-     Building a model
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="model_update.html">
-     Updating a model
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="model_clip.html">
-     Clipping a model
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="model_config.html">
-     Preparing a model configuration
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="model_region.html">
-     Defining a model region
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 current active has-children">
+ <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Methods and workflows
+   Overview methods and workflows
   </a>
-  <input checked class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label class="toctree-toggle" for="toctree-checkbox-3">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../_examples/delineate_basin.html">
-     Example: Delineating basins
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../_examples/working_with_raster.html">
-     Example: Working with raster data
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="methods_stats.html">
-     Statistical methods
-    </a>
-   </li>
-  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="methods_stats.html">
+   Statistical methods
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../_examples/delineate_basin.html">
+   Example: Delineating basins
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../_examples/working_with_raster.html">
+   Example: Working with raster data
+  </a>
  </li>
 </ul>
 
@@ -443,56 +437,11 @@
             
             <article class="bd-article" role="main">
               
-  <section id="methods-and-workflows">
-<span id="methods-workflows"></span><h1>Methods and workflows<a class="headerlink" href="#methods-and-workflows" title="Permalink to this heading">#</a></h1>
+  <section id="overview-methods-and-workflows">
+<span id="methods-workflows"></span><h1>Overview methods and workflows<a class="headerlink" href="#overview-methods-and-workflows" title="Permalink to this heading">#</a></h1>
 <p>Methods and workflows are the engine of HydroMT. Methods provide the low-level functionality, only accessible through the Python interface,
 to do the required processing of common data types such as grid and vector data. Workflows combine several methods to go from raw input
 data to a model component. Examples of workflows include the delineation of hydrological basins (watersheds), conversion of landuse-landcover to model parameter maps, etc.</p>
-<section id="workflows">
-<span id="id1"></span><h2>Workflows<a class="headerlink" href="#workflows" title="Permalink to this heading">#</a></h2>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../_examples/delineate_basin.html">Example: Delineating basins</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../_examples/delineate_basin.html#Import-packages">Import packages</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../_examples/delineate_basin.html#Read-data">Read data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../_examples/delineate_basin.html#Delineate-basins">Delineate basins</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../_examples/delineate_basin.html#Delineate-sub-basins">Delineate sub-basins</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../_examples/delineate_basin.html#Delineate-interbasins">Delineate interbasins</a></li>
-</ul>
-</li>
-</ul>
-</div>
-</section>
-<section id="gis-methods">
-<span id="gis"></span><h2>GIS methods<a class="headerlink" href="#gis-methods" title="Permalink to this heading">#</a></h2>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../_examples/working_with_raster.html">Example: Working with raster data</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../_examples/working_with_raster.html#Geospatial-attributes">Geospatial attributes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../_examples/working_with_raster.html#Reproject-(warp)-raster-data">Reproject (warp) raster data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../_examples/working_with_raster.html#Zonal-statistics">Zonal statistics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../_examples/working_with_raster.html#Interpolate-nodata-values">Interpolate nodata values</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../_examples/working_with_raster.html#Reproject-and-merge">Reproject and merge</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../_examples/working_with_raster.html#Write-raster-to-file">Write raster to file</a></li>
-</ul>
-</li>
-</ul>
-</div>
-</section>
-<section id="statistical-methods">
-<span id="stats"></span><h2>Statistical methods<a class="headerlink" href="#statistical-methods" title="Permalink to this heading">#</a></h2>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="methods_stats.html">Statistical methods</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="methods_stats.html#skill-statistics">Skill statistics</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="methods_stats.html#example-application">Example application</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</div>
-</section>
 </section>
 
 
@@ -510,10 +459,10 @@ data to a model component. Examples of workflows include the delineation of hydr
           <p class="prev-next-title">Defining a model region</p>
       </div>
   </a>
-  <a class='right-next' id="next-link" href="../_examples/delineate_basin.html" title="next page">
+  <a class='right-next' id="next-link" href="methods_stats.html" title="next page">
   <div class="prev-next-info">
       <p class="prev-next-subtitle">next</p>
-      <p class="prev-next-title">Example: Delineating basins</p>
+      <p class="prev-next-title">Statistical methods</p>
   </div>
   <i class="fas fa-angle-right"></i>
   </a>
@@ -526,33 +475,6 @@ data to a model component. Examples of workflows include the delineation of hydr
           
             <div class="bd-sidebar-secondary bd-toc">
               
-<div class="toc-item">
-  
-<div class="tocsection onthispage">
-    <i class="fas fa-list"></i> On this page
-</div>
-<nav id="bd-toc-nav" class="page-toc">
-    <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#workflows">
-   Workflows
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#gis-methods">
-   GIS methods
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#statistical-methods">
-   Statistical methods
-  </a>
- </li>
-</ul>
-
-</nav>
-</div>
-
 <div class="toc-item">
   
 
@@ -608,7 +530,7 @@ data to a model component. Examples of workflows include the delineation of hydr
   <div class="footer-item">
     
 <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.1.1.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.2.2.<br>
 </p>
 
   </div>

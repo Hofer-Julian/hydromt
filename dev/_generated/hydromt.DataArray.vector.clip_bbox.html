@@ -36,6 +36,7 @@
     <script src="../_static/underscore.js"></script>
     <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/design-tabs.js"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_generated/hydromt.DataArray.vector.clip_bbox';</script>
@@ -508,6 +509,16 @@
    hydromt.Model
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.GridModel.html">
+   hydromt.GridModel
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.LumpedModel.html">
+   hydromt.LumpedModel
+  </a>
+ </li>
 </ul>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
@@ -536,16 +547,6 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="hydromt.Model.setup_region.html">
-   hydromt.Model.setup_region
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="hydromt.Model.setup_config.html">
-   hydromt.Model.setup_config
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="hydromt.Model.write_data_catalog.html">
    hydromt.Model.write_data_catalog
   </a>
@@ -558,13 +559,13 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="hydromt.Model.staticmaps.html">
-   hydromt.Model.staticmaps
+  <a class="reference internal" href="hydromt.Model.maps.html">
+   hydromt.Model.maps
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="hydromt.Model.staticgeoms.html">
-   hydromt.Model.staticgeoms
+  <a class="reference internal" href="hydromt.Model.geoms.html">
+   hydromt.Model.geoms
   </a>
  </li>
  <li class="toctree-l1">
@@ -580,6 +581,21 @@
  <li class="toctree-l1">
   <a class="reference internal" href="hydromt.Model.results.html">
    hydromt.Model.results
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.MeshModel.mesh.html">
+   hydromt.MeshModel.mesh
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.GridModel.grid.html">
+   hydromt.GridModel.grid
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.LumpedModel.response_units.html">
+   hydromt.LumpedModel.response_units
   </a>
  </li>
 </ul>
@@ -605,33 +621,33 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="hydromt.Model.set_staticmaps.html">
-   hydromt.Model.set_staticmaps
+  <a class="reference internal" href="hydromt.Model.set_maps.html">
+   hydromt.Model.set_maps
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="hydromt.Model.read_staticmaps.html">
-   hydromt.Model.read_staticmaps
+  <a class="reference internal" href="hydromt.Model.read_maps.html">
+   hydromt.Model.read_maps
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="hydromt.Model.write_staticmaps.html">
-   hydromt.Model.write_staticmaps
+  <a class="reference internal" href="hydromt.Model.write_maps.html">
+   hydromt.Model.write_maps
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="hydromt.Model.set_staticgeoms.html">
-   hydromt.Model.set_staticgeoms
+  <a class="reference internal" href="hydromt.Model.set_geoms.html">
+   hydromt.Model.set_geoms
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="hydromt.Model.read_staticgeoms.html">
-   hydromt.Model.read_staticgeoms
+  <a class="reference internal" href="hydromt.Model.read_geoms.html">
+   hydromt.Model.read_geoms
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="hydromt.Model.write_staticgeoms.html">
-   hydromt.Model.write_staticgeoms
+  <a class="reference internal" href="hydromt.Model.write_geoms.html">
+   hydromt.Model.write_geoms
   </a>
  </li>
  <li class="toctree-l1">
@@ -672,6 +688,73 @@
  <li class="toctree-l1">
   <a class="reference internal" href="hydromt.Model.read_results.html">
    hydromt.Model.read_results
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.MeshModel.set_mesh.html">
+   hydromt.MeshModel.set_mesh
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.MeshModel.read_mesh.html">
+   hydromt.MeshModel.read_mesh
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.MeshModel.write_mesh.html">
+   hydromt.MeshModel.write_mesh
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.GridModel.set_grid.html">
+   hydromt.GridModel.set_grid
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.GridModel.read_grid.html">
+   hydromt.GridModel.read_grid
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.GridModel.write_grid.html">
+   hydromt.GridModel.write_grid
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.LumpedModel.set_response_units.html">
+   hydromt.LumpedModel.set_response_units
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.LumpedModel.read_response_units.html">
+   hydromt.LumpedModel.read_response_units
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.LumpedModel.write_response_units.html">
+   hydromt.LumpedModel.write_response_units
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.Model.setup_config.html">
+   hydromt.Model.setup_config
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.Model.setup_region.html">
+   hydromt.Model.setup_region
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.Model.setup_maps_from_raster.html">
+   hydromt.Model.setup_maps_from_raster
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.Model.setup_maps_from_raster_reclass.html">
+   hydromt.Model.setup_maps_from_raster_reclass
   </a>
  </li>
 </ul>
@@ -1473,7 +1556,7 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>bbox</strong> (<em>tuple of floats</em>) – (xmin, ymin, xmax, ymax) bounding box</p></li>
+<li><p><strong>bbox</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.10)"><em>tuple</em></a><em> of </em><em>floats</em>) – (xmin, ymin, xmax, ymax) bounding box</p></li>
 <li><p><strong>buffer</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a><em>, </em><em>optional</em>) – buffer around bbox in crs units, None by default.</p></li>
 <li><p><strong>create_sindex</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a><em>, </em><em>optional</em>) – Create spatial index to query the data if it does not yet exist, False by
 default.</p></li>
@@ -1521,6 +1604,27 @@ default.</p></li>
           
             <div class="bd-sidebar-secondary bd-toc">
               
+<div class="toc-item">
+  
+<div class="tocsection onthispage">
+    <i class="fas fa-list"></i> On this page
+</div>
+<nav id="bd-toc-nav" class="page-toc">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#hydromt.DataArray.vector.clip_bbox">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     DataArray.vector.clip_bbox()
+    </span>
+   </code>
+  </a>
+ </li>
+</ul>
+
+</nav>
+</div>
+
 <div class="toc-item">
   
 
@@ -1576,7 +1680,7 @@ default.</p></li>
   <div class="footer-item">
     
 <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.1.1.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.2.2.<br>
 </p>
 
   </div>
