@@ -453,6 +453,7 @@
 
 
 <div class="viewcode-block" id="LumpedModel"><a class="viewcode-back" href="../../../_generated/hydromt.LumpedModel.html#hydromt.LumpedModel">[docs]</a><span class="k">class</span> <span class="nc">LumpedModel</span><span class="p">(</span><span class="n">LumpedMixin</span><span class="p">,</span> <span class="n">Model</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Model class Lumped Model for lumped models in HydroMT&quot;&quot;&quot;</span>
 
     <span class="n">_CLI_ARGS</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;region&quot;</span><span class="p">:</span> <span class="s2">&quot;setup_region&quot;</span><span class="p">}</span>
 
@@ -464,7 +465,7 @@
         <span class="n">data_libs</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">logger</span><span class="o">=</span><span class="n">logger</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="c1"># Initialize with the Model class</span>
+        <span class="sd">&quot;&quot;&quot;Initialize a LumpedModel for lumped and semi-distributed models.&quot;&quot;&quot;</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
             <span class="n">root</span><span class="o">=</span><span class="n">root</span><span class="p">,</span>
             <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span>

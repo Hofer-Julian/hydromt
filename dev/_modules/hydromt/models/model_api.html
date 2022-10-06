@@ -1369,6 +1369,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">set_geoms</span><span class="p">(</span><span class="n">geom</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">read_staticgeoms</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;This method will be deprecated in future versions, use :py:meth:`~hydromt.Model.read_geoms`&quot;&quot;&quot;</span>
         <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
             <span class="s1">&#39;The read_staticgeoms&quot; method will be deprecated in future versions, use read_geoms instead.&#39;</span><span class="p">,</span>
             <span class="ne">DeprecationWarning</span><span class="p">,</span>
@@ -1376,6 +1377,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">read_geoms</span><span class="p">(</span><span class="n">fn</span><span class="o">=</span><span class="s2">&quot;staticgeoms/*.geojson&quot;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">write_staticgeoms</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;This method will be deprecated in future versions, use :py:meth:`~hydromt.Model.write_geoms`&quot;&quot;&quot;</span>
         <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
             <span class="s1">&#39;The &quot;write_staticgeoms&quot; method will be deprecated in future versions, use  &quot;write_geoms&quot; instead.&#39;</span><span class="p">,</span>
             <span class="ne">DeprecationWarning</span><span class="p">,</span>

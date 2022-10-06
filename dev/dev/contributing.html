@@ -443,12 +443,12 @@ define a spatial or temporal subset of the dataset.</p></li>
 <section id="model-class">
 <h3>Model Class<a class="headerlink" href="#model-class" title="Permalink to this heading">#</a></h3>
 <p>The HydroMT <a class="reference internal" href="../api.html#model-api"><span class="std std-ref">Model class</span></a> consists of several methods and attributes with specific design/naming conventions.
-To implement HydroMT for a specific model kernel/software, a child class named <cite>&lt;Name&gt;Model</cite> (e.g. SfincsModel for Sfincs)
+To implement HydroMT for a specific model kernel/software, a child class named <cite>&lt;Name&gt;Model</cite> (e.g. SfincsModel for Sfincs, GridModel for a gridded model)
 should be created with model-specific data readers, writers and setup methods.</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="../user_guide/model_overview.html#model-interface"><span class="std std-ref">Model data components</span></a> are data attributes which together define a model instance and
 are identical for all models. Each component represents a specific model component and is parsed to a specific
-Python data object that should adhere to certain specifications. For instance, the <code class="docutils literal notranslate"><span class="pre">staticmaps</span></code> component represent
+Python data object that should adhere to certain specifications. For instance, the <code class="docutils literal notranslate"><span class="pre">grid</span></code> component represent
 all static regular grids of a model in a <a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.Dataset.html#xarray.Dataset" title="(in xarray v2022.9.1.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">xarray.Dataset</span></code></a> object.</p></li>
 <li><p>Most model components have an associated <cite>write_&lt;component&gt;</cite> and <cite>read_&lt;component&gt;</cite> method to read/write with model
 specific data formats and parse to / from the model component. These methods may have additional optional arguments

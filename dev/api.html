@@ -519,6 +519,11 @@
    hydromt.LumpedModel
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="_generated/hydromt.MeshModel.html">
+   hydromt.MeshModel
+  </a>
+ </li>
 </ul>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
@@ -1725,10 +1730,13 @@
 <td><p>General and basic API for models in HydroMT</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="_generated/hydromt.GridModel.html#hydromt.GridModel" title="hydromt.GridModel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GridModel</span></code></a>(root, mode, config_fn, data_libs)</p></td>
-<td><p>Initialize a model</p></td>
+<td><p>Model class Grid Model for gridded models in HydroMT</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="_generated/hydromt.LumpedModel.html#hydromt.LumpedModel" title="hydromt.LumpedModel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LumpedModel</span></code></a>(root, mode, config_fn, data_libs)</p></td>
-<td><p>Initialize a model</p></td>
+<td><p>Model class Lumped Model for lumped models in HydroMT</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="_generated/hydromt.MeshModel.html#hydromt.MeshModel" title="hydromt.MeshModel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MeshModel</span></code></a>(root, mode, config_fn, data_libs)</p></td>
+<td><p>Model class Mesh Model for mesh models in HydroMT</p></td>
 </tr>
 </tbody>
 </table>
@@ -1780,10 +1788,10 @@
 <td><p>Model results.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="_generated/hydromt.MeshModel.mesh.html#hydromt.MeshModel.mesh" title="hydromt.MeshModel.mesh"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MeshModel.mesh</span></code></a></p></td>
-<td><p>Model mesh data.</p></td>
+<td><p>Model static mesh data.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="_generated/hydromt.GridModel.grid.html#hydromt.GridModel.grid" title="hydromt.GridModel.grid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GridModel.grid</span></code></a></p></td>
-<td><p>Model static maps.</p></td>
+<td><p>Model static gridded data.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="_generated/hydromt.LumpedModel.response_units.html#hydromt.LumpedModel.response_units" title="hydromt.LumpedModel.response_units"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LumpedModel.response_units</span></code></a></p></td>
 <td><p>Model response unit (lumped) data.</p></td>

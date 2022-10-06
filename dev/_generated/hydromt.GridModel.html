@@ -519,6 +519,11 @@
    hydromt.LumpedModel
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.MeshModel.html">
+   hydromt.MeshModel
+  </a>
+ </li>
 </ul>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
@@ -1552,40 +1557,19 @@
 <dl class="py class">
 <dt class="sig sig-object py" id="hydromt.GridModel">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">hydromt.</span></span><span class="sig-name descname"><span class="pre">GridModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root:</span> <span class="pre">~typing.Optional[str]</span> <span class="pre">=</span> <span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">'w'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config_fn:</span> <span class="pre">~typing.Optional[str]</span> <span class="pre">=</span> <span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_libs:</span> <span class="pre">~typing.Optional[~typing.List[str]]</span> <span class="pre">=</span> <span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logger=&lt;Logger</span> <span class="pre">hydromt.models.model_grid</span> <span class="pre">(WARNING)&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hydromt/models/model_grid.html#GridModel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hydromt.GridModel" title="Permalink to this definition">#</a></dt>
-<dd><p>Initialize a model</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>root</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em>, </em><em>optional</em>) – Model root, by default None</p></li>
-<li><p><strong>mode</strong> (<em>{'r'</em><em>,</em><em>'r+'</em><em>,</em><em>'w'}</em><em>, </em><em>optional</em>) – read/append/write mode, by default “w”</p></li>
-<li><p><strong>config_fn</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em>, </em><em>optional</em>) – Model simulation configuration file, by default None.
-Note that this is not the HydroMT model setup configuration file!</p></li>
-<li><p><strong>data_libs</strong> (<em>List</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em>]</em><em>, </em><em>optional</em>) – List of data catalog yaml files, by default None</p></li>
-</ul>
-</dd>
-</dl>
+<dd><p>Model class Grid Model for gridded models in HydroMT</p>
+<p>Initialize a GridModel for distributed models with a regular grid.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="hydromt.GridModel.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root:</span> <span class="pre">~typing.Optional[str]</span> <span class="pre">=</span> <span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">'w'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config_fn:</span> <span class="pre">~typing.Optional[str]</span> <span class="pre">=</span> <span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_libs:</span> <span class="pre">~typing.Optional[~typing.List[str]]</span> <span class="pre">=</span> <span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logger=&lt;Logger</span> <span class="pre">hydromt.models.model_grid</span> <span class="pre">(WARNING)&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hydromt/models/model_grid.html#GridModel.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hydromt.GridModel.__init__" title="Permalink to this definition">#</a></dt>
-<dd><p>Initialize a model</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>root</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em>, </em><em>optional</em>) – Model root, by default None</p></li>
-<li><p><strong>mode</strong> (<em>{'r'</em><em>,</em><em>'r+'</em><em>,</em><em>'w'}</em><em>, </em><em>optional</em>) – read/append/write mode, by default “w”</p></li>
-<li><p><strong>config_fn</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em>, </em><em>optional</em>) – Model simulation configuration file, by default None.
-Note that this is not the HydroMT model setup configuration file!</p></li>
-<li><p><strong>data_libs</strong> (<em>List</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em>]</em><em>, </em><em>optional</em>) – List of data catalog yaml files, by default None</p></li>
-</ul>
-</dd>
-</dl>
+<dd><p>Initialize a GridModel for distributed models with a regular grid.</p>
 </dd></dl>
 
 <p class="rubric">Methods</p>
 <table class="autosummary longtable table autosummary">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#hydromt.GridModel.__init__" title="hydromt.GridModel.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>([root, mode, config_fn, data_libs, ...])</p></td>
-<td><p>Initialize a model</p></td>
+<td><p>Initialize a GridModel for distributed models with a regular grid.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">build</span></code>(region[, res, write, opt])</p></td>
 <td><p>Single method to build a model from scratch based on settings in <cite>opt</cite>.</p></td>
@@ -1618,7 +1602,7 @@ Note that this is not the HydroMT model setup configuration file!</p></li>
 <td><p>Read states at &lt;root&gt;/&lt;fn&gt; and add to states property</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">read_staticgeoms</span></code>()</p></td>
-<td><p></p></td>
+<td><p>This method will be deprecated in future versions, use <a class="reference internal" href="hydromt.Model.read_geoms.html#hydromt.Model.read_geoms" title="hydromt.Model.read_geoms"><code class="xref py py-meth docutils literal notranslate"><span class="pre">read_geoms()</span></code></a></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">read_staticmaps</span></code>([fn])</p></td>
 <td><p>Read static model maps at &lt;root&gt;/&lt;fn&gt; and add to staticmaps property</p></td>
@@ -1702,7 +1686,7 @@ Note that this is not the HydroMT model setup configuration file!</p></li>
 <td><p>Write states to netcdf file at &lt;root&gt;/&lt;fn&gt;</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">write_staticgeoms</span></code>()</p></td>
-<td><p></p></td>
+<td><p>This method will be deprecated in future versions, use <a class="reference internal" href="hydromt.Model.write_geoms.html#hydromt.Model.write_geoms" title="hydromt.Model.write_geoms"><code class="xref py py-meth docutils literal notranslate"><span class="pre">write_geoms()</span></code></a></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">write_staticmaps</span></code>([fn])</p></td>
 <td><p>Write static model maps to netcdf file at &lt;root&gt;/&lt;fn&gt;</p></td>
@@ -1737,7 +1721,7 @@ Note that this is not the HydroMT model setup configuration file!</p></li>
 <td><p>Model geometries.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="hydromt.GridModel.grid.html#hydromt.GridModel.grid" title="hydromt.GridModel.grid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">grid</span></code></a></p></td>
-<td><p>Model static maps.</p></td>
+<td><p>Model static gridded data.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">height</span></code></p></td>
 <td><p>Returns the height of the model staticmaps.</p></td>

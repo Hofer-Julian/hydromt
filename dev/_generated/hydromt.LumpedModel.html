@@ -42,7 +42,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = '_generated/hydromt.LumpedModel';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="hydromt.Model.read" href="hydromt.Model.read.html" />
+    <link rel="next" title="hydromt.MeshModel" href="hydromt.MeshModel.html" />
     <link rel="prev" title="hydromt.GridModel" href="hydromt.GridModel.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="docsearch:language" content="en">
@@ -517,6 +517,11 @@
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    hydromt.LumpedModel
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hydromt.MeshModel.html">
+   hydromt.MeshModel
   </a>
  </li>
 </ul>
@@ -1552,40 +1557,19 @@
 <dl class="py class">
 <dt class="sig sig-object py" id="hydromt.LumpedModel">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">hydromt.</span></span><span class="sig-name descname"><span class="pre">LumpedModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root:</span> <span class="pre">~typing.Optional[str]</span> <span class="pre">=</span> <span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">'w'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config_fn:</span> <span class="pre">~typing.Optional[str]</span> <span class="pre">=</span> <span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_libs:</span> <span class="pre">~typing.Optional[~typing.List[str]]</span> <span class="pre">=</span> <span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logger=&lt;Logger</span> <span class="pre">hydromt.models.model_lumped</span> <span class="pre">(WARNING)&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hydromt/models/model_lumped.html#LumpedModel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hydromt.LumpedModel" title="Permalink to this definition">#</a></dt>
-<dd><p>Initialize a model</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>root</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em>, </em><em>optional</em>) – Model root, by default None</p></li>
-<li><p><strong>mode</strong> (<em>{'r'</em><em>,</em><em>'r+'</em><em>,</em><em>'w'}</em><em>, </em><em>optional</em>) – read/append/write mode, by default “w”</p></li>
-<li><p><strong>config_fn</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em>, </em><em>optional</em>) – Model simulation configuration file, by default None.
-Note that this is not the HydroMT model setup configuration file!</p></li>
-<li><p><strong>data_libs</strong> (<em>List</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em>]</em><em>, </em><em>optional</em>) – List of data catalog yaml files, by default None</p></li>
-</ul>
-</dd>
-</dl>
+<dd><p>Model class Lumped Model for lumped models in HydroMT</p>
+<p>Initialize a LumpedModel for lumped and semi-distributed models.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="hydromt.LumpedModel.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root:</span> <span class="pre">~typing.Optional[str]</span> <span class="pre">=</span> <span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">'w'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config_fn:</span> <span class="pre">~typing.Optional[str]</span> <span class="pre">=</span> <span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_libs:</span> <span class="pre">~typing.Optional[~typing.List[str]]</span> <span class="pre">=</span> <span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logger=&lt;Logger</span> <span class="pre">hydromt.models.model_lumped</span> <span class="pre">(WARNING)&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hydromt/models/model_lumped.html#LumpedModel.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hydromt.LumpedModel.__init__" title="Permalink to this definition">#</a></dt>
-<dd><p>Initialize a model</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>root</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em>, </em><em>optional</em>) – Model root, by default None</p></li>
-<li><p><strong>mode</strong> (<em>{'r'</em><em>,</em><em>'r+'</em><em>,</em><em>'w'}</em><em>, </em><em>optional</em>) – read/append/write mode, by default “w”</p></li>
-<li><p><strong>config_fn</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em>, </em><em>optional</em>) – Model simulation configuration file, by default None.
-Note that this is not the HydroMT model setup configuration file!</p></li>
-<li><p><strong>data_libs</strong> (<em>List</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em>]</em><em>, </em><em>optional</em>) – List of data catalog yaml files, by default None</p></li>
-</ul>
-</dd>
-</dl>
+<dd><p>Initialize a LumpedModel for lumped and semi-distributed models.</p>
 </dd></dl>
 
 <p class="rubric">Methods</p>
 <table class="autosummary longtable table autosummary">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#hydromt.LumpedModel.__init__" title="hydromt.LumpedModel.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>([root, mode, config_fn, data_libs, ...])</p></td>
-<td><p>Initialize a model</p></td>
+<td><p>Initialize a LumpedModel for lumped and semi-distributed models.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">build</span></code>(region[, res, write, opt])</p></td>
 <td><p>Single method to build a model from scratch based on settings in <cite>opt</cite>.</p></td>
@@ -1618,7 +1602,7 @@ Note that this is not the HydroMT model setup configuration file!</p></li>
 <td><p>Read states at &lt;root&gt;/&lt;fn&gt; and add to states property</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">read_staticgeoms</span></code>()</p></td>
-<td><p></p></td>
+<td><p>This method will be deprecated in future versions, use <a class="reference internal" href="hydromt.Model.read_geoms.html#hydromt.Model.read_geoms" title="hydromt.Model.read_geoms"><code class="xref py py-meth docutils literal notranslate"><span class="pre">read_geoms()</span></code></a></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">read_staticmaps</span></code>([fn])</p></td>
 <td><p>Read static model maps at &lt;root&gt;/&lt;fn&gt; and add to staticmaps property</p></td>
@@ -1702,7 +1686,7 @@ Note that this is not the HydroMT model setup configuration file!</p></li>
 <td><p>Write states to netcdf file at &lt;root&gt;/&lt;fn&gt;</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">write_staticgeoms</span></code>()</p></td>
-<td><p></p></td>
+<td><p>This method will be deprecated in future versions, use <a class="reference internal" href="hydromt.Model.write_geoms.html#hydromt.Model.write_geoms" title="hydromt.Model.write_geoms"><code class="xref py py-meth docutils literal notranslate"><span class="pre">write_geoms()</span></code></a></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">write_staticmaps</span></code>([fn])</p></td>
 <td><p>Write static model maps to netcdf file at &lt;root&gt;/&lt;fn&gt;</p></td>
@@ -1796,10 +1780,10 @@ Note that this is not the HydroMT model setup configuration file!</p></li>
           <p class="prev-next-title">hydromt.GridModel</p>
       </div>
   </a>
-  <a class='right-next' id="next-link" href="hydromt.Model.read.html" title="next page">
+  <a class='right-next' id="next-link" href="hydromt.MeshModel.html" title="next page">
   <div class="prev-next-info">
       <p class="prev-next-subtitle">next</p>
-      <p class="prev-next-title">hydromt.Model.read</p>
+      <p class="prev-next-title">hydromt.MeshModel</p>
   </div>
   <i class="fas fa-angle-right"></i>
   </a>
