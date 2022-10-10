@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>hydromt.Model.set_states &#8212; HydroMT  documentation</title>
+    <title>hydromt.ModelCatalog &#8212; HydroMT  documentation</title>
   <script>
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
@@ -41,11 +41,11 @@
     <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/design-tabs.js"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = '_generated/hydromt.Model.set_states';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_generated/hydromt.ModelCatalog';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="hydromt.Model.read_states" href="hydromt.Model.read_states.html" />
-    <link rel="prev" title="hydromt.Model.write_forcing" href="hydromt.Model.write_forcing.html" />
+    <link rel="next" title="hydromt.Model" href="hydromt.Model.html" />
+    <link rel="prev" title="hydromt.data_adapter.DataFrameAdapter.to_file" href="hydromt.data_adapter.DataFrameAdapter.to_file.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="docsearch:language" content="en">
   </head>
@@ -361,8 +361,8 @@
 <li class="toctree-l1"><a class="reference internal" href="hydromt.data_adapter.DataFrameAdapter.to_dict.html">hydromt.data_adapter.DataFrameAdapter.to_dict</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hydromt.data_adapter.DataFrameAdapter.to_file.html">hydromt.data_adapter.DataFrameAdapter.to_file</a></li>
 </ul>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="hydromt.ModelCatalog.html">hydromt.ModelCatalog</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">hydromt.ModelCatalog</a></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="hydromt.Model.html">hydromt.Model</a></li>
@@ -389,7 +389,7 @@
 <li class="toctree-l1"><a class="reference internal" href="hydromt.GridModel.grid.html">hydromt.GridModel.grid</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hydromt.LumpedModel.response_units.html">hydromt.LumpedModel.response_units</a></li>
 </ul>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="hydromt.Model.get_config.html">hydromt.Model.get_config</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hydromt.Model.set_config.html">hydromt.Model.set_config</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hydromt.Model.read_config.html">hydromt.Model.read_config</a></li>
@@ -403,7 +403,7 @@
 <li class="toctree-l1"><a class="reference internal" href="hydromt.Model.set_forcing.html">hydromt.Model.set_forcing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hydromt.Model.read_forcing.html">hydromt.Model.read_forcing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hydromt.Model.write_forcing.html">hydromt.Model.write_forcing</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">hydromt.Model.set_states</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hydromt.Model.set_states.html">hydromt.Model.set_states</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hydromt.Model.read_states.html">hydromt.Model.read_states</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hydromt.Model.write_states.html">hydromt.Model.write_states</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hydromt.Model.set_results.html">hydromt.Model.set_results</a></li>
@@ -653,21 +653,44 @@
             
             <article class="bd-article" role="main">
               
-  <section id="hydromt-model-set-states">
-<h1>hydromt.Model.set_states<a class="headerlink" href="#hydromt-model-set-states" title="Permalink to this heading">#</a></h1>
-<dl class="py method">
-<dt class="sig sig-object py" id="hydromt.Model.set_states">
-<span class="sig-prename descclassname"><span class="pre">Model.</span></span><span class="sig-name descname"><span class="pre">set_states</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.10)"><span class="pre">Union</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.DataArray.html#xarray.DataArray" title="(in xarray v2022.9.1.dev0)"><span class="pre">DataArray</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.Dataset.html#xarray.Dataset" title="(in xarray v2022.9.1.dev0)"><span class="pre">Dataset</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.10)"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">split_dataset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.10)"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><span class="pre">bool</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hydromt/models/model_api.html#Model.set_states"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hydromt.Model.set_states" title="Permalink to this definition">#</a></dt>
-<dd><p>Add data to states attribute.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>data</strong> (<a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.Dataset.html#xarray.Dataset" title="(in xarray v2022.9.1.dev0)"><em>xarray.Dataset</em></a><em> or </em><a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.DataArray.html#xarray.DataArray" title="(in xarray v2022.9.1.dev0)"><em>xarray.DataArray</em></a>) – New forcing data to add</p></li>
-<li><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em>, </em><em>optional</em>) – Results name, required if data is xarray.Dataset and split_dataset=False.</p></li>
-<li><p><strong>split_dataset</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a><em>, </em><em>optional</em>) – If True (default), split a Dataset to store each variable as a DataArray.</p></li>
-</ul>
-</dd>
-</dl>
+  <section id="hydromt-modelcatalog">
+<h1>hydromt.ModelCatalog<a class="headerlink" href="#hydromt-modelcatalog" title="Permalink to this heading">#</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="hydromt.ModelCatalog">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">hydromt.</span></span><span class="sig-name descname"><span class="pre">ModelCatalog</span></span><a class="reference internal" href="../_modules/hydromt/models/model_plugins.html#ModelCatalog"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hydromt.ModelCatalog" title="Permalink to this definition">#</a></dt>
+<dd><dl class="py method">
+<dt class="sig sig-object py" id="hydromt.ModelCatalog.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hydromt/models/model_plugins.html#ModelCatalog.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hydromt.ModelCatalog.__init__" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<p class="rubric">Methods</p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#hydromt.ModelCatalog.__init__" title="hydromt.ModelCatalog.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">load</span></code>(name)</p></td>
+<td><p>Returns model class</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Attributes</p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">cls</span></code></p></td>
+<td><p>Returns dictionary with available model classes.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">eps</span></code></p></td>
+<td><p>Returns dictionary with available model entrypoints.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">generic</span></code></p></td>
+<td><p>Returns list with names of generic models</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">plugins</span></code></p></td>
+<td><p>Returns list with names of model plugins</p></td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </section>
@@ -680,17 +703,17 @@
             <footer class="bd-footer-article">
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-  <a class='left-prev' id="prev-link" href="hydromt.Model.write_forcing.html" title="previous page">
+  <a class='left-prev' id="prev-link" href="hydromt.data_adapter.DataFrameAdapter.to_file.html" title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
           <p class="prev-next-subtitle">previous</p>
-          <p class="prev-next-title">hydromt.Model.write_forcing</p>
+          <p class="prev-next-title">hydromt.data_adapter.DataFrameAdapter.to_file</p>
       </div>
   </a>
-  <a class='right-next' id="next-link" href="hydromt.Model.read_states.html" title="next page">
+  <a class='right-next' id="next-link" href="hydromt.Model.html" title="next page">
   <div class="prev-next-info">
       <p class="prev-next-subtitle">next</p>
-      <p class="prev-next-title">hydromt.Model.read_states</p>
+      <p class="prev-next-title">hydromt.Model</p>
   </div>
   <i class="fa-solid fa-angle-right"></i>
   </a>
@@ -711,13 +734,24 @@
 <nav id="bd-toc-nav" class="page-toc">
     <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#hydromt.Model.set_states">
+  <a class="reference internal nav-link" href="#hydromt.ModelCatalog">
    <code class="docutils literal notranslate">
     <span class="pre">
-     Model.set_states()
+     ModelCatalog
     </span>
    </code>
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hydromt.ModelCatalog.__init__">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       ModelCatalog.__init__()
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -733,7 +767,7 @@
   
 
 <div class="tocsection editthispage">
-    <a href="https://github.com/Deltares/hydromt/edit/main/docs/_generated/hydromt.Model.set_states.rst">
+    <a href="https://github.com/Deltares/hydromt/edit/main/docs/_generated/hydromt.ModelCatalog.rst">
         <i class="fa-solid fa-pencil"></i> Edit this page
     </a>
 </div>
@@ -743,7 +777,7 @@
 <div class="toc-item">
   
 <div class="tocsection sourcelink">
-    <a href="../_sources/_generated/hydromt.Model.set_states.rst.txt">
+    <a href="../_sources/_generated/hydromt.ModelCatalog.rst.txt">
         <i class="fa-solid fa-file-lines"></i> Show Source
     </a>
 </div>
