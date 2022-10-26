@@ -363,32 +363,37 @@ way to do this installation is by creating a new environment as described below.
 <p>If not already done, you’ll need Python 3.8 or greater and a package manager such as conda or mamba. These package managers help you to install (Python) packages and
 <a class="reference external" href="https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html">manage environments</a> such that different installations do not conflict.</p>
 <p>We recommend using the <a class="reference external" href="https://github.com/conda-forge/miniforge#mambaforge">Mambaforge</a> Python distribution. This installs Python and the
-<a class="reference external" href="https://github.com/mamba-org/mamba">mamba package manager</a>. <a class="reference external" href="https://github.com/conda-forge/miniforge">Miniforge</a> and
+<a class="reference external" href="https://github.com/mamba-org/mamba">mamba package manager</a>. Alternatively, <a class="reference external" href="https://github.com/conda-forge/miniforge">Miniforge</a> and
 <a class="reference external" href="https://docs.conda.io/en/latest/miniconda.html">Miniconda</a> will install Python and the <a class="reference external" href="https://docs.conda.io/en/latest/">conda package manager</a>.</p>
+<p>If you already have a python &amp; conda installation but do not yet have mamba installed, we recommend installing it into your <em>base</em> environment using:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>conda install mamba -n base -c conda-forge
+</pre></div>
+</div>
+</section>
+<section id="install-hydromt-and-the-other-python-dependencies-in-a-separate-python-environment">
+<h3>2 - Install HydroMT and the other python dependencies in a separate Python environment<a class="headerlink" href="#install-hydromt-and-the-other-python-dependencies-in-a-separate-python-environment" title="Permalink to this heading">#</a></h3>
+<p>The last step is to install all the python dependencies required to run the notebooks, including HydroMT. All required dependencies can be found
+in the <a class="reference external" href="https://github.com/Deltares/hydromt/blob/main/environment.yml">environment.yml</a> file in the root of the repository. This will create
+a new environment called <strong>hydromt</strong>. If you already have this environment with this name either remove it with <cite>conda env remove -n hydromt</cite>
+<strong>or</strong> set a new name for the environment by adding <cite>-n &lt;name&gt;</cite> to the line below.</p>
+<p>Note that you can exchange mamba for conda in the line below if you don’t have mamba installed (see above for how to install mamba).</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>mamba env create -f https://raw.githubusercontent.com/Deltares/hydromt/main/environment.yml
+</pre></div>
+</div>
 </section>
 <section id="download-the-content-of-the-hydromt-github-repository">
-<h3>2 - Download the content of the HydroMT github repository<a class="headerlink" href="#download-the-content-of-the-hydromt-github-repository" title="Permalink to this heading">#</a></h3>
-<p>To run the exercises, you will need to download the content of the HydroMT repository locally. You can either do a
+<h3>3 - Download the content of the HydroMT github repository<a class="headerlink" href="#download-the-content-of-the-hydromt-github-repository" title="Permalink to this heading">#</a></h3>
+<p>To run the examples locally, you will need to download the content of the HydroMT repository. You can either do a
 <a class="reference external" href="https://github.com/Deltares/hydromt/archive/refs/heads/main.zip">manual download</a> and extract the content of the downloaded ZIP folder
 <strong>or</strong> clone the repository locally:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>git clone https://github.com/Deltares/hydromt.git
 </pre></div>
 </div>
 </section>
-<section id="install-hydromt-and-the-other-python-dependencies-in-a-separate-python-environment">
-<h3>3 - Install HydroMT and the other python dependencies in a separate Python environment<a class="headerlink" href="#install-hydromt-and-the-other-python-dependencies-in-a-separate-python-environment" title="Permalink to this heading">#</a></h3>
-<p>The last step is to install all the python dependencies required to run the notebooks, including HydroMT. All required dependencies can be found
-in the <a class="reference external" href="https://github.com/Deltares/hydromt/blob/main/binder/environment.yml">environment.yml</a> file.</p>
-<p>First navigate into the extracted <code class="docutils literal notranslate"><span class="pre">hydromt</span></code> folder (where the binder and examples folder are located). Create a new <em>hydromt</em> environment using the environment.yml file
-in the binder folder (you can exchange mamba/conda in the example below):</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span> hydromt
-<span class="gp">$ </span>mamba env create -f binder/environment.yml
-</pre></div>
-</div>
-</section>
 <section id="running-the-examples">
 <h3>4 - Running the examples<a class="headerlink" href="#running-the-examples" title="Permalink to this heading">#</a></h3>
-<p>Finally, start a jupyter notebook inside the <code class="docutils literal notranslate"><span class="pre">examples</span></code> folder and activated <code class="docutils literal notranslate"><span class="pre">hydromt</span></code> environment.</p>
+<p>Finally, start a jupyter notebook inside the <code class="docutils literal notranslate"><span class="pre">examples</span></code> folder after activating the <code class="docutils literal notranslate"><span class="pre">hydromt</span></code> environment, see below.
+Alternatively, you can run the notebooks from <a class="reference external" href="https://code.visualstudio.com/download">Visual Studio Code</a> if you have that installed.</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>conda activate hydromt
 <span class="gp">$ </span><span class="nb">cd</span> examples
 <span class="gp">$ </span>jupyter notebook
@@ -475,13 +480,13 @@ in the binder folder (you can exchange mamba/conda in the example below):</p>
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#download-the-content-of-the-hydromt-github-repository">
-     2 - Download the content of the HydroMT github repository
+    <a class="reference internal nav-link" href="#install-hydromt-and-the-other-python-dependencies-in-a-separate-python-environment">
+     2 - Install HydroMT and the other python dependencies in a separate Python environment
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#install-hydromt-and-the-other-python-dependencies-in-a-separate-python-environment">
-     3 - Install HydroMT and the other python dependencies in a separate Python environment
+    <a class="reference internal nav-link" href="#download-the-content-of-the-hydromt-github-repository">
+     3 - Download the content of the HydroMT github repository
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
