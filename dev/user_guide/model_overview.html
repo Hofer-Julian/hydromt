@@ -334,6 +334,8 @@
 <li class="toctree-l1"><a class="reference internal" href="model_clip.html">Clipping a model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="model_config.html">Preparing a model configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="model_region.html">Defining a model region</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../_examples/working_with_models_basics.html">Example: Working with models from CLI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../_examples/working_with_models.html">Example: Working with models in Python</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Methods and workflows</span></p>
 <ul class="nav bd-sidenav">
@@ -384,24 +386,21 @@ several options to define a region based on a geospatial or hydrographic region.
 <p>The exact process of building or updating a model can be configured in a single configuration <a class="reference internal" href="model_config.html#model-config"><span class="std std-ref">.ini file</span></a>.
 This file describes the full pipeline of model methods and their arguments. The methods vary for the
 different model classes and <a class="reference internal" href="../plugins.html#plugins"><span class="std std-ref">Plugins</span></a>, as documented in this documentation or for each plugin documentation websites.</p>
-<p id="model-interface">Since v0.5.9, HydroMT can support both generalized model types (for example gridded, lumped or mesh models) and specific model types (plugins).</p>
 </section>
-<section id="generalized-model-class-implementation">
-<h2>Generalized model class implementation<a class="headerlink" href="#generalized-model-class-implementation" title="Permalink to this heading">#</a></h2>
-<p>The model API from HydroMT allows to build a model from scratch for different model concepts. This implementation is flexible such that users can create a model instance that matches
-their need. By default, the model components are returned and read from standard formats, as documented in the <a class="reference internal" href="../api.html#api-reference"><span class="std std-ref">API reference</span></a>. As of version 0.5.9, the
-grid model (distributed model), lumped model (e.g. semi-distributed, bucket models), mesh model (e.g. unstructured models) have been implemented. Other model classes such as network models will follow in future versions.</p>
-</section>
-<section id="specific-model-class-implementation">
-<h2>Specific model class implementation<a class="headerlink" href="#specific-model-class-implementation" title="Permalink to this heading">#</a></h2>
-<p>For a list of supported models see the <a class="reference internal" href="../plugins.html#plugins"><span class="std std-ref">Plugins</span></a> page.</p>
-</section>
-<section id="model-data-components">
-<h2>Model data components<a class="headerlink" href="#model-data-components" title="Permalink to this heading">#</a></h2>
-<p>Model data components are data attributes which together define a model instance and are identical for all models.
-Each component represents a specific model component and is parsed to a specific Python data object that should adhere
-to certain specifications. These specification are class dependent. An overview is given below.</p>
-<p>The table below lists model components common to all model classes</p>
+<section id="model-api">
+<span id="model-interface"></span><h2>Model API<a class="headerlink" href="#model-api" title="Permalink to this heading">#</a></h2>
+<p>HydroMT defines any model through the model-agnostic Model API based on several <em>general</em> components and <em>computational</em> unit components.
+Each component represents a specific model data type and is parsed to a specific Python data object.
+The general components are <strong>maps</strong> (raster data), <strong>geoms</strong> (vector data), <strong>forcing</strong>, <strong>results</strong>, <strong>states</strong>, and <strong>config</strong> (the model simulation configuration). These are available to all model classes and plugins.</p>
+<p>The computational components are different for different types of models: i.e. <strong>grid</strong> for distributed or grid models, <strong>response_units</strong> for lumped or semi-distributed models, <strong>mesh</strong> for mesh or unstructured grid models, and <strong>network</strong> for network models (to be developed).</p>
+<p>By default, the model components are returned and read from standard formats, as documented in the <a class="reference internal" href="../api.html#api-reference"><span class="std std-ref">API reference</span></a>.
+While a generalized model class can readily be used, it can also be tailored to specific model software through so-called <a class="reference internal" href="../plugins.html#plugins"><span class="std std-ref">Plugins</span></a>. These plugins have the same model components (i.e. Model API), but with model-specific file readers and writers and workflows.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>As of version 0.6.0, the grid model (distributed grid model), lumped model (semi-distributed and lumped models), mesh model (unstructured grid models) have been implemented. Other model classes such as network models will follow in future versions.</p>
+</div>
+<p>The table below lists the base model components common to all model classes.
+All base model attributes and methods can be found the <a class="reference internal" href="../api.html#model-api"><span class="std std-ref">API reference</span></a></p>
 <table class="table">
 <colgroup>
 <col style="width: 25.0%" />
@@ -476,7 +475,7 @@ to certain specifications. These specification are class dependent. An overview 
 </tr>
 </tbody>
 </table>
-<p>For each generalized model class, the respective components exist:</p>
+<p>For each generalized model class, the respective computational unit components exist:</p>
 <table class="table">
 <colgroup>
 <col style="width: 18.8%" />
@@ -493,7 +492,7 @@ to certain specifications. These specification are class dependent. An overview 
 </thead>
 <tbody>
 <tr class="row-even"><td><p>grid</p></td>
-<td><p>GridModel</p></td>
+<td><p><a class="reference internal" href="../api.html#grid-model-api"><span class="std std-ref">GridModel</span></a></p></td>
 <td><p>Static gridded data with on unified grid</p></td>
 <td><div class="line-block">
 <div class="line"><a class="reference internal" href="../_generated/hydromt.GridModel.grid.html#hydromt.GridModel.grid" title="hydromt.GridModel.grid"><code class="xref py py-attr docutils literal notranslate"><span class="pre">grid</span></code></a></div>
@@ -504,7 +503,7 @@ to certain specifications. These specification are class dependent. An overview 
 </td>
 </tr>
 <tr class="row-odd"><td><p>response_units</p></td>
-<td><p>LumpedModel</p></td>
+<td><p><a class="reference internal" href="../api.html#lumped-model-api"><span class="std std-ref">LumpedModel</span></a></p></td>
 <td><p>Static lumped data over the response_units</p></td>
 <td><div class="line-block">
 <div class="line"><a class="reference internal" href="../_generated/hydromt.LumpedModel.response_units.html#hydromt.LumpedModel.response_units" title="hydromt.LumpedModel.response_units"><code class="xref py py-attr docutils literal notranslate"><span class="pre">response_units</span></code></a></div>
@@ -515,8 +514,8 @@ to certain specifications. These specification are class dependent. An overview 
 </td>
 </tr>
 <tr class="row-even"><td><p>mesh</p></td>
-<td><p>MeshModel</p></td>
-<td><p>Static mesh data</p></td>
+<td><p><a class="reference internal" href="../api.html#mesh-model-api"><span class="std std-ref">MeshModel</span></a></p></td>
+<td><p>Static mesh (unstructured grid) data</p></td>
 <td><div class="line-block">
 <div class="line"><a class="reference internal" href="../_generated/hydromt.MeshModel.mesh.html#hydromt.MeshModel.mesh" title="hydromt.MeshModel.mesh"><code class="xref py py-attr docutils literal notranslate"><span class="pre">mesh</span></code></a></div>
 <div class="line"><a class="reference internal" href="../_generated/hydromt.MeshModel.set_mesh.html#hydromt.MeshModel.set_mesh" title="hydromt.MeshModel.set_mesh"><code class="xref py py-func docutils literal notranslate"><span class="pre">set_mesh()</span></code></a></div>
@@ -529,7 +528,7 @@ to certain specifications. These specification are class dependent. An overview 
 </table>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Prior to v0.5.9, the <em>staticmaps</em> and <em>staticgeoms</em> components were available.
+<p>Prior to v0.6.0, the <em>staticmaps</em> and <em>staticgeoms</em> components were available.
 <em>staticmaps</em> is replaced with <em>grid</em> in GridModel,
 whereas <em>staticgeoms</em> is renamed to <em>geoms</em> for consistency but still available in the Model class.</p>
 </div>
@@ -580,18 +579,8 @@ whereas <em>staticgeoms</em> is renamed to <em>geoms</em> for consistency but st
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#generalized-model-class-implementation">
-   Generalized model class implementation
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#specific-model-class-implementation">
-   Specific model class implementation
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#model-data-components">
-   Model data components
+  <a class="reference internal nav-link" href="#model-api">
+   Model API
   </a>
  </li>
 </ul>

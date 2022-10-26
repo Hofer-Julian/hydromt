@@ -366,9 +366,6 @@
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="hydromt.Model.html">hydromt.Model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="hydromt.GridModel.html">hydromt.GridModel</a></li>
-<li class="toctree-l1"><a class="reference internal" href="hydromt.LumpedModel.html">hydromt.LumpedModel</a></li>
-<li class="toctree-l1"><a class="reference internal" href="hydromt.MeshModel.html">hydromt.MeshModel</a></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="hydromt.Model.read.html">hydromt.Model.read</a></li>
@@ -379,15 +376,17 @@
 <li class="toctree-l1"><a class="reference internal" href="hydromt.Model.write_data_catalog.html">hydromt.Model.write_data_catalog</a></li>
 </ul>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="hydromt.Model.crs.html">hydromt.Model.crs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hydromt.Model.region.html">hydromt.Model.region</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hydromt.Model.api.html">hydromt.Model.api</a></li>
+</ul>
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="hydromt.Model.config.html">hydromt.Model.config</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hydromt.Model.maps.html">hydromt.Model.maps</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hydromt.Model.geoms.html">hydromt.Model.geoms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hydromt.Model.forcing.html">hydromt.Model.forcing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hydromt.Model.states.html">hydromt.Model.states</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hydromt.Model.results.html">hydromt.Model.results</a></li>
-<li class="toctree-l1"><a class="reference internal" href="hydromt.MeshModel.mesh.html">hydromt.MeshModel.mesh</a></li>
-<li class="toctree-l1"><a class="reference internal" href="hydromt.GridModel.grid.html">hydromt.GridModel.grid</a></li>
-<li class="toctree-l1"><a class="reference internal" href="hydromt.LumpedModel.response_units.html">hydromt.LumpedModel.response_units</a></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="hydromt.Model.get_config.html">hydromt.Model.get_config</a></li>
@@ -408,21 +407,69 @@
 <li class="toctree-l1"><a class="reference internal" href="hydromt.Model.write_states.html">hydromt.Model.write_states</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hydromt.Model.set_results.html">hydromt.Model.set_results</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hydromt.Model.read_results.html">hydromt.Model.read_results</a></li>
-<li class="toctree-l1"><a class="reference internal" href="hydromt.MeshModel.set_mesh.html">hydromt.MeshModel.set_mesh</a></li>
-<li class="toctree-l1"><a class="reference internal" href="hydromt.MeshModel.read_mesh.html">hydromt.MeshModel.read_mesh</a></li>
-<li class="toctree-l1"><a class="reference internal" href="hydromt.MeshModel.write_mesh.html">hydromt.MeshModel.write_mesh</a></li>
-<li class="toctree-l1"><a class="reference internal" href="hydromt.GridModel.set_grid.html">hydromt.GridModel.set_grid</a></li>
-<li class="toctree-l1"><a class="reference internal" href="hydromt.GridModel.read_grid.html">hydromt.GridModel.read_grid</a></li>
-<li class="toctree-l1"><a class="reference internal" href="hydromt.GridModel.write_grid.html">hydromt.GridModel.write_grid</a></li>
-<li class="toctree-l1"><a class="reference internal" href="hydromt.LumpedModel.set_response_units.html">hydromt.LumpedModel.set_response_units</a></li>
-<li class="toctree-l1"><a class="reference internal" href="hydromt.LumpedModel.read_response_units.html">hydromt.LumpedModel.read_response_units</a></li>
-<li class="toctree-l1"><a class="reference internal" href="hydromt.LumpedModel.write_response_units.html">hydromt.LumpedModel.write_response_units</a></li>
 </ul>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="hydromt.Model.setup_config.html">hydromt.Model.setup_config</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">hydromt.Model.setup_region</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hydromt.Model.setup_maps_from_raster.html">hydromt.Model.setup_maps_from_raster</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hydromt.Model.setup_maps_from_raster_reclass.html">hydromt.Model.setup_maps_from_raster_reclass</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="hydromt.GridModel.html">hydromt.GridModel</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="hydromt.GridModel.grid.html">hydromt.GridModel.grid</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hydromt.GridModel.crs.html">hydromt.GridModel.crs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hydromt.GridModel.region.html">hydromt.GridModel.region</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="hydromt.GridModel.set_grid.html">hydromt.GridModel.set_grid</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hydromt.GridModel.read_grid.html">hydromt.GridModel.read_grid</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hydromt.GridModel.write_grid.html">hydromt.GridModel.write_grid</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="hydromt.GridModel.setup_config.html">hydromt.GridModel.setup_config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hydromt.GridModel.setup_region.html">hydromt.GridModel.setup_region</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hydromt.GridModel.setup_maps_from_raster.html">hydromt.GridModel.setup_maps_from_raster</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hydromt.GridModel.setup_maps_from_raster_reclass.html">hydromt.GridModel.setup_maps_from_raster_reclass</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="hydromt.LumpedModel.html">hydromt.LumpedModel</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="hydromt.LumpedModel.response_units.html">hydromt.LumpedModel.response_units</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hydromt.LumpedModel.crs.html">hydromt.LumpedModel.crs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hydromt.LumpedModel.region.html">hydromt.LumpedModel.region</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="hydromt.LumpedModel.set_response_units.html">hydromt.LumpedModel.set_response_units</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hydromt.LumpedModel.read_response_units.html">hydromt.LumpedModel.read_response_units</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hydromt.LumpedModel.write_response_units.html">hydromt.LumpedModel.write_response_units</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="hydromt.LumpedModel.setup_config.html">hydromt.LumpedModel.setup_config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hydromt.LumpedModel.setup_region.html">hydromt.LumpedModel.setup_region</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hydromt.LumpedModel.setup_maps_from_raster.html">hydromt.LumpedModel.setup_maps_from_raster</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hydromt.LumpedModel.setup_maps_from_raster_reclass.html">hydromt.LumpedModel.setup_maps_from_raster_reclass</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="hydromt.MeshModel.html">hydromt.MeshModel</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="hydromt.MeshModel.mesh.html">hydromt.MeshModel.mesh</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hydromt.MeshModel.crs.html">hydromt.MeshModel.crs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hydromt.MeshModel.region.html">hydromt.MeshModel.region</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="hydromt.MeshModel.set_mesh.html">hydromt.MeshModel.set_mesh</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hydromt.MeshModel.read_mesh.html">hydromt.MeshModel.read_mesh</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hydromt.MeshModel.write_mesh.html">hydromt.MeshModel.write_mesh</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="hydromt.MeshModel.setup_config.html">hydromt.MeshModel.setup_config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hydromt.MeshModel.setup_region.html">hydromt.MeshModel.setup_region</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hydromt.MeshModel.setup_maps_from_raster.html">hydromt.MeshModel.setup_maps_from_raster</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hydromt.MeshModel.setup_maps_from_raster_reclass.html">hydromt.MeshModel.setup_maps_from_raster_reclass</a></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="hydromt.workflows.basin_mask.get_basin_geometry.html">hydromt.workflows.basin_mask.get_basin_geometry</a></li>

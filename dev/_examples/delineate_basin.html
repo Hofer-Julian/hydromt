@@ -336,6 +336,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/model_clip.html">Clipping a model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/model_config.html">Preparing a model configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/model_region.html">Defining a model region</a></li>
+<li class="toctree-l1"><a class="reference internal" href="working_with_models_basics.html">Example: Working with models from CLI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="working_with_models.html">Example: Working with models in Python</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Methods and workflows</span></p>
 <ul class="current nav bd-sidenav">
@@ -688,7 +690,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-2022-10-24 08:33:53,794 - basin_delineation - log - INFO - HydroMT version: 0.6.1.dev
+2022-10-26 09:40:57,723 - basin_delineation - log - INFO - HydroMT version: 0.6.1.dev
 </pre></div></div>
 </div>
 </section>
@@ -720,15 +722,15 @@ been extended with a basin mask layer, which together with the basin index vecto
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-2022-10-24 08:33:53,986 - basin_delineation - data_catalog - INFO - Reading data catalog artifact_data v0.0.6 from archive
-2022-10-24 08:33:53,989 - basin_delineation - data_catalog - INFO - Parsing data catalog from /home/runner/.hydromt_data/artifact_data/v0.0.6/data_catalog.yml
+2022-10-26 09:40:57,919 - basin_delineation - data_catalog - INFO - Reading data catalog artifact_data v0.0.6 from archive
+2022-10-26 09:40:57,919 - basin_delineation - data_catalog - INFO - Parsing data catalog from /home/runner/.hydromt_data/artifact_data/v0.0.6/data_catalog.yml
 {&#39;category&#39;: &#39;topography&#39;,
  &#39;paper_doi&#39;: &#39;10.1029/2019WR024873&#39;,
  &#39;paper_ref&#39;: &#39;Yamazaki et al. (2019)&#39;,
  &#39;source_license&#39;: &#39;CC-BY-NC 4.0 or ODbL 1.0&#39;,
  &#39;source_url&#39;: &#39;http://hydro.iis.u-tokyo.ac.jp/~yamadai/MERIT_Hydro&#39;,
  &#39;source_version&#39;: 1.0}
-2022-10-24 08:33:54,074 - basin_delineation - data_catalog - INFO - DataCatalog: Getting merit_hydro RasterDataset raster data from /home/runner/.hydromt_data/artifact_data/v0.0.6/merit_hydro/{variable}.tif
+2022-10-26 09:40:57,983 - basin_delineation - data_catalog - INFO - DataCatalog: Getting merit_hydro RasterDataset raster data from /home/runner/.hydromt_data/artifact_data/v0.0.6/merit_hydro/{variable}.tif
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -804,8 +806,8 @@ been extended with a basin mask layer, which together with the basin index vecto
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-2022-10-24 08:33:59,417 - basin_delineation - basin_mask - DEBUG - Getting basin IDs at point locations.
-2022-10-24 08:33:59,518 - basin_delineation - basin_mask - INFO - basin bbox: [12.1958, 45.5850, 12.8983, 46.4167]
+2022-10-26 09:41:01,735 - basin_delineation - basin_mask - DEBUG - Getting basin IDs at point locations.
+2022-10-26 09:41:01,811 - basin_delineation - basin_mask - INFO - basin bbox: [12.1958, 45.5850, 12.8983, 46.4167]
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -866,7 +868,7 @@ been extended with a basin mask layer, which together with the basin index vecto
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-2022-10-24 08:34:10,902 - basin_delineation - basin_mask - INFO - subbasin bbox: [12.2350, 45.7950, 12.8783, 46.4167]
+2022-10-26 09:41:10,587 - basin_delineation - basin_mask - INFO - subbasin bbox: [12.2350, 45.7950, 12.8783, 46.4167]
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -923,8 +925,8 @@ been extended with a basin mask layer, which together with the basin index vecto
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-2022-10-24 08:34:18,821 - basin_delineation - basin_mask - DEBUG - Getting IDs of intersecting basins.
-2022-10-24 08:34:19,325 - basin_delineation - basin_mask - INFO - subbasin bbox: [12.1958, 45.7192, 12.8783, 46.4167]
+2022-10-26 09:41:16,696 - basin_delineation - basin_mask - DEBUG - Getting IDs of intersecting basins.
+2022-10-26 09:41:17,069 - basin_delineation - basin_mask - INFO - subbasin bbox: [12.1958, 45.7192, 12.8783, 46.4167]
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -984,7 +986,7 @@ been extended with a basin mask layer, which together with the basin index vecto
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-2022-10-24 08:34:27,472 - basin_delineation - basin_mask - INFO - interbasin bbox: [12.5000, 45.7200, 12.7000, 46.0000]
+2022-10-26 09:41:23,336 - basin_delineation - basin_mask - INFO - interbasin bbox: [12.5000, 45.7200, 12.7000, 46.0000]
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">

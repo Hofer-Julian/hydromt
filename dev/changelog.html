@@ -364,6 +364,12 @@
 <section id="deprecated">
 <h3>Deprecated<a class="headerlink" href="#deprecated" title="Permalink to this heading">#</a></h3>
 </section>
+<section id="documentation">
+<h3>Documentation<a class="headerlink" href="#documentation" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>added <strong>working_with_models</strong> example notebook <a class="reference external" href="https://github.com/Deltares/hydromt/issues/221">Issue #221</a></p></li>
+</ul>
+</section>
 </section>
 <section id="v0-6-0-24-october-2022">
 <h2>v0.6.0 (24 October 2022)<a class="headerlink" href="#v0-6-0-24-october-2022" title="Permalink to this heading">#</a></h2>
@@ -630,8 +636,8 @@ or “from hydromt_xxx import xxxModel”.</p></li>
 <li><p>Bugfix handling of fn_ts in DataCatalog.get_geodataset() method</p></li>
 </ul>
 </section>
-<section id="documentation">
-<h3>Documentation<a class="headerlink" href="#documentation" title="Permalink to this heading">#</a></h3>
+<section id="id28">
+<h3>Documentation<a class="headerlink" href="#id28" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Now <strong>latest</strong> and <strong>stable</strong> versions.</p></li>
 <li><p>Added <strong>read_raster_data</strong> notebooks to the examples.</p></li>
@@ -642,8 +648,8 @@ or “from hydromt_xxx import xxxModel”.</p></li>
 <h2>v0.4.0 (23 April 2021)<a class="headerlink" href="#v0-4-0-23-april-2021" title="Permalink to this heading">#</a></h2>
 <p>This is the first stable release of hydroMT. Noticeable changes are the addition of the <code class="docutils literal notranslate"><span class="pre">deltares-data</span></code> flag, improvements with basin masking functionnalities, and the creation of examples notebooks available
 in the documentation and in Binder.</p>
-<section id="id28">
-<h3>Added<a class="headerlink" href="#id28" title="Permalink to this heading">#</a></h3>
+<section id="id29">
+<h3>Added<a class="headerlink" href="#id29" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Support the use of data stored at <a class="reference external" href="https://www.deltares.nl/en/">Deltares</a> by introducing the <code class="docutils literal notranslate"><span class="pre">==deltares-data</span></code> flag to the CLI and according property to the <code class="docutils literal notranslate"><span class="pre">DataCatalog</span></code> and <code class="docutils literal notranslate"><span class="pre">Model</span> <span class="pre">API</span></code>.</p></li>
 <li><p>Added <code class="docutils literal notranslate"><span class="pre">outlet_map</span></code> and <code class="docutils literal notranslate"><span class="pre">stream_map</span></code> functions in flw.py.</p></li>
@@ -651,8 +657,8 @@ in the documentation and in Binder.</p>
 <li><p>Binder environment to run examples notebooks.</p></li>
 </ul>
 </section>
-<section id="id29">
-<h3>Changed<a class="headerlink" href="#id29" title="Permalink to this heading">#</a></h3>
+<section id="id30">
+<h3>Changed<a class="headerlink" href="#id30" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Bump pyflwdir version and dependencies to dask, gdal, numba and netcdf.</p></li>
 <li><p>Basin mask functions have been moved from <strong>models/region.py</strong> to <strong>workflows/basin_mask.py</strong>.</p></li>
@@ -660,22 +666,22 @@ in the documentation and in Binder.</p>
 <li><p>In <code class="docutils literal notranslate"><span class="pre">get_basin_geometry</span></code> (workflows/basin_mask.py), basins geometry data are passed via <strong>basin_index</strong> argument instead of <strong>gdf_bas</strong>. GeoDataFrameAdapter are supported as well as geopandas.GeoDataFrame.</p></li>
 </ul>
 </section>
-<section id="id30">
-<h3>Deprecated<a class="headerlink" href="#id30" title="Permalink to this heading">#</a></h3>
+<section id="id31">
+<h3>Deprecated<a class="headerlink" href="#id31" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>The <code class="docutils literal notranslate"><span class="pre">build-base</span></code> CLI flag is deprecated since the ini file is now fully in control of each model compoenents to run.</p></li>
 </ul>
 </section>
-<section id="id31">
-<h3>Fixed<a class="headerlink" href="#id31" title="Permalink to this heading">#</a></h3>
+<section id="id32">
+<h3>Fixed<a class="headerlink" href="#id32" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>CLI method <code class="docutils literal notranslate"><span class="pre">clip</span></code>.</p></li>
 <li><p>Basin delineation using basin ID (basid).</p></li>
 <li><p>Fixed the <code class="docutils literal notranslate"><span class="pre">set_config</span></code> and <code class="docutils literal notranslate"><span class="pre">get_config</span></code> methods of the model API in order to always try first to read available config file before editing.</p></li>
 </ul>
 </section>
-<section id="id32">
-<h3>Documentation<a class="headerlink" href="#id32" title="Permalink to this heading">#</a></h3>
+<section id="id33">
+<h3>Documentation<a class="headerlink" href="#id33" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Documentation moved to GitHub Pages.</p></li>
 <li><p>Notebooks examples are added in the documentation.</p></li>
@@ -758,6 +764,11 @@ in the documentation and in Binder.</p>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#deprecated">
      Deprecated
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#documentation">
+     Documentation
     </a>
    </li>
   </ul>
@@ -945,7 +956,7 @@ in the documentation and in Binder.</p>
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#documentation">
+    <a class="reference internal nav-link" href="#id28">
      Documentation
     </a>
    </li>
@@ -957,27 +968,27 @@ in the documentation and in Binder.</p>
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id28">
+    <a class="reference internal nav-link" href="#id29">
      Added
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id29">
+    <a class="reference internal nav-link" href="#id30">
      Changed
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id30">
+    <a class="reference internal nav-link" href="#id31">
      Deprecated
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id31">
+    <a class="reference internal nav-link" href="#id32">
      Fixed
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id32">
+    <a class="reference internal nav-link" href="#id33">
      Documentation
     </a>
    </li>

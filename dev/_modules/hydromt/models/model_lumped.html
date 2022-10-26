@@ -342,9 +342,7 @@
 
 
 <span class="k">class</span> <span class="nc">LumpedMixin</span><span class="p">:</span>
-    <span class="n">_API</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s2">&quot;response_units&quot;</span><span class="p">:</span> <span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">,</span>
-    <span class="p">}</span>
+    <span class="n">_API</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;response_units&quot;</span><span class="p">:</span> <span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">}</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
@@ -462,6 +460,7 @@
     <span class="sd">&quot;&quot;&quot;Model class Lumped Model for lumped models in HydroMT&quot;&quot;&quot;</span>
 
     <span class="n">_CLI_ARGS</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;region&quot;</span><span class="p">:</span> <span class="s2">&quot;setup_region&quot;</span><span class="p">}</span>
+    <span class="n">_NAME</span> <span class="o">=</span> <span class="s2">&quot;lumped_model&quot;</span>
 
 <div class="viewcode-block" id="LumpedModel.__init__"><a class="viewcode-back" href="../../../_generated/hydromt.LumpedModel.html#hydromt.LumpedModel.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>

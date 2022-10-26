@@ -345,9 +345,7 @@
 <span class="k">class</span> <span class="nc">GridMixin</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="c1"># placeholders</span>
     <span class="c1"># xr.Dataset representation of all static parameter maps at the same resolution and bounds - renamed from staticmaps</span>
-    <span class="n">_API</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s2">&quot;grid&quot;</span><span class="p">:</span> <span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">,</span>
-    <span class="p">}</span>
+    <span class="n">_API</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;grid&quot;</span><span class="p">:</span> <span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">}</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
@@ -436,6 +434,7 @@
 
     <span class="c1"># TODO: add here &quot;res&quot;: &quot;setup_region&quot; or &quot;res&quot;: &quot;setup_grid&quot; when generic method is available</span>
     <span class="n">_CLI_ARGS</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;region&quot;</span><span class="p">:</span> <span class="s2">&quot;setup_region&quot;</span><span class="p">}</span>
+    <span class="n">_NAME</span> <span class="o">=</span> <span class="s2">&quot;grid_model&quot;</span>
 
 <div class="viewcode-block" id="GridModel.__init__"><a class="viewcode-back" href="../../../_generated/hydromt.GridModel.html#hydromt.GridModel.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
