@@ -327,6 +327,9 @@
 
 
 
+<li class="toctree-l1"><a class="reference internal" href="reading_point_data.html">Example: Reading geospatial point time-series</a></li>
+
+
 <li class="toctree-l1"><a class="reference internal" href="export_data.html">Example: Exporting data from a data catalog</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Working with models in HydroMT</span></p>
@@ -737,22 +740,22 @@ Options:
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-2022-10-26 10:46:01,317 - build - log - DEBUG - Writing log messages to new file /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model/hydromt.log.
-2022-10-26 10:46:01,317 - build - log - INFO - HydroMT version: 0.6.1.dev
-2022-10-26 10:46:01,317 - build - main - INFO - Building instance of grid_model model at /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model.
-2022-10-26 10:46:01,317 - build - main - INFO - User settings:
-2022-10-26 10:46:01,329 - build - model_api - WARNING - Model dir already exists and files might be overwritten: /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model/.
-2022-10-26 10:46:01,329 - build - model_api - INFO - Initializing grid_model model from hydromt (v0.6.1.dev).
-2022-10-26 10:46:01,330 - build - model_api - INFO - setup_region.region: {&#39;bbox&#39;: [11.7, 45.35, 12.95, 46.7]}
-2022-10-26 10:46:01,330 - build - model_api - INFO - setup_region.hydrography_fn: merit_hydro
-2022-10-26 10:46:01,330 - build - model_api - INFO - setup_region.basin_index_fn: merit_hydro_index
-2022-10-26 10:46:01,330 - build - basin_mask - DEBUG - Parsed region (kind=bbox): {&#39;bbox&#39;: [11.7, 45.35, 12.95, 46.7]}
-2022-10-26 10:46:01,333 - build - model_api - INFO - Writing model data to /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model
-2022-10-26 10:46:01,333 - build - model_api - INFO - Writing model config to /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model/model.ini
-2022-10-26 10:46:01,333 - build - model_api - INFO - No data found - exiting
-2022-10-26 10:46:01,334 - build - model_api - DEBUG - Writing file geoms/region.geojson
-2022-10-26 10:46:01,365 - build - model_api - INFO - No data found - exiting
-2022-10-26 10:46:01,365 - build - model_api - INFO - No data found - exiting
+2022-10-26 10:58:07,495 - build - log - DEBUG - Writing log messages to new file /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model/hydromt.log.
+2022-10-26 10:58:07,495 - build - log - INFO - HydroMT version: 0.6.1.dev
+2022-10-26 10:58:07,495 - build - main - INFO - Building instance of grid_model model at /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model.
+2022-10-26 10:58:07,495 - build - main - INFO - User settings:
+2022-10-26 10:58:07,507 - build - model_api - WARNING - Model dir already exists and files might be overwritten: /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model/.
+2022-10-26 10:58:07,507 - build - model_api - INFO - Initializing grid_model model from hydromt (v0.6.1.dev).
+2022-10-26 10:58:07,508 - build - model_api - INFO - setup_region.region: {&#39;bbox&#39;: [11.7, 45.35, 12.95, 46.7]}
+2022-10-26 10:58:07,508 - build - model_api - INFO - setup_region.hydrography_fn: merit_hydro
+2022-10-26 10:58:07,508 - build - model_api - INFO - setup_region.basin_index_fn: merit_hydro_index
+2022-10-26 10:58:07,508 - build - basin_mask - DEBUG - Parsed region (kind=bbox): {&#39;bbox&#39;: [11.7, 45.35, 12.95, 46.7]}
+2022-10-26 10:58:07,511 - build - model_api - INFO - Writing model data to /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model
+2022-10-26 10:58:07,511 - build - model_api - INFO - Writing model config to /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model/model.ini
+2022-10-26 10:58:07,512 - build - model_api - INFO - No data found - exiting
+2022-10-26 10:58:07,512 - build - model_api - DEBUG - Writing file geoms/region.geojson
+2022-10-26 10:58:07,543 - build - model_api - INFO - No data found - exiting
+2022-10-26 10:58:07,543 - build - model_api - INFO - No data found - exiting
 
 </pre></div></div>
 </div>
@@ -857,54 +860,54 @@ components = [&#39;config&#39;, &#39;geoms&#39;, &#39;maps&#39;]
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-2022-10-26 10:46:03,822 - build - log - DEBUG - Writing log messages to new file /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model1/hydromt.log.
-2022-10-26 10:46:03,822 - build - log - INFO - HydroMT version: 0.6.1.dev
-2022-10-26 10:46:03,823 - build - main - INFO - Building instance of grid_model model at /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model1.
-2022-10-26 10:46:03,823 - build - main - INFO - User settings:
-2022-10-26 10:46:03,890 - build - data_catalog - INFO - Reading data catalog artifact_data v0.0.6 from archive
-2022-10-26 10:46:03,890 - build - data_catalog - INFO - Parsing data catalog from /home/runner/.hydromt_data/artifact_data/v0.0.6/data_catalog.yml
-2022-10-26 10:46:03,952 - build - data_catalog - INFO - Parsing data catalog from vito_reclass.yml
-2022-10-26 10:46:03,953 - build - model_api - WARNING - Model dir already exists and files might be overwritten: /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model1/.
-2022-10-26 10:46:03,953 - build - model_api - INFO - Initializing grid_model model from hydromt (v0.6.1.dev).
-2022-10-26 10:46:03,953 - build - model_api - DEBUG - Setting model config options.
-2022-10-26 10:46:03,953 - build - model_api - INFO - setup_region.region: {&#39;bbox&#39;: [11.7, 45.35, 12.95, 46.7]}
-2022-10-26 10:46:03,953 - build - model_api - INFO - setup_region.hydrography_fn: merit_hydro
-2022-10-26 10:46:03,954 - build - model_api - INFO - setup_region.basin_index_fn: merit_hydro_index
-2022-10-26 10:46:03,954 - build - basin_mask - DEBUG - Parsed region (kind=bbox): {&#39;bbox&#39;: [11.7, 45.35, 12.95, 46.7]}
-2022-10-26 10:46:03,957 - build - model_api - INFO - setup_maps_from_raster.raster_fn: merit_hydro_1k
-2022-10-26 10:46:03,957 - build - model_api - INFO - setup_maps_from_raster.variables: elevtn
-2022-10-26 10:46:03,957 - build - model_api - INFO - setup_maps_from_raster.fill_method: None
-2022-10-26 10:46:03,957 - build - model_api - INFO - setup_maps_from_raster.name: None
-2022-10-26 10:46:03,957 - build - model_api - INFO - setup_maps_from_raster.reproject_method: None
-2022-10-26 10:46:03,957 - build - model_api - INFO - setup_maps_from_raster.split_dataset: True
-2022-10-26 10:46:03,957 - build - model_api - INFO - Preparing maps data from raster source merit_hydro_1k
-2022-10-26 10:46:03,958 - build - data_catalog - INFO - DataCatalog: Getting merit_hydro_1k RasterDataset raster data from /home/runner/.hydromt_data/artifact_data/v0.0.6/merit_hydro_1k/{variable}.tif
-2022-10-26 10:46:03,984 - build - rasterdataset - DEBUG - RasterDataset: Clip with geom - [11.700, 45.350, 12.950, 46.700]
-2022-10-26 10:46:03,996 - build - model_api - INFO - setup_maps_from_raster_reclass.raster_fn: vito
-2022-10-26 10:46:03,996 - build - model_api - INFO - setup_maps_from_raster_reclass.reclass_table_fn: vito_reclass
-2022-10-26 10:46:03,997 - build - model_api - INFO - setup_maps_from_raster_reclass.reclass_variables: [&#39;manning&#39;]
-2022-10-26 10:46:03,997 - build - model_api - INFO - setup_maps_from_raster_reclass.variable: None
-2022-10-26 10:46:03,997 - build - model_api - INFO - setup_maps_from_raster_reclass.fill_method: None
-2022-10-26 10:46:03,997 - build - model_api - INFO - setup_maps_from_raster_reclass.reproject_method: None
-2022-10-26 10:46:03,997 - build - model_api - INFO - setup_maps_from_raster_reclass.name: None
-2022-10-26 10:46:03,997 - build - model_api - INFO - setup_maps_from_raster_reclass.split_dataset: True
-2022-10-26 10:46:03,997 - build - model_api - INFO - Preparing map data by reclassifying the data in vito based on vito_reclass
-2022-10-26 10:46:03,997 - build - data_catalog - INFO - DataCatalog: Getting vito RasterDataset raster data from /home/runner/.hydromt_data/artifact_data/v0.0.6/vito.tif
-2022-10-26 10:46:04,013 - build - rasterdataset - DEBUG - RasterDataset: Clip with geom - [11.700, 45.350, 12.950, 46.700]
-2022-10-26 10:46:04,027 - build - data_catalog - INFO - DataCatalog: Getting vito_reclass DataFrame csv data from /home/runner/work/hydromt/hydromt/docs/_examples/vito_reclass.csv
-2022-10-26 10:46:04,027 - build - dataframe - INFO - DataFrame: Read csv data.
-2022-10-26 10:46:04,037 - build - model_api - INFO - write.components: [&#39;config&#39;, &#39;geoms&#39;, &#39;maps&#39;]
-2022-10-26 10:46:04,037 - build - model_api - INFO - Writing model data to /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model1
-2022-10-26 10:46:04,037 - build - model_api - INFO - Writing model config to /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model1/model.ini
-2022-10-26 10:46:04,037 - build - model_api - DEBUG - Writing file geoms/region.geojson
-2022-10-26 10:46:04,068 - build - model_api - DEBUG - Writing file maps/elevtn.nc
-2022-10-26 10:46:04,075 - build - model_api - DEBUG - Writing file maps/manning.nc
-2022-10-26 10:46:04,270 - build - model_api - INFO - Writing model data to /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model1
-2022-10-26 10:46:04,270 - build - model_api - INFO - Writing model config to /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model1/model.ini
-2022-10-26 10:46:04,271 - build - model_api - INFO - No data found - exiting
-2022-10-26 10:46:04,271 - build - model_api - DEBUG - Writing file geoms/region.geojson
-2022-10-26 10:46:04,276 - build - model_api - INFO - No data found - exiting
-2022-10-26 10:46:04,276 - build - model_api - INFO - No data found - exiting
+2022-10-26 10:58:09,998 - build - log - DEBUG - Writing log messages to new file /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model1/hydromt.log.
+2022-10-26 10:58:09,998 - build - log - INFO - HydroMT version: 0.6.1.dev
+2022-10-26 10:58:09,998 - build - main - INFO - Building instance of grid_model model at /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model1.
+2022-10-26 10:58:09,998 - build - main - INFO - User settings:
+2022-10-26 10:58:10,041 - build - data_catalog - INFO - Reading data catalog artifact_data v0.0.6 from archive
+2022-10-26 10:58:10,041 - build - data_catalog - INFO - Parsing data catalog from /home/runner/.hydromt_data/artifact_data/v0.0.6/data_catalog.yml
+2022-10-26 10:58:10,104 - build - data_catalog - INFO - Parsing data catalog from vito_reclass.yml
+2022-10-26 10:58:10,105 - build - model_api - WARNING - Model dir already exists and files might be overwritten: /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model1/.
+2022-10-26 10:58:10,105 - build - model_api - INFO - Initializing grid_model model from hydromt (v0.6.1.dev).
+2022-10-26 10:58:10,106 - build - model_api - DEBUG - Setting model config options.
+2022-10-26 10:58:10,106 - build - model_api - INFO - setup_region.region: {&#39;bbox&#39;: [11.7, 45.35, 12.95, 46.7]}
+2022-10-26 10:58:10,106 - build - model_api - INFO - setup_region.hydrography_fn: merit_hydro
+2022-10-26 10:58:10,106 - build - model_api - INFO - setup_region.basin_index_fn: merit_hydro_index
+2022-10-26 10:58:10,106 - build - basin_mask - DEBUG - Parsed region (kind=bbox): {&#39;bbox&#39;: [11.7, 45.35, 12.95, 46.7]}
+2022-10-26 10:58:10,109 - build - model_api - INFO - setup_maps_from_raster.raster_fn: merit_hydro_1k
+2022-10-26 10:58:10,110 - build - model_api - INFO - setup_maps_from_raster.variables: elevtn
+2022-10-26 10:58:10,110 - build - model_api - INFO - setup_maps_from_raster.fill_method: None
+2022-10-26 10:58:10,110 - build - model_api - INFO - setup_maps_from_raster.name: None
+2022-10-26 10:58:10,110 - build - model_api - INFO - setup_maps_from_raster.reproject_method: None
+2022-10-26 10:58:10,110 - build - model_api - INFO - setup_maps_from_raster.split_dataset: True
+2022-10-26 10:58:10,110 - build - model_api - INFO - Preparing maps data from raster source merit_hydro_1k
+2022-10-26 10:58:10,110 - build - data_catalog - INFO - DataCatalog: Getting merit_hydro_1k RasterDataset raster data from /home/runner/.hydromt_data/artifact_data/v0.0.6/merit_hydro_1k/{variable}.tif
+2022-10-26 10:58:10,136 - build - rasterdataset - DEBUG - RasterDataset: Clip with geom - [11.700, 45.350, 12.950, 46.700]
+2022-10-26 10:58:10,148 - build - model_api - INFO - setup_maps_from_raster_reclass.raster_fn: vito
+2022-10-26 10:58:10,148 - build - model_api - INFO - setup_maps_from_raster_reclass.reclass_table_fn: vito_reclass
+2022-10-26 10:58:10,148 - build - model_api - INFO - setup_maps_from_raster_reclass.reclass_variables: [&#39;manning&#39;]
+2022-10-26 10:58:10,149 - build - model_api - INFO - setup_maps_from_raster_reclass.variable: None
+2022-10-26 10:58:10,149 - build - model_api - INFO - setup_maps_from_raster_reclass.fill_method: None
+2022-10-26 10:58:10,149 - build - model_api - INFO - setup_maps_from_raster_reclass.reproject_method: None
+2022-10-26 10:58:10,149 - build - model_api - INFO - setup_maps_from_raster_reclass.name: None
+2022-10-26 10:58:10,149 - build - model_api - INFO - setup_maps_from_raster_reclass.split_dataset: True
+2022-10-26 10:58:10,149 - build - model_api - INFO - Preparing map data by reclassifying the data in vito based on vito_reclass
+2022-10-26 10:58:10,149 - build - data_catalog - INFO - DataCatalog: Getting vito RasterDataset raster data from /home/runner/.hydromt_data/artifact_data/v0.0.6/vito.tif
+2022-10-26 10:58:10,165 - build - rasterdataset - DEBUG - RasterDataset: Clip with geom - [11.700, 45.350, 12.950, 46.700]
+2022-10-26 10:58:10,179 - build - data_catalog - INFO - DataCatalog: Getting vito_reclass DataFrame csv data from /home/runner/work/hydromt/hydromt/docs/_examples/vito_reclass.csv
+2022-10-26 10:58:10,179 - build - dataframe - INFO - DataFrame: Read csv data.
+2022-10-26 10:58:10,189 - build - model_api - INFO - write.components: [&#39;config&#39;, &#39;geoms&#39;, &#39;maps&#39;]
+2022-10-26 10:58:10,189 - build - model_api - INFO - Writing model data to /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model1
+2022-10-26 10:58:10,189 - build - model_api - INFO - Writing model config to /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model1/model.ini
+2022-10-26 10:58:10,189 - build - model_api - DEBUG - Writing file geoms/region.geojson
+2022-10-26 10:58:10,219 - build - model_api - DEBUG - Writing file maps/elevtn.nc
+2022-10-26 10:58:10,227 - build - model_api - DEBUG - Writing file maps/manning.nc
+2022-10-26 10:58:10,420 - build - model_api - INFO - Writing model data to /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model1
+2022-10-26 10:58:10,421 - build - model_api - INFO - Writing model config to /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model1/model.ini
+2022-10-26 10:58:10,421 - build - model_api - INFO - No data found - exiting
+2022-10-26 10:58:10,421 - build - model_api - DEBUG - Writing file geoms/region.geojson
+2022-10-26 10:58:10,426 - build - model_api - INFO - No data found - exiting
+2022-10-26 10:58:10,427 - build - model_api - INFO - No data found - exiting
 
 </pre></div></div>
 </div>
@@ -1053,26 +1056,26 @@ Writing ./tmp_grid_model1/grid_model_update.ini
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-2022-10-26 10:46:09,170 - update - log - DEBUG - Appending log messages to file /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model1/hydromt.log.
-2022-10-26 10:46:09,170 - update - log - INFO - HydroMT version: 0.6.1.dev
-2022-10-26 10:46:09,170 - update - main - INFO - Updating grid_model model at /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model1 (r+).
-2022-10-26 10:46:09,170 - update - main - INFO - Output dir: /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model1
-2022-10-26 10:46:09,170 - update - main - INFO - User settings:
-2022-10-26 10:46:09,183 - update - model_api - INFO - Initializing grid_model model from hydromt (v0.6.1.dev).
-2022-10-26 10:46:09,184 - update - model_api - DEBUG - Reading model file region.
-2022-10-26 10:46:09,206 - update - model_api - INFO - setup_maps_from_raster.raster_fn: merit_hydro_1k
-2022-10-26 10:46:09,206 - update - model_api - INFO - setup_maps_from_raster.variables: uparea
-2022-10-26 10:46:09,206 - update - model_api - INFO - setup_maps_from_raster.fill_method: None
-2022-10-26 10:46:09,206 - update - model_api - INFO - setup_maps_from_raster.name: None
-2022-10-26 10:46:09,206 - update - model_api - INFO - setup_maps_from_raster.reproject_method: None
-2022-10-26 10:46:09,206 - update - model_api - INFO - setup_maps_from_raster.split_dataset: True
-2022-10-26 10:46:09,206 - update - model_api - INFO - Preparing maps data from raster source merit_hydro_1k
-2022-10-26 10:46:09,260 - update - data_catalog - INFO - Reading data catalog artifact_data v0.0.6 from archive
-2022-10-26 10:46:09,261 - update - data_catalog - INFO - Parsing data catalog from /home/runner/.hydromt_data/artifact_data/v0.0.6/data_catalog.yml
-2022-10-26 10:46:09,324 - update - data_catalog - INFO - DataCatalog: Getting merit_hydro_1k RasterDataset raster data from /home/runner/.hydromt_data/artifact_data/v0.0.6/merit_hydro_1k/{variable}.tif
-2022-10-26 10:46:09,349 - update - rasterdataset - DEBUG - RasterDataset: Clip with geom - [11.700, 45.350, 12.950, 46.700]
-2022-10-26 10:46:09,362 - update - model_api - INFO - write_maps.fn: maps/{name}.nc
-2022-10-26 10:46:09,362 - update - model_api - DEBUG - Writing file maps/uparea.nc
+2022-10-26 10:58:15,319 - update - log - DEBUG - Appending log messages to file /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model1/hydromt.log.
+2022-10-26 10:58:15,319 - update - log - INFO - HydroMT version: 0.6.1.dev
+2022-10-26 10:58:15,319 - update - main - INFO - Updating grid_model model at /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model1 (r+).
+2022-10-26 10:58:15,319 - update - main - INFO - Output dir: /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model1
+2022-10-26 10:58:15,319 - update - main - INFO - User settings:
+2022-10-26 10:58:15,331 - update - model_api - INFO - Initializing grid_model model from hydromt (v0.6.1.dev).
+2022-10-26 10:58:15,332 - update - model_api - DEBUG - Reading model file region.
+2022-10-26 10:58:15,354 - update - model_api - INFO - setup_maps_from_raster.raster_fn: merit_hydro_1k
+2022-10-26 10:58:15,354 - update - model_api - INFO - setup_maps_from_raster.variables: uparea
+2022-10-26 10:58:15,354 - update - model_api - INFO - setup_maps_from_raster.fill_method: None
+2022-10-26 10:58:15,354 - update - model_api - INFO - setup_maps_from_raster.name: None
+2022-10-26 10:58:15,354 - update - model_api - INFO - setup_maps_from_raster.reproject_method: None
+2022-10-26 10:58:15,354 - update - model_api - INFO - setup_maps_from_raster.split_dataset: True
+2022-10-26 10:58:15,354 - update - model_api - INFO - Preparing maps data from raster source merit_hydro_1k
+2022-10-26 10:58:15,384 - update - data_catalog - INFO - Reading data catalog artifact_data v0.0.6 from archive
+2022-10-26 10:58:15,385 - update - data_catalog - INFO - Parsing data catalog from /home/runner/.hydromt_data/artifact_data/v0.0.6/data_catalog.yml
+2022-10-26 10:58:15,448 - update - data_catalog - INFO - DataCatalog: Getting merit_hydro_1k RasterDataset raster data from /home/runner/.hydromt_data/artifact_data/v0.0.6/merit_hydro_1k/{variable}.tif
+2022-10-26 10:58:15,473 - update - rasterdataset - DEBUG - RasterDataset: Clip with geom - [11.700, 45.350, 12.950, 46.700]
+2022-10-26 10:58:15,486 - update - model_api - INFO - write_maps.fn: maps/{name}.nc
+2022-10-26 10:58:15,486 - update - model_api - DEBUG - Writing file maps/uparea.nc
 
 </pre></div></div>
 </div>
