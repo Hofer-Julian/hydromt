@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>Example: Delineating basins &#8212; HydroMT  documentation</title>
+    <title>Example: Define hydrological model regions &#8212; HydroMT  documentation</title>
   <script>
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
@@ -46,8 +46,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = '_examples/delineate_basin';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Example: Working with raster data" href="working_with_raster.html" />
-    <link rel="prev" title="Statistical methods" href="../user_guide/methods_stats.html" />
+    <link rel="next" title="Overview methods and workflows" href="../user_guide/methods_main.html" />
+    <link rel="prev" title="Example: Working with models in Python" href="working_with_models.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="docsearch:language" content="en">
   </head>
@@ -333,7 +333,7 @@
 <li class="toctree-l1"><a class="reference internal" href="export_data.html">Example: Exporting data from a data catalog</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Working with models in HydroMT</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/model_overview.html">Overview models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/model_build.html">Building a model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/model_update.html">Updating a model</a></li>
@@ -342,13 +342,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/model_region.html">Defining a model region</a></li>
 <li class="toctree-l1"><a class="reference internal" href="working_with_models_basics.html">Example: Working with models from CLI</a></li>
 <li class="toctree-l1"><a class="reference internal" href="working_with_models.html">Example: Working with models in Python</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Example: Define hydrological model regions</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Methods and workflows</span></p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/methods_main.html">Overview methods and workflows</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/methods_stats.html">Statistical methods</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Example: Delineating basins</a></li>
 <li class="toctree-l1"><a class="reference internal" href="working_with_raster.html">Example: Working with raster data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="working_with_flow_directions.html">Example: Working with flow direction data</a></li>
 </ul>
 
   </div>
@@ -639,9 +640,9 @@ div.rendered_html tbody tr:hover {
     For an interactive online version click here:
     <a href="https://mybinder.org/v2/gh/Deltares/hydromt/main?urlpath=lab/tree/examples/delineate_basin.ipynb" target="_blank" rel="noopener noreferrer"><img alt="Binder badge" src="https://mybinder.org/badge_logo.svg"></a>
 </div></div>
-<section id="Example:-Delineating-basins">
-<h1>Example: Delineating basins<a class="headerlink" href="#Example:-Delineating-basins" title="Permalink to this heading">#</a></h1>
-<p>The first step when building a model is to define the model domain. For hydrological models this is typically a full <strong>basin</strong> or <strong>sub-basin</strong> which includes all upstream cells. For hydrodynamic models this can also be an <strong>inter-basin</strong> which does not necessary include all upstream cells. <em>HydroMT</em> has the <a class="reference internal" href="../_generated/hydromt.workflows.basin_mask.get_basin_geometry.html"><span class="doc">get_basin_geometry()</span></a> method to do just that.</p>
+<section id="Example:-Define-hydrological-model-regions">
+<h1>Example: Define hydrological model regions<a class="headerlink" href="#Example:-Define-hydrological-model-regions" title="Permalink to this heading">#</a></h1>
+<p>The first step when building a model is to define the model domain. For hydrological models this is typically a full <strong>basin</strong> or <strong>sub-basin</strong> which includes all upstream cells. For hydrodynamic models this can also be an <strong>inter-basin</strong> which does not necessary include all upstream cells. <em>HydroMT</em> has the <a class="reference external" href="https://deltares.github.io/hydromt/latest/_generated/hydromt.workflows.basin_mask.get_basin_geometry.html">get_basin_geometry()</a> method to do just that.</p>
 <section id="Import-packages">
 <h2>Import packages<a class="headerlink" href="#Import-packages" title="Permalink to this heading">#</a></h2>
 <div class="nbinput nblast docutils container">
@@ -668,23 +669,16 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
-<div class="nbinput nblast docutils container">
+<div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import hydromt</span>
 <span class="kn">import</span> <span class="nn">hydromt</span>
 <span class="kn">from</span> <span class="nn">hydromt.workflows</span> <span class="kn">import</span> <span class="n">get_basin_geometry</span>
-</pre></div>
-</div>
-</div>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># setup logging</span>
 <span class="kn">from</span> <span class="nn">hydromt.log</span> <span class="kn">import</span> <span class="n">setuplog</span>
 
+<span class="c1"># setup logging</span>
 <span class="n">logger</span> <span class="o">=</span> <span class="n">setuplog</span><span class="p">(</span><span class="s2">&quot;basin_delineation&quot;</span><span class="p">,</span> <span class="n">log_level</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -694,29 +688,38 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-2022-10-26 10:56:51,560 - basin_delineation - log - INFO - HydroMT version: 0.6.1.dev
+2022-10-26 14:01:21,924 - basin_delineation - log - INFO - HydroMT version: 0.6.1.dev
 </pre></div></div>
 </div>
 </section>
 <section id="Read-data">
 <h2>Read data<a class="headerlink" href="#Read-data" title="Permalink to this heading">#</a></h2>
-<p>Read data using the <a class="reference internal" href="../_generated/hydromt.data_catalog.DataCatalog.html"><span class="doc">DataCatalog</span></a>. If no yml files with data sources are provided, by default data for the Piave basin is downloaded from the hydromt-artifacts to to <code class="docutils literal notranslate"><span class="pre">~/.hydromt_data/</span></code>. Links to the original data sources and data licenses can be found in the meta dict of each source. Here we use flow direction data from <a class="reference external" href="http://hydro.iis.u-tokyo.ac.jp/~yamadai/MERIT_Hydro">MERIT Hydro</a>. Note that the original <code class="docutils literal notranslate"><span class="pre">'MERIT</span> <span class="pre">Hydro'</span></code> data has
-been extended with a basin mask layer, which together with the basin index vector data makes faster basin delineation possible.</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+<p>Read data using the <a class="reference external" href="https://deltares.github.io/hydromt/latest/_generated/hydromt.data_catalog.DataCatalog.html">DataCatalog</a>. If no yml files with data sources are provided, by default data for the Piave basin is downloaded from the hydromt-artifacts to to <code class="docutils literal notranslate"><span class="pre">~/.hydromt_data/</span></code>. Links to the original data sources and data licenses can be found in the meta dict of each source. Here we use flow direction data from <a class="reference external" href="http://hydro.iis.u-tokyo.ac.jp/~yamadai/MERIT_Hydro">MERIT Hydro</a>. Note that
+the original <code class="docutils literal notranslate"><span class="pre">'MERIT</span> <span class="pre">Hydro'</span></code> data has been extended with a basin mask layer, which together with the basin index vector data makes faster basin delineation possible.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># instantiate instance of Data Catalog</span>
-<span class="n">data_catalog</span> <span class="o">=</span> <span class="n">hydromt</span><span class="o">.</span><span class="n">DataCatalog</span><span class="p">(</span><span class="n">logger</span><span class="o">=</span><span class="n">logger</span><span class="p">)</span>
+<span class="n">data_catalog</span> <span class="o">=</span> <span class="n">hydromt</span><span class="o">.</span><span class="n">DataCatalog</span><span class="p">(</span><span class="n">logger</span><span class="o">=</span><span class="n">logger</span><span class="p">,</span> <span class="n">data_libs</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;artifact_data&quot;</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+2022-10-26 14:01:21,975 - basin_delineation - data_catalog - INFO - Reading data catalog artifact_data v0.0.6 from archive
+2022-10-26 14:01:21,975 - basin_delineation - data_catalog - INFO - Parsing data catalog from /home/runner/.hydromt_data/artifact_data/v0.0.6/data_catalog.yml
+</pre></div></div>
+</div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># read MERIT hydro flow direction data</span>
-<span class="n">pprint</span><span class="p">(</span><span class="n">data_catalog</span><span class="p">[</span><span class="s2">&quot;merit_hydro&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">meta</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data_catalog</span><span class="p">[</span><span class="s2">&quot;merit_hydro&quot;</span><span class="p">])</span>
 <span class="n">ds</span> <span class="o">=</span> <span class="n">data_catalog</span><span class="o">.</span><span class="n">get_rasterdataset</span><span class="p">(</span><span class="s2">&quot;merit_hydro&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -726,25 +729,29 @@ been extended with a basin mask layer, which together with the basin index vecto
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-2022-10-26 10:56:51,607 - basin_delineation - data_catalog - INFO - Reading data catalog artifact_data v0.0.6 from archive
-2022-10-26 10:56:51,608 - basin_delineation - data_catalog - INFO - Parsing data catalog from /home/runner/.hydromt_data/artifact_data/v0.0.6/data_catalog.yml
-{&#39;category&#39;: &#39;topography&#39;,
- &#39;paper_doi&#39;: &#39;10.1029/2019WR024873&#39;,
- &#39;paper_ref&#39;: &#39;Yamazaki et al. (2019)&#39;,
- &#39;source_license&#39;: &#39;CC-BY-NC 4.0 or ODbL 1.0&#39;,
- &#39;source_url&#39;: &#39;http://hydro.iis.u-tokyo.ac.jp/~yamadai/MERIT_Hydro&#39;,
- &#39;source_version&#39;: 1.0}
-2022-10-26 10:56:51,672 - basin_delineation - data_catalog - INFO - DataCatalog: Getting merit_hydro RasterDataset raster data from /home/runner/.hydromt_data/artifact_data/v0.0.6/merit_hydro/{variable}.tif
+crs: 4326
+data_type: RasterDataset
+driver: raster
+meta:
+  category: topography
+  paper_doi: 10.1029/2019WR024873
+  paper_ref: Yamazaki et al. (2019)
+  source_license: CC-BY-NC 4.0 or ODbL 1.0
+  source_url: http://hydro.iis.u-tokyo.ac.jp/~yamadai/MERIT_Hydro
+  source_version: 1.0
+path: /home/runner/.hydromt_data/artifact_data/v0.0.6/merit_hydro/{variable}.tif
+
+2022-10-26 14:01:22,045 - basin_delineation - data_catalog - INFO - DataCatalog: Getting merit_hydro RasterDataset raster data from /home/runner/.hydromt_data/artifact_data/v0.0.6/merit_hydro/{variable}.tif
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># read MERIT hydro basin index vector data. This data contains bounding box geometries of all basins globally.</span>
 <span class="c1"># Here we pass the GeoDataFrameAdapter instead of the GeoDataFrame itself</span>
 <span class="c1"># a spatial subset of the data loaded within the get_basin_geometry method</span>
-<span class="n">pprint</span><span class="p">(</span><span class="n">data_catalog</span><span class="p">[</span><span class="s2">&quot;merit_hydro_index&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">meta</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data_catalog</span><span class="p">[</span><span class="s2">&quot;merit_hydro_index&quot;</span><span class="p">])</span>
 <span class="n">basin_index</span> <span class="o">=</span> <span class="n">data_catalog</span><span class="p">[</span><span class="s2">&quot;merit_hydro_index&quot;</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -754,14 +761,20 @@ been extended with a basin mask layer, which together with the basin index vecto
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-{&#39;category&#39;: &#39;topography&#39;,
- &#39;paper_doi&#39;: &#39;10.5194/hess-2020-582&#39;,
- &#39;paper_ref&#39;: &#39;Eilander et al. (in review)&#39;,
- &#39;source_license&#39;: &#39;CC-BY-NC 4.0&#39;}
+crs: 4326
+data_type: GeoDataFrame
+driver: vector
+meta:
+  category: topography
+  paper_doi: 10.5194/hess-2020-582
+  paper_ref: Eilander et al. (in review)
+  source_license: CC-BY-NC 4.0
+path: /home/runner/.hydromt_data/artifact_data/v0.0.6/merit_hydro_index.gpkg
+
 </pre></div></div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># derive river geometry based on stream order &gt;= 7 (for plotting only)</span>
@@ -771,10 +784,10 @@ been extended with a basin mask layer, which together with the basin index vecto
 
 
 <span class="k">def</span> <span class="nf">plot</span><span class="p">(</span><span class="n">extent</span><span class="p">,</span> <span class="n">gdf_bas</span><span class="p">,</span> <span class="n">gdf_out</span><span class="p">):</span>
-    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
     <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="n">proj</span><span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">set_extent</span><span class="p">(</span><span class="n">extent</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="n">proj</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">add_image</span><span class="p">(</span><span class="n">cimgt</span><span class="o">.</span><span class="n">QuadtreeTiles</span><span class="p">(),</span> <span class="mi">12</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">add_image</span><span class="p">(</span><span class="n">cimgt</span><span class="o">.</span><span class="n">QuadtreeTiles</span><span class="p">(),</span> <span class="mi">10</span><span class="p">)</span>
     <span class="n">gdf_bas</span><span class="o">.</span><span class="n">boundary</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
     <span class="n">gdf_riv</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
     <span class="n">gdf_out</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
@@ -785,10 +798,10 @@ been extended with a basin mask layer, which together with the basin index vecto
 </section>
 <section id="Delineate-basins">
 <h2>Delineate basins<a class="headerlink" href="#Delineate-basins" title="Permalink to this heading">#</a></h2>
-<p>Several examples to delineate sub-, inter- or full basins are provided below together with the command line interface (CLI) syntax for the HydroMT <a class="reference internal" href="../user_guide/model_build.html"><span class="doc">build</span></a> command. All CLI options are described in the <a class="reference internal" href="../_generated/hydromt.workflows.basin_mask.parse_region.html"><span class="doc">parse_region()</span></a> method.</p>
+<p>Several examples to delineate sub-, inter- or full basins are provided below together with the command line interface (CLI) syntax for the HydroMT <a class="reference internal" href="../user_guide/model_build.html"><span class="doc">build</span></a> command. All CLI options are described in the <a class="reference external" href="https://deltares.github.io/hydromt/latest/_generated/hydromt.workflows.basin_mask.parse_region.html">parse_region()</a> method.</p>
 <p>Get the basin based on a point location <code class="docutils literal notranslate"><span class="pre">[x,</span> <span class="pre">y]</span></code>.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># CLI syntax: {&#39;basin&#39;: [x, y]}</span>
@@ -810,12 +823,12 @@ been extended with a basin mask layer, which together with the basin index vecto
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-2022-10-26 10:56:55,386 - basin_delineation - basin_mask - DEBUG - Getting basin IDs at point locations.
-2022-10-26 10:56:55,461 - basin_delineation - basin_mask - INFO - basin bbox: [12.1958, 45.5850, 12.8983, 46.4167]
+2022-10-26 14:01:25,903 - basin_delineation - basin_mask - DEBUG - Getting basin IDs at point locations.
+2022-10-26 14:01:25,982 - basin_delineation - basin_mask - INFO - basin bbox: [12.1958, 45.5850, 12.8983, 46.4167]
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plot results</span>
@@ -827,7 +840,7 @@ been extended with a basin mask layer, which together with the basin index vecto
 </div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -839,7 +852,7 @@ been extended with a basin mask layer, which together with the basin index vecto
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/_examples_delineate_basin_17_1.png" src="../_images/_examples_delineate_basin_17_1.png" />
+<img alt="../_images/_examples_delineate_basin_16_1.png" src="../_images/_examples_delineate_basin_16_1.png" />
 </div>
 </div>
 </section>
@@ -848,7 +861,7 @@ been extended with a basin mask layer, which together with the basin index vecto
 <p>We need an initial bounding box to delineate the sub-basin. This can be derived from the <em>merit_hydro_index</em> or user provided initial <code class="docutils literal notranslate"><span class="pre">bounds</span></code>. The latter might be faster if delineating a small sub-basin from a large basin. A warning is raised if not all contributing cells are included.</p>
 <p>Get a subbasin based on its outlet location <code class="docutils literal notranslate"><span class="pre">[x,y]</span></code>, snapped to a stream defined by a <code class="docutils literal notranslate"><span class="pre">&lt;variable&gt;:&lt;threshold&gt;</span></code> pair, in this case a stream order larger or equal to 7. The <code class="docutils literal notranslate"><span class="pre">variable</span></code> should be present in the dataset <code class="docutils literal notranslate"><span class="pre">ds</span></code>.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># CLI syntax: {&#39;subbasin&#39;: [x, y], &lt;variable&gt;: &lt;threshold&gt;, &#39;bounds&#39;: [xmin, ymin, xmax, ymax]}</span>
@@ -872,11 +885,11 @@ been extended with a basin mask layer, which together with the basin index vecto
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-2022-10-26 10:57:04,100 - basin_delineation - basin_mask - INFO - subbasin bbox: [12.2350, 45.7950, 12.8783, 46.4167]
+2022-10-26 14:01:30,393 - basin_delineation - basin_mask - INFO - subbasin bbox: [12.2350, 45.7950, 12.8783, 46.4167]
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plot results</span>
@@ -889,7 +902,7 @@ been extended with a basin mask layer, which together with the basin index vecto
 </div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -901,12 +914,12 @@ been extended with a basin mask layer, which together with the basin index vecto
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/_examples_delineate_basin_22_1.png" src="../_images/_examples_delineate_basin_22_1.png" />
+<img alt="../_images/_examples_delineate_basin_21_1.png" src="../_images/_examples_delineate_basin_21_1.png" />
 </div>
 </div>
 <p>Get a sub-basin based on the location where the stream flows out of a <code class="docutils literal notranslate"><span class="pre">bbox</span></code>. Here the stream defined by a <code class="docutils literal notranslate"><span class="pre">&lt;variable&gt;:&lt;threshold&gt;</span></code> pair, in this case a stream order larger or equal to 8. The <code class="docutils literal notranslate"><span class="pre">variable</span></code> should be present in the dataset <code class="docutils literal notranslate"><span class="pre">ds</span></code>.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># CLI SYNTAX: {&#39;subbasin&#39;: [xmin, ymin, xmax, ymax], &lt;variable&gt;: &lt;threshold&gt;}</span>
@@ -929,12 +942,12 @@ been extended with a basin mask layer, which together with the basin index vecto
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-2022-10-26 10:57:10,008 - basin_delineation - basin_mask - DEBUG - Getting IDs of intersecting basins.
-2022-10-26 10:57:10,388 - basin_delineation - basin_mask - INFO - subbasin bbox: [12.1958, 45.7192, 12.8783, 46.4167]
+2022-10-26 14:01:31,976 - basin_delineation - basin_mask - DEBUG - Getting IDs of intersecting basins.
+2022-10-26 14:01:32,362 - basin_delineation - basin_mask - INFO - subbasin bbox: [12.1958, 45.7192, 12.8783, 46.4167]
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plot results</span>
@@ -947,7 +960,7 @@ been extended with a basin mask layer, which together with the basin index vecto
 </div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -959,7 +972,7 @@ been extended with a basin mask layer, which together with the basin index vecto
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/_examples_delineate_basin_25_1.png" src="../_images/_examples_delineate_basin_25_1.png" />
+<img alt="../_images/_examples_delineate_basin_24_1.png" src="../_images/_examples_delineate_basin_24_1.png" />
 </div>
 </div>
 </section>
@@ -967,7 +980,7 @@ been extended with a basin mask layer, which together with the basin index vecto
 <h2>Delineate interbasins<a class="headerlink" href="#Delineate-interbasins" title="Permalink to this heading">#</a></h2>
 <p>Get an inter-basin based on the streams within a <code class="docutils literal notranslate"><span class="pre">bbox</span></code>. The inter-basin is limited to the most downstream contiguous area within the bbox that drains to the stream. Here the stream defined by a <code class="docutils literal notranslate"><span class="pre">&lt;variable&gt;:&lt;threshold&gt;</span></code> pair, in this case a stream order larger or equal to 8. The <code class="docutils literal notranslate"><span class="pre">variable</span></code> should be present in the dataset <code class="docutils literal notranslate"><span class="pre">ds</span></code>. The <code class="docutils literal notranslate"><span class="pre">buffer</span></code> is required to check wether streams flow in and out of the bbox.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># CLI SYNTAX {&#39;interbasin&#39;: [xmin, ymin, xmax, ymax], &lt;variable&gt;: &lt;threshold&gt;}</span>
@@ -990,11 +1003,11 @@ been extended with a basin mask layer, which together with the basin index vecto
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-2022-10-26 10:57:16,347 - basin_delineation - basin_mask - INFO - interbasin bbox: [12.5000, 45.7200, 12.7000, 46.0000]
+2022-10-26 14:01:36,045 - basin_delineation - basin_mask - INFO - interbasin bbox: [12.5000, 45.7200, 12.7000, 46.0000]
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plot results</span>
@@ -1007,7 +1020,7 @@ been extended with a basin mask layer, which together with the basin index vecto
 </div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -1019,7 +1032,7 @@ been extended with a basin mask layer, which together with the basin index vecto
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/_examples_delineate_basin_29_1.png" src="../_images/_examples_delineate_basin_29_1.png" />
+<img alt="../_images/_examples_delineate_basin_28_1.png" src="../_images/_examples_delineate_basin_28_1.png" />
 </div>
 </div>
 </section>
@@ -1033,17 +1046,17 @@ been extended with a basin mask layer, which together with the basin index vecto
             <footer class="bd-footer-article">
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-  <a class='left-prev' id="prev-link" href="../user_guide/methods_stats.html" title="previous page">
+  <a class='left-prev' id="prev-link" href="working_with_models.html" title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
           <p class="prev-next-subtitle">previous</p>
-          <p class="prev-next-title">Statistical methods</p>
+          <p class="prev-next-title">Example: Working with models in Python</p>
       </div>
   </a>
-  <a class='right-next' id="next-link" href="working_with_raster.html" title="next page">
+  <a class='right-next' id="next-link" href="../user_guide/methods_main.html" title="next page">
   <div class="prev-next-info">
       <p class="prev-next-subtitle">next</p>
-      <p class="prev-next-title">Example: Working with raster data</p>
+      <p class="prev-next-title">Overview methods and workflows</p>
   </div>
   <i class="fa-solid fa-angle-right"></i>
   </a>

@@ -46,8 +46,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = '_examples/working_with_raster';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="API reference" href="../api.html" />
-    <link rel="prev" title="Example: Delineating basins" href="delineate_basin.html" />
+    <link rel="next" title="Example: Working with flow direction data" href="working_with_flow_directions.html" />
+    <link rel="prev" title="Statistical methods" href="../user_guide/methods_stats.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="docsearch:language" content="en">
   </head>
@@ -342,13 +342,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/model_region.html">Defining a model region</a></li>
 <li class="toctree-l1"><a class="reference internal" href="working_with_models_basics.html">Example: Working with models from CLI</a></li>
 <li class="toctree-l1"><a class="reference internal" href="working_with_models.html">Example: Working with models in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="delineate_basin.html">Example: Define hydrological model regions</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Methods and workflows</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/methods_main.html">Overview methods and workflows</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/methods_stats.html">Statistical methods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="delineate_basin.html">Example: Delineating basins</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Example: Working with raster data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="working_with_flow_directions.html">Example: Working with flow direction data</a></li>
 </ul>
 
   </div>
@@ -641,23 +642,35 @@ div.rendered_html tbody tr:hover {
 </div></div>
 <section id="Example:-Working-with-raster-data">
 <h1>Example: Working with raster data<a class="headerlink" href="#Example:-Working-with-raster-data" title="Permalink to this heading">#</a></h1>
-<div class="nbinput nblast docutils container">
+<div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import hydromt and initiate the test artifact data catalog</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import hydromt and initiate the test artifact_data catalog</span>
 <span class="kn">import</span> <span class="nn">hydromt</span>
+<span class="kn">from</span> <span class="nn">hydromt.log</span> <span class="kn">import</span> <span class="n">setuplog</span>
 
-<span class="n">data_catalog</span> <span class="o">=</span> <span class="n">hydromt</span><span class="o">.</span><span class="n">DataCatalog</span><span class="p">()</span>
+<span class="n">logger</span> <span class="o">=</span> <span class="n">setuplog</span><span class="p">(</span><span class="s2">&quot;raster data&quot;</span><span class="p">,</span> <span class="n">log_level</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">data_catalog</span> <span class="o">=</span> <span class="n">hydromt</span><span class="o">.</span><span class="n">DataCatalog</span><span class="p">(</span><span class="n">logger</span><span class="o">=</span><span class="n">logger</span><span class="p">,</span> <span class="n">data_libs</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;artifact_data&quot;</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
-<p>Here, we illustrate some common GIS problems and how the functionality of the DataArray/Dataset <a class="reference internal" href="../api.html#raster-methods"><span class="std std-ref">raster</span></a> accessor can be used. The data is accessed using the HydroMT <a class="reference internal" href="../_generated/hydromt.data_catalog.DataCatalog.html"><span class="doc">DataCatalog</span></a>. For more information see the <a class="reference internal" href="reading_raster_data.html"><span class="doc">Reading raster data</span></a> example.</p>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+2022-10-26 14:03:22,447 - raster data - log - INFO - HydroMT version: 0.6.1.dev
+2022-10-26 14:03:22,482 - raster data - data_catalog - INFO - Reading data catalog artifact_data v0.0.6 from archive
+2022-10-26 14:03:22,484 - raster data - data_catalog - INFO - Parsing data catalog from /home/runner/.hydromt_data/artifact_data/v0.0.6/data_catalog.yml
+</pre></div></div>
+</div>
+<p>Here, we illustrate some common GIS problems and how the functionality of the DataArray/Dataset <a class="reference external" href="https://deltares.github.io/hydromt/latest/api.html#raster-methods">raster</a> accessor can be used. The data is accessed using the HydroMT <a class="reference external" href="https://deltares.github.io/hydromt/latest/api.html#data-catalog">DataCatalog</a>. For more information see the <a class="reference external" href="https://deltares.github.io/hydromt/latest/_examples/reading_raster_data.html">Reading raster data</a> example.</p>
 <p>Note that this implementation is based on a very earlier version of <a class="reference external" href="https://corteva.github.io/rioxarray/stable/">rioxarray</a> and in fact we are using some of rioxarray functionality and working towards replacing our duplicated functionality with that of rioxarray and will try to contribute new functionality to rioxarray. The original reason for the raster data accessor was that we needed some changes in the internals of the writing methods for PCRaster data which is not fully supported by its
 GDAL driver. Currently the key difference between both packages, besides the naming of the accessor and some methods, are in new methods that have been added over time by both packages and the way that the raster attribute data is stored. In HydroMT this attribute data is always stored in the <code class="docutils literal notranslate"><span class="pre">spatial_ref</span></code> coordinate of the DataArray/Dataset whereas rioxarray uses additional attributes of the RasterDataset class.</p>
 <section id="Geospatial-attributes">
 <h2>Geospatial attributes<a class="headerlink" href="#Geospatial-attributes" title="Permalink to this heading">#</a></h2>
-<p>Using the <a class="reference internal" href="../api.html#raster-methods"><span class="std std-ref">raster</span></a> accessor we can get (and set) many geospatial properties of regular raster datasets.</p>
+<p>Using the <code class="docutils literal notranslate"><span class="pre">raster</span></code> accessor we can get (and set) many geospatial properties of regular raster datasets.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
@@ -669,19 +682,27 @@ GDAL driver. Currently the key difference between both packages, besides the nam
 </div>
 </div>
 <div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+2022-10-26 14:03:22,553 - raster data - data_catalog - INFO - DataCatalog: Getting ghs_pop_2015 RasterDataset raster data from /home/runner/.hydromt_data/artifact_data/v0.0.6/ghs_pop_2015.tif
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.collections.QuadMesh at 0x7f4bfaa35d20&gt;
+&lt;matplotlib.collections.QuadMesh at 0x7fb0c4bf6260&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/_examples_working_with_raster_6_1.png" src="../_images/_examples_working_with_raster_6_1.png" />
+<img alt="../_images/_examples_working_with_raster_6_2.png" src="../_images/_examples_working_with_raster_6_2.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
@@ -760,9 +781,9 @@ Affine(0.002499999990098131, 0.0, 11.600416643117885,
 </section>
 <section id="Reproject-(warp)-raster-data">
 <h2>Reproject (warp) raster data<a class="headerlink" href="#Reproject-(warp)-raster-data" title="Permalink to this heading">#</a></h2>
-<p>A common preprocessing step to generate model data is to make sure all data is in the same CRS. The <a class="reference internal" href="../_generated/hydromt.DataArray.raster.reproject.html"><span class="doc">.raster.reproject()</span></a> are build on <strong>rasterio</strong> and <strong>GDAL</strong> and make this really easy for you.</p>
-<p>In this example we demonstrate how to reproject a population count grid. This grid should not be reprojected directly to other resolutions in order to conserve the total number of people. Therefore, we first derive the population density using <a class="reference internal" href="../_generated/hydromt.DataArray.raster.density_grid.html"><span class="doc">.raster.density_grid()</span></a> which can be reprojected and combined with the project grid cell area using <a class="reference internal" href="../_generated/hydromt.DataArray.raster.area_grid.html"><span class="doc">.raster.area_grid()</span></a> to calculate the
-final population count. Using this approach we only make a small error which we correct to preserve the total count.</p>
+<p>A common preprocessing step to generate model data is to make sure all data is in the same CRS. The <a class="reference external" href="https://deltares.github.io/hydromt/latest/_examples/reading_raster_data.html">.raster.reproject()</a> are build on <strong>rasterio</strong> and <strong>GDAL</strong> and make this really easy for you.</p>
+<p>In this example we demonstrate how to reproject a population count grid. This grid should not be reprojected directly to other resolutions in order to conserve the total number of people. Therefore, we first derive the population density using <a class="reference external" href="https://deltares.github.io/hydromt/latest/_generated/hydromt.DataArray.raster.density_grid.html">.raster.density_grid()</a> which can be reprojected and combined with the project grid cell area using
+<a class="reference external" href="https://deltares.github.io/hydromt/latest/_generated/hydromt.DataArray.raster.area_grid.html">.raster.area_grid()</a> to calculate the final population count. Using this approach we only make a small error which we correct to preserve the total count.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
@@ -800,7 +821,7 @@ Error: 0.033%
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.collections.QuadMesh at 0x7f4bf9ec7a00&gt;
+&lt;matplotlib.collections.QuadMesh at 0x7fb0b7f9bb50&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -813,7 +834,7 @@ Error: 0.033%
 </section>
 <section id="Zonal-statistics">
 <h2>Zonal statistics<a class="headerlink" href="#Zonal-statistics" title="Permalink to this heading">#</a></h2>
-<p>For many lumped models, zonal statistics are required to derive model parameters. The <a class="reference internal" href="../_generated/hydromt.DataArray.raster.zonal_stats.html"><span class="doc">.raster.zonal_stats()</span></a> method implements a range of statistics, but also allows for user defined statistics passed as a callable. Here we provide an example to get the population count per admin 3 level. HydroMT takes care that the vector data is reprojected to the raster data CRS if necessary.</p>
+<p>For many lumped models, zonal statistics are required to derive model parameters. The <a class="reference external" href="https://deltares.github.io/hydromt/latest/_generated/hydromt.DataArray.raster.zonal_stats.html">.raster.zonal_stats()</a> method implements a range of statistics, but also allows for user defined statistics passed as a callable. Here we provide an example to get the population count per admin 3 level. HydroMT takes care that the vector data is reprojected to the raster data CRS if necessary.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
@@ -835,6 +856,15 @@ Error: 0.033%
 <span class="n">gdf</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;population_sum&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+2022-10-26 14:03:23,912 - raster data - data_catalog - INFO - DataCatalog: Getting gadm_level3 GeoDataFrame vector data from /home/runner/.hydromt_data/artifact_data/v0.0.6/gadm_level3.gpkg
+2022-10-26 14:03:23,914 - raster data - geodataframe - INFO - GeoDataFrame: Read vector data.
+</pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
@@ -944,8 +974,8 @@ Error: 0.033%
 </section>
 <section id="Interpolate-nodata-values">
 <h2>Interpolate nodata values<a class="headerlink" href="#Interpolate-nodata-values" title="Permalink to this heading">#</a></h2>
-<p>To create a continuos grid with values gaps in the data can be filled trough interpolation. HydroMT has the <a class="reference internal" href="../_generated/hydromt.DataArray.raster.interpolate_na.html"><span class="doc">.raster.interpolate_na()</span></a> method with several interpolation options available. For the nearest, linear and cubic interpolation the <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.interpolate.griddata.html">scipy.interpolate.griddata()</a> method is used. First, a mesh of all valid values surrounding the data gaps is
-build using voronoi triangulation. Then, values are calculated for each grid cell with a nodata value. Note that nearest method also extrapolates, while the other methods only interpolate gaps. A final method is based on <a class="reference external" href="https://rasterio.readthedocs.io/en/latest/api/rasterio.fill.html">rasterio.fill.fillnodata()</a> method.</p>
+<p>To create a continuos grid with values gaps in the data can be filled trough interpolation. HydroMT has the <a class="reference external" href="https://deltares.github.io/hydromt/latest/_generated/hydromt.DataArray.raster.interpolate_na.html">.raster.interpolate_na()</a> method with several interpolation options available. For the nearest, linear and cubic interpolation the <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.interpolate.griddata.html">scipy.interpolate.griddata()</a> method is used. First, a mesh of all
+valid values surrounding the data gaps is build using voronoi triangulation. Then, values are calculated for each grid cell with a nodata value. Note that nearest method also extrapolates, while the other methods only interpolate gaps. A final method is based on <a class="reference external" href="https://rasterio.readthedocs.io/en/latest/api/rasterio.fill.html">rasterio.fill.fillnodata()</a> method.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
@@ -958,19 +988,29 @@ build using voronoi triangulation. Then, values are calculated for each grid cel
 </div>
 </div>
 <div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+2022-10-26 14:03:39,385 - raster data - data_catalog - INFO - DataCatalog: Getting soilgrids RasterDataset raster data from /home/runner/.hydromt_data/artifact_data/v0.0.6/soilgrids/{variable}.tif
+2022-10-26 14:03:39,402 - raster data - rasterdataset - DEBUG - RasterDataset: Clip with bbox - [12.700, 45.600, 13.000, 45.800]
+2022-10-26 14:03:39,405 - raster data - rasterdataset - DEBUG - RasterDataset: Convert units for 1 variables.
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.collections.QuadMesh at 0x7f4bdd87de10&gt;
+&lt;matplotlib.collections.QuadMesh at 0x7fb0a689df30&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/_examples_working_with_raster_20_1.png" src="../_images/_examples_working_with_raster_20_1.png" />
+<img alt="../_images/_examples_working_with_raster_20_2.png" src="../_images/_examples_working_with_raster_20_2.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
@@ -988,7 +1028,7 @@ build using voronoi triangulation. Then, values are calculated for each grid cel
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.collections.QuadMesh at 0x7f4bdc5dbd60&gt;
+&lt;matplotlib.collections.QuadMesh at 0x7fb0a6803c40&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1001,7 +1041,7 @@ build using voronoi triangulation. Then, values are calculated for each grid cel
 </section>
 <section id="Reproject-and-merge">
 <h2>Reproject and merge<a class="headerlink" href="#Reproject-and-merge" title="Permalink to this heading">#</a></h2>
-<p>This example shows how to use the <a class="reference internal" href="../_generated/hydromt.DataArray.raster.reproject_like.html"><span class="doc">.raster.reproject_like()</span></a> method to align different datasets such that these are at identical grids and can be merged.</p>
+<p>This example shows how to use the <a class="reference external" href="https://deltares.github.io/hydromt/latest/_generated/hydromt.DataArray.raster.reproject_like.html">.raster.reproject_like()</a> method to align different datasets such that these are at identical grids and can be merged.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
@@ -1031,8 +1071,12 @@ build using voronoi triangulation. Then, values are calculated for each grid cel
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
+2022-10-26 14:03:39,927 - raster data - data_catalog - INFO - DataCatalog: Getting merit_hydro RasterDataset raster data from /home/runner/.hydromt_data/artifact_data/v0.0.6/merit_hydro/{variable}.tif
+2022-10-26 14:03:39,945 - raster data - rasterdataset - DEBUG - RasterDataset: Clip with bbox - [12.200, 45.300, 13.000, 45.800]
 resolution MERIT Hydro: 0.00083
+2022-10-26 14:03:39,953 - raster data - data_catalog - INFO - DataCatalog: Getting gebco RasterDataset raster data from /home/runner/.hydromt_data/artifact_data/v0.0.6/gebco.tif
 resolution GEBCO: 0.00417
+2022-10-26 14:03:39,973 - raster data - data_catalog - INFO - DataCatalog: Getting mdt_cnes_cls18 RasterDataset raster data from /home/runner/.hydromt_data/artifact_data/v0.0.6/mdt_cnes_cls18.tif
 resolution MDT: 0.12500
 </pre></div></div>
 </div>
@@ -1042,7 +1086,7 @@ resolution MDT: 0.12500
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.collections.QuadMesh at 0x7f4bdc500070&gt;
+&lt;matplotlib.collections.QuadMesh at 0x7fb0a6707d60&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1079,7 +1123,7 @@ resolution reprojected GEBCO: 0.00083
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.collections.QuadMesh at 0x7f4bdc3d8f40&gt;
+&lt;matplotlib.collections.QuadMesh at 0x7fb0a4b9ce80&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1092,7 +1136,8 @@ resolution reprojected GEBCO: 0.00083
 </section>
 <section id="Write-raster-to-file">
 <h2>Write raster to file<a class="headerlink" href="#Write-raster-to-file" title="Permalink to this heading">#</a></h2>
-<p>To write a dataset to a raster file the <a class="reference internal" href="../_generated/hydromt.DataArray.raster.to_raster.html"><span class="doc">.raster.to_raster()</span></a> can be used. By default the file is written in GeoTiff format. Each band is written as a layer of the raster file. A xarray.Dataset with multiple variables can be written to multiple files in a single folder, each with the name of the variable as basename with <a class="reference internal" href="../_generated/hydromt.Dataset.raster.to_mapstack.html"><span class="doc">.raster.to_mapstack()</span></a>.</p>
+<p>To write a dataset to a raster file the <a class="reference external" href="https://deltares.github.io/hydromt/latest/_generated/hydromt.DataArray.raster.to_raster.html">.raster.to_raster()</a> can be used. By default the file is written in GeoTiff format. Each band is written as a layer of the raster file. A xarray.Dataset with multiple variables can be written to multiple files in a single folder, each with the name of the variable as basename with
+<a class="reference external" href="https://deltares.github.io/hydromt/latest/_generated/hydromt.Dataset.raster.to_mapstack.html">.raster.to_mapstack()</a>.</p>
 <p>Here, we use the merged DEM output of the previous example to write to file. To ensure the CRS and nodata metadata are written we first update these attributes of the data based on the original DEM data.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
@@ -1179,17 +1224,17 @@ Band 1 Block=960x1 Type=Float64, ColorInterp=Gray
             <footer class="bd-footer-article">
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-  <a class='left-prev' id="prev-link" href="delineate_basin.html" title="previous page">
+  <a class='left-prev' id="prev-link" href="../user_guide/methods_stats.html" title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
           <p class="prev-next-subtitle">previous</p>
-          <p class="prev-next-title">Example: Delineating basins</p>
+          <p class="prev-next-title">Statistical methods</p>
       </div>
   </a>
-  <a class='right-next' id="next-link" href="../api.html" title="next page">
+  <a class='right-next' id="next-link" href="working_with_flow_directions.html" title="next page">
   <div class="prev-next-info">
       <p class="prev-next-subtitle">next</p>
-      <p class="prev-next-title">API reference</p>
+      <p class="prev-next-title">Example: Working with flow direction data</p>
   </div>
   <i class="fa-solid fa-angle-right"></i>
   </a>
