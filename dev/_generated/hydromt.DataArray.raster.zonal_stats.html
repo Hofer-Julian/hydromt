@@ -710,12 +710,12 @@
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>gdf</strong> (<a class="reference external" href="https://geopandas.org/en/stable/docs/reference/api/geopandas.GeoDataFrame.html#geopandas.GeoDataFrame" title="(in GeoPandas v0.12.0)"><em>geopandas.GeoDataFrame</em></a>) – GeoDataFrame with geometries</p></li>
-<li><p><strong>stats</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><em>list</em></a><em> of </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em>, </em><em>callable</em>) – Statistics to compute from raster values, options include
+<li><p><strong>stats</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)"><em>list</em></a><em> of </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>, </em><em>callable</em>) – Statistics to compute from raster values, options include
 {‘count’, ‘min’, ‘max’, ‘sum’, ‘mean’, ‘std’, ‘median’, ‘q##’}.
 Multiple percentiles can be calculated using comma-seperated values, e.g.: ‘q10,50,90’
 Statistics ignore the nodata value and are applied along the x and y dimension.
 By default [‘mean’]</p></li>
-<li><p><strong>all_touched</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a><em>, </em><em>optional</em>) – If True, all pixels touched by geometries will used to define the sample.
+<li><p><strong>all_touched</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a><em>, </em><em>optional</em>) – If True, all pixels touched by geometries will used to define the sample.
 If False, only pixels whose center is within the geometry or that are
 selected by Bresenham’s line algorithm will be used. By default False.</p></li>
 </ul>
