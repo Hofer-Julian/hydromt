@@ -704,7 +704,7 @@
 <h1>hydromt.data_catalog.DataCatalog<a class="headerlink" href="#hydromt-data-catalog-datacatalog" title="Permalink to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="hydromt.data_catalog.DataCatalog">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">hydromt.data_catalog.</span></span><span class="sig-name descname"><span class="pre">DataCatalog</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_libs:</span> <span class="pre">~typing.Union[~typing.List</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">str]</span> <span class="pre">=</span> <span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logger=&lt;Logger</span> <span class="pre">hydromt.data_catalog</span> <span class="pre">(WARNING)&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**artifact_keys</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hydromt/data_catalog.html#DataCatalog"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hydromt.data_catalog.DataCatalog" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">hydromt.data_catalog.</span></span><span class="sig-name descname"><span class="pre">DataCatalog</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_libs:</span> <span class="pre">~typing.Union[~typing.List</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">str]</span> <span class="pre">=</span> <span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fallback_lib:</span> <span class="pre">~typing.Optional[str]</span> <span class="pre">=</span> <span class="pre">'artifact_data'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logger=&lt;Logger</span> <span class="pre">hydromt.data_catalog</span> <span class="pre">(WARNING)&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**artifact_keys</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hydromt/data_catalog.html#DataCatalog"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hydromt.data_catalog.DataCatalog" title="Permalink to this definition">#</a></dt>
 <dd><p>Catalog of DataAdapter sources to easily read from different files
 and keep track of files which have been accessed.</p>
 <dl class="field-list simple">
@@ -713,13 +713,15 @@ and keep track of files which have been accessed.</p>
 <li><p><strong>data_libs</strong> (<em>(</em><em>list of</em><em>) </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>, </em><em>Path</em><em>, </em><em>optional</em>) – One or more paths to data catalog yaml files or names of predefined data catalogs.
 By default the data catalog is initiated without data entries.
 See <code class="xref py py-func docutils literal notranslate"><span class="pre">from_yml()</span></code> for accepted yaml format.</p></li>
+<li><p><strong>fallback_lib</strong> – Name of pre-defined data catalog to read if no data_libs are provided, by default ‘artifact_data’.
+If None, no default data catalog is used.</p></li>
 <li><p><strong>artifact_keys</strong> – Deprecated from version v0.5</p></li>
 </ul>
 </dd>
 </dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="hydromt.data_catalog.DataCatalog.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_libs:</span> <span class="pre">~typing.Union[~typing.List</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">str]</span> <span class="pre">=</span> <span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logger=&lt;Logger</span> <span class="pre">hydromt.data_catalog</span> <span class="pre">(WARNING)&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**artifact_keys</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/hydromt/data_catalog.html#DataCatalog.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hydromt.data_catalog.DataCatalog.__init__" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_libs:</span> <span class="pre">~typing.Union[~typing.List</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">str]</span> <span class="pre">=</span> <span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fallback_lib:</span> <span class="pre">~typing.Optional[str]</span> <span class="pre">=</span> <span class="pre">'artifact_data'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logger=&lt;Logger</span> <span class="pre">hydromt.data_catalog</span> <span class="pre">(WARNING)&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**artifact_keys</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/hydromt/data_catalog.html#DataCatalog.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hydromt.data_catalog.DataCatalog.__init__" title="Permalink to this definition">#</a></dt>
 <dd><p>Catalog of DataAdapter sources to easily read from different files
 and keep track of files which have been accessed.</p>
 <dl class="field-list simple">
@@ -728,6 +730,8 @@ and keep track of files which have been accessed.</p>
 <li><p><strong>data_libs</strong> (<em>(</em><em>list of</em><em>) </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>, </em><em>Path</em><em>, </em><em>optional</em>) – One or more paths to data catalog yaml files or names of predefined data catalogs.
 By default the data catalog is initiated without data entries.
 See <code class="xref py py-func docutils literal notranslate"><span class="pre">from_yml()</span></code> for accepted yaml format.</p></li>
+<li><p><strong>fallback_lib</strong> – Name of pre-defined data catalog to read if no data_libs are provided, by default ‘artifact_data’.
+If None, no default data catalog is used.</p></li>
 <li><p><strong>artifact_keys</strong> – Deprecated from version v0.5</p></li>
 </ul>
 </dd>
@@ -737,7 +741,7 @@ See <code class="xref py py-func docutils literal notranslate"><span class="pre"
 <p class="rubric">Methods</p>
 <table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#hydromt.data_catalog.DataCatalog.__init__" title="hydromt.data_catalog.DataCatalog.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>([data_libs, logger])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#hydromt.data_catalog.DataCatalog.__init__" title="hydromt.data_catalog.DataCatalog.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>([data_libs, fallback_lib, logger])</p></td>
 <td><p>Catalog of DataAdapter sources to easily read from different files and keep track of files which have been accessed.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="hydromt.data_catalog.DataCatalog.export_data.html#hydromt.data_catalog.DataCatalog.export_data" title="hydromt.data_catalog.DataCatalog.export_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">export_data</span></code></a>(data_root[, bbox, time_tuple, ...])</p></td>
@@ -776,10 +780,10 @@ See <code class="xref py py-func docutils literal notranslate"><span class="pre"
 <tr class="row-odd"><td><p><a class="reference internal" href="hydromt.data_catalog.DataCatalog.to_dataframe.html#hydromt.data_catalog.DataCatalog.to_dataframe" title="hydromt.data_catalog.DataCatalog.to_dataframe"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_dataframe</span></code></a>([source_names])</p></td>
 <td><p>Return data catalog summary as DataFrame</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="hydromt.data_catalog.DataCatalog.to_dict.html#hydromt.data_catalog.DataCatalog.to_dict" title="hydromt.data_catalog.DataCatalog.to_dict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_dict</span></code></a>([source_names, root])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="hydromt.data_catalog.DataCatalog.to_dict.html#hydromt.data_catalog.DataCatalog.to_dict" title="hydromt.data_catalog.DataCatalog.to_dict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_dict</span></code></a>([source_names, root, meta])</p></td>
 <td><p>Export the data catalog to a dictionary.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="hydromt.data_catalog.DataCatalog.to_yml.html#hydromt.data_catalog.DataCatalog.to_yml" title="hydromt.data_catalog.DataCatalog.to_yml"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_yml</span></code></a>(path[, root, source_names, used_only])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="hydromt.data_catalog.DataCatalog.to_yml.html#hydromt.data_catalog.DataCatalog.to_yml" title="hydromt.data_catalog.DataCatalog.to_yml"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_yml</span></code></a>(path[, root, source_names, ...])</p></td>
 <td><p>Write data catalog to yaml format.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="hydromt.data_catalog.DataCatalog.update.html#hydromt.data_catalog.DataCatalog.update" title="hydromt.data_catalog.DataCatalog.update"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update</span></code></a>(**kwargs)</p></td>

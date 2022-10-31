@@ -332,7 +332,7 @@
 <span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">join</span><span class="p">,</span> <span class="n">isdir</span><span class="p">,</span> <span class="n">dirname</span><span class="p">,</span> <span class="n">basename</span><span class="p">,</span> <span class="n">isfile</span><span class="p">,</span> <span class="n">abspath</span><span class="p">,</span> <span class="n">exists</span>
 <span class="kn">import</span> <span class="nn">copy</span>
 <span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Union</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Union</span><span class="p">,</span> <span class="n">Optional</span>
 <span class="kn">import</span> <span class="nn">warnings</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -367,7 +367,11 @@
     <span class="n">_cache_dir</span> <span class="o">=</span> <span class="n">join</span><span class="p">(</span><span class="n">Path</span><span class="o">.</span><span class="n">home</span><span class="p">(),</span> <span class="s2">&quot;.hydromt_data&quot;</span><span class="p">)</span>
 
 <div class="viewcode-block" id="DataCatalog.__init__"><a class="viewcode-back" href="../../_generated/hydromt.data_catalog.DataCatalog.html#hydromt.data_catalog.DataCatalog.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span> <span class="n">data_libs</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">List</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[],</span> <span class="n">logger</span><span class="o">=</span><span class="n">logger</span><span class="p">,</span> <span class="o">**</span><span class="n">artifact_keys</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">data_libs</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">List</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[],</span>
+        <span class="n">fallback_lib</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;artifact_data&quot;</span><span class="p">,</span>
+        <span class="n">logger</span><span class="o">=</span><span class="n">logger</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">artifact_keys</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Catalog of DataAdapter sources to easily read from different files</span>
 <span class="sd">        and keep track of files which have been accessed.</span>
@@ -378,6 +382,9 @@
 <span class="sd">            One or more paths to data catalog yaml files or names of predefined data catalogs.</span>
 <span class="sd">            By default the data catalog is initiated without data entries.</span>
 <span class="sd">            See :py:func:`~hydromt.data_adapter.DataCatalog.from_yml` for accepted yaml format.</span>
+<span class="sd">        fallback_lib:</span>
+<span class="sd">            Name of pre-defined data catalog to read if no data_libs are provided, by default &#39;artifact_data&#39;.</span>
+<span class="sd">            If None, no default data catalog is used.</span>
 <span class="sd">        artifact_keys:</span>
 <span class="sd">            Deprecated from version v0.5</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -388,6 +395,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_sources</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># dictionary of DataAdapter</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_catalogs</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># dictionary of predefined Catalogs</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_used_data</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_fallback_lib</span> <span class="o">=</span> <span class="n">fallback_lib</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">logger</span> <span class="o">=</span> <span class="n">logger</span>
 
         <span class="c1"># legacy code. to be removed</span>
@@ -412,9 +420,9 @@
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">sources</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Returns dictionary of DataAdapter sources.&quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_sources</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_sources</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fallback_lib</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="c1"># read artifacts by default if no catalogs are provided</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">from_predefined_catalogs</span><span class="p">(</span><span class="s2">&quot;artifact_data&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">from_predefined_catalogs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_fallback_lib</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sources</span>
 
     <span class="nd">@property</span>
@@ -657,8 +665,9 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">path</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Path</span><span class="p">],</span>
         <span class="n">root</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;auto&quot;</span><span class="p">,</span>
-        <span class="n">source_names</span><span class="p">:</span> <span class="n">List</span> <span class="o">=</span> <span class="p">[],</span>
+        <span class="n">source_names</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">used_only</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">meta</span><span class="p">:</span> <span class="n">Dict</span> <span class="o">=</span> <span class="p">{},</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Write data catalog to yaml format.</span>
 
@@ -668,31 +677,44 @@
 <span class="sd">            yaml output path.</span>
 <span class="sd">        root: str, Path, optional</span>
 <span class="sd">            Global root for all relative paths in yaml file.</span>
-<span class="sd">            If &quot;auto&quot; the data source paths are relative to the yaml output ``path``.</span>
+<span class="sd">            If &quot;auto&quot; (default) the data source paths are relative to the yaml output ``path``.</span>
 <span class="sd">        source_names: list, optional</span>
-<span class="sd">            List of source names to export; ignored if `used_only=True`</span>
-<span class="sd">        used_only: bool</span>
+<span class="sd">            List of source names to export, by default None in which case all sources are exported.</span>
+<span class="sd">            This argument is ignored if `used_only=True`.</span>
+<span class="sd">        used_only: bool, optional</span>
 <span class="sd">            If True, export only data entries kept in used_data list, by default False.</span>
+<span class="sd">        meta: dict, optional</span>
+<span class="sd">            key-value pairs to add to the data catalog meta section, such as &#39;version&#39;, by default empty.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">source_names</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_used_data</span> <span class="k">if</span> <span class="n">used_only</span> <span class="k">else</span> <span class="n">source_names</span>
-        <span class="n">yml_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+        <span class="n">yml_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">abspath</span><span class="p">(</span><span class="n">path</span><span class="p">))</span>
         <span class="k">if</span> <span class="n">root</span> <span class="o">==</span> <span class="s2">&quot;auto&quot;</span><span class="p">:</span>
             <span class="n">root</span> <span class="o">=</span> <span class="n">yml_dir</span>
-        <span class="n">d</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="n">root</span><span class="p">,</span> <span class="n">source_names</span><span class="o">=</span><span class="n">source_names</span><span class="p">)</span>
+        <span class="n">data_dict</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="n">root</span><span class="p">,</span> <span class="n">source_names</span><span class="o">=</span><span class="n">source_names</span><span class="p">,</span> <span class="n">meta</span><span class="o">=</span><span class="n">meta</span><span class="p">)</span>
         <span class="k">if</span> <span class="nb">str</span><span class="p">(</span><span class="n">root</span><span class="p">)</span> <span class="o">==</span> <span class="n">yml_dir</span><span class="p">:</span>
-            <span class="n">d</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;root&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>  <span class="c1"># remove root if it equals the yml_dir</span>
-        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-            <span class="n">yaml</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">default_flow_style</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></div>
+            <span class="n">data_dict</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;root&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>  <span class="c1"># remove root if it equals the yml_dir</span>
+        <span class="k">if</span> <span class="n">data_dict</span><span class="p">:</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+                <span class="n">yaml</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">data_dict</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">default_flow_style</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;The data catalog is empty, no yml file is written.&quot;</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="DataCatalog.to_dict"><a class="viewcode-back" href="../../_generated/hydromt.data_catalog.DataCatalog.to_dict.html#hydromt.data_catalog.DataCatalog.to_dict">[docs]</a>    <span class="k">def</span> <span class="nf">to_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source_names</span><span class="p">:</span> <span class="n">List</span> <span class="o">=</span> <span class="p">[],</span> <span class="n">root</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Path</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">:</span>
+<div class="viewcode-block" id="DataCatalog.to_dict"><a class="viewcode-back" href="../../_generated/hydromt.data_catalog.DataCatalog.to_dict.html#hydromt.data_catalog.DataCatalog.to_dict">[docs]</a>    <span class="k">def</span> <span class="nf">to_dict</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">source_names</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">root</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Path</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">meta</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{},</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Export the data catalog to a dictionary.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        source_names : list, optional</span>
-<span class="sd">            List of source names to export</span>
+<span class="sd">            List of source names to export, by default None in which case all sources are exported.</span>
 <span class="sd">        root : str, Path, optional</span>
 <span class="sd">            Global root for all relative paths in yml file.</span>
+<span class="sd">        meta: dict, optional</span>
+<span class="sd">            key-value pairs to add to the data catalog meta section, such as &#39;version&#39;, by default empty.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -701,11 +723,11 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">sources_out</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
         <span class="k">if</span> <span class="n">root</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">root</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
-            <span class="n">sources_out</span><span class="p">[</span><span class="s2">&quot;root&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">root</span>
+            <span class="n">root</span> <span class="o">=</span> <span class="n">abspath</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
+            <span class="n">meta</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="o">**</span><span class="p">{</span><span class="s2">&quot;root&quot;</span><span class="p">:</span> <span class="n">root</span><span class="p">})</span>
             <span class="n">root_drive</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitdrive</span><span class="p">(</span><span class="n">root</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-        <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">source</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">sources</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">source_names</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">source_names</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">source</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sources</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>  <span class="c1"># alphabetical order</span>
+            <span class="k">if</span> <span class="n">source_names</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">source_names</span><span class="p">:</span>
                 <span class="k">continue</span>
             <span class="n">source_dict</span> <span class="o">=</span> <span class="n">source</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
             <span class="k">if</span> <span class="n">root</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
@@ -721,6 +743,8 @@
             <span class="c1"># remove non serializable entries to prevent errors</span>
             <span class="n">source_dict</span> <span class="o">=</span> <span class="n">_process_dict</span><span class="p">(</span><span class="n">source_dict</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">)</span>  <span class="c1"># TODO TEST</span>
             <span class="n">sources_out</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="n">name</span><span class="p">:</span> <span class="n">source_dict</span><span class="p">})</span>
+        <span class="k">if</span> <span class="n">meta</span><span class="p">:</span>
+            <span class="n">sources_out</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;meta&quot;</span><span class="p">:</span> <span class="n">meta</span><span class="p">,</span> <span class="o">**</span><span class="n">sources_out</span><span class="p">}</span>
         <span class="k">return</span> <span class="n">sources_out</span></div>
 
 <div class="viewcode-block" id="DataCatalog.to_dataframe"><a class="viewcode-back" href="../../_generated/hydromt.data_catalog.DataCatalog.to_dataframe.html#hydromt.data_catalog.DataCatalog.to_dataframe">[docs]</a>    <span class="k">def</span> <span class="nf">to_dataframe</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source_names</span><span class="p">:</span> <span class="n">List</span> <span class="o">=</span> <span class="p">[])</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
@@ -739,6 +763,7 @@
         <span class="n">time_tuple</span><span class="p">:</span> <span class="n">Tuple</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">source_names</span><span class="p">:</span> <span class="n">List</span> <span class="o">=</span> <span class="p">[],</span>
         <span class="n">unit_conversion</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">meta</span><span class="p">:</span> <span class="n">Dict</span> <span class="o">=</span> <span class="p">{},</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Export a data slice of each dataset and a data_catalog.yml file to disk.</span>
 
@@ -755,8 +780,10 @@
 <span class="sd">            List of source names to export</span>
 <span class="sd">        unit_conversion: boolean, optional</span>
 <span class="sd">            If False skip unit conversion when parsing data from file, by default True.</span>
-
+<span class="sd">        meta: dict, optional</span>
+<span class="sd">            key-value pairs to add to the data catalog meta section, such as &#39;version&#39;, by default empty.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">data_root</span> <span class="o">=</span> <span class="n">abspath</span><span class="p">(</span><span class="n">data_root</span><span class="p">)</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">data_root</span><span class="p">):</span>
             <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">data_root</span><span class="p">)</span>
 
@@ -805,7 +832,7 @@
         <span class="n">data_catalog_out</span> <span class="o">=</span> <span class="n">DataCatalog</span><span class="p">()</span>
         <span class="n">data_catalog_out</span><span class="o">.</span><span class="n">_sources</span> <span class="o">=</span> <span class="n">sources_out</span>
         <span class="n">fn</span> <span class="o">=</span> <span class="n">join</span><span class="p">(</span><span class="n">data_root</span><span class="p">,</span> <span class="s2">&quot;data_catalog.yml&quot;</span><span class="p">)</span>
-        <span class="n">data_catalog_out</span><span class="o">.</span><span class="n">to_yml</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="n">root</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">)</span></div>
+        <span class="n">data_catalog_out</span><span class="o">.</span><span class="n">to_yml</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="n">root</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span> <span class="n">meta</span><span class="o">=</span><span class="n">meta</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="DataCatalog.get_rasterdataset"><a class="viewcode-back" href="../../_generated/hydromt.data_catalog.DataCatalog.get_rasterdataset.html#hydromt.data_catalog.DataCatalog.get_rasterdataset">[docs]</a>    <span class="k">def</span> <span class="nf">get_rasterdataset</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>

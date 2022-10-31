@@ -328,7 +328,7 @@
 
 <span class="kn">from</span> <span class="nn">abc</span> <span class="kn">import</span> <span class="n">ABCMeta</span>
 <span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">glob</span>
-<span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">join</span><span class="p">,</span> <span class="n">isdir</span><span class="p">,</span> <span class="n">isfile</span><span class="p">,</span> <span class="n">abspath</span><span class="p">,</span> <span class="n">dirname</span><span class="p">,</span> <span class="n">basename</span>
+<span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">join</span><span class="p">,</span> <span class="n">isdir</span><span class="p">,</span> <span class="n">isfile</span><span class="p">,</span> <span class="n">abspath</span><span class="p">,</span> <span class="n">dirname</span><span class="p">,</span> <span class="n">basename</span><span class="p">,</span> <span class="n">isabs</span>
 <span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>
@@ -650,7 +650,7 @@
 <span class="sd">            For a complete overview of all region options,</span>
 <span class="sd">            see :py:function:~hydromt.workflows.basin_mask.parse_region</span>
 <span class="sd">        hydrography_fn : str</span>
-<span class="sd">            Name of data source for basemap parameters.</span>
+<span class="sd">            Name of data source for hydrography data.</span>
 <span class="sd">            FIXME describe data requirements</span>
 <span class="sd">        basin_index_fn : str</span>
 <span class="sd">            Name of data source with basin (bounding box) geometries associated with</span>
@@ -718,6 +718,16 @@
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Root unknown, use set_root method&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_root</span>
 
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">_assert_write_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_write</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="s2">&quot;Model opened in read-only mode&quot;</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">_assert_read_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="s2">&quot;Model opened in write-only mode&quot;</span><span class="p">)</span>
+
 <div class="viewcode-block" id="Model.set_root"><a class="viewcode-back" href="../../../_generated/hydromt.Model.set_root.html#hydromt.Model.set_root">[docs]</a>    <span class="k">def</span> <span class="nf">set_root</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">mode</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;w&quot;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Initialize the model root.</span>
 
@@ -751,11 +761,6 @@
             <span class="c1"># check directory</span>
             <span class="k">elif</span> <span class="ow">not</span> <span class="n">isdir</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_root</span><span class="p">):</span>
                 <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;model root not found at &quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_root</span><span class="si">}</span><span class="s1">&quot;&#39;</span><span class="p">)</span>
-            <span class="c1"># read hydromt_data yaml file and add to data catalog</span>
-            <span class="n">data_fn</span> <span class="o">=</span> <span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_root</span><span class="p">,</span> <span class="s2">&quot;hydromt_data.yml&quot;</span><span class="p">)</span>
-            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read</span> <span class="ow">and</span> <span class="n">isfile</span><span class="p">(</span><span class="n">data_fn</span><span class="p">):</span>
-                <span class="c1"># read data and mark as used</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">data_catalog</span><span class="o">.</span><span class="n">from_yml</span><span class="p">(</span><span class="n">data_fn</span><span class="p">,</span> <span class="n">mark_used</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
             <span class="c1"># remove old logging file handler and add new filehandler in root if it does not exist</span>
             <span class="n">has_log_file</span> <span class="o">=</span> <span class="kc">False</span>
             <span class="n">log_level</span> <span class="o">=</span> <span class="mi">20</span>  <span class="c1"># default, but overwritten by the level of active loggers</span>
@@ -830,27 +835,50 @@
             <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;write_</span><span class="si">{</span><span class="n">component</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)()</span></div>
 
 <div class="viewcode-block" id="Model.write_data_catalog"><a class="viewcode-back" href="../../../_generated/hydromt.Model.write_data_catalog.html#hydromt.Model.write_data_catalog">[docs]</a>    <span class="k">def</span> <span class="nf">write_data_catalog</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span> <span class="n">root</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Path</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">used_only</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">root</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Path</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">data_lib_fn</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Path</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;hydromt_data.yml&quot;</span><span class="p">,</span>
+        <span class="n">used_only</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">append</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Write the data catalog to `hydromt_data.yml`</span>
+        <span class="sd">&quot;&quot;&quot;Write the data catalog to data_lib_fn</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        root: str, Path, optional</span>
 <span class="sd">            Global root for all relative paths in yaml file.</span>
 <span class="sd">            If &quot;auto&quot; the data source paths are relative to the yaml output ``path``.</span>
-<span class="sd">        used_only: bool</span>
-<span class="sd">            If True, export only data entries kept in used_data list.</span>
+<span class="sd">        data_lib_fn: str, Path, optional</span>
+<span class="sd">            Path of output yml file, absolute or relative to the model root, by default &quot;hydromt_data.yml&quot;.</span>
+<span class="sd">        used_only: bool, optional</span>
+<span class="sd">            If True, export only data entries kept in used_data list. By default True</span>
+<span class="sd">        append: bool, optional</span>
+<span class="sd">            If True, append to an existing</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">path</span> <span class="o">=</span> <span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="p">,</span> <span class="s2">&quot;hydromt_data.yml&quot;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">data_catalog</span><span class="o">.</span><span class="n">to_yml</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">root</span><span class="o">=</span><span class="n">root</span><span class="p">,</span> <span class="n">used_only</span><span class="o">=</span><span class="n">used_only</span><span class="p">)</span></div>
+        <span class="n">path</span> <span class="o">=</span> <span class="n">data_lib_fn</span> <span class="k">if</span> <span class="n">isabs</span><span class="p">(</span><span class="n">data_lib_fn</span><span class="p">)</span> <span class="k">else</span> <span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="p">,</span> <span class="n">data_lib_fn</span><span class="p">)</span>
+        <span class="n">cat</span> <span class="o">=</span> <span class="n">DataCatalog</span><span class="p">(</span><span class="n">logger</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">,</span> <span class="n">fallback_lib</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+        <span class="c1"># read hydromt_data yaml file and add to data catalog</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read</span> <span class="ow">and</span> <span class="n">isfile</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="ow">and</span> <span class="n">append</span><span class="p">:</span>
+            <span class="n">cat</span><span class="o">.</span><span class="n">from_yml</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+        <span class="c1"># update data catalog with new used sources</span>
+        <span class="n">source_names</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">data_catalog</span><span class="o">.</span><span class="n">_used_data</span>
+            <span class="k">if</span> <span class="n">used_only</span>
+            <span class="k">else</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data_catalog</span><span class="o">.</span><span class="n">sources</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">source_names</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">cat</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data_catalog</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(</span><span class="n">source_names</span><span class="o">=</span><span class="n">source_names</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">cat</span><span class="o">.</span><span class="n">sources</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_assert_write_mode</span>
+            <span class="n">cat</span><span class="o">.</span><span class="n">to_yml</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">root</span><span class="o">=</span><span class="n">root</span><span class="p">)</span></div>
 
     <span class="c1"># model configuration</span>
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">config</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Union</span><span class="p">[</span><span class="n">Dict</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]:</span>
         <span class="sd">&quot;&quot;&quot;Model configuration. Returns a (nested) dictionary&quot;&quot;&quot;</span>
+        <span class="c1"># initialize default config if in write-mode</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_config</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">read_config</span><span class="p">()</span>  <span class="c1"># initialize default config</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">read_config</span><span class="p">()</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_config</span>
 
 <div class="viewcode-block" id="Model.set_config"><a class="viewcode-back" href="../../../_generated/hydromt.Model.set_config.html#hydromt.Model.set_config">[docs]</a>    <span class="k">def</span> <span class="nf">set_config</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
@@ -970,8 +998,7 @@
         <span class="bp">self</span><span class="p">,</span> <span class="n">config_name</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">config_root</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Write config to &lt;root/config_fn&gt;&quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_write</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="s2">&quot;Model opened in read-only mode&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_assert_write_mode</span>
         <span class="k">if</span> <span class="n">config_name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_config_fn</span> <span class="o">=</span> <span class="n">config_name</span>
         <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_config_fn</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -993,9 +1020,8 @@
             <span class="s2">&quot;use the grid property of the GridModel class instead.&quot;</span><span class="p">,</span>
             <span class="ne">DeprecationWarning</span><span class="p">,</span>
         <span class="p">)</span>
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_staticmaps</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">read_staticmaps</span><span class="p">()</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_staticmaps</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">read_staticmaps</span><span class="p">()</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_staticmaps</span>
 
     <span class="k">def</span> <span class="nf">set_staticmaps</span><span class="p">(</span>
@@ -1060,6 +1086,7 @@
 <span class="sd">        fn : str, optional</span>
 <span class="sd">            filename relative to model root, by default &quot;staticmaps/staticmaps.nc&quot;</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_assert_read_mode</span>
         <span class="k">for</span> <span class="n">ds</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read_nc</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">set_staticmaps</span><span class="p">(</span><span class="n">ds</span><span class="p">)</span>
 
@@ -1075,11 +1102,13 @@
 <span class="sd">        fn : str, optional</span>
 <span class="sd">            filename relative to model root, by default &#39;staticmaps/staticmaps.nc&#39;</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">nc_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_staticmaps</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="c1"># _write_nc requires dict - use dummy key</span>
-            <span class="n">nc_dict</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s2">&quot;staticmaps&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_staticmaps</span><span class="p">})</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_write_nc</span><span class="p">(</span><span class="n">nc_dict</span><span class="p">,</span> <span class="n">fn</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_staticmaps</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;No staticmaps data found, skip writing.&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_assert_write_mode</span>
+            <span class="c1"># _write_nc requires dict - use dummy &#39;staticmaps&#39; key</span>
+            <span class="n">nc_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;staticmaps&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_staticmaps</span><span class="p">}</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_write_nc</span><span class="p">(</span><span class="n">nc_dict</span><span class="p">,</span> <span class="n">fn</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
     <span class="c1"># map files setup methods</span>
 <div class="viewcode-block" id="Model.setup_maps_from_raster"><a class="viewcode-back" href="../../../_generated/hydromt.Model.setup_maps_from_raster.html#hydromt.Model.setup_maps_from_raster">[docs]</a>    <span class="k">def</span> <span class="nf">setup_maps_from_raster</span><span class="p">(</span>
@@ -1219,9 +1248,8 @@
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">maps</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Union</span><span class="p">[</span><span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">,</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">]]:</span>
         <span class="sd">&quot;&quot;&quot;Model maps. Returns dict of xarray.DataArray or xarray.Dataset&quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_maps</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">read_maps</span><span class="p">()</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_maps</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">read_maps</span><span class="p">()</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_maps</span>
 
 <div class="viewcode-block" id="Model.set_maps"><a class="viewcode-back" href="../../../_generated/hydromt.Model.set_maps.html#hydromt.Model.set_maps">[docs]</a>    <span class="k">def</span> <span class="nf">set_maps</span><span class="p">(</span>
@@ -1260,6 +1288,7 @@
 <span class="sd">        fn : str, optional</span>
 <span class="sd">            filename relative to model root, may wildcards, by default &quot;maps/*.nc&quot;</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_assert_read_mode</span>
         <span class="n">ncs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read_nc</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">ds</span> <span class="ow">in</span> <span class="n">ncs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">set_maps</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span></div>
@@ -1275,16 +1304,19 @@
 <span class="sd">            filename relative to model root and should contain a {name} placeholder,</span>
 <span class="sd">            by default &#39;maps/{name}.nc&#39;</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_write_nc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_maps</span><span class="p">,</span> <span class="n">fn</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_maps</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;No maps data found, skip writing.&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_assert_write_mode</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_write_nc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_maps</span><span class="p">,</span> <span class="n">fn</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
     <span class="c1"># model geometry files</span>
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">geoms</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Union</span><span class="p">[</span><span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">,</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoSeries</span><span class="p">]]:</span>
         <span class="sd">&quot;&quot;&quot;Model geometries. Returns dict of geopandas.GeoDataFrame or geopandas.GeoDataSeries</span>
 <span class="sd">        ..NOTE: previously call staticgeoms.&quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_geoms</span><span class="p">:</span>
-            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">read_geoms</span><span class="p">()</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_geoms</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">read_geoms</span><span class="p">()</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_geoms</span>
 
 <div class="viewcode-block" id="Model.set_geoms"><a class="viewcode-back" href="../../../_generated/hydromt.Model.set_geoms.html#hydromt.Model.set_geoms">[docs]</a>    <span class="k">def</span> <span class="nf">set_geoms</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">geom</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">,</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoSeries</span><span class="p">],</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
@@ -1316,6 +1348,7 @@
 <span class="sd">        fn : str, optional</span>
 <span class="sd">            filename relative to model root, may wildcards, by default &quot;geoms/*.nc&quot;</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_assert_read_mode</span>
         <span class="n">fns</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="p">,</span> <span class="n">fn</span><span class="p">))</span>
         <span class="k">for</span> <span class="n">fn</span> <span class="ow">in</span> <span class="n">fns</span><span class="p">:</span>
             <span class="n">name</span> <span class="o">=</span> <span class="n">basename</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
@@ -1333,16 +1366,15 @@
 <span class="sd">            filename relative to model root and should contain a {name} placeholder,</span>
 <span class="sd">            by default &#39;geoms/{name}.geojson&#39;</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_write</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="s2">&quot;Model opened in read-only mode&quot;</span><span class="p">)</span>
-        <span class="k">elif</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_geoms</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;No model geoms to write - Exiting&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_geoms</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;No geoms data found, skip writing.&quot;</span><span class="p">)</span>
             <span class="k">return</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_assert_write_mode</span>
         <span class="k">if</span> <span class="s2">&quot;driver&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
             <span class="n">kwargs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">driver</span><span class="o">=</span><span class="s2">&quot;GeoJSON&quot;</span><span class="p">)</span>  <span class="c1"># default</span>
         <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">gdf</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_geoms</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">gdf</span><span class="p">,</span> <span class="p">(</span><span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">,</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoSeries</span><span class="p">))</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">gdf</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
                     <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> object of type </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">gdf</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2"> not recognized&quot;</span>
                 <span class="p">)</span>
                 <span class="k">continue</span>
@@ -1361,9 +1393,8 @@
             <span class="s2">&quot;The staticgeoms method will be deprecated in future versions, use geoms instead.&quot;</span><span class="p">,</span>
             <span class="ne">DeprecationWarning</span><span class="p">,</span>
         <span class="p">)</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_geoms</span><span class="p">:</span>
-            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">read_staticgeoms</span><span class="p">()</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_geoms</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">read_staticgeoms</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_staticgeoms</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_geoms</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_staticgeoms</span>
 
@@ -1395,9 +1426,8 @@
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">forcing</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Union</span><span class="p">[</span><span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">,</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">]]:</span>
         <span class="sd">&quot;&quot;&quot;Model forcing. Returns dict of xarray.DataArray or xarray.Dataset&quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_forcing</span><span class="p">:</span>
-            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">read_forcing</span><span class="p">()</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_forcing</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">read_forcing</span><span class="p">()</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_forcing</span>
 
 <div class="viewcode-block" id="Model.set_forcing"><a class="viewcode-back" href="../../../_generated/hydromt.Model.set_forcing.html#hydromt.Model.set_forcing">[docs]</a>    <span class="k">def</span> <span class="nf">set_forcing</span><span class="p">(</span>
@@ -1433,6 +1463,7 @@
 <span class="sd">        fn : str, optional</span>
 <span class="sd">            filename relative to model root, may wildcards, by default &quot;forcing/*.nc&quot;</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_assert_read_mode</span>
         <span class="n">ncs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read_nc</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">ds</span> <span class="ow">in</span> <span class="n">ncs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">set_forcing</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span></div>
@@ -1448,15 +1479,18 @@
 <span class="sd">            filename relative to model root and should contain a {name} placeholder,</span>
 <span class="sd">            by default &#39;forcing/{name}.nc&#39;</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_write_nc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_forcing</span><span class="p">,</span> <span class="n">fn</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_forcing</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;No forcing data found, skip writing.&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_assert_write_mode</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_write_nc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_forcing</span><span class="p">,</span> <span class="n">fn</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
     <span class="c1"># model state files</span>
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">states</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Union</span><span class="p">[</span><span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">,</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">]]:</span>
         <span class="sd">&quot;&quot;&quot;Model states. Returns dict of xarray.DataArray or xarray.Dataset&quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_states</span><span class="p">:</span>
-            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">read_states</span><span class="p">()</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_states</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">read_states</span><span class="p">()</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_states</span>
 
 <div class="viewcode-block" id="Model.set_states"><a class="viewcode-back" href="../../../_generated/hydromt.Model.set_states.html#hydromt.Model.set_states">[docs]</a>    <span class="k">def</span> <span class="nf">set_states</span><span class="p">(</span>
@@ -1492,6 +1526,7 @@
 <span class="sd">        fn : str, optional</span>
 <span class="sd">            filename relative to model root, may wildcards, by default &quot;states/*.nc&quot;</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_assert_read_mode</span>
         <span class="n">ncs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read_nc</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">ds</span> <span class="ow">in</span> <span class="n">ncs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">set_states</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span></div>
@@ -1507,15 +1542,18 @@
 <span class="sd">            filename relative to model root and should contain a {name} placeholder,</span>
 <span class="sd">            by default &#39;states/{name}.nc&#39;</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_write_nc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_states</span><span class="p">,</span> <span class="n">fn</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_states</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;No states data found, skip writing.&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_assert_write_mode</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_write_nc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_states</span><span class="p">,</span> <span class="n">fn</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
     <span class="c1"># model results files; NOTE we don&#39;t have a write_results method (that&#39;s up to the model kernel)</span>
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">results</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Union</span><span class="p">[</span><span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">,</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">]]:</span>
         <span class="sd">&quot;&quot;&quot;Model results.  Returns dict of xarray.DataArray or xarray.Dataset&quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_results</span><span class="p">:</span>
-            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">read_results</span><span class="p">()</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_results</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">read_results</span><span class="p">()</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_results</span>
 
 <div class="viewcode-block" id="Model.set_results"><a class="viewcode-back" href="../../../_generated/hydromt.Model.set_results.html#hydromt.Model.set_results">[docs]</a>    <span class="k">def</span> <span class="nf">set_results</span><span class="p">(</span>
@@ -1554,6 +1592,7 @@
 <span class="sd">        fn : str, optional</span>
 <span class="sd">            filename relative to model root, may wildcards, by default &quot;results/*.nc&quot;</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_assert_read_mode</span>
         <span class="n">ncs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read_nc</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">ds</span> <span class="ow">in</span> <span class="n">ncs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">set_results</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span></div>
@@ -1561,10 +1600,6 @@
     <span class="k">def</span> <span class="nf">_write_nc</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">nc_dict</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Union</span><span class="p">[</span><span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">,</span> <span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">]],</span> <span class="n">fn</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_write</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="s2">&quot;Model opened in read-only mode&quot;</span><span class="p">)</span>
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">nc_dict</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;No data found - exiting&quot;</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">ds</span> <span class="ow">in</span> <span class="n">nc_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="p">(</span><span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">,</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">))</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">ds</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span>

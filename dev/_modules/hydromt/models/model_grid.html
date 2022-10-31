@@ -355,9 +355,8 @@
     <span class="k">def</span> <span class="nf">grid</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Model static gridded data. Returns xarray.Dataset.</span>
 <span class="sd">        Previously called staticmaps.&quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_grid</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">read_grid</span><span class="p">()</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_grid</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">read_grid</span><span class="p">()</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_grid</span>
 
     <span class="k">def</span> <span class="nf">set_grid</span><span class="p">(</span>
@@ -409,6 +408,7 @@
 <span class="sd">        fn : str, optional</span>
 <span class="sd">            filename relative to model root, by default &#39;grid/grid.nc&#39;</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_assert_read_mode</span>
         <span class="k">for</span> <span class="n">ds</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read_nc</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">set_grid</span><span class="p">(</span><span class="n">ds</span><span class="p">)</span>
 
@@ -422,11 +422,12 @@
 <span class="sd">        fn : str, optional</span>
 <span class="sd">            filename relative to model root, by default &#39;grid/grid.nc&#39;</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">nc_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_grid</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="c1"># _write_nc requires dict - use dummy key</span>
-            <span class="n">nc_dict</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s2">&quot;grid&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_grid</span><span class="p">})</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_write_nc</span><span class="p">(</span><span class="n">nc_dict</span><span class="p">,</span> <span class="n">fn</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_grid</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;No grid data found, skip writing.&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_assert_write_mode</span>
+            <span class="c1"># _write_nc requires dict - use dummy &#39;grid&#39; key</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_write_nc</span><span class="p">({</span><span class="s2">&quot;grid&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_grid</span><span class="p">},</span> <span class="n">fn</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
 
 <div class="viewcode-block" id="GridModel"><a class="viewcode-back" href="../../../_generated/hydromt.GridModel.html#hydromt.GridModel">[docs]</a><span class="k">class</span> <span class="nc">GridModel</span><span class="p">(</span><span class="n">GridMixin</span><span class="p">,</span> <span class="n">Model</span><span class="p">):</span>

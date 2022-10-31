@@ -504,9 +504,8 @@
     <span class="k">def</span> <span class="nf">mesh</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">xu</span><span class="o">.</span><span class="n">UgridDataArray</span><span class="p">,</span> <span class="n">xu</span><span class="o">.</span><span class="n">UgridDataset</span><span class="p">]:</span>
         <span class="sd">&quot;&quot;&quot;Model static mesh data. Returns a xarray.Dataset.&quot;&quot;&quot;</span>
         <span class="c1"># XU grid data type Xarray dataset with xu sampling.</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mesh</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">read_mesh</span><span class="p">()</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mesh</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">read_mesh</span><span class="p">()</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mesh</span>
 
     <span class="k">def</span> <span class="nf">set_mesh</span><span class="p">(</span>
@@ -555,6 +554,7 @@
 <span class="sd">        fn : str, optional</span>
 <span class="sd">            filename relative to model root, by default &#39;mesh/mesh.nc&#39;</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_assert_read_mode</span>
         <span class="k">for</span> <span class="n">ds</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read_nc</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
             <span class="n">uds</span> <span class="o">=</span> <span class="n">xu</span><span class="o">.</span><span class="n">UgridDataset</span><span class="p">(</span><span class="n">ds</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">ds</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">crs</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>  <span class="c1"># parse crs</span>
@@ -572,11 +572,10 @@
 <span class="sd">        fn : str, optional</span>
 <span class="sd">            filename relative to model root, by default &#39;grid/grid.nc&#39;</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_write</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="s2">&quot;Model opened in read-only mode&quot;</span><span class="p">)</span>
-        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mesh</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;No mesh to write - Exiting&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mesh</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;No mesh data found, skip writing.&quot;</span><span class="p">)</span>
             <span class="k">return</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_assert_write_mode</span>
         <span class="c1"># filename</span>
         <span class="n">_fn</span> <span class="o">=</span> <span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="p">,</span> <span class="n">fn</span><span class="p">)</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">isdir</span><span class="p">(</span><span class="n">dirname</span><span class="p">(</span><span class="n">_fn</span><span class="p">)):</span>
