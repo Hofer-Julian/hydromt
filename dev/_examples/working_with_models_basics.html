@@ -7,31 +7,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>Example: Working with models from CLI &#8212; HydroMT  documentation</title>
-  <script>
+  
+  
+  
+  <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=1e1de1a1873e13ef5536" rel="stylesheet">
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=1e1de1a1873e13ef5536" rel="stylesheet">
+  <link href="../_static/styles/theme.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+<link href="../_static/styles/bootstrap.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=796348d33e8b1d947c94" rel="stylesheet">
 
   
-  <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/6.1.2/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2">
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
     <link rel="stylesheet" type="text/css" href="../_static/theme-deltares.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1e1de1a1873e13ef5536">
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=796348d33e8b1d947c94">
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=796348d33e8b1d947c94">
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -54,6 +55,10 @@
   
   
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="light">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
 
   
   <input type="checkbox" class="sidebar-toggle" name="__primary" id="__primary">
@@ -119,39 +124,39 @@
     </p>
     <ul id="navbar-main-elements" class="navbar-nav">
         
-                <li class="nav-item">
-                    <a class="nav-link" href="../getting_started/intro.html">
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../getting_started/intro.html">
                         Getting started
-                    </a>
-                </li>
+                      </a>
+                    </li>
                 
 
-                <li class="nav-item current active">
-                    <a class="nav-link" href="../user_guide/intro.html">
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../user_guide/intro.html">
                         User guide
-                    </a>
-                </li>
+                      </a>
+                    </li>
                 
 
-                <li class="nav-item">
-                    <a class="nav-link" href="../api.html">
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../api.html">
                         API reference
-                    </a>
-                </li>
+                      </a>
+                    </li>
                 
 
-                <li class="nav-item">
-                    <a class="nav-link" href="../dev/intro.html">
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../dev/intro.html">
                         Developments
-                    </a>
-                </li>
+                      </a>
+                    </li>
                 
 
-                <li class="nav-item">
-                    <a class="nav-link" href="../plugins.html">
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../plugins.html">
                         Plugins
-                    </a>
-                </li>
+                      </a>
+                    </li>
                 
     </ul>
 </nav>
@@ -160,12 +165,14 @@
     </div>
 
     <div id="navbar-end">
-      <div class="navbar-end-item navbar-end__search-button-container">
-        
-<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" data-toggle="tooltip">
+      
+        <div class="navbar-end-item navbar-persistent--container">
+          
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-toggle="tooltip">
   <i class="fa-solid fa-magnifying-glass"></i>
 </button>
-      </div>
+        </div>
+      
       
       <div class="navbar-end-item">
         <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
@@ -197,11 +204,13 @@
 
 
   
-  <div class="search-button-container--mobile">
-<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" data-toggle="tooltip">
+  
+    <div class="navbar-persistent--mobile">
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-toggle="tooltip">
   <i class="fa-solid fa-magnifying-glass"></i>
 </button>
-  </div>
+    </div>
+  
 
   
   <label class="sidebar-toggle secondary-toggle" for="__secondary">
@@ -231,39 +240,39 @@
     </p>
     <ul id="navbar-main-elements" class="navbar-nav">
         
-                <li class="nav-item">
-                    <a class="nav-link" href="../getting_started/intro.html">
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../getting_started/intro.html">
                         Getting started
-                    </a>
-                </li>
+                      </a>
+                    </li>
                 
 
-                <li class="nav-item current active">
-                    <a class="nav-link" href="../user_guide/intro.html">
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../user_guide/intro.html">
                         User guide
-                    </a>
-                </li>
+                      </a>
+                    </li>
                 
 
-                <li class="nav-item">
-                    <a class="nav-link" href="../api.html">
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../api.html">
                         API reference
-                    </a>
-                </li>
+                      </a>
+                    </li>
                 
 
-                <li class="nav-item">
-                    <a class="nav-link" href="../dev/intro.html">
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../dev/intro.html">
                         Developments
-                    </a>
-                </li>
+                      </a>
+                    </li>
                 
 
-                <li class="nav-item">
-                    <a class="nav-link" href="../plugins.html">
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../plugins.html">
                         Plugins
-                    </a>
-                </li>
+                      </a>
+                    </li>
                 
     </ul>
 </nav>
@@ -365,8 +374,11 @@
     </div>
   </div>
 
+  
+  <div id="rtd-footer-container"></div>
+
       </div>
-      <main class="bd-main">
+      <main id="main-content" class="bd-main">
         
         
         <div class="bd-content">
@@ -489,10 +501,11 @@ div.nboutput.container div.prompt > div {
     }
 }
 
-/* disable scrollbars on prompts */
+/* disable scrollbars and line breaks on prompts */
 div.nbinput.container div.prompt pre,
 div.nboutput.container div.prompt pre {
     overflow: hidden;
+    white-space: pre;
 }
 
 /* input/output area */
@@ -742,22 +755,22 @@ Options:
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-2022-10-31 02:15:15,155 - build - log - DEBUG - Writing log messages to new file /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model/hydromt.log.
-2022-10-31 02:15:15,156 - build - log - INFO - HydroMT version: 0.6.1.dev
-2022-10-31 02:15:15,156 - build - main - INFO - Building instance of grid_model model at /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model.
-2022-10-31 02:15:15,156 - build - main - INFO - User settings:
-2022-10-31 02:15:15,171 - build - model_api - WARNING - Model dir already exists and files might be overwritten: /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model/.
-2022-10-31 02:15:15,171 - build - model_api - INFO - Initializing grid_model model from hydromt (v0.6.1.dev).
-2022-10-31 02:15:15,171 - build - model_api - INFO - setup_region.region: {&#39;bbox&#39;: [11.7, 45.35, 12.95, 46.7]}
-2022-10-31 02:15:15,171 - build - model_api - INFO - setup_region.hydrography_fn: merit_hydro
-2022-10-31 02:15:15,171 - build - model_api - INFO - setup_region.basin_index_fn: merit_hydro_index
-2022-10-31 02:15:15,171 - build - basin_mask - DEBUG - Parsed region (kind=bbox): {&#39;bbox&#39;: [11.7, 45.35, 12.95, 46.7]}
-2022-10-31 02:15:15,175 - build - model_api - INFO - Writing model data to /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model
-2022-10-31 02:15:15,176 - build - model_api - INFO - Writing model config to /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model/model.ini
-2022-10-31 02:15:15,176 - build - model_grid - DEBUG - No grid data found, skip writing.
-2022-10-31 02:15:15,176 - build - model_api - DEBUG - Writing file geoms/region.geojson
-2022-10-31 02:15:15,215 - build - model_api - DEBUG - No forcing data found, skip writing.
-2022-10-31 02:15:15,215 - build - model_api - DEBUG - No states data found, skip writing.
+2022-12-12 11:04:37,009 - build - log - DEBUG - Writing log messages to new file /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model/hydromt.log.
+2022-12-12 11:04:37,010 - build - log - INFO - HydroMT version: 0.6.1.dev
+2022-12-12 11:04:37,010 - build - main - INFO - Building instance of grid_model model at /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model.
+2022-12-12 11:04:37,010 - build - main - INFO - User settings:
+2022-12-12 11:04:37,022 - build - model_api - WARNING - Model dir already exists and files might be overwritten: /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model/.
+2022-12-12 11:04:37,022 - build - model_api - INFO - Initializing grid_model model from hydromt (v0.6.1.dev).
+2022-12-12 11:04:37,022 - build - model_api - INFO - setup_region.region: {&#39;bbox&#39;: [11.7, 45.35, 12.95, 46.7]}
+2022-12-12 11:04:37,022 - build - model_api - INFO - setup_region.hydrography_fn: merit_hydro
+2022-12-12 11:04:37,022 - build - model_api - INFO - setup_region.basin_index_fn: merit_hydro_index
+2022-12-12 11:04:37,022 - build - basin_mask - DEBUG - Parsed region (kind=bbox): {&#39;bbox&#39;: [11.7, 45.35, 12.95, 46.7]}
+2022-12-12 11:04:37,026 - build - model_api - INFO - Writing model data to /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model
+2022-12-12 11:04:37,026 - build - model_api - INFO - Writing model config to /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model/model.ini
+2022-12-12 11:04:37,026 - build - model_grid - DEBUG - No grid data found, skip writing.
+2022-12-12 11:04:37,026 - build - model_api - DEBUG - Writing file geoms/region.geojson
+2022-12-12 11:04:37,058 - build - model_api - DEBUG - No forcing data found, skip writing.
+2022-12-12 11:04:37,058 - build - model_api - DEBUG - No states data found, skip writing.
 
 </pre></div></div>
 </div>
@@ -796,8 +809,8 @@ Options:
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 tmp_grid_model
- - model.ini
  - hydromt.log
+ - model.ini
 tmp_grid_model/geoms
  - region.geojson
 </pre></div></div>
@@ -862,54 +875,54 @@ components = [&#39;config&#39;, &#39;geoms&#39;, &#39;maps&#39;]
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-2022-10-31 02:15:18,403 - build - log - DEBUG - Writing log messages to new file /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model1/hydromt.log.
-2022-10-31 02:15:18,403 - build - log - INFO - HydroMT version: 0.6.1.dev
-2022-10-31 02:15:18,404 - build - main - INFO - Building instance of grid_model model at /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model1.
-2022-10-31 02:15:18,404 - build - main - INFO - User settings:
-2022-10-31 02:15:18,469 - build - data_catalog - INFO - Reading data catalog artifact_data v0.0.6 from archive
-2022-10-31 02:15:18,469 - build - data_catalog - INFO - Parsing data catalog from /home/runner/.hydromt_data/artifact_data/v0.0.6/data_catalog.yml
-2022-10-31 02:15:18,541 - build - data_catalog - INFO - Parsing data catalog from data/vito_reclass.yml
-2022-10-31 02:15:18,542 - build - model_api - WARNING - Model dir already exists and files might be overwritten: /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model1/.
-2022-10-31 02:15:18,542 - build - model_api - INFO - Initializing grid_model model from hydromt (v0.6.1.dev).
-2022-10-31 02:15:18,543 - build - model_api - DEBUG - Setting model config options.
-2022-10-31 02:15:18,543 - build - model_api - INFO - setup_region.region: {&#39;bbox&#39;: [11.7, 45.35, 12.95, 46.7]}
-2022-10-31 02:15:18,543 - build - model_api - INFO - setup_region.hydrography_fn: merit_hydro
-2022-10-31 02:15:18,543 - build - model_api - INFO - setup_region.basin_index_fn: merit_hydro_index
-2022-10-31 02:15:18,543 - build - basin_mask - DEBUG - Parsed region (kind=bbox): {&#39;bbox&#39;: [11.7, 45.35, 12.95, 46.7]}
-2022-10-31 02:15:18,547 - build - model_api - INFO - setup_maps_from_raster.raster_fn: merit_hydro_1k
-2022-10-31 02:15:18,548 - build - model_api - INFO - setup_maps_from_raster.variables: elevtn
-2022-10-31 02:15:18,548 - build - model_api - INFO - setup_maps_from_raster.fill_method: None
-2022-10-31 02:15:18,548 - build - model_api - INFO - setup_maps_from_raster.name: None
-2022-10-31 02:15:18,548 - build - model_api - INFO - setup_maps_from_raster.reproject_method: None
-2022-10-31 02:15:18,548 - build - model_api - INFO - setup_maps_from_raster.split_dataset: True
-2022-10-31 02:15:18,548 - build - model_api - INFO - Preparing maps data from raster source merit_hydro_1k
-2022-10-31 02:15:18,548 - build - data_catalog - INFO - DataCatalog: Getting merit_hydro_1k RasterDataset raster data from /home/runner/.hydromt_data/artifact_data/v0.0.6/merit_hydro_1k/{variable}.tif
-2022-10-31 02:15:18,579 - build - rasterdataset - DEBUG - RasterDataset: Clip with geom - [11.700, 45.350, 12.950, 46.700]
-2022-10-31 02:15:18,594 - build - model_api - INFO - setup_maps_from_raster_reclass.raster_fn: vito
-2022-10-31 02:15:18,594 - build - model_api - INFO - setup_maps_from_raster_reclass.reclass_table_fn: vito_reclass
-2022-10-31 02:15:18,594 - build - model_api - INFO - setup_maps_from_raster_reclass.reclass_variables: [&#39;manning&#39;]
-2022-10-31 02:15:18,594 - build - model_api - INFO - setup_maps_from_raster_reclass.variable: None
-2022-10-31 02:15:18,594 - build - model_api - INFO - setup_maps_from_raster_reclass.fill_method: None
-2022-10-31 02:15:18,594 - build - model_api - INFO - setup_maps_from_raster_reclass.reproject_method: None
-2022-10-31 02:15:18,594 - build - model_api - INFO - setup_maps_from_raster_reclass.name: None
-2022-10-31 02:15:18,594 - build - model_api - INFO - setup_maps_from_raster_reclass.split_dataset: True
-2022-10-31 02:15:18,594 - build - model_api - INFO - Preparing map data by reclassifying the data in vito based on vito_reclass
-2022-10-31 02:15:18,595 - build - data_catalog - INFO - DataCatalog: Getting vito RasterDataset raster data from /home/runner/.hydromt_data/artifact_data/v0.0.6/vito.tif
-2022-10-31 02:15:18,614 - build - rasterdataset - DEBUG - RasterDataset: Clip with geom - [11.700, 45.350, 12.950, 46.700]
-2022-10-31 02:15:18,632 - build - data_catalog - INFO - DataCatalog: Getting vito_reclass DataFrame csv data from /home/runner/work/hydromt/hydromt/docs/_examples/data/vito_reclass.csv
-2022-10-31 02:15:18,632 - build - dataframe - INFO - DataFrame: Read csv data.
-2022-10-31 02:15:18,644 - build - model_api - INFO - write.components: [&#39;config&#39;, &#39;geoms&#39;, &#39;maps&#39;]
-2022-10-31 02:15:18,644 - build - model_api - INFO - Writing model data to /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model1
-2022-10-31 02:15:18,644 - build - model_api - INFO - Writing model config to /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model1/model.ini
-2022-10-31 02:15:18,644 - build - model_api - DEBUG - Writing file geoms/region.geojson
-2022-10-31 02:15:18,682 - build - model_api - DEBUG - Writing file maps/elevtn.nc
-2022-10-31 02:15:18,692 - build - model_api - DEBUG - Writing file maps/manning.nc
-2022-10-31 02:15:18,932 - build - model_api - INFO - Writing model data to /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model1
-2022-10-31 02:15:18,932 - build - model_api - INFO - Writing model config to /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model1/model.ini
-2022-10-31 02:15:18,933 - build - model_grid - DEBUG - No grid data found, skip writing.
-2022-10-31 02:15:18,933 - build - model_api - DEBUG - Writing file geoms/region.geojson
-2022-10-31 02:15:18,940 - build - model_api - DEBUG - No forcing data found, skip writing.
-2022-10-31 02:15:18,940 - build - model_api - DEBUG - No states data found, skip writing.
+2022-12-12 11:04:39,564 - build - log - DEBUG - Writing log messages to new file /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model1/hydromt.log.
+2022-12-12 11:04:39,564 - build - log - INFO - HydroMT version: 0.6.1.dev
+2022-12-12 11:04:39,564 - build - main - INFO - Building instance of grid_model model at /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model1.
+2022-12-12 11:04:39,564 - build - main - INFO - User settings:
+2022-12-12 11:04:39,631 - build - data_catalog - INFO - Reading data catalog artifact_data v0.0.7 from archive
+2022-12-12 11:04:39,631 - build - data_catalog - INFO - Parsing data catalog from /home/runner/.hydromt_data/artifact_data/v0.0.7/data_catalog.yml
+2022-12-12 11:04:39,693 - build - data_catalog - INFO - Parsing data catalog from data/vito_reclass.yml
+2022-12-12 11:04:39,694 - build - model_api - WARNING - Model dir already exists and files might be overwritten: /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model1/.
+2022-12-12 11:04:39,694 - build - model_api - INFO - Initializing grid_model model from hydromt (v0.6.1.dev).
+2022-12-12 11:04:39,695 - build - model_api - DEBUG - Setting model config options.
+2022-12-12 11:04:39,695 - build - model_api - INFO - setup_region.region: {&#39;bbox&#39;: [11.7, 45.35, 12.95, 46.7]}
+2022-12-12 11:04:39,695 - build - model_api - INFO - setup_region.hydrography_fn: merit_hydro
+2022-12-12 11:04:39,695 - build - model_api - INFO - setup_region.basin_index_fn: merit_hydro_index
+2022-12-12 11:04:39,695 - build - basin_mask - DEBUG - Parsed region (kind=bbox): {&#39;bbox&#39;: [11.7, 45.35, 12.95, 46.7]}
+2022-12-12 11:04:39,699 - build - model_api - INFO - setup_maps_from_raster.raster_fn: merit_hydro_1k
+2022-12-12 11:04:39,699 - build - model_api - INFO - setup_maps_from_raster.variables: elevtn
+2022-12-12 11:04:39,699 - build - model_api - INFO - setup_maps_from_raster.fill_method: None
+2022-12-12 11:04:39,699 - build - model_api - INFO - setup_maps_from_raster.name: None
+2022-12-12 11:04:39,699 - build - model_api - INFO - setup_maps_from_raster.reproject_method: None
+2022-12-12 11:04:39,699 - build - model_api - INFO - setup_maps_from_raster.split_dataset: True
+2022-12-12 11:04:39,699 - build - model_api - INFO - Preparing maps data from raster source merit_hydro_1k
+2022-12-12 11:04:39,699 - build - data_catalog - INFO - DataCatalog: Getting merit_hydro_1k RasterDataset raster data from /home/runner/.hydromt_data/artifact_data/v0.0.7/merit_hydro_1k/{variable}.tif
+2022-12-12 11:04:39,724 - build - rasterdataset - DEBUG - RasterDataset: Clip with geom - [11.700, 45.350, 12.950, 46.700]
+2022-12-12 11:04:39,736 - build - model_api - INFO - setup_maps_from_raster_reclass.raster_fn: vito
+2022-12-12 11:04:39,736 - build - model_api - INFO - setup_maps_from_raster_reclass.reclass_table_fn: vito_reclass
+2022-12-12 11:04:39,736 - build - model_api - INFO - setup_maps_from_raster_reclass.reclass_variables: [&#39;manning&#39;]
+2022-12-12 11:04:39,736 - build - model_api - INFO - setup_maps_from_raster_reclass.variable: None
+2022-12-12 11:04:39,736 - build - model_api - INFO - setup_maps_from_raster_reclass.fill_method: None
+2022-12-12 11:04:39,736 - build - model_api - INFO - setup_maps_from_raster_reclass.reproject_method: None
+2022-12-12 11:04:39,736 - build - model_api - INFO - setup_maps_from_raster_reclass.name: None
+2022-12-12 11:04:39,736 - build - model_api - INFO - setup_maps_from_raster_reclass.split_dataset: True
+2022-12-12 11:04:39,736 - build - model_api - INFO - Preparing map data by reclassifying the data in vito based on vito_reclass
+2022-12-12 11:04:39,736 - build - data_catalog - INFO - DataCatalog: Getting vito RasterDataset raster data from /home/runner/.hydromt_data/artifact_data/v0.0.7/vito.tif
+2022-12-12 11:04:39,752 - build - rasterdataset - DEBUG - RasterDataset: Clip with geom - [11.700, 45.350, 12.950, 46.700]
+2022-12-12 11:04:39,765 - build - data_catalog - INFO - DataCatalog: Getting vito_reclass DataFrame csv data from /home/runner/work/hydromt/hydromt/docs/_examples/data/vito_reclass.csv
+2022-12-12 11:04:39,765 - build - dataframe - INFO - DataFrame: Read csv data.
+2022-12-12 11:04:39,774 - build - model_api - INFO - write.components: [&#39;config&#39;, &#39;geoms&#39;, &#39;maps&#39;]
+2022-12-12 11:04:39,775 - build - model_api - INFO - Writing model data to /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model1
+2022-12-12 11:04:39,775 - build - model_api - INFO - Writing model config to /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model1/model.ini
+2022-12-12 11:04:39,775 - build - model_api - DEBUG - Writing file geoms/region.geojson
+2022-12-12 11:04:39,806 - build - model_api - DEBUG - Writing file maps/elevtn.nc
+2022-12-12 11:04:39,947 - build - model_api - DEBUG - Writing file maps/manning.nc
+2022-12-12 11:04:40,151 - build - model_api - INFO - Writing model data to /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model1
+2022-12-12 11:04:40,151 - build - model_api - INFO - Writing model config to /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model1/model.ini
+2022-12-12 11:04:40,152 - build - model_grid - DEBUG - No grid data found, skip writing.
+2022-12-12 11:04:40,152 - build - model_api - DEBUG - Writing file geoms/region.geojson
+2022-12-12 11:04:40,159 - build - model_api - DEBUG - No forcing data found, skip writing.
+2022-12-12 11:04:40,159 - build - model_api - DEBUG - No states data found, skip writing.
 
 </pre></div></div>
 </div>
@@ -936,13 +949,13 @@ components = [&#39;config&#39;, &#39;geoms&#39;, &#39;maps&#39;]
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 tmp_grid_model1
- - model.ini
  - hydromt.log
-tmp_grid_model1/geoms
- - region.geojson
+ - model.ini
 tmp_grid_model1/maps
  - manning.nc
  - elevtn.nc
+tmp_grid_model1/geoms
+ - region.geojson
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -1058,26 +1071,26 @@ Writing ./tmp_grid_model1/grid_model_update.ini
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-2022-10-31 02:15:25,463 - update - log - DEBUG - Appending log messages to file /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model1/hydromt.log.
-2022-10-31 02:15:25,463 - update - log - INFO - HydroMT version: 0.6.1.dev
-2022-10-31 02:15:25,463 - update - main - INFO - Updating grid_model model at /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model1 (r+).
-2022-10-31 02:15:25,463 - update - main - INFO - Output dir: /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model1
-2022-10-31 02:15:25,463 - update - main - INFO - User settings:
-2022-10-31 02:15:25,479 - update - model_api - INFO - Initializing grid_model model from hydromt (v0.6.1.dev).
-2022-10-31 02:15:25,480 - update - model_api - DEBUG - Reading model file region.
-2022-10-31 02:15:25,508 - update - model_api - INFO - setup_maps_from_raster.raster_fn: merit_hydro_1k
-2022-10-31 02:15:25,508 - update - model_api - INFO - setup_maps_from_raster.variables: uparea
-2022-10-31 02:15:25,508 - update - model_api - INFO - setup_maps_from_raster.fill_method: None
-2022-10-31 02:15:25,508 - update - model_api - INFO - setup_maps_from_raster.name: None
-2022-10-31 02:15:25,508 - update - model_api - INFO - setup_maps_from_raster.reproject_method: None
-2022-10-31 02:15:25,508 - update - model_api - INFO - setup_maps_from_raster.split_dataset: True
-2022-10-31 02:15:25,508 - update - model_api - INFO - Preparing maps data from raster source merit_hydro_1k
-2022-10-31 02:15:25,562 - update - data_catalog - INFO - Reading data catalog artifact_data v0.0.6 from archive
-2022-10-31 02:15:25,562 - update - data_catalog - INFO - Parsing data catalog from /home/runner/.hydromt_data/artifact_data/v0.0.6/data_catalog.yml
-2022-10-31 02:15:25,634 - update - data_catalog - INFO - DataCatalog: Getting merit_hydro_1k RasterDataset raster data from /home/runner/.hydromt_data/artifact_data/v0.0.6/merit_hydro_1k/{variable}.tif
-2022-10-31 02:15:25,666 - update - rasterdataset - DEBUG - RasterDataset: Clip with geom - [11.700, 45.350, 12.950, 46.700]
-2022-10-31 02:15:25,681 - update - model_api - INFO - write_maps.fn: maps/{name}.nc
-2022-10-31 02:15:25,681 - update - model_api - DEBUG - Writing file maps/uparea.nc
+2022-12-12 11:04:45,250 - update - log - DEBUG - Appending log messages to file /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model1/hydromt.log.
+2022-12-12 11:04:45,250 - update - log - INFO - HydroMT version: 0.6.1.dev
+2022-12-12 11:04:45,250 - update - main - INFO - Updating grid_model model at /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model1 (r+).
+2022-12-12 11:04:45,250 - update - main - INFO - Output dir: /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model1
+2022-12-12 11:04:45,250 - update - main - INFO - User settings:
+2022-12-12 11:04:45,262 - update - model_api - INFO - Initializing grid_model model from hydromt (v0.6.1.dev).
+2022-12-12 11:04:45,263 - update - model_api - DEBUG - Reading model file region.
+2022-12-12 11:04:45,285 - update - model_api - INFO - setup_maps_from_raster.raster_fn: merit_hydro_1k
+2022-12-12 11:04:45,286 - update - model_api - INFO - setup_maps_from_raster.variables: uparea
+2022-12-12 11:04:45,286 - update - model_api - INFO - setup_maps_from_raster.fill_method: None
+2022-12-12 11:04:45,286 - update - model_api - INFO - setup_maps_from_raster.name: None
+2022-12-12 11:04:45,286 - update - model_api - INFO - setup_maps_from_raster.reproject_method: None
+2022-12-12 11:04:45,286 - update - model_api - INFO - setup_maps_from_raster.split_dataset: True
+2022-12-12 11:04:45,286 - update - model_api - INFO - Preparing maps data from raster source merit_hydro_1k
+2022-12-12 11:04:45,341 - update - data_catalog - INFO - Reading data catalog artifact_data v0.0.7 from archive
+2022-12-12 11:04:45,341 - update - data_catalog - INFO - Parsing data catalog from /home/runner/.hydromt_data/artifact_data/v0.0.7/data_catalog.yml
+2022-12-12 11:04:45,402 - update - data_catalog - INFO - DataCatalog: Getting merit_hydro_1k RasterDataset raster data from /home/runner/.hydromt_data/artifact_data/v0.0.7/merit_hydro_1k/{variable}.tif
+2022-12-12 11:04:45,427 - update - rasterdataset - DEBUG - RasterDataset: Clip with geom - [11.700, 45.350, 12.950, 46.700]
+2022-12-12 11:04:45,440 - update - model_api - INFO - write_maps.fn: maps/{name}.nc
+2022-12-12 11:04:45,440 - update - model_api - DEBUG - Writing file maps/uparea.nc
 
 </pre></div></div>
 </div>
@@ -1103,15 +1116,15 @@ Writing ./tmp_grid_model1/grid_model_update.ini
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 tmp_grid_model1
- - model.ini
- - hydromt.log
  - grid_model_update.ini
-tmp_grid_model1/geoms
- - region.geojson
+ - hydromt.log
+ - model.ini
 tmp_grid_model1/maps
  - manning.nc
- - elevtn.nc
  - uparea.nc
+ - elevtn.nc
+tmp_grid_model1/geoms
+ - region.geojson
 </pre></div></div>
 </div>
 </section>
@@ -1213,7 +1226,8 @@ tmp_grid_model1/maps
   
     
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1e1de1a1873e13ef5536"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=796348d33e8b1d947c94"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=796348d33e8b1d947c94"></script>
 
   <footer class="bd-footer"><div class="bd-footer__inner container">
   
@@ -1225,6 +1239,16 @@ tmp_grid_model1/maps
 
 </p>
 
+  </div>
+  
+  <div class="footer-item">
+    <p class="theme-version">
+    Built with the
+    <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">
+        PyData Sphinx Theme
+    </a>
+    0.12.0.
+</p>
   </div>
   
   <div class="footer-item">
