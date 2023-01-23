@@ -367,7 +367,7 @@
 <span class="s2">    log_level : int, optional</span>
 <span class="s2">        Log level [0-50], by default 20 (info)</span>
 <span class="s2">    fmt : str, optional</span>
-<span class="s2">        log message formatter, by default </span><span class="si">{</span><span class="n">FMT</span><span class="si">}</span><span class="s2"></span>
+<span class="s2">        log message formatter, by default </span><span class="si">{</span><span class="n">FMT</span><span class="si">}</span>
 <span class="s2">    append : bool, optional</span>
 <span class="s2">        Wether to append (True) or overwrite (False) to a logfile at path, by default True</span>
 
@@ -395,7 +395,7 @@
 
 
 <span class="k">def</span> <span class="nf">add_filehandler</span><span class="p">(</span><span class="n">logger</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">log_level</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="n">FMT</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Add file handler to logger.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Add file handler to logger.&quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">path</span><span class="p">)):</span>
         <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">path</span><span class="p">))</span>
     <span class="n">isfile</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>

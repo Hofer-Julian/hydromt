@@ -364,7 +364,7 @@
 
 
 <div class="viewcode-block" id="Model"><a class="viewcode-back" href="../../../_generated/hydromt.Model.html#hydromt.Model">[docs]</a><span class="k">class</span> <span class="nc">Model</span><span class="p">(</span><span class="nb">object</span><span class="p">,</span> <span class="n">metaclass</span><span class="o">=</span><span class="n">ABCMeta</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;General and basic API for models in HydroMT&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;General and basic API for models in HydroMT&quot;&quot;&quot;</span>
 
     <span class="c1"># FIXME</span>
     <span class="n">_DATADIR</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>  <span class="c1"># path to the model data folder</span>
@@ -398,7 +398,7 @@
         <span class="n">logger</span><span class="o">=</span><span class="n">logger</span><span class="p">,</span>
         <span class="o">**</span><span class="n">artifact_keys</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Initialize a model</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialize a model</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -450,7 +450,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">api</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Return all model components and their data types&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return all model components and their data types&quot;&quot;&quot;</span>
         <span class="n">_api</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_API</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
         <span class="c1"># loop over parent and mixin classes and update API</span>
         <span class="k">for</span> <span class="n">base_cls</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__bases__</span><span class="p">:</span>
@@ -458,7 +458,7 @@
         <span class="k">return</span> <span class="n">_api</span>
 
     <span class="k">def</span> <span class="nf">_check_get_opt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">opt</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Check all opt keys and raise sensible error messages if unknown.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Check all opt keys and raise sensible error messages if unknown.&quot;&quot;&quot;</span>
         <span class="k">for</span> <span class="n">method</span> <span class="ow">in</span> <span class="n">opt</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
             <span class="n">m</span> <span class="o">=</span> <span class="n">method</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s2">&quot;0123456789&quot;</span><span class="p">)</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="n">callable</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="kc">None</span><span class="p">)):</span>
@@ -466,7 +466,7 @@
         <span class="k">return</span> <span class="n">opt</span>
 
     <span class="k">def</span> <span class="nf">_run_log_method</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Log method parameters before running a method&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Log method parameters before running a method&quot;&quot;&quot;</span>
         <span class="n">method</span> <span class="o">=</span> <span class="n">method</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s2">&quot;0123456789&quot;</span><span class="p">)</span>
         <span class="n">func</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">method</span><span class="p">)</span>
         <span class="n">signature</span> <span class="o">=</span> <span class="n">inspect</span><span class="o">.</span><span class="n">signature</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
@@ -496,7 +496,7 @@
         <span class="n">write</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
         <span class="n">opt</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">dict</span><span class="p">]</span> <span class="o">=</span> <span class="p">{},</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Single method to build a model from scratch based on settings in `opt`.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Single method to build a model from scratch based on settings in `opt`.</span>
 
 <span class="sd">        Methods will be run one by one based on the order of appearance in `opt` (.ini configuration file).</span>
 <span class="sd">        All model methods are supported including setup_*, read_* and write_* methods.</span>
@@ -566,7 +566,7 @@
         <span class="n">write</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
         <span class="n">opt</span><span class="p">:</span> <span class="n">Dict</span> <span class="o">=</span> <span class="p">{},</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Single method to update a model based the settings in `opt`.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Single method to update a model based the settings in `opt`.</span>
 
 <span class="sd">        Methods will be run one by one based on the order of appearance in `opt` (ini configuration file).</span>
 
@@ -639,7 +639,7 @@
         <span class="n">hydrography_fn</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;merit_hydro&quot;</span><span class="p">,</span>
         <span class="n">basin_index_fn</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;merit_hydro_index&quot;</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This component sets the `region` of interest of the model.</span>
 
 <span class="sd">        Adds model layer:</span>
@@ -725,7 +725,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">root</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Path to model folder.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Path to model folder.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_root</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Root unknown, use set_root method&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_root</span>
@@ -741,7 +741,7 @@
             <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="s2">&quot;Model opened in write-only mode&quot;</span><span class="p">)</span>
 
 <div class="viewcode-block" id="Model.set_root"><a class="viewcode-back" href="../../../_generated/hydromt.Model.set_root.html#hydromt.Model.set_root">[docs]</a>    <span class="k">def</span> <span class="nf">set_root</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">mode</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;w&quot;</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Initialize the model root.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialize the model root.</span>
 
 <span class="sd">        In read/append mode a check is done if the root exists.</span>
 <span class="sd">        In write mode the required model folder structure is created.</span>
@@ -803,7 +803,7 @@
             <span class="s2">&quot;results&quot;</span><span class="p">,</span>
         <span class="p">],</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Read the complete model schematization and configuration from model files.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Read the complete model schematization and configuration from model files.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -830,7 +830,7 @@
             <span class="s2">&quot;config&quot;</span><span class="p">,</span>
         <span class="p">],</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Write the complete model schematization and configuration to model files.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Write the complete model schematization and configuration to model files.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -853,7 +853,7 @@
         <span class="n">used_only</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
         <span class="n">append</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Write the data catalog to data_lib_fn</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Write the data catalog to data_lib_fn</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -887,14 +887,14 @@
     <span class="c1"># model configuration</span>
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">config</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Union</span><span class="p">[</span><span class="n">Dict</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]:</span>
-        <span class="sd">&quot;&quot;&quot;Model configuration. Returns a (nested) dictionary&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Model configuration. Returns a (nested) dictionary&quot;&quot;&quot;</span>
         <span class="c1"># initialize default config if in write-mode</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_config</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">read_config</span><span class="p">()</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_config</span>
 
 <div class="viewcode-block" id="Model.set_config"><a class="viewcode-back" href="../../../_generated/hydromt.Model.set_config.html#hydromt.Model.set_config">[docs]</a>    <span class="k">def</span> <span class="nf">set_config</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Update the config dictionary at key(s) with values.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Update the config dictionary at key(s) with values.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -926,7 +926,7 @@
         <span class="n">branch</span><span class="p">[</span><span class="n">args</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="n">value</span></div>
 
 <div class="viewcode-block" id="Model.setup_config"><a class="viewcode-back" href="../../../_generated/hydromt.Model.setup_config.html#hydromt.Model.setup_config">[docs]</a>    <span class="k">def</span> <span class="nf">setup_config</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">cfdict</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Update config with a dictionary&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Update config with a dictionary&quot;&quot;&quot;</span>
         <span class="c1"># TODO rename to update_config</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">cfdict</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Setting model config options.&quot;</span><span class="p">)</span>
@@ -934,7 +934,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">set_config</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Model.get_config"><a class="viewcode-back" href="../../../_generated/hydromt.Model.get_config.html#hydromt.Model.get_config">[docs]</a>    <span class="k">def</span> <span class="nf">get_config</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">fallback</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">abs_path</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Get a config value at key(s).</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get a config value at key(s).</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -987,7 +987,7 @@
         <span class="k">return</span> <span class="n">config</span><span class="o">.</span><span class="n">configwrite</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">)</span>
 
 <div class="viewcode-block" id="Model.read_config"><a class="viewcode-back" href="../../../_generated/hydromt.Model.read_config.html#hydromt.Model.read_config">[docs]</a>    <span class="k">def</span> <span class="nf">read_config</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config_fn</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Parse config from file. If no config file found a default config file is</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Parse config from file. If no config file found a default config file is</span>
 <span class="sd">        read in writing mode.&quot;&quot;&quot;</span>
         <span class="n">prefix</span> <span class="o">=</span> <span class="s2">&quot;User defined&quot;</span>
         <span class="k">if</span> <span class="n">config_fn</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>  <span class="c1"># prioritize user defined config path (new v0.4.1)</span>
@@ -1009,7 +1009,7 @@
 <div class="viewcode-block" id="Model.write_config"><a class="viewcode-back" href="../../../_generated/hydromt.Model.write_config.html#hydromt.Model.write_config">[docs]</a>    <span class="k">def</span> <span class="nf">write_config</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">config_name</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">config_root</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Write config to &lt;root/config_fn&gt;&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Write config to &lt;root/config_fn&gt;&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_assert_write_mode</span>
         <span class="k">if</span> <span class="n">config_name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_config_fn</span> <span class="o">=</span> <span class="n">config_name</span>
@@ -1024,7 +1024,7 @@
     <span class="c1"># model static maps</span>
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">staticmaps</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Model static maps. Returns xarray.Dataset,</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Model static maps. Returns xarray.Dataset,</span>
 <span class="sd">        ..NOTE: will be deprecated in future versions and replaced by `grid`</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
@@ -1039,7 +1039,7 @@
     <span class="k">def</span> <span class="nf">set_staticmaps</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">,</span> <span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">],</span> <span class="n">name</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This method will be deprecated in future versions. See :py:meth:`~hydromt.models.GridModel.set_grid`</span>
 
 <span class="sd">        Add data to staticmaps.</span>
@@ -1087,7 +1087,7 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">_staticmaps</span><span class="p">[</span><span class="n">dvar</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">dvar</span><span class="p">]</span>
 
     <span class="k">def</span> <span class="nf">read_staticmaps</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fn</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;staticmaps/staticmaps.nc&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Read static model maps at &lt;root&gt;/&lt;fn&gt; and add to staticmaps property</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Read static model maps at &lt;root&gt;/&lt;fn&gt; and add to staticmaps property</span>
 
 <span class="sd">        key-word arguments are passed to :py:func:`xarray.open_dataset`</span>
 
@@ -1103,7 +1103,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">set_staticmaps</span><span class="p">(</span><span class="n">ds</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">write_staticmaps</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fn</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;staticmaps/staticmaps.nc&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Write static model maps to netcdf file at &lt;root&gt;/&lt;fn&gt;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Write static model maps to netcdf file at &lt;root&gt;/&lt;fn&gt;</span>
 
 <span class="sd">        key-word arguments are passed to :py:meth:`xarray.Dataset.to_netcdf`</span>
 
@@ -1132,7 +1132,7 @@
         <span class="n">reproject_method</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">split_dataset</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This component adds data variable(s) from ``raster_fn`` to maps object.</span>
 
 <span class="sd">        If raster is a dataset, all variables will be added unless ``variables`` list is specified.</span>
@@ -1194,7 +1194,7 @@
         <span class="n">split_dataset</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
         <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This component adds data variable(s) to maps object by reclassifying the data in ``raster_fn`` based on ``reclass_table_fn``.</span>
 
 <span class="sd">        Adds model layers:</span>
@@ -1259,7 +1259,7 @@
     <span class="c1"># model map</span>
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">maps</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Union</span><span class="p">[</span><span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">,</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">]]:</span>
-        <span class="sd">&quot;&quot;&quot;Model maps. Returns dict of xarray.DataArray or xarray.Dataset&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Model maps. Returns dict of xarray.DataArray or xarray.Dataset&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_maps</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">read_maps</span><span class="p">()</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_maps</span>
@@ -1270,7 +1270,7 @@
         <span class="n">name</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">split_dataset</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Add raster data to the maps component.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add raster data to the maps component.</span>
 
 <span class="sd">        Dataset can either be added as is (default) or split into several</span>
 <span class="sd">        DataArrays using the split_dataset argument.</span>
@@ -1291,7 +1291,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">_maps</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">data_dict</span><span class="p">[</span><span class="n">name</span><span class="p">]</span></div>
 
 <div class="viewcode-block" id="Model.read_maps"><a class="viewcode-back" href="../../../_generated/hydromt.Model.read_maps.html#hydromt.Model.read_maps">[docs]</a>    <span class="k">def</span> <span class="nf">read_maps</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fn</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;maps/*.nc&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Read model map at &lt;root&gt;/&lt;fn&gt; and add to maps component</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Read model map at &lt;root&gt;/&lt;fn&gt; and add to maps component</span>
 
 <span class="sd">        key-word arguments are passed to :py:func:`xarray.open_dataset`</span>
 
@@ -1306,7 +1306,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">set_maps</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Model.write_maps"><a class="viewcode-back" href="../../../_generated/hydromt.Model.write_maps.html#hydromt.Model.write_maps">[docs]</a>    <span class="k">def</span> <span class="nf">write_maps</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fn</span><span class="o">=</span><span class="s2">&quot;maps/</span><span class="si">{name}</span><span class="s2">.nc&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Write maps to netcdf file at &lt;root&gt;/&lt;fn&gt;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Write maps to netcdf file at &lt;root&gt;/&lt;fn&gt;</span>
 
 <span class="sd">        key-word arguments are passed to :py:meth:`xarray.Dataset.to_netcdf`</span>
 
@@ -1325,14 +1325,14 @@
     <span class="c1"># model geometry files</span>
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">geoms</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Union</span><span class="p">[</span><span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">,</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoSeries</span><span class="p">]]:</span>
-        <span class="sd">&quot;&quot;&quot;Model geometries. Returns dict of geopandas.GeoDataFrame or geopandas.GeoDataSeries</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Model geometries. Returns dict of geopandas.GeoDataFrame or geopandas.GeoDataSeries</span>
 <span class="sd">        ..NOTE: previously call staticgeoms.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_geoms</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">read_geoms</span><span class="p">()</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_geoms</span>
 
 <div class="viewcode-block" id="Model.set_geoms"><a class="viewcode-back" href="../../../_generated/hydromt.Model.set_geoms.html#hydromt.Model.set_geoms">[docs]</a>    <span class="k">def</span> <span class="nf">set_geoms</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">geom</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">,</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoSeries</span><span class="p">],</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Add data to the geoms attribute.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add data to the geoms attribute.</span>
 
 <span class="sd">        Arguments</span>
 <span class="sd">        ---------</span>
@@ -1351,7 +1351,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_geoms</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">geom</span></div>
 
 <div class="viewcode-block" id="Model.read_geoms"><a class="viewcode-back" href="../../../_generated/hydromt.Model.read_geoms.html#hydromt.Model.read_geoms">[docs]</a>    <span class="k">def</span> <span class="nf">read_geoms</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fn</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;geoms/*.geojson&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Read model geometries files at &lt;root&gt;/&lt;fn&gt; and add to geoms property</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Read model geometries files at &lt;root&gt;/&lt;fn&gt; and add to geoms property</span>
 
 <span class="sd">        key-word arguments are passed to :py:func:`geopandas.read_file`</span>
 
@@ -1368,7 +1368,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">set_geoms</span><span class="p">(</span><span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Model.write_geoms"><a class="viewcode-back" href="../../../_generated/hydromt.Model.write_geoms.html#hydromt.Model.write_geoms">[docs]</a>    <span class="k">def</span> <span class="nf">write_geoms</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fn</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;geoms/</span><span class="si">{name}</span><span class="s2">.geojson&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Write model geometries to a vector file (by default GeoJSON) at &lt;root&gt;/&lt;fn&gt;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Write model geometries to a vector file (by default GeoJSON) at &lt;root&gt;/&lt;fn&gt;</span>
 
 <span class="sd">        key-word arguments are passed to :py:meth:`geopandas.GeoDataFrame.to_file`</span>
 
@@ -1400,7 +1400,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">staticgeoms</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;This property will be deprecated in future versions, use :py:meth:`~hydromt.Model.geom`&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;This property will be deprecated in future versions, use :py:meth:`~hydromt.Model.geom`&quot;&quot;&quot;</span>
         <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
             <span class="s2">&quot;The staticgeoms method will be deprecated in future versions, use geoms instead.&quot;</span><span class="p">,</span>
             <span class="ne">DeprecationWarning</span><span class="p">,</span>
@@ -1411,7 +1411,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_staticgeoms</span>
 
     <span class="k">def</span> <span class="nf">set_staticgeoms</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">geom</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">,</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoSeries</span><span class="p">],</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;This method will be deprecated in future versions, use :py:meth:`~hydromt.Model.set_geoms`&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;This method will be deprecated in future versions, use :py:meth:`~hydromt.Model.set_geoms`&quot;&quot;&quot;</span>
         <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
             <span class="s2">&quot;The set_staticgeoms method will be deprecated in future versions, use set_geoms instead.&quot;</span><span class="p">,</span>
             <span class="ne">DeprecationWarning</span><span class="p">,</span>
@@ -1419,7 +1419,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">set_geoms</span><span class="p">(</span><span class="n">geom</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">read_staticgeoms</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;This method will be deprecated in future versions, use :py:meth:`~hydromt.Model.read_geoms`&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;This method will be deprecated in future versions, use :py:meth:`~hydromt.Model.read_geoms`&quot;&quot;&quot;</span>
         <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
             <span class="s1">&#39;The read_staticgeoms&quot; method will be deprecated in future versions, use read_geoms instead.&#39;</span><span class="p">,</span>
             <span class="ne">DeprecationWarning</span><span class="p">,</span>
@@ -1427,7 +1427,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">read_geoms</span><span class="p">(</span><span class="n">fn</span><span class="o">=</span><span class="s2">&quot;staticgeoms/*.geojson&quot;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">write_staticgeoms</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;This method will be deprecated in future versions, use :py:meth:`~hydromt.Model.write_geoms`&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;This method will be deprecated in future versions, use :py:meth:`~hydromt.Model.write_geoms`&quot;&quot;&quot;</span>
         <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
             <span class="s1">&#39;The &quot;write_staticgeoms&quot; method will be deprecated in future versions, use  &quot;write_geoms&quot; instead.&#39;</span><span class="p">,</span>
             <span class="ne">DeprecationWarning</span><span class="p">,</span>
@@ -1437,7 +1437,7 @@
     <span class="c1"># model forcing files</span>
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">forcing</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Union</span><span class="p">[</span><span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">,</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">]]:</span>
-        <span class="sd">&quot;&quot;&quot;Model forcing. Returns dict of xarray.DataArray or xarray.Dataset&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Model forcing. Returns dict of xarray.DataArray or xarray.Dataset&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_forcing</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">read_forcing</span><span class="p">()</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_forcing</span>
@@ -1448,7 +1448,7 @@
         <span class="n">name</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">split_dataset</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Add data to forcing attribute.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add data to forcing attribute.</span>
 
 <span class="sd">        Arguments</span>
 <span class="sd">        ---------</span>
@@ -1466,7 +1466,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">_forcing</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">data_dict</span><span class="p">[</span><span class="n">name</span><span class="p">]</span></div>
 
 <div class="viewcode-block" id="Model.read_forcing"><a class="viewcode-back" href="../../../_generated/hydromt.Model.read_forcing.html#hydromt.Model.read_forcing">[docs]</a>    <span class="k">def</span> <span class="nf">read_forcing</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fn</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;forcing/*.nc&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Read forcing at &lt;root&gt;/&lt;fn&gt; and add to forcing property</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Read forcing at &lt;root&gt;/&lt;fn&gt; and add to forcing property</span>
 
 <span class="sd">        key-word arguments are passed to :py:func:`xarray.open_dataset`</span>
 
@@ -1481,7 +1481,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">set_forcing</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Model.write_forcing"><a class="viewcode-back" href="../../../_generated/hydromt.Model.write_forcing.html#hydromt.Model.write_forcing">[docs]</a>    <span class="k">def</span> <span class="nf">write_forcing</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fn</span><span class="o">=</span><span class="s2">&quot;forcing/</span><span class="si">{name}</span><span class="s2">.nc&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Write forcing to netcdf file at &lt;root&gt;/&lt;fn&gt;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Write forcing to netcdf file at &lt;root&gt;/&lt;fn&gt;</span>
 
 <span class="sd">        key-word arguments are passed to :py:meth:`xarray.Dataset.to_netcdf`</span>
 
@@ -1500,7 +1500,7 @@
     <span class="c1"># model state files</span>
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">states</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Union</span><span class="p">[</span><span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">,</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">]]:</span>
-        <span class="sd">&quot;&quot;&quot;Model states. Returns dict of xarray.DataArray or xarray.Dataset&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Model states. Returns dict of xarray.DataArray or xarray.Dataset&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_states</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">read_states</span><span class="p">()</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_states</span>
@@ -1511,7 +1511,7 @@
         <span class="n">name</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">split_dataset</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Add data to states attribute.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add data to states attribute.</span>
 
 <span class="sd">        Arguments</span>
 <span class="sd">        ---------</span>
@@ -1529,7 +1529,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">_states</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">data_dict</span><span class="p">[</span><span class="n">name</span><span class="p">]</span></div>
 
 <div class="viewcode-block" id="Model.read_states"><a class="viewcode-back" href="../../../_generated/hydromt.Model.read_states.html#hydromt.Model.read_states">[docs]</a>    <span class="k">def</span> <span class="nf">read_states</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fn</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;states/*.nc&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Read states at &lt;root&gt;/&lt;fn&gt; and add to states property</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Read states at &lt;root&gt;/&lt;fn&gt; and add to states property</span>
 
 <span class="sd">        key-word arguments are passed to :py:func:`xarray.open_dataset`</span>
 
@@ -1544,7 +1544,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">set_states</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Model.write_states"><a class="viewcode-back" href="../../../_generated/hydromt.Model.write_states.html#hydromt.Model.write_states">[docs]</a>    <span class="k">def</span> <span class="nf">write_states</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fn</span><span class="o">=</span><span class="s2">&quot;states/</span><span class="si">{name}</span><span class="s2">.nc&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Write states to netcdf file at &lt;root&gt;/&lt;fn&gt;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Write states to netcdf file at &lt;root&gt;/&lt;fn&gt;</span>
 
 <span class="sd">        key-word arguments are passed to :py:meth:`xarray.Dataset.to_netcdf`</span>
 
@@ -1563,7 +1563,7 @@
     <span class="c1"># model results files; NOTE we don&#39;t have a write_results method (that&#39;s up to the model kernel)</span>
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">results</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Union</span><span class="p">[</span><span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">,</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">]]:</span>
-        <span class="sd">&quot;&quot;&quot;Model results.  Returns dict of xarray.DataArray or xarray.Dataset&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Model results.  Returns dict of xarray.DataArray or xarray.Dataset&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_results</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">read_results</span><span class="p">()</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_results</span>
@@ -1574,7 +1574,7 @@
         <span class="n">name</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">split_dataset</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Add data to results attribute.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add data to results attribute.</span>
 
 <span class="sd">        Dataset can either be added as is (default) or split into several</span>
 <span class="sd">        DataArrays using the split_dataset argument.</span>
@@ -1595,7 +1595,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">_results</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">data_dict</span><span class="p">[</span><span class="n">name</span><span class="p">]</span></div>
 
 <div class="viewcode-block" id="Model.read_results"><a class="viewcode-back" href="../../../_generated/hydromt.Model.read_results.html#hydromt.Model.read_results">[docs]</a>    <span class="k">def</span> <span class="nf">read_results</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fn</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;results/*.nc&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Read results at &lt;root&gt;/&lt;fn&gt; and add to results property</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Read results at &lt;root&gt;/&lt;fn&gt; and add to results property</span>
 
 <span class="sd">        key-word arguments are passed to :py:func:`xarray.open_dataset`</span>
 
@@ -1648,7 +1648,7 @@
     <span class="c1">## properties / methods below can be used directly in actual class</span>
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">crs</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CRS</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Returns coordinate reference system embedded in region.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns coordinate reference system embedded in region.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_staticmaps</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">CRS</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">staticmaps</span><span class="o">.</span><span class="n">raster</span><span class="o">.</span><span class="n">crs</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
@@ -1664,56 +1664,56 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">dims</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Returns spatial dimension names of staticmaps.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns spatial dimension names of staticmaps.</span>
 <span class="sd">        ..NOTE: will be deprecated in future versions&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_staticmaps</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">staticmaps</span><span class="o">.</span><span class="n">raster</span><span class="o">.</span><span class="n">dims</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">coords</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Returns the coordinates of model staticmaps.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the coordinates of model staticmaps.</span>
 <span class="sd">        ..NOTE: will be deprecated in future versions&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_staticmaps</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">staticmaps</span><span class="o">.</span><span class="n">raster</span><span class="o">.</span><span class="n">coords</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">res</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Returns the resolution of the model staticmaps.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the resolution of the model staticmaps.</span>
 <span class="sd">        ..NOTE: will be deprecated in future versions&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_staticmaps</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">staticmaps</span><span class="o">.</span><span class="n">raster</span><span class="o">.</span><span class="n">res</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">transform</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Returns the geospatial transform of the model staticmaps.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the geospatial transform of the model staticmaps.</span>
 <span class="sd">        ..NOTE: will be deprecated in future versions&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_staticmaps</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">staticmaps</span><span class="o">.</span><span class="n">raster</span><span class="o">.</span><span class="n">transform</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">width</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Returns the width of the model staticmaps.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the width of the model staticmaps.</span>
 <span class="sd">        ..NOTE: will be deprecated in future versions&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_staticmaps</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">staticmaps</span><span class="o">.</span><span class="n">raster</span><span class="o">.</span><span class="n">width</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">height</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Returns the height of the model staticmaps.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the height of the model staticmaps.</span>
 <span class="sd">        ..NOTE: will be deprecated in future versions&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_staticmaps</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">staticmaps</span><span class="o">.</span><span class="n">raster</span><span class="o">.</span><span class="n">height</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">shape</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Returns the shape of the model staticmaps.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the shape of the model staticmaps.</span>
 <span class="sd">        ..NOTE: will be deprecated in future versions&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_staticmaps</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">staticmaps</span><span class="o">.</span><span class="n">raster</span><span class="o">.</span><span class="n">shape</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">bounds</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Returns the bounding box of the model region.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the bounding box of the model region.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_staticmaps</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">staticmaps</span><span class="o">.</span><span class="n">raster</span><span class="o">.</span><span class="n">bounds</span>
         <span class="k">else</span><span class="p">:</span>
@@ -1721,7 +1721,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">region</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Returns the geometry of the model area of interest.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the geometry of the model area of interest.&quot;&quot;&quot;</span>
         <span class="n">region</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">()</span>
         <span class="k">if</span> <span class="s2">&quot;region&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">geoms</span><span class="p">:</span>
             <span class="n">region</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">geoms</span><span class="p">[</span><span class="s2">&quot;region&quot;</span><span class="p">]</span>
@@ -1748,7 +1748,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_test_model_api</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">_test_model_api</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Test compliance with HydroMT Model API.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Test compliance with HydroMT Model API.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1767,7 +1767,7 @@
         <span class="k">return</span> <span class="n">non_compliant</span>
 
     <span class="k">def</span> <span class="nf">_test_equal</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">,</span> <span class="n">skip_component</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;root&quot;</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="n">Dict</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;Test if two models including their data components are equal</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Test if two models including their data components are equal</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1825,7 +1825,7 @@
 
 
 <span class="k">def</span> <span class="nf">_assert_isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Check if obj match typing or class (dtype)&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Check if obj match typing or class (dtype)&quot;&quot;&quot;</span>
     <span class="n">args</span> <span class="o">=</span> <span class="n">typing</span><span class="o">.</span><span class="n">get_args</span><span class="p">(</span><span class="n">dtype</span><span class="p">)</span>
     <span class="n">_cls</span> <span class="o">=</span> <span class="n">typing</span><span class="o">.</span><span class="n">get_origin</span><span class="p">(</span><span class="n">dtype</span><span class="p">)</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">dtype</span> <span class="o">!=</span> <span class="n">Any</span> <span class="ow">and</span> <span class="n">dtype</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
@@ -1842,7 +1842,7 @@
 
 
 <span class="k">def</span> <span class="nf">_check_equal</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]:</span>
-    <span class="sd">&quot;&quot;&quot;Recursive test of model components.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Recursive test of model components.</span>
 <span class="sd">    Returns dict with component name and associated error message.&quot;&quot;&quot;</span>
     <span class="n">errors</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="k">try</span><span class="p">:</span>

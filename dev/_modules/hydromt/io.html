@@ -367,7 +367,7 @@
 <div class="viewcode-block" id="open_raster"><a class="viewcode-back" href="../../_generated/hydromt.io.open_raster.html#hydromt.io.open_raster">[docs]</a><span class="k">def</span> <span class="nf">open_raster</span><span class="p">(</span>
     <span class="n">filename</span><span class="p">,</span> <span class="n">mask_nodata</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">chunks</span><span class="o">=</span><span class="p">{},</span> <span class="n">nodata</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="n">logger</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
 <span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Open a gdal-readable file with rasterio based on</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Open a gdal-readable file with rasterio based on</span>
 <span class="sd">    :py:meth:`rioxarray.open_rasterio`, but return squeezed DataArray.</span>
 
 <span class="sd">    Arguments</span>
@@ -426,7 +426,7 @@
     <span class="n">logger</span><span class="o">=</span><span class="n">logger</span><span class="p">,</span>
     <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
 <span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Open multiple gdal-readable files as single Dataset with geospatial attributes.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Open multiple gdal-readable files as single Dataset with geospatial attributes.</span>
 
 <span class="sd">    Each raster is turned into a DataArray with its name inferred from the filename.</span>
 <span class="sd">    By default all DataArray are assumed to be on an identical grid and the output</span>
@@ -554,7 +554,7 @@
 <div class="viewcode-block" id="open_raster_from_tindex"><a class="viewcode-back" href="../../_generated/hydromt.io.open_raster_from_tindex.html#hydromt.io.open_raster_from_tindex">[docs]</a><span class="k">def</span> <span class="nf">open_raster_from_tindex</span><span class="p">(</span>
     <span class="n">fn_tindex</span><span class="p">,</span> <span class="n">bbox</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">geom</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">tileindex</span><span class="o">=</span><span class="s2">&quot;location&quot;</span><span class="p">,</span> <span class="n">mosaic_kwargs</span><span class="o">=</span><span class="p">{},</span> <span class="o">**</span><span class="n">kwargs</span>
 <span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Reads and merges raster tiles (potentially in different CRS) based on a</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Reads and merges raster tiles (potentially in different CRS) based on a</span>
 <span class="sd">    tile index file as generated with `gdaltindex`. A bbox or geom describing the</span>
 <span class="sd">    output area of interest is required.</span>
 
@@ -623,7 +623,7 @@
     <span class="n">logger</span><span class="o">=</span><span class="n">logger</span><span class="p">,</span>
     <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
 <span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Open point location GIS file and timeseries file combine a single xarray.Dataset.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Open point location GIS file and timeseries file combine a single xarray.Dataset.</span>
 
 <span class="sd">    Arguments</span>
 <span class="sd">    ---------</span>
@@ -677,7 +677,7 @@
 <div class="viewcode-block" id="open_timeseries_from_table"><a class="viewcode-back" href="../../_generated/hydromt.io.open_timeseries_from_table.html#hydromt.io.open_timeseries_from_table">[docs]</a><span class="k">def</span> <span class="nf">open_timeseries_from_table</span><span class="p">(</span>
     <span class="n">fn</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">index_dim</span><span class="o">=</span><span class="s2">&quot;index&quot;</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="n">logger</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
 <span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Open timeseries csv file and parse to xarray.DataArray.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Open timeseries csv file and parse to xarray.DataArray.</span>
 <span class="sd">    Accepts files with time index on one dimension and numeric location index on the other dimension.</span>
 <span class="sd">    In case of string location indices, non-numeric parts are filtered from the location index.</span>
 
@@ -731,7 +731,7 @@
     <span class="n">logger</span><span class="o">=</span><span class="n">logger</span><span class="p">,</span>
     <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
 <span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Open fiona-compatible geometry, csv, excel or xy file and</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Open fiona-compatible geometry, csv, excel or xy file and</span>
 <span class="sd">    parse to :py:meth:`geopandas.GeoDataFrame`.</span>
 
 <span class="sd">    CSV or XLS file are converted to point geometries based on default columns names</span>
@@ -815,7 +815,7 @@
     <span class="n">crs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
 <span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Read point geometry files from csv, xy or excel table files.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Read point geometry files from csv, xy or excel table files.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -872,7 +872,7 @@
 
 
 <span class="k">def</span> <span class="nf">write_xy</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="n">gdf</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%.4f</span><span class="s2">&quot;</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Write geopandas.GeoDataFrame with Point geometries to point xy files.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Write geopandas.GeoDataFrame with Point geometries to point xy files.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>

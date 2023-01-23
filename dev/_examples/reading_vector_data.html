@@ -671,12 +671,35 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/tmp/ipykernel_3798/1478031755.py:2: UserWarning: Shapely 2.0 is installed, but because PyGEOS is also installed, GeoPandas will still use PyGEOS by default for now. To force to use and test Shapely 2.0, you have to set the environment variable USE_PYGEOS=0. You can do this before starting the Python process, or in your code before importing geopandas:
+
+import os
+os.environ[&#39;USE_PYGEOS&#39;] = &#39;0&#39;
+import geopandas
+
+In a future release, GeoPandas will switch to using Shapely by default. If you are using PyGEOS directly (calling PyGEOS functions on geometries from GeoPandas), this will then stop working and you are encouraged to migrate from PyGEOS to Shapely 2.0 (https://shapely.readthedocs.io/en/latest/migration_pygeos.html).
+  import geopandas as gpd
+/usr/share/miniconda3/envs/hydromt-dev/lib/python3.10/site-packages/hydromt/io.py:14: UserWarning: Shapely 2.0 is installed, but because PyGEOS is also installed, GeoPandas will still use PyGEOS by default for now. To force to use and test Shapely 2.0, you have to set the environment variable USE_PYGEOS=0. You can do this before starting the Python process, or in your code before importing geopandas:
+
+import os
+os.environ[&#39;USE_PYGEOS&#39;] = &#39;0&#39;
+import geopandas
+
+In a future release, GeoPandas will switch to using Shapely by default. If you are using PyGEOS directly (calling PyGEOS functions on geometries from GeoPandas), this will then stop working and you are encouraged to migrate from PyGEOS to Shapely 2.0 (https://shapely.readthedocs.io/en/latest/migration_pygeos.html).
+  from . import raster, vector, gis_utils, merge
+</pre></div></div>
+</div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-2022-12-12 11:03:34,227 - read vector data - log - INFO - HydroMT version: 0.6.1.dev
+2023-01-23 17:23:34,604 - read vector data - log - INFO - HydroMT version: 0.6.1.dev
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -693,8 +716,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-2022-12-12 11:03:34,292 - read vector data - data_catalog - INFO - Reading data catalog artifact_data v0.0.7 from archive
-2022-12-12 11:03:34,293 - read vector data - data_catalog - INFO - Parsing data catalog from /home/runner/.hydromt_data/artifact_data/v0.0.7/data_catalog.yml
+2023-01-23 17:23:34,675 - read vector data - data_catalog - INFO - Reading data catalog artifact_data v0.0.7 from archive
+2023-01-23 17:23:34,676 - read vector data - data_catalog - INFO - Parsing data catalog from /home/runner/.hydromt_data/artifact_data/v0.0.7/data_catalog.yml
 </pre></div></div>
 </div>
 </section>
@@ -766,8 +789,8 @@ path: /home/runner/.hydromt_data/artifact_data/v0.0.7/gadm_level3.gpkg
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-2022-12-12 11:03:34,396 - read vector data - data_catalog - INFO - DataCatalog: Getting gadm_level3 GeoDataFrame vector data from /home/runner/.hydromt_data/artifact_data/v0.0.7/gadm_level3.gpkg
-2022-12-12 11:03:34,397 - read vector data - geodataframe - INFO - GeoDataFrame: Read vector data.
+2023-01-23 17:23:34,855 - read vector data - data_catalog - INFO - DataCatalog: Getting gadm_level3 GeoDataFrame vector data from /home/runner/.hydromt_data/artifact_data/v0.0.7/gadm_level3.gpkg
+2023-01-23 17:23:34,856 - read vector data - geodataframe - INFO - GeoDataFrame: Read vector data.
 number of rows: 509
 </pre></div></div>
 </div>
@@ -936,8 +959,8 @@ number of rows: 509
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-2022-12-12 11:03:34,475 - read vector data - data_catalog - INFO - DataCatalog: Getting gadm_level3 GeoDataFrame vector data from /home/runner/.hydromt_data/artifact_data/v0.0.7/gadm_level3.gpkg
-2022-12-12 11:03:34,480 - read vector data - geodataframe - INFO - GeoDataFrame: Read vector data and clip to bbox (epsg:4326) [11.557, 46.096, 11.851, 46.477].
+2023-01-23 17:23:34,963 - read vector data - data_catalog - INFO - DataCatalog: Getting gadm_level3 GeoDataFrame vector data from /home/runner/.hydromt_data/artifact_data/v0.0.7/gadm_level3.gpkg
+2023-01-23 17:23:34,967 - read vector data - geodataframe - INFO - GeoDataFrame: Read vector data and clip to bbox (epsg:4326) [11.557, 46.096, 11.851, 46.477].
 number of rows: 28
 </pre></div></div>
 </div>
@@ -1140,9 +1163,9 @@ path: /home/runner/work/hydromt/hydromt/docs/_examples/tmpdir/xy.csv
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-2022-12-12 11:03:34,712 - read vector data - data_catalog - INFO - DataCatalog: Getting GADM_level3_centroids GeoDataFrame vector_table data from /home/runner/work/hydromt/hydromt/docs/_examples/tmpdir/xy.csv
-2022-12-12 11:03:34,714 - read vector data - geodataframe - INFO - GeoDataFrame: Read vector_table data.
-CRS: epsg:4326
+2023-01-23 17:23:35,189 - read vector data - data_catalog - INFO - DataCatalog: Getting GADM_level3_centroids GeoDataFrame vector_table data from /home/runner/work/hydromt/hydromt/docs/_examples/tmpdir/xy.csv
+2023-01-23 17:23:35,190 - read vector data - geodataframe - INFO - GeoDataFrame: Read vector_table data.
+CRS: EPSG:4326
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">

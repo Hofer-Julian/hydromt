@@ -350,7 +350,7 @@
 
 <span class="c1"># PERFORMANCE METRICS</span>
 <div class="viewcode-block" id="bias"><a class="viewcode-back" href="../../../_generated/hydromt.stats.skills.bias.html#hydromt.stats.skills.bias">[docs]</a><span class="k">def</span> <span class="nf">bias</span><span class="p">(</span><span class="n">sim</span><span class="p">,</span> <span class="n">obs</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="s2">&quot;time&quot;</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Returns the bias between two time series.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Returns the bias between two time series.</span>
 
 <span class="sd">        .. math::</span>
 <span class="sd">         Bias=\\frac{1}{N}\\sum_{i=1}^{N}(obs_{i}-sim_{i})</span>
@@ -379,7 +379,7 @@
 
 
 <div class="viewcode-block" id="percentual_bias"><a class="viewcode-back" href="../../../_generated/hydromt.stats.skills.percentual_bias.html#hydromt.stats.skills.percentual_bias">[docs]</a><span class="k">def</span> <span class="nf">percentual_bias</span><span class="p">(</span><span class="n">sim</span><span class="p">,</span> <span class="n">obs</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="s2">&quot;time&quot;</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Returns the percentual bias between two time series.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Returns the percentual bias between two time series.</span>
 
 <span class="sd">        .. math::</span>
 <span class="sd">         PBias= 100 * \\frac{\\sum_{i=1}^{N}(sim_{i}-obs_{i})}{\\sum_{i=1}^{N}(obs_{i})}</span>
@@ -408,7 +408,7 @@
 
 
 <div class="viewcode-block" id="nashsutcliffe"><a class="viewcode-back" href="../../../_generated/hydromt.stats.skills.nashsutcliffe.html#hydromt.stats.skills.nashsutcliffe">[docs]</a><span class="k">def</span> <span class="nf">nashsutcliffe</span><span class="p">(</span><span class="n">sim</span><span class="p">,</span> <span class="n">obs</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="s2">&quot;time&quot;</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Returns the Nash-Sutcliffe model efficiency based on a simulated</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Returns the Nash-Sutcliffe model efficiency based on a simulated</span>
 <span class="sd">    and observed time series.</span>
 
 <span class="sd">        .. math::</span>
@@ -438,7 +438,7 @@
 
 
 <div class="viewcode-block" id="lognashsutcliffe"><a class="viewcode-back" href="../../../_generated/hydromt.stats.skills.lognashsutcliffe.html#hydromt.stats.skills.lognashsutcliffe">[docs]</a><span class="k">def</span> <span class="nf">lognashsutcliffe</span><span class="p">(</span><span class="n">sim</span><span class="p">,</span> <span class="n">obs</span><span class="p">,</span> <span class="n">epsilon</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="s2">&quot;time&quot;</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Returns the log Nash-Sutcliffe model efficiency based on simulated</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Returns the log Nash-Sutcliffe model efficiency based on simulated</span>
 <span class="sd">    and observed time series.</span>
 
 <span class="sd">        .. math::</span>
@@ -472,7 +472,7 @@
 
 
 <div class="viewcode-block" id="pearson_correlation"><a class="viewcode-back" href="../../../_generated/hydromt.stats.skills.pearson_correlation.html#hydromt.stats.skills.pearson_correlation">[docs]</a><span class="k">def</span> <span class="nf">pearson_correlation</span><span class="p">(</span><span class="n">sim</span><span class="p">,</span> <span class="n">obs</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="s2">&quot;time&quot;</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Returns the Pearson correlation coefficient of two time series.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Returns the Pearson correlation coefficient of two time series.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -498,7 +498,7 @@
 
 
 <div class="viewcode-block" id="spearman_rank_correlation"><a class="viewcode-back" href="../../../_generated/hydromt.stats.skills.spearman_rank_correlation.html#hydromt.stats.skills.spearman_rank_correlation">[docs]</a><span class="k">def</span> <span class="nf">spearman_rank_correlation</span><span class="p">(</span><span class="n">sim</span><span class="p">,</span> <span class="n">obs</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="s2">&quot;time&quot;</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Returns the spearman rank correlation coefficient of</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Returns the spearman rank correlation coefficient of</span>
 <span class="sd">    two time series.</span>
 
 <span class="sd">    Parameters</span>
@@ -525,7 +525,7 @@
 
 
 <div class="viewcode-block" id="kge_non_parametric"><a class="viewcode-back" href="../../../_generated/hydromt.stats.skills.kge_non_parametric.html#hydromt.stats.skills.kge_non_parametric">[docs]</a><span class="k">def</span> <span class="nf">kge_non_parametric</span><span class="p">(</span><span class="n">sim</span><span class="p">,</span> <span class="n">obs</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="s2">&quot;time&quot;</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Returns the Non Parametric Kling-Gupta Efficiency (KGE, 2018) of two time series with decomposed scores</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Returns the Non Parametric Kling-Gupta Efficiency (KGE, 2018) of two time series with decomposed scores</span>
 
 <span class="sd">    .. ref:</span>
 
@@ -562,7 +562,7 @@
 
 
 <div class="viewcode-block" id="kge_non_parametric_flood"><a class="viewcode-back" href="../../../_generated/hydromt.stats.skills.kge_non_parametric_flood.html#hydromt.stats.skills.kge_non_parametric_flood">[docs]</a><span class="k">def</span> <span class="nf">kge_non_parametric_flood</span><span class="p">(</span><span class="n">sim</span><span class="p">,</span> <span class="n">obs</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="s2">&quot;time&quot;</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Returns the Non Parametric Kling-Gupta Efficiency (KGE, 2018) of two time series optimized for flood peaks using Pearson (see Pool et al., 2018)</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Returns the Non Parametric Kling-Gupta Efficiency (KGE, 2018) of two time series optimized for flood peaks using Pearson (see Pool et al., 2018)</span>
 
 <span class="sd">    .. ref:</span>
 
@@ -601,7 +601,7 @@
 
 
 <div class="viewcode-block" id="rsquared"><a class="viewcode-back" href="../../../_generated/hydromt.stats.skills.rsquared.html#hydromt.stats.skills.rsquared">[docs]</a><span class="k">def</span> <span class="nf">rsquared</span><span class="p">(</span><span class="n">sim</span><span class="p">,</span> <span class="n">obs</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="s2">&quot;time&quot;</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Returns the coefficient of determination of two time series.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Returns the coefficient of determination of two time series.</span>
 
 <span class="sd">        .. math::</span>
 <span class="sd">         r^2=(\\frac{\\sum ^n _{i=1}(e_i - \\bar{e})(s_i - \\bar{s})}{\\sqrt{\\sum ^n _{i=1}(e_i - \\bar{e})^2} \\sqrt{\\sum ^n _{i=1}(s_i - \\bar{s})^2}})^2</span>
@@ -627,7 +627,7 @@
 
 
 <div class="viewcode-block" id="mse"><a class="viewcode-back" href="../../../_generated/hydromt.stats.skills.mse.html#hydromt.stats.skills.mse">[docs]</a><span class="k">def</span> <span class="nf">mse</span><span class="p">(</span><span class="n">sim</span><span class="p">,</span> <span class="n">obs</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="s2">&quot;time&quot;</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Returns the mean squared error (MSE) between two time series.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Returns the mean squared error (MSE) between two time series.</span>
 
 <span class="sd">        .. math::</span>
 <span class="sd">         MSE=\\frac{1}{N}\\sum_{i=1}^{N}(e_{i}-s_{i})^2</span>
@@ -656,7 +656,7 @@
 
 
 <div class="viewcode-block" id="rmse"><a class="viewcode-back" href="../../../_generated/hydromt.stats.skills.rmse.html#hydromt.stats.skills.rmse">[docs]</a><span class="k">def</span> <span class="nf">rmse</span><span class="p">(</span><span class="n">sim</span><span class="p">,</span> <span class="n">obs</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="s2">&quot;time&quot;</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Returns the root mean squared error between two time series.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Returns the root mean squared error between two time series.</span>
 
 <span class="sd">        .. math::</span>
 <span class="sd">         RMSE=\\sqrt{\\frac{1}{N}\\sum_{i=1}^{N}(e_{i}-s_{i})^2}</span>
@@ -681,7 +681,7 @@
 
 
 <div class="viewcode-block" id="kge"><a class="viewcode-back" href="../../../_generated/hydromt.stats.skills.kge.html#hydromt.stats.skills.kge">[docs]</a><span class="k">def</span> <span class="nf">kge</span><span class="p">(</span><span class="n">sim</span><span class="p">,</span> <span class="n">obs</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="s2">&quot;time&quot;</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Returns the Kling-Gupta Efficiency (KGE) of two time series</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Returns the Kling-Gupta Efficiency (KGE) of two time series</span>
 
 <span class="sd">    .. ref:</span>
 
@@ -716,7 +716,7 @@
 
 
 <div class="viewcode-block" id="kge_2012"><a class="viewcode-back" href="../../../_generated/hydromt.stats.skills.kge_2012.html#hydromt.stats.skills.kge_2012">[docs]</a><span class="k">def</span> <span class="nf">kge_2012</span><span class="p">(</span><span class="n">sim</span><span class="p">,</span> <span class="n">obs</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="s2">&quot;time&quot;</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Returns the Kling-Gupta Efficiency (KGE, 2012) of two time series</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Returns the Kling-Gupta Efficiency (KGE, 2012) of two time series</span>
 
 <span class="sd">    .. ref:</span>
 
@@ -781,23 +781,23 @@
 
 
 <span class="k">def</span> <span class="nf">_bias</span><span class="p">(</span><span class="n">sim</span><span class="p">,</span> <span class="n">obs</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;bias&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;bias&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">nansum</span><span class="p">(</span><span class="n">sim</span> <span class="o">-</span> <span class="n">obs</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">nansum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">obs</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">)</span>
 
 
 <span class="k">def</span> <span class="nf">_pbias</span><span class="p">(</span><span class="n">sim</span><span class="p">,</span> <span class="n">obs</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;percentual bias&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;percentual bias&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">nansum</span><span class="p">(</span><span class="n">sim</span> <span class="o">-</span> <span class="n">obs</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">nansum</span><span class="p">(</span><span class="n">obs</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">)</span>
 
 
 <span class="k">def</span> <span class="nf">_mse</span><span class="p">(</span><span class="n">sim</span><span class="p">,</span> <span class="n">obs</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;mean squared error&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;mean squared error&quot;&quot;&quot;</span>
     <span class="n">mse</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nansum</span><span class="p">((</span><span class="n">obs</span> <span class="o">-</span> <span class="n">sim</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">mse</span>
 
 
 <span class="k">def</span> <span class="nf">_nse</span><span class="p">(</span><span class="n">sim</span><span class="p">,</span> <span class="n">obs</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;nash-sutcliffe efficiency&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;nash-sutcliffe efficiency&quot;&quot;&quot;</span>
     <span class="n">obs_mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmean</span><span class="p">(</span><span class="n">obs</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">)</span>
     <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nansum</span><span class="p">((</span><span class="n">sim</span> <span class="o">-</span> <span class="n">obs</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">)</span>
     <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nansum</span><span class="p">((</span><span class="n">obs</span> <span class="o">-</span> <span class="n">obs_mean</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="kc">None</span><span class="p">])</span> <span class="o">**</span> <span class="mi">2</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">)</span>

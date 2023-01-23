@@ -373,7 +373,7 @@
     <span class="n">mask</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">,</span> <span class="nb">bool</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">logger</span><span class="o">=</span><span class="n">logger</span><span class="p">,</span>
 <span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Parse dataarray to flow direction raster object. If a mask coordinate is present</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Parse dataarray to flow direction raster object. If a mask coordinate is present</span>
 <span class="sd">    this will be passed on the the pyflwdir.from_array method.</span>
 
 <span class="sd">    Parameters</span>
@@ -428,7 +428,7 @@
     <span class="n">idxs_pit</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Derive D8 flow directions grid from an elevation grid.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Derive D8 flow directions grid from an elevation grid.</span>
 
 <span class="sd">    Outlets occur at the edge of valid data or at user defined cells (if `idxs_pit` is provided).</span>
 <span class="sd">    A local depressions is filled based on its lowest pour point level if the pour point</span>
@@ -508,7 +508,7 @@
     <span class="n">logger</span><span class="o">=</span><span class="n">logger</span><span class="p">,</span>
     <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">,</span> <span class="n">pyflwdir</span><span class="o">.</span><span class="n">FlwdirRaster</span><span class="p">]:</span>
-    <span class="sd">&quot;&quot;&quot;Upscale flow direction network to lower resolution.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Upscale flow direction network to lower resolution.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -590,7 +590,7 @@
     <span class="n">logger</span><span class="o">=</span><span class="n">logger</span><span class="p">,</span>
     <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Reproject flow direction and upstream area data to the `da_elv` crs and grid.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Reproject flow direction and upstream area data to the `da_elv` crs and grid.</span>
 
 <span class="sd">    Flow directions are derived from a reprojected grid of synthetic elevation,</span>
 <span class="sd">    based on the log10 upstream area [m2]. For regions without upstream area, the original</span>
@@ -724,7 +724,7 @@
     <span class="n">flwdir</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">pyflwdir</span><span class="o">.</span><span class="n">FlwdirRaster</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">logger</span><span class="o">=</span><span class="n">logger</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;This method is deprecated. See :py:meth:`~hydromt.flw.gauge_map`&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;This method is deprecated. See :py:meth:`~hydromt.flw.gauge_map`&quot;&quot;&quot;</span>
     <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
         <span class="s1">&#39;The &quot;gaugemap&quot; method is deprecated, use  &quot;hydromt.flw.gauge_map&quot; instead.&#39;</span><span class="p">,</span>
         <span class="ne">DeprecationWarning</span><span class="p">,</span>
@@ -750,7 +750,7 @@
     <span class="n">max_dist</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">10e3</span><span class="p">,</span>
     <span class="n">logger</span><span class="o">=</span><span class="n">logger</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
-    <span class="sd">&quot;&quot;&quot;Return map with unique gauge IDs.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return map with unique gauge IDs.</span>
 
 <span class="sd">    Gauge locations should be provided by either x,y coordinates (`xy`) or</span>
 <span class="sd">    linear indices (`idxs`). Gauge labels (`ids`) can optionally be provided,</span>
@@ -817,7 +817,7 @@
 
 
 <div class="viewcode-block" id="outlet_map"><a class="viewcode-back" href="../../_generated/hydromt.flw.outlet_map.html#hydromt.flw.outlet_map">[docs]</a><span class="k">def</span> <span class="nf">outlet_map</span><span class="p">(</span><span class="n">da_flw</span><span class="p">:</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">,</span> <span class="n">ftype</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;infer&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Returns a mask of basin outlets/pits from a flow direction raster.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Returns a mask of basin outlets/pits from a flow direction raster.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -841,7 +841,7 @@
 
 
 <div class="viewcode-block" id="stream_map"><a class="viewcode-back" href="../../_generated/hydromt.flw.stream_map.html#hydromt.flw.stream_map">[docs]</a><span class="k">def</span> <span class="nf">stream_map</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">stream_kwargs</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Return a stream mask DataArray</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return a stream mask DataArray</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -883,7 +883,7 @@
     <span class="n">stream</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="o">**</span><span class="n">stream_kwargs</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">]:</span>
-    <span class="sd">&quot;&quot;&quot;Return a (sub)basin map, with unique non-zero IDs for each subbasin.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return a (sub)basin map, with unique non-zero IDs for each subbasin.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -954,7 +954,7 @@
     <span class="n">mask</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
     <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;This method is be deprecated. Use :py:meth:`~hydromt.flw.basin_map` in combination</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;This method is be deprecated. Use :py:meth:`~hydromt.flw.basin_map` in combination</span>
 <span class="sd">    with :py:meth:`~hydromt.raster.RasterDataArray.vectorize` instead.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
@@ -983,7 +983,7 @@
     <span class="n">flwdir_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;flwdir&quot;</span><span class="p">,</span>
     <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Clip a dataset to a subbasin.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Clip a dataset to a subbasin.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -1032,7 +1032,7 @@
     <span class="n">river_d8</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="n">logger</span><span class="o">=</span><span class="n">logger</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Returns hydrologically conditioned elevation.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Returns hydrologically conditioned elevation.</span>
 
 <span class="sd">    The elevation is conditioned to D4 (`connectivity=4`) or D8 (`connectivity=8`)</span>
 <span class="sd">    flow directions based on the algorithm described in Yamazaki et al. [1]_</span>

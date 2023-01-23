@@ -443,7 +443,7 @@
     <span class="n">inplace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="n">logger</span><span class="o">=</span><span class="n">logger</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Merge attributes of gdf2 with the nearest feature of gdf1, optionally bounded by</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Merge attributes of gdf2 with the nearest feature of gdf1, optionally bounded by</span>
 <span class="sd">    a maximumum distance `max_dist`. Unless `overwrite = True`, gdf2 values are only</span>
 <span class="sd">    merged where gdf1 has missing values.</span>
 
@@ -490,7 +490,7 @@
 <div class="viewcode-block" id="nearest"><a class="viewcode-back" href="../../_generated/hydromt.gis_utils.nearest.html#hydromt.gis_utils.nearest">[docs]</a><span class="k">def</span> <span class="nf">nearest</span><span class="p">(</span>
     <span class="n">gdf1</span><span class="p">:</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">,</span> <span class="n">gdf2</span><span class="p">:</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
-    <span class="sd">&quot;&quot;&quot;Return the index of and distance [m] to the nearest geometry</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the index of and distance [m] to the nearest geometry</span>
 <span class="sd">    in `gdf2` for each geometry of `gdf1`. For Line geometries in `gdf1` the nearest</span>
 <span class="sd">    geometry is based line center point and for polygons on its representative point.</span>
 <span class="sd">    Mixed geometry types are not yet supported.</span>
@@ -535,7 +535,7 @@
 
 
 <div class="viewcode-block" id="filter_gdf"><a class="viewcode-back" href="../../_generated/hydromt.gis_utils.filter_gdf.html#hydromt.gis_utils.filter_gdf">[docs]</a><span class="k">def</span> <span class="nf">filter_gdf</span><span class="p">(</span><span class="n">gdf</span><span class="p">,</span> <span class="n">geom</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">bbox</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">predicate</span><span class="o">=</span><span class="s2">&quot;intersects&quot;</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Filter GeoDataFrame geometries based on geometry mask or bounding box.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Filter GeoDataFrame geometries based on geometry mask or bounding box.&quot;&quot;&quot;</span>
     <span class="n">gtypes</span> <span class="o">=</span> <span class="p">(</span><span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">,</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoSeries</span><span class="p">,</span> <span class="n">BaseGeometry</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">bbox</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">geom</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">geom</span> <span class="o">=</span> <span class="n">box</span><span class="p">(</span><span class="o">*</span><span class="n">bbox</span><span class="p">)</span>
@@ -558,7 +558,7 @@
 
 <span class="c1"># REPROJ</span>
 <div class="viewcode-block" id="utm_crs"><a class="viewcode-back" href="../../_generated/hydromt.gis_utils.utm_crs.html#hydromt.gis_utils.utm_crs">[docs]</a><span class="k">def</span> <span class="nf">utm_crs</span><span class="p">(</span><span class="n">bbox</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Returns wkt string of nearest UTM projects</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Returns wkt string of nearest UTM projects</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -594,7 +594,7 @@
 
 
 <div class="viewcode-block" id="axes_attrs"><a class="viewcode-back" href="../../_generated/hydromt.gis_utils.axes_attrs.html#hydromt.gis_utils.axes_attrs">[docs]</a><span class="k">def</span> <span class="nf">axes_attrs</span><span class="p">(</span><span class="n">crs</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Provide CF-compliant variable names and metadata for axes</span>
 
 <span class="sd">    Parameters</span>
@@ -619,7 +619,7 @@
 
 
 <div class="viewcode-block" id="meridian_offset"><a class="viewcode-back" href="../../_generated/hydromt.gis_utils.meridian_offset.html#hydromt.gis_utils.meridian_offset">[docs]</a><span class="k">def</span> <span class="nf">meridian_offset</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="n">x_name</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">bbox</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;re-arange data along x dim&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;re-arange data along x dim&quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">ds</span><span class="o">.</span><span class="n">raster</span><span class="o">.</span><span class="n">crs</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">ds</span><span class="o">.</span><span class="n">raster</span><span class="o">.</span><span class="n">crs</span><span class="o">.</span><span class="n">is_projected</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;The method is only applicable to geographic CRS&quot;</span><span class="p">)</span>
     <span class="n">lons</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">ds</span><span class="p">[</span><span class="n">x_name</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
@@ -641,7 +641,7 @@
 
 
 <div class="viewcode-block" id="affine_to_coords"><a class="viewcode-back" href="../../_generated/hydromt.gis_utils.affine_to_coords.html#hydromt.gis_utils.affine_to_coords">[docs]</a><span class="k">def</span> <span class="nf">affine_to_coords</span><span class="p">(</span><span class="n">transform</span><span class="p">,</span> <span class="n">shape</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Returs a raster axis with pixel center coordinates based on the transform.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Returs a raster axis with pixel center coordinates based on the transform.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -664,7 +664,7 @@
 
 <span class="c1">## CELLAREAS</span>
 <div class="viewcode-block" id="reggrid_area"><a class="viewcode-back" href="../../_generated/hydromt.gis_utils.reggrid_area.html#hydromt.gis_utils.reggrid_area">[docs]</a><span class="k">def</span> <span class="nf">reggrid_area</span><span class="p">(</span><span class="n">lats</span><span class="p">,</span> <span class="n">lons</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Returns the cell area [m2] for a regular grid based on its cell centres</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Returns the cell area [m2] for a regular grid based on its cell centres</span>
 <span class="sd">    lat, lon coordinates.&quot;&quot;&quot;</span>
     <span class="n">xres</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">lons</span><span class="p">)))</span>
     <span class="n">yres</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">lats</span><span class="p">)))</span>
@@ -673,7 +673,7 @@
 
 
 <div class="viewcode-block" id="cellarea"><a class="viewcode-back" href="../../_generated/hydromt.gis_utils.cellarea.html#hydromt.gis_utils.cellarea">[docs]</a><span class="k">def</span> <span class="nf">cellarea</span><span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="n">xres</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">yres</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Return the area [m2] of cell based on the cell center latitude and its resolution</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the area [m2] of cell based on the cell center latitude and its resolution</span>
 <span class="sd">    in measured in degrees.&quot;&quot;&quot;</span>
     <span class="n">l1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">lat</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">yres</span><span class="p">)</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">)</span>
     <span class="n">l2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">lat</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">yres</span><span class="p">)</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">)</span>
@@ -682,7 +682,7 @@
 
 
 <div class="viewcode-block" id="cellres"><a class="viewcode-back" href="../../_generated/hydromt.gis_utils.cellres.html#hydromt.gis_utils.cellres">[docs]</a><span class="k">def</span> <span class="nf">cellres</span><span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="n">xres</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">yres</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Return the cell (x, y) resolution [m] based on cell center latitude and its</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the cell (x, y) resolution [m] based on cell center latitude and its</span>
 <span class="sd">    resolution measured in degrees.&quot;&quot;&quot;</span>
     <span class="n">m1</span> <span class="o">=</span> <span class="mf">111132.92</span>  <span class="c1"># latitude calculation term 1</span>
     <span class="n">m2</span> <span class="o">=</span> <span class="o">-</span><span class="mf">559.82</span>  <span class="c1"># latitude calculation term 2</span>
@@ -718,7 +718,7 @@
     <span class="n">da_friction</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">nodata</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Returns values of `da_obs` spreaded to cells with `nodata` value within `da_mask`,</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Returns values of `da_obs` spreaded to cells with `nodata` value within `da_mask`,</span>
 <span class="sd">    powered by :py:meth:`pyflwdir.gis_utils.spread2d`</span>
 
 <span class="sd">    Parameters</span>
@@ -779,7 +779,7 @@
 
 
 <div class="viewcode-block" id="write_clone"><a class="viewcode-back" href="../../_generated/hydromt.gis_utils.write_clone.html#hydromt.gis_utils.write_clone">[docs]</a><span class="k">def</span> <span class="nf">write_clone</span><span class="p">(</span><span class="n">tmpdir</span><span class="p">,</span> <span class="n">gdal_transform</span><span class="p">,</span> <span class="n">wkt_projection</span><span class="p">,</span> <span class="n">shape</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;write pcraster clone file to a tmpdir using gdal&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;write pcraster clone file to a tmpdir using gdal&quot;&quot;&quot;</span>
     <span class="n">gdal</span><span class="o">.</span><span class="n">AllRegister</span><span class="p">()</span>
     <span class="n">driver1</span> <span class="o">=</span> <span class="n">gdal</span><span class="o">.</span><span class="n">GetDriverByName</span><span class="p">(</span><span class="s2">&quot;GTiff&quot;</span><span class="p">)</span>
     <span class="n">driver2</span> <span class="o">=</span> <span class="n">gdal</span><span class="o">.</span><span class="n">GetDriverByName</span><span class="p">(</span><span class="s2">&quot;PCRaster&quot;</span><span class="p">)</span>
@@ -809,7 +809,7 @@
     <span class="n">pcr_vs</span><span class="o">=</span><span class="s2">&quot;scalar&quot;</span><span class="p">,</span>
     <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
 <span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Write pcraster map files using pcr.report functionality.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Write pcraster map files using pcr.report functionality.</span>
 
 <span class="sd">    A PCRaster clone map is written to a temporary directory if not provided.</span>
 <span class="sd">    For PCRaster types see https://www.gdal.org/frmt_various.html#PCRaster</span>

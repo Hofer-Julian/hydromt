@@ -374,7 +374,7 @@
         <span class="n">resampling_method</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;mean&quot;</span><span class="p">,</span>
         <span class="n">all_touched</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This component adds data variable(s) from ``raster_fn`` to mesh object.</span>
 
 <span class="sd">        Raster data is interpolated to the mesh grid using the ``resampling_method``.</span>
@@ -436,7 +436,7 @@
         <span class="n">all_touched</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
         <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This component adds data variable(s) to mesh object by reclassifying the data in ``raster_fn`` based on ``reclass_table_fn``.</span>
 
 <span class="sd">        The reclassified raster data are subsequently interpolated to the mesh using ``resampling_method``.</span>
@@ -514,7 +514,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">mesh</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">xu</span><span class="o">.</span><span class="n">UgridDataArray</span><span class="p">,</span> <span class="n">xu</span><span class="o">.</span><span class="n">UgridDataset</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;Model static mesh data. Returns a xarray.Dataset.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Model static mesh data. Returns a xarray.Dataset.&quot;&quot;&quot;</span>
         <span class="c1"># XU grid data type Xarray dataset with xu sampling.</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mesh</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">read_mesh</span><span class="p">()</span>
@@ -525,7 +525,7 @@
         <span class="n">data</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">xu</span><span class="o">.</span><span class="n">UgridDataArray</span><span class="p">,</span> <span class="n">xu</span><span class="o">.</span><span class="n">UgridDataset</span><span class="p">],</span>
         <span class="n">name</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Add data to mesh.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add data to mesh.</span>
 
 <span class="sd">        All layers of mesh have identical spatial coordinates in Ugrid conventions.</span>
 
@@ -557,7 +557,7 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">_mesh</span><span class="p">[</span><span class="n">dvar</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">dvar</span><span class="p">]</span>
 
     <span class="k">def</span> <span class="nf">read_mesh</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fn</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;mesh/mesh.nc&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Read model mesh data at &lt;root&gt;/&lt;fn&gt; and add to mesh property</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Read model mesh data at &lt;root&gt;/&lt;fn&gt; and add to mesh property</span>
 
 <span class="sd">        key-word arguments are passed to :py:func:`xr.open_dataset`</span>
 
@@ -575,7 +575,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">set_mesh</span><span class="p">(</span><span class="n">uds</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">write_mesh</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fn</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;mesh/mesh.nc&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Write model grid data to netcdf file at &lt;root&gt;/&lt;fn&gt;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Write model grid data to netcdf file at &lt;root&gt;/&lt;fn&gt;</span>
 
 <span class="sd">        key-word arguments are passed to :py:meth:`xarray.Dataset.ugrid.to_netcdf`</span>
 
@@ -602,7 +602,7 @@
 
 
 <div class="viewcode-block" id="MeshModel"><a class="viewcode-back" href="../../../_generated/hydromt.MeshModel.html#hydromt.MeshModel">[docs]</a><span class="k">class</span> <span class="nc">MeshModel</span><span class="p">(</span><span class="n">MeshMixin</span><span class="p">,</span> <span class="n">Model</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Model class Mesh Model for mesh models in HydroMT&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Model class Mesh Model for mesh models in HydroMT&quot;&quot;&quot;</span>
 
     <span class="n">_CLI_ARGS</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;region&quot;</span><span class="p">:</span> <span class="s2">&quot;setup_mesh&quot;</span><span class="p">,</span> <span class="s2">&quot;res&quot;</span><span class="p">:</span> <span class="s2">&quot;setup_mesh&quot;</span><span class="p">}</span>
     <span class="n">_NAME</span> <span class="o">=</span> <span class="s2">&quot;mesh_model&quot;</span>
@@ -615,7 +615,7 @@
         <span class="n">data_libs</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">logger</span><span class="o">=</span><span class="n">logger</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Initialize a MeshModel for distributed models with an unstructured grid.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialize a MeshModel for distributed models with an unstructured grid.&quot;&quot;&quot;</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
             <span class="n">root</span><span class="o">=</span><span class="n">root</span><span class="p">,</span>
             <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span>
@@ -631,7 +631,7 @@
         <span class="n">res</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">crs</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">xu</span><span class="o">.</span><span class="n">UgridDataset</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Creates an 2D unstructured mesh or reads an existing 2D mesh according UGRID conventions.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Creates an 2D unstructured mesh or reads an existing 2D mesh according UGRID conventions.</span>
 <span class="sd">        An 2D unstructured mesh will be created as 2D rectangular grid from a geometry (geom_fn) or bbox. If an existing</span>
 <span class="sd">        2D mesh is given, then no new mesh will be generated</span>
 
@@ -771,7 +771,7 @@
             <span class="s2">&quot;results&quot;</span><span class="p">,</span>
         <span class="p">],</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Read the complete model schematization and configuration from model files.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Read the complete model schematization and configuration from model files.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -785,7 +785,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">components</span><span class="p">:</span> <span class="n">List</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;config&quot;</span><span class="p">,</span> <span class="s2">&quot;mesh&quot;</span><span class="p">,</span> <span class="s2">&quot;geoms&quot;</span><span class="p">,</span> <span class="s2">&quot;forcing&quot;</span><span class="p">,</span> <span class="s2">&quot;states&quot;</span><span class="p">],</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Write the complete model schematization and configuration to model files.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Write the complete model schematization and configuration to model files.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -800,13 +800,13 @@
     <span class="c1"># MeshModel properties</span>
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">bounds</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Returns model mesh bounds.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns model mesh bounds.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mesh</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mesh</span><span class="o">.</span><span class="n">ugrid</span><span class="o">.</span><span class="n">grid</span><span class="o">.</span><span class="n">bounds</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">region</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Returns geometry of region of the model area of interest.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns geometry of region of the model area of interest.&quot;&quot;&quot;</span>
         <span class="n">region</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">()</span>
         <span class="k">if</span> <span class="s2">&quot;region&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">geoms</span><span class="p">:</span>
             <span class="n">region</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">geoms</span><span class="p">[</span><span class="s2">&quot;region&quot;</span><span class="p">]</span>
@@ -819,7 +819,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">mesh_gdf</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Returns geometry of mesh as a gpd.GeoDataFrame&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns geometry of mesh as a gpd.GeoDataFrame&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mesh</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">name</span> <span class="o">=</span> <span class="p">[</span><span class="n">n</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">data_vars</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># works better on a DataArray</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mesh</span><span class="p">[</span><span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">ugrid</span><span class="o">.</span><span class="n">to_geodataframe</span><span class="p">()</span></div>

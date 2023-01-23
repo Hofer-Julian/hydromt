@@ -668,7 +668,7 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>hydromt --models
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>hydromt<span class="w"> </span>--models
 </pre></div>
 </div>
 </div>
@@ -677,6 +677,22 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
+/usr/share/miniconda3/envs/hydromt-dev/lib/python3.10/site-packages/hydromt/workflows/basin_mask.py:9: UserWarning: Shapely 2.0 is installed, but because PyGEOS is also installed, GeoPandas will still use PyGEOS by default for now. To force to use and test Shapely 2.0, you have to set the environment variable USE_PYGEOS=0. You can do this before starting the Python process, or in your code before importing geopandas:
+
+import os
+os.environ[&#39;USE_PYGEOS&#39;] = &#39;0&#39;
+import geopandas
+
+In a future release, GeoPandas will switch to using Shapely by default. If you are using PyGEOS directly (calling PyGEOS functions on geometries from GeoPandas), this will then stop working and you are encouraged to migrate from PyGEOS to Shapely 2.0 (https://shapely.readthedocs.io/en/latest/migration_pygeos.html).
+  import geopandas as gpd
+/usr/share/miniconda3/envs/hydromt-dev/lib/python3.10/site-packages/hydromt/io.py:14: UserWarning: Shapely 2.0 is installed, but because PyGEOS is also installed, GeoPandas will still use PyGEOS by default for now. To force to use and test Shapely 2.0, you have to set the environment variable USE_PYGEOS=0. You can do this before starting the Python process, or in your code before importing geopandas:
+
+import os
+os.environ[&#39;USE_PYGEOS&#39;] = &#39;0&#39;
+import geopandas
+
+In a future release, GeoPandas will switch to using Shapely by default. If you are using PyGEOS directly (calling PyGEOS functions on geometries from GeoPandas), this will then stop working and you are encouraged to migrate from PyGEOS to Shapely 2.0 (https://shapely.readthedocs.io/en/latest/migration_pygeos.html).
+  from . import raster, vector, gis_utils, merge
 model plugins:
 generic models (hydromt 0.6.1.dev):
  - grid_model
@@ -703,7 +719,7 @@ generic models (hydromt 0.6.1.dev):
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>hydromt build --help
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>hydromt<span class="w"> </span>build<span class="w"> </span>--help
 </pre></div>
 </div>
 </div>
@@ -712,6 +728,22 @@ generic models (hydromt 0.6.1.dev):
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
+/usr/share/miniconda3/envs/hydromt-dev/lib/python3.10/site-packages/hydromt/workflows/basin_mask.py:9: UserWarning: Shapely 2.0 is installed, but because PyGEOS is also installed, GeoPandas will still use PyGEOS by default for now. To force to use and test Shapely 2.0, you have to set the environment variable USE_PYGEOS=0. You can do this before starting the Python process, or in your code before importing geopandas:
+
+import os
+os.environ[&#39;USE_PYGEOS&#39;] = &#39;0&#39;
+import geopandas
+
+In a future release, GeoPandas will switch to using Shapely by default. If you are using PyGEOS directly (calling PyGEOS functions on geometries from GeoPandas), this will then stop working and you are encouraged to migrate from PyGEOS to Shapely 2.0 (https://shapely.readthedocs.io/en/latest/migration_pygeos.html).
+  import geopandas as gpd
+/usr/share/miniconda3/envs/hydromt-dev/lib/python3.10/site-packages/hydromt/io.py:14: UserWarning: Shapely 2.0 is installed, but because PyGEOS is also installed, GeoPandas will still use PyGEOS by default for now. To force to use and test Shapely 2.0, you have to set the environment variable USE_PYGEOS=0. You can do this before starting the Python process, or in your code before importing geopandas:
+
+import os
+os.environ[&#39;USE_PYGEOS&#39;] = &#39;0&#39;
+import geopandas
+
+In a future release, GeoPandas will switch to using Shapely by default. If you are using PyGEOS directly (calling PyGEOS functions on geometries from GeoPandas), this will then stop working and you are encouraged to migrate from PyGEOS to Shapely 2.0 (https://shapely.readthedocs.io/en/latest/migration_pygeos.html).
+  from . import raster, vector, gis_utils, merge
 Usage: hydromt build [OPTIONS] MODEL MODEL_ROOT REGION
 
   Build models from scratch.
@@ -746,7 +778,7 @@ Options:
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>hydromt build grid_model ./tmp_grid_model <span class="s2">&quot;{&#39;bbox&#39;: [11.70, 45.35, 12.95, 46.70]}&quot;</span> -vv
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>hydromt<span class="w"> </span>build<span class="w"> </span>grid_model<span class="w"> </span>./tmp_grid_model<span class="w"> </span><span class="s2">&quot;{&#39;bbox&#39;: [11.70, 45.35, 12.95, 46.70]}&quot;</span><span class="w"> </span>-vv
 </pre></div>
 </div>
 </div>
@@ -755,22 +787,38 @@ Options:
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-2022-12-12 11:04:37,009 - build - log - DEBUG - Writing log messages to new file /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model/hydromt.log.
-2022-12-12 11:04:37,010 - build - log - INFO - HydroMT version: 0.6.1.dev
-2022-12-12 11:04:37,010 - build - main - INFO - Building instance of grid_model model at /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model.
-2022-12-12 11:04:37,010 - build - main - INFO - User settings:
-2022-12-12 11:04:37,022 - build - model_api - WARNING - Model dir already exists and files might be overwritten: /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model/.
-2022-12-12 11:04:37,022 - build - model_api - INFO - Initializing grid_model model from hydromt (v0.6.1.dev).
-2022-12-12 11:04:37,022 - build - model_api - INFO - setup_region.region: {&#39;bbox&#39;: [11.7, 45.35, 12.95, 46.7]}
-2022-12-12 11:04:37,022 - build - model_api - INFO - setup_region.hydrography_fn: merit_hydro
-2022-12-12 11:04:37,022 - build - model_api - INFO - setup_region.basin_index_fn: merit_hydro_index
-2022-12-12 11:04:37,022 - build - basin_mask - DEBUG - Parsed region (kind=bbox): {&#39;bbox&#39;: [11.7, 45.35, 12.95, 46.7]}
-2022-12-12 11:04:37,026 - build - model_api - INFO - Writing model data to /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model
-2022-12-12 11:04:37,026 - build - model_api - INFO - Writing model config to /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model/model.ini
-2022-12-12 11:04:37,026 - build - model_grid - DEBUG - No grid data found, skip writing.
-2022-12-12 11:04:37,026 - build - model_api - DEBUG - Writing file geoms/region.geojson
-2022-12-12 11:04:37,058 - build - model_api - DEBUG - No forcing data found, skip writing.
-2022-12-12 11:04:37,058 - build - model_api - DEBUG - No states data found, skip writing.
+/usr/share/miniconda3/envs/hydromt-dev/lib/python3.10/site-packages/hydromt/workflows/basin_mask.py:9: UserWarning: Shapely 2.0 is installed, but because PyGEOS is also installed, GeoPandas will still use PyGEOS by default for now. To force to use and test Shapely 2.0, you have to set the environment variable USE_PYGEOS=0. You can do this before starting the Python process, or in your code before importing geopandas:
+
+import os
+os.environ[&#39;USE_PYGEOS&#39;] = &#39;0&#39;
+import geopandas
+
+In a future release, GeoPandas will switch to using Shapely by default. If you are using PyGEOS directly (calling PyGEOS functions on geometries from GeoPandas), this will then stop working and you are encouraged to migrate from PyGEOS to Shapely 2.0 (https://shapely.readthedocs.io/en/latest/migration_pygeos.html).
+  import geopandas as gpd
+/usr/share/miniconda3/envs/hydromt-dev/lib/python3.10/site-packages/hydromt/io.py:14: UserWarning: Shapely 2.0 is installed, but because PyGEOS is also installed, GeoPandas will still use PyGEOS by default for now. To force to use and test Shapely 2.0, you have to set the environment variable USE_PYGEOS=0. You can do this before starting the Python process, or in your code before importing geopandas:
+
+import os
+os.environ[&#39;USE_PYGEOS&#39;] = &#39;0&#39;
+import geopandas
+
+In a future release, GeoPandas will switch to using Shapely by default. If you are using PyGEOS directly (calling PyGEOS functions on geometries from GeoPandas), this will then stop working and you are encouraged to migrate from PyGEOS to Shapely 2.0 (https://shapely.readthedocs.io/en/latest/migration_pygeos.html).
+  from . import raster, vector, gis_utils, merge
+2023-01-23 17:24:34,493 - build - log - DEBUG - Writing log messages to new file /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model/hydromt.log.
+2023-01-23 17:24:34,493 - build - log - INFO - HydroMT version: 0.6.1.dev
+2023-01-23 17:24:34,494 - build - main - INFO - Building instance of grid_model model at /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model.
+2023-01-23 17:24:34,494 - build - main - INFO - User settings:
+2023-01-23 17:24:34,505 - build - model_api - WARNING - Model dir already exists and files might be overwritten: /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model/.
+2023-01-23 17:24:34,505 - build - model_api - INFO - Initializing grid_model model from hydromt (v0.6.1.dev).
+2023-01-23 17:24:34,505 - build - model_api - INFO - setup_region.region: {&#39;bbox&#39;: [11.7, 45.35, 12.95, 46.7]}
+2023-01-23 17:24:34,505 - build - model_api - INFO - setup_region.hydrography_fn: merit_hydro
+2023-01-23 17:24:34,505 - build - model_api - INFO - setup_region.basin_index_fn: merit_hydro_index
+2023-01-23 17:24:34,506 - build - basin_mask - DEBUG - Parsed region (kind=bbox): {&#39;bbox&#39;: [11.7, 45.35, 12.95, 46.7]}
+2023-01-23 17:24:34,509 - build - model_api - INFO - Writing model data to /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model
+2023-01-23 17:24:34,509 - build - model_api - INFO - Writing model config to /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model/model.ini
+2023-01-23 17:24:34,509 - build - model_grid - DEBUG - No grid data found, skip writing.
+2023-01-23 17:24:34,509 - build - model_api - DEBUG - Writing file geoms/region.geojson
+2023-01-23 17:24:34,541 - build - model_api - DEBUG - No forcing data found, skip writing.
+2023-01-23 17:24:34,541 - build - model_api - DEBUG - No states data found, skip writing.
 
 </pre></div></div>
 </div>
@@ -809,8 +857,8 @@ Options:
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 tmp_grid_model
- - hydromt.log
  - model.ini
+ - hydromt.log
 tmp_grid_model/geoms
  - region.geojson
 </pre></div></div>
@@ -866,7 +914,7 @@ components = [&#39;config&#39;, &#39;geoms&#39;, &#39;maps&#39;]
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>hydromt build grid_model ./tmp_grid_model1 <span class="s2">&quot;{&#39;bbox&#39;: [11.70, 45.35, 12.95, 46.70]}&quot;</span> -i grid_model_build.ini -d artifact_data -d data/vito_reclass.yml -vv
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>hydromt<span class="w"> </span>build<span class="w"> </span>grid_model<span class="w"> </span>./tmp_grid_model1<span class="w"> </span><span class="s2">&quot;{&#39;bbox&#39;: [11.70, 45.35, 12.95, 46.70]}&quot;</span><span class="w"> </span>-i<span class="w"> </span>grid_model_build.ini<span class="w"> </span>-d<span class="w"> </span>artifact_data<span class="w"> </span>-d<span class="w"> </span>data/vito_reclass.yml<span class="w"> </span>-vv
 </pre></div>
 </div>
 </div>
@@ -875,54 +923,70 @@ components = [&#39;config&#39;, &#39;geoms&#39;, &#39;maps&#39;]
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-2022-12-12 11:04:39,564 - build - log - DEBUG - Writing log messages to new file /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model1/hydromt.log.
-2022-12-12 11:04:39,564 - build - log - INFO - HydroMT version: 0.6.1.dev
-2022-12-12 11:04:39,564 - build - main - INFO - Building instance of grid_model model at /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model1.
-2022-12-12 11:04:39,564 - build - main - INFO - User settings:
-2022-12-12 11:04:39,631 - build - data_catalog - INFO - Reading data catalog artifact_data v0.0.7 from archive
-2022-12-12 11:04:39,631 - build - data_catalog - INFO - Parsing data catalog from /home/runner/.hydromt_data/artifact_data/v0.0.7/data_catalog.yml
-2022-12-12 11:04:39,693 - build - data_catalog - INFO - Parsing data catalog from data/vito_reclass.yml
-2022-12-12 11:04:39,694 - build - model_api - WARNING - Model dir already exists and files might be overwritten: /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model1/.
-2022-12-12 11:04:39,694 - build - model_api - INFO - Initializing grid_model model from hydromt (v0.6.1.dev).
-2022-12-12 11:04:39,695 - build - model_api - DEBUG - Setting model config options.
-2022-12-12 11:04:39,695 - build - model_api - INFO - setup_region.region: {&#39;bbox&#39;: [11.7, 45.35, 12.95, 46.7]}
-2022-12-12 11:04:39,695 - build - model_api - INFO - setup_region.hydrography_fn: merit_hydro
-2022-12-12 11:04:39,695 - build - model_api - INFO - setup_region.basin_index_fn: merit_hydro_index
-2022-12-12 11:04:39,695 - build - basin_mask - DEBUG - Parsed region (kind=bbox): {&#39;bbox&#39;: [11.7, 45.35, 12.95, 46.7]}
-2022-12-12 11:04:39,699 - build - model_api - INFO - setup_maps_from_raster.raster_fn: merit_hydro_1k
-2022-12-12 11:04:39,699 - build - model_api - INFO - setup_maps_from_raster.variables: elevtn
-2022-12-12 11:04:39,699 - build - model_api - INFO - setup_maps_from_raster.fill_method: None
-2022-12-12 11:04:39,699 - build - model_api - INFO - setup_maps_from_raster.name: None
-2022-12-12 11:04:39,699 - build - model_api - INFO - setup_maps_from_raster.reproject_method: None
-2022-12-12 11:04:39,699 - build - model_api - INFO - setup_maps_from_raster.split_dataset: True
-2022-12-12 11:04:39,699 - build - model_api - INFO - Preparing maps data from raster source merit_hydro_1k
-2022-12-12 11:04:39,699 - build - data_catalog - INFO - DataCatalog: Getting merit_hydro_1k RasterDataset raster data from /home/runner/.hydromt_data/artifact_data/v0.0.7/merit_hydro_1k/{variable}.tif
-2022-12-12 11:04:39,724 - build - rasterdataset - DEBUG - RasterDataset: Clip with geom - [11.700, 45.350, 12.950, 46.700]
-2022-12-12 11:04:39,736 - build - model_api - INFO - setup_maps_from_raster_reclass.raster_fn: vito
-2022-12-12 11:04:39,736 - build - model_api - INFO - setup_maps_from_raster_reclass.reclass_table_fn: vito_reclass
-2022-12-12 11:04:39,736 - build - model_api - INFO - setup_maps_from_raster_reclass.reclass_variables: [&#39;manning&#39;]
-2022-12-12 11:04:39,736 - build - model_api - INFO - setup_maps_from_raster_reclass.variable: None
-2022-12-12 11:04:39,736 - build - model_api - INFO - setup_maps_from_raster_reclass.fill_method: None
-2022-12-12 11:04:39,736 - build - model_api - INFO - setup_maps_from_raster_reclass.reproject_method: None
-2022-12-12 11:04:39,736 - build - model_api - INFO - setup_maps_from_raster_reclass.name: None
-2022-12-12 11:04:39,736 - build - model_api - INFO - setup_maps_from_raster_reclass.split_dataset: True
-2022-12-12 11:04:39,736 - build - model_api - INFO - Preparing map data by reclassifying the data in vito based on vito_reclass
-2022-12-12 11:04:39,736 - build - data_catalog - INFO - DataCatalog: Getting vito RasterDataset raster data from /home/runner/.hydromt_data/artifact_data/v0.0.7/vito.tif
-2022-12-12 11:04:39,752 - build - rasterdataset - DEBUG - RasterDataset: Clip with geom - [11.700, 45.350, 12.950, 46.700]
-2022-12-12 11:04:39,765 - build - data_catalog - INFO - DataCatalog: Getting vito_reclass DataFrame csv data from /home/runner/work/hydromt/hydromt/docs/_examples/data/vito_reclass.csv
-2022-12-12 11:04:39,765 - build - dataframe - INFO - DataFrame: Read csv data.
-2022-12-12 11:04:39,774 - build - model_api - INFO - write.components: [&#39;config&#39;, &#39;geoms&#39;, &#39;maps&#39;]
-2022-12-12 11:04:39,775 - build - model_api - INFO - Writing model data to /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model1
-2022-12-12 11:04:39,775 - build - model_api - INFO - Writing model config to /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model1/model.ini
-2022-12-12 11:04:39,775 - build - model_api - DEBUG - Writing file geoms/region.geojson
-2022-12-12 11:04:39,806 - build - model_api - DEBUG - Writing file maps/elevtn.nc
-2022-12-12 11:04:39,947 - build - model_api - DEBUG - Writing file maps/manning.nc
-2022-12-12 11:04:40,151 - build - model_api - INFO - Writing model data to /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model1
-2022-12-12 11:04:40,151 - build - model_api - INFO - Writing model config to /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model1/model.ini
-2022-12-12 11:04:40,152 - build - model_grid - DEBUG - No grid data found, skip writing.
-2022-12-12 11:04:40,152 - build - model_api - DEBUG - Writing file geoms/region.geojson
-2022-12-12 11:04:40,159 - build - model_api - DEBUG - No forcing data found, skip writing.
-2022-12-12 11:04:40,159 - build - model_api - DEBUG - No states data found, skip writing.
+/usr/share/miniconda3/envs/hydromt-dev/lib/python3.10/site-packages/hydromt/workflows/basin_mask.py:9: UserWarning: Shapely 2.0 is installed, but because PyGEOS is also installed, GeoPandas will still use PyGEOS by default for now. To force to use and test Shapely 2.0, you have to set the environment variable USE_PYGEOS=0. You can do this before starting the Python process, or in your code before importing geopandas:
+
+import os
+os.environ[&#39;USE_PYGEOS&#39;] = &#39;0&#39;
+import geopandas
+
+In a future release, GeoPandas will switch to using Shapely by default. If you are using PyGEOS directly (calling PyGEOS functions on geometries from GeoPandas), this will then stop working and you are encouraged to migrate from PyGEOS to Shapely 2.0 (https://shapely.readthedocs.io/en/latest/migration_pygeos.html).
+  import geopandas as gpd
+/usr/share/miniconda3/envs/hydromt-dev/lib/python3.10/site-packages/hydromt/io.py:14: UserWarning: Shapely 2.0 is installed, but because PyGEOS is also installed, GeoPandas will still use PyGEOS by default for now. To force to use and test Shapely 2.0, you have to set the environment variable USE_PYGEOS=0. You can do this before starting the Python process, or in your code before importing geopandas:
+
+import os
+os.environ[&#39;USE_PYGEOS&#39;] = &#39;0&#39;
+import geopandas
+
+In a future release, GeoPandas will switch to using Shapely by default. If you are using PyGEOS directly (calling PyGEOS functions on geometries from GeoPandas), this will then stop working and you are encouraged to migrate from PyGEOS to Shapely 2.0 (https://shapely.readthedocs.io/en/latest/migration_pygeos.html).
+  from . import raster, vector, gis_utils, merge
+2023-01-23 17:24:36,725 - build - log - DEBUG - Writing log messages to new file /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model1/hydromt.log.
+2023-01-23 17:24:36,725 - build - log - INFO - HydroMT version: 0.6.1.dev
+2023-01-23 17:24:36,725 - build - main - INFO - Building instance of grid_model model at /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model1.
+2023-01-23 17:24:36,726 - build - main - INFO - User settings:
+2023-01-23 17:24:36,825 - build - data_catalog - INFO - Reading data catalog artifact_data v0.0.7 from archive
+2023-01-23 17:24:36,826 - build - data_catalog - INFO - Parsing data catalog from /home/runner/.hydromt_data/artifact_data/v0.0.7/data_catalog.yml
+2023-01-23 17:24:36,892 - build - data_catalog - INFO - Parsing data catalog from data/vito_reclass.yml
+2023-01-23 17:24:36,893 - build - model_api - WARNING - Model dir already exists and files might be overwritten: /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model1/.
+2023-01-23 17:24:36,893 - build - model_api - INFO - Initializing grid_model model from hydromt (v0.6.1.dev).
+2023-01-23 17:24:36,893 - build - model_api - DEBUG - Setting model config options.
+2023-01-23 17:24:36,893 - build - model_api - INFO - setup_region.region: {&#39;bbox&#39;: [11.7, 45.35, 12.95, 46.7]}
+2023-01-23 17:24:36,894 - build - model_api - INFO - setup_region.hydrography_fn: merit_hydro
+2023-01-23 17:24:36,894 - build - model_api - INFO - setup_region.basin_index_fn: merit_hydro_index
+2023-01-23 17:24:36,894 - build - basin_mask - DEBUG - Parsed region (kind=bbox): {&#39;bbox&#39;: [11.7, 45.35, 12.95, 46.7]}
+2023-01-23 17:24:36,897 - build - model_api - INFO - setup_maps_from_raster.raster_fn: merit_hydro_1k
+2023-01-23 17:24:36,897 - build - model_api - INFO - setup_maps_from_raster.variables: elevtn
+2023-01-23 17:24:36,897 - build - model_api - INFO - setup_maps_from_raster.fill_method: None
+2023-01-23 17:24:36,897 - build - model_api - INFO - setup_maps_from_raster.name: None
+2023-01-23 17:24:36,897 - build - model_api - INFO - setup_maps_from_raster.reproject_method: None
+2023-01-23 17:24:36,897 - build - model_api - INFO - setup_maps_from_raster.split_dataset: True
+2023-01-23 17:24:36,897 - build - model_api - INFO - Preparing maps data from raster source merit_hydro_1k
+2023-01-23 17:24:36,898 - build - data_catalog - INFO - DataCatalog: Getting merit_hydro_1k RasterDataset raster data from /home/runner/.hydromt_data/artifact_data/v0.0.7/merit_hydro_1k/{variable}.tif
+2023-01-23 17:24:36,921 - build - rasterdataset - DEBUG - RasterDataset: Clip with geom - [11.700, 45.350, 12.950, 46.700]
+2023-01-23 17:24:36,933 - build - model_api - INFO - setup_maps_from_raster_reclass.raster_fn: vito
+2023-01-23 17:24:36,933 - build - model_api - INFO - setup_maps_from_raster_reclass.reclass_table_fn: vito_reclass
+2023-01-23 17:24:36,933 - build - model_api - INFO - setup_maps_from_raster_reclass.reclass_variables: [&#39;manning&#39;]
+2023-01-23 17:24:36,933 - build - model_api - INFO - setup_maps_from_raster_reclass.variable: None
+2023-01-23 17:24:36,933 - build - model_api - INFO - setup_maps_from_raster_reclass.fill_method: None
+2023-01-23 17:24:36,933 - build - model_api - INFO - setup_maps_from_raster_reclass.reproject_method: None
+2023-01-23 17:24:36,933 - build - model_api - INFO - setup_maps_from_raster_reclass.name: None
+2023-01-23 17:24:36,933 - build - model_api - INFO - setup_maps_from_raster_reclass.split_dataset: True
+2023-01-23 17:24:36,933 - build - model_api - INFO - Preparing map data by reclassifying the data in vito based on vito_reclass
+2023-01-23 17:24:36,933 - build - data_catalog - INFO - DataCatalog: Getting vito RasterDataset raster data from /home/runner/.hydromt_data/artifact_data/v0.0.7/vito.tif
+2023-01-23 17:24:36,948 - build - rasterdataset - DEBUG - RasterDataset: Clip with geom - [11.700, 45.350, 12.950, 46.700]
+2023-01-23 17:24:36,961 - build - data_catalog - INFO - DataCatalog: Getting vito_reclass DataFrame csv data from /home/runner/work/hydromt/hydromt/docs/_examples/data/vito_reclass.csv
+2023-01-23 17:24:36,961 - build - dataframe - INFO - DataFrame: Read csv data.
+2023-01-23 17:24:36,970 - build - model_api - INFO - write.components: [&#39;config&#39;, &#39;geoms&#39;, &#39;maps&#39;]
+2023-01-23 17:24:36,970 - build - model_api - INFO - Writing model data to /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model1
+2023-01-23 17:24:36,970 - build - model_api - INFO - Writing model config to /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model1/model.ini
+2023-01-23 17:24:36,970 - build - model_api - DEBUG - Writing file geoms/region.geojson
+2023-01-23 17:24:36,999 - build - model_api - DEBUG - Writing file maps/elevtn.nc
+2023-01-23 17:24:37,146 - build - model_api - DEBUG - Writing file maps/manning.nc
+2023-01-23 17:24:37,344 - build - model_api - INFO - Writing model data to /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model1
+2023-01-23 17:24:37,344 - build - model_api - INFO - Writing model config to /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model1/model.ini
+2023-01-23 17:24:37,345 - build - model_grid - DEBUG - No grid data found, skip writing.
+2023-01-23 17:24:37,345 - build - model_api - DEBUG - Writing file geoms/region.geojson
+2023-01-23 17:24:37,350 - build - model_api - DEBUG - No forcing data found, skip writing.
+2023-01-23 17:24:37,350 - build - model_api - DEBUG - No states data found, skip writing.
 
 </pre></div></div>
 </div>
@@ -949,11 +1013,11 @@ components = [&#39;config&#39;, &#39;geoms&#39;, &#39;maps&#39;]
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 tmp_grid_model1
- - hydromt.log
  - model.ini
+ - hydromt.log
 tmp_grid_model1/maps
- - manning.nc
  - elevtn.nc
+ - manning.nc
 tmp_grid_model1/geoms
  - region.geojson
 </pre></div></div>
@@ -979,8 +1043,8 @@ tmp_grid_model1/geoms
 settings = value
 
 [timers]
-start = 2010-02-05
-end = 2010-02-15
+start = &#34;2010-02-05&#34;
+end = &#34;2010-02-15&#34;
 
 
 </pre></div></div>
@@ -994,7 +1058,7 @@ end = 2010-02-15
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>hydromt update --help
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>hydromt<span class="w"> </span>update<span class="w"> </span>--help
 </pre></div>
 </div>
 </div>
@@ -1003,6 +1067,22 @@ end = 2010-02-15
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
+/usr/share/miniconda3/envs/hydromt-dev/lib/python3.10/site-packages/hydromt/workflows/basin_mask.py:9: UserWarning: Shapely 2.0 is installed, but because PyGEOS is also installed, GeoPandas will still use PyGEOS by default for now. To force to use and test Shapely 2.0, you have to set the environment variable USE_PYGEOS=0. You can do this before starting the Python process, or in your code before importing geopandas:
+
+import os
+os.environ[&#39;USE_PYGEOS&#39;] = &#39;0&#39;
+import geopandas
+
+In a future release, GeoPandas will switch to using Shapely by default. If you are using PyGEOS directly (calling PyGEOS functions on geometries from GeoPandas), this will then stop working and you are encouraged to migrate from PyGEOS to Shapely 2.0 (https://shapely.readthedocs.io/en/latest/migration_pygeos.html).
+  import geopandas as gpd
+/usr/share/miniconda3/envs/hydromt-dev/lib/python3.10/site-packages/hydromt/io.py:14: UserWarning: Shapely 2.0 is installed, but because PyGEOS is also installed, GeoPandas will still use PyGEOS by default for now. To force to use and test Shapely 2.0, you have to set the environment variable USE_PYGEOS=0. You can do this before starting the Python process, or in your code before importing geopandas:
+
+import os
+os.environ[&#39;USE_PYGEOS&#39;] = &#39;0&#39;
+import geopandas
+
+In a future release, GeoPandas will switch to using Shapely by default. If you are using PyGEOS directly (calling PyGEOS functions on geometries from GeoPandas), this will then stop working and you are encouraged to migrate from PyGEOS to Shapely 2.0 (https://shapely.readthedocs.io/en/latest/migration_pygeos.html).
+  from . import raster, vector, gis_utils, merge
 Usage: hydromt update [OPTIONS] MODEL MODEL_ROOT
 
   Update a specific component of a model. Set an output directory to copy the
@@ -1062,7 +1142,7 @@ Writing ./tmp_grid_model1/grid_model_update.ini
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>hydromt update grid_model ./tmp_grid_model1 -i ./tmp_grid_model1/grid_model_update.ini -vv
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>hydromt<span class="w"> </span>update<span class="w"> </span>grid_model<span class="w"> </span>./tmp_grid_model1<span class="w"> </span>-i<span class="w"> </span>./tmp_grid_model1/grid_model_update.ini<span class="w"> </span>-vv
 </pre></div>
 </div>
 </div>
@@ -1071,26 +1151,42 @@ Writing ./tmp_grid_model1/grid_model_update.ini
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-2022-12-12 11:04:45,250 - update - log - DEBUG - Appending log messages to file /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model1/hydromt.log.
-2022-12-12 11:04:45,250 - update - log - INFO - HydroMT version: 0.6.1.dev
-2022-12-12 11:04:45,250 - update - main - INFO - Updating grid_model model at /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model1 (r+).
-2022-12-12 11:04:45,250 - update - main - INFO - Output dir: /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model1
-2022-12-12 11:04:45,250 - update - main - INFO - User settings:
-2022-12-12 11:04:45,262 - update - model_api - INFO - Initializing grid_model model from hydromt (v0.6.1.dev).
-2022-12-12 11:04:45,263 - update - model_api - DEBUG - Reading model file region.
-2022-12-12 11:04:45,285 - update - model_api - INFO - setup_maps_from_raster.raster_fn: merit_hydro_1k
-2022-12-12 11:04:45,286 - update - model_api - INFO - setup_maps_from_raster.variables: uparea
-2022-12-12 11:04:45,286 - update - model_api - INFO - setup_maps_from_raster.fill_method: None
-2022-12-12 11:04:45,286 - update - model_api - INFO - setup_maps_from_raster.name: None
-2022-12-12 11:04:45,286 - update - model_api - INFO - setup_maps_from_raster.reproject_method: None
-2022-12-12 11:04:45,286 - update - model_api - INFO - setup_maps_from_raster.split_dataset: True
-2022-12-12 11:04:45,286 - update - model_api - INFO - Preparing maps data from raster source merit_hydro_1k
-2022-12-12 11:04:45,341 - update - data_catalog - INFO - Reading data catalog artifact_data v0.0.7 from archive
-2022-12-12 11:04:45,341 - update - data_catalog - INFO - Parsing data catalog from /home/runner/.hydromt_data/artifact_data/v0.0.7/data_catalog.yml
-2022-12-12 11:04:45,402 - update - data_catalog - INFO - DataCatalog: Getting merit_hydro_1k RasterDataset raster data from /home/runner/.hydromt_data/artifact_data/v0.0.7/merit_hydro_1k/{variable}.tif
-2022-12-12 11:04:45,427 - update - rasterdataset - DEBUG - RasterDataset: Clip with geom - [11.700, 45.350, 12.950, 46.700]
-2022-12-12 11:04:45,440 - update - model_api - INFO - write_maps.fn: maps/{name}.nc
-2022-12-12 11:04:45,440 - update - model_api - DEBUG - Writing file maps/uparea.nc
+/usr/share/miniconda3/envs/hydromt-dev/lib/python3.10/site-packages/hydromt/workflows/basin_mask.py:9: UserWarning: Shapely 2.0 is installed, but because PyGEOS is also installed, GeoPandas will still use PyGEOS by default for now. To force to use and test Shapely 2.0, you have to set the environment variable USE_PYGEOS=0. You can do this before starting the Python process, or in your code before importing geopandas:
+
+import os
+os.environ[&#39;USE_PYGEOS&#39;] = &#39;0&#39;
+import geopandas
+
+In a future release, GeoPandas will switch to using Shapely by default. If you are using PyGEOS directly (calling PyGEOS functions on geometries from GeoPandas), this will then stop working and you are encouraged to migrate from PyGEOS to Shapely 2.0 (https://shapely.readthedocs.io/en/latest/migration_pygeos.html).
+  import geopandas as gpd
+/usr/share/miniconda3/envs/hydromt-dev/lib/python3.10/site-packages/hydromt/io.py:14: UserWarning: Shapely 2.0 is installed, but because PyGEOS is also installed, GeoPandas will still use PyGEOS by default for now. To force to use and test Shapely 2.0, you have to set the environment variable USE_PYGEOS=0. You can do this before starting the Python process, or in your code before importing geopandas:
+
+import os
+os.environ[&#39;USE_PYGEOS&#39;] = &#39;0&#39;
+import geopandas
+
+In a future release, GeoPandas will switch to using Shapely by default. If you are using PyGEOS directly (calling PyGEOS functions on geometries from GeoPandas), this will then stop working and you are encouraged to migrate from PyGEOS to Shapely 2.0 (https://shapely.readthedocs.io/en/latest/migration_pygeos.html).
+  from . import raster, vector, gis_utils, merge
+2023-01-23 17:24:41,732 - update - log - DEBUG - Appending log messages to file /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model1/hydromt.log.
+2023-01-23 17:24:41,732 - update - log - INFO - HydroMT version: 0.6.1.dev
+2023-01-23 17:24:41,732 - update - main - INFO - Updating grid_model model at /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model1 (r+).
+2023-01-23 17:24:41,732 - update - main - INFO - Output dir: /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model1
+2023-01-23 17:24:41,732 - update - main - INFO - User settings:
+2023-01-23 17:24:41,744 - update - model_api - INFO - Initializing grid_model model from hydromt (v0.6.1.dev).
+2023-01-23 17:24:41,745 - update - model_api - DEBUG - Reading model file region.
+2023-01-23 17:24:41,768 - update - model_api - INFO - setup_maps_from_raster.raster_fn: merit_hydro_1k
+2023-01-23 17:24:41,768 - update - model_api - INFO - setup_maps_from_raster.variables: uparea
+2023-01-23 17:24:41,768 - update - model_api - INFO - setup_maps_from_raster.fill_method: None
+2023-01-23 17:24:41,768 - update - model_api - INFO - setup_maps_from_raster.name: None
+2023-01-23 17:24:41,768 - update - model_api - INFO - setup_maps_from_raster.reproject_method: None
+2023-01-23 17:24:41,768 - update - model_api - INFO - setup_maps_from_raster.split_dataset: True
+2023-01-23 17:24:41,768 - update - model_api - INFO - Preparing maps data from raster source merit_hydro_1k
+2023-01-23 17:24:41,834 - update - data_catalog - INFO - Reading data catalog artifact_data v0.0.7 from archive
+2023-01-23 17:24:41,835 - update - data_catalog - INFO - Parsing data catalog from /home/runner/.hydromt_data/artifact_data/v0.0.7/data_catalog.yml
+2023-01-23 17:24:41,901 - update - data_catalog - INFO - DataCatalog: Getting merit_hydro_1k RasterDataset raster data from /home/runner/.hydromt_data/artifact_data/v0.0.7/merit_hydro_1k/{variable}.tif
+2023-01-23 17:24:41,924 - update - rasterdataset - DEBUG - RasterDataset: Clip with geom - [11.700, 45.350, 12.950, 46.700]
+2023-01-23 17:24:41,936 - update - model_api - INFO - write_maps.fn: maps/{name}.nc
+2023-01-23 17:24:41,936 - update - model_api - DEBUG - Writing file maps/uparea.nc
 
 </pre></div></div>
 </div>
@@ -1117,12 +1213,12 @@ Writing ./tmp_grid_model1/grid_model_update.ini
 <div class="highlight"><pre>
 tmp_grid_model1
  - grid_model_update.ini
- - hydromt.log
  - model.ini
+ - hydromt.log
 tmp_grid_model1/maps
- - manning.nc
- - uparea.nc
  - elevtn.nc
+ - uparea.nc
+ - manning.nc
 tmp_grid_model1/geoms
  - region.geojson
 </pre></div></div>

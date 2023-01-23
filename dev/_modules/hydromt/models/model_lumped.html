@@ -362,7 +362,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">response_units</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Model response unit (lumped) data. Returns xr.Dataset geometry coordinate.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Model response unit (lumped) data. Returns xr.Dataset geometry coordinate.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_response_units</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">read_response_units</span><span class="p">()</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_response_units</span>
@@ -372,7 +372,7 @@
         <span class="n">data</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">,</span> <span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">],</span>
         <span class="n">name</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Add data to response_units.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add data to response_units.</span>
 
 <span class="sd">        All layers of response_units must have identical spatial index.</span>
 
@@ -415,7 +415,7 @@
         <span class="n">fn_geom</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;response_units/response_units.geojson&quot;</span><span class="p">,</span>
         <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Read model response units from combined netcdf file at &lt;root&gt;/&lt;fn&gt; and geojson file at &lt;root&gt;/&lt;fn_geom&gt;.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Read model response units from combined netcdf file at &lt;root&gt;/&lt;fn&gt; and geojson file at &lt;root&gt;/&lt;fn_geom&gt;.</span>
 <span class="sd">        The netcdf file contains the attribute data and the geojson file the geometry vector data.</span>
 
 <span class="sd">        key-word arguments are passed to :py:func:`xarray.open_dataset`</span>
@@ -443,7 +443,7 @@
         <span class="n">fn_geom</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;response_units/response_units.geojson&quot;</span><span class="p">,</span>
         <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Write model response units to combined netcdf file at &lt;root&gt;/&lt;fn&gt; and geojson file at &lt;root&gt;/&lt;fn_geom&gt;.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Write model response units to combined netcdf file at &lt;root&gt;/&lt;fn&gt; and geojson file at &lt;root&gt;/&lt;fn_geom&gt;.</span>
 <span class="sd">        The netcdf file contains the attribute data and the geojson file the geometry vector data.</span>
 
 <span class="sd">        key-word arguments are passed to :py:meth:`xarray.Dataset.to_netcdf`</span>
@@ -471,7 +471,7 @@
 
 
 <div class="viewcode-block" id="LumpedModel"><a class="viewcode-back" href="../../../_generated/hydromt.LumpedModel.html#hydromt.LumpedModel">[docs]</a><span class="k">class</span> <span class="nc">LumpedModel</span><span class="p">(</span><span class="n">LumpedMixin</span><span class="p">,</span> <span class="n">Model</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Model class Lumped Model for lumped models in HydroMT&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Model class Lumped Model for lumped models in HydroMT&quot;&quot;&quot;</span>
 
     <span class="n">_CLI_ARGS</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;region&quot;</span><span class="p">:</span> <span class="s2">&quot;setup_region&quot;</span><span class="p">}</span>
     <span class="n">_NAME</span> <span class="o">=</span> <span class="s2">&quot;lumped_model&quot;</span>
@@ -484,7 +484,7 @@
         <span class="n">data_libs</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">logger</span><span class="o">=</span><span class="n">logger</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Initialize a LumpedModel for lumped and semi-distributed models.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialize a LumpedModel for lumped and semi-distributed models.&quot;&quot;&quot;</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
             <span class="n">root</span><span class="o">=</span><span class="n">root</span><span class="p">,</span>
             <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span>
@@ -504,7 +504,7 @@
             <span class="s2">&quot;results&quot;</span><span class="p">,</span>
         <span class="p">],</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Read the complete model schematization and configuration from model files.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Read the complete model schematization and configuration from model files.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -524,7 +524,7 @@
             <span class="s2">&quot;states&quot;</span><span class="p">,</span>
         <span class="p">],</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Write the complete model schematization and configuration to model files.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Write the complete model schematization and configuration to model files.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -536,7 +536,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">region</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Returns the geometry of the model area of interest.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the geometry of the model area of interest.&quot;&quot;&quot;</span>
         <span class="n">region</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">()</span>
         <span class="k">if</span> <span class="s2">&quot;region&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">geoms</span><span class="p">:</span>
             <span class="n">region</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">geoms</span><span class="p">[</span><span class="s2">&quot;region&quot;</span><span class="p">]</span>

@@ -409,13 +409,13 @@ applied directly across all observation locations in your model.</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">from hydromt.stats import nashsutcliffe</span>
 <span class="go">from hydromt_wflow import WflowModel</span>
 <span class="go">import xarray as xr</span>
-<span class="gp"># </span><span class="nb">read</span> model results
-<span class="gp"># </span>NOTE: the name of the results depends on the wflow run configuration <span class="o">(</span>toml file<span class="o">)</span>
+<span class="gp"># </span><span class="nb">read</span><span class="w"> </span>model<span class="w"> </span>results
+<span class="gp"># </span>NOTE:<span class="w"> </span>the<span class="w"> </span>name<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>results<span class="w"> </span>depends<span class="w"> </span>on<span class="w"> </span>the<span class="w"> </span>wflow<span class="w"> </span>run<span class="w"> </span>configuration<span class="w"> </span><span class="o">(</span>toml<span class="w"> </span>file<span class="o">)</span>
 <span class="go">mod = WflowModel(root=r&#39;/path/to/wflow_model/root&#39;, mode=&#39;r&#39;)</span>
 <span class="go">sim = mod.results[&#39;Q_gauges_grdc&#39;]</span>
-<span class="gp"># </span><span class="nb">read</span> observations
+<span class="gp"># </span><span class="nb">read</span><span class="w"> </span>observations
 <span class="go">obs = xr.open_dataset(r&#39;/path/to/grdc_obs.nc&#39;)</span>
-<span class="gp"># </span>calculate skill statistic
+<span class="gp"># </span>calculate<span class="w"> </span>skill<span class="w"> </span>statistic
 <span class="go">nse = nashsutcliffe(sim, obs)</span>
 </pre></div>
 </div>

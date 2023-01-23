@@ -377,7 +377,7 @@
 
 
 <div class="viewcode-block" id="full_like"><a class="viewcode-back" href="../../_generated/hydromt.raster.full_like.html#hydromt.raster.full_like">[docs]</a><span class="k">def</span> <span class="nf">full_like</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">nodata</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">lazy</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Return a full object with the same grid and geospatial attributes as ``other``.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return a full object with the same grid and geospatial attributes as ``other``.</span>
 
 <span class="sd">    Arguments</span>
 <span class="sd">    ---------</span>
@@ -413,7 +413,7 @@
 <div class="viewcode-block" id="full"><a class="viewcode-back" href="../../_generated/hydromt.raster.full.html#hydromt.raster.full">[docs]</a><span class="k">def</span> <span class="nf">full</span><span class="p">(</span>
     <span class="n">coords</span><span class="p">,</span> <span class="n">nodata</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="p">{},</span> <span class="n">crs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">lazy</span><span class="o">=</span><span class="kc">False</span>
 <span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Return a full DataArray based on a geospatial coords dictionary.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return a full DataArray based on a geospatial coords dictionary.</span>
 
 <span class="sd">    Arguments</span>
 <span class="sd">    ---------</span>
@@ -458,7 +458,7 @@
     <span class="n">crs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="n">lazy</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
 <span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Return a full DataArray based on a geospatial transform and shape.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return a full DataArray based on a geospatial transform and shape.</span>
 <span class="sd">    See :py:meth:`~hydromt.raster.full` for all options.</span>
 
 <span class="sd">    Arguments</span>
@@ -492,7 +492,7 @@
 
 
 <span class="k">class</span> <span class="nc">XGeoBase</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;This is the base class for the GIS extensions for xarray&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;This is the base class for the GIS extensions for xarray&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">xarray_obj</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_obj</span> <span class="o">=</span> <span class="n">xarray_obj</span>
@@ -503,48 +503,48 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">attrs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Return dictionary of spatial attributes&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return dictionary of spatial attributes&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_obj</span><span class="o">.</span><span class="n">coords</span><span class="p">[</span><span class="n">GEO_MAP_COORD</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span>
 
     <span class="k">def</span> <span class="nf">set_attrs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Update spatial attributes. Usage raster.set_attr(key=value).&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Update spatial attributes. Usage raster.set_attr(key=value).&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_obj</span><span class="o">.</span><span class="n">coords</span><span class="p">[</span><span class="n">GEO_MAP_COORD</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">get_attrs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">placeholder</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Return single spatial attribute.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return single spatial attribute.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_obj</span><span class="o">.</span><span class="n">coords</span><span class="p">[</span><span class="n">GEO_MAP_COORD</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">placeholder</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">crs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Return Coordinate Reference System as :py:meth:`pyproj.CRS` object.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return Coordinate Reference System as :py:meth:`pyproj.CRS` object.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_obj</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">crs</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">x_dim</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Return the x dimension name&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the x dimension name&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_attrs</span><span class="p">(</span><span class="s2">&quot;x_dim&quot;</span><span class="p">)</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_obj</span><span class="o">.</span><span class="n">dims</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">set_spatial_dims</span><span class="p">()</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s2">&quot;x_dim&quot;</span><span class="p">]</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">y_dim</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Return the y dimension name&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the y dimension name&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_attrs</span><span class="p">(</span><span class="s2">&quot;y_dim&quot;</span><span class="p">)</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_obj</span><span class="o">.</span><span class="n">dims</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">set_spatial_dims</span><span class="p">()</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s2">&quot;y_dim&quot;</span><span class="p">]</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">xcoords</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Return the x coordinates&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the x coordinates&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_obj</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">x_dim</span><span class="p">]</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">ycoords</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Return the y coordinates&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the y coordinates&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_obj</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">y_dim</span><span class="p">]</span>
 
     <span class="k">def</span> <span class="nf">set_spatial_dims</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x_dim</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">y_dim</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Set the geospatial dimensions of the object.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set the geospatial dimensions of the object.</span>
 
 <span class="sd">        Arguments</span>
 <span class="sd">        ----------</span>
@@ -586,7 +586,7 @@
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;raster only applies to regular grids&quot;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">set_crs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_crs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Set the Coordinate Reference System.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set the Coordinate Reference System.</span>
 
 <span class="sd">        Arguments</span>
 <span class="sd">        ----------</span>
@@ -623,7 +623,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">_obj</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">write_crs</span><span class="p">(</span><span class="n">input_crs</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">reset_spatial_dims_attrs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Reset spatial dimension names and attributes to make CF-compliant</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Reset spatial dimension names and attributes to make CF-compliant</span>
 <span class="sd">        Requires CRS attribute.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">crs</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;CRS is missing. Use set_crs function to resolve.&quot;</span><span class="p">)</span>
@@ -637,21 +637,21 @@
 
 
 <span class="k">class</span> <span class="nc">XRasterBase</span><span class="p">(</span><span class="n">XGeoBase</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;This is the base class for a Raster GIS extensions for xarray&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;This is the base class for a Raster GIS extensions for xarray&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">xarray_obj</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">XRasterBase</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">xarray_obj</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">dim0</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Return the non geospatial dimension name.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the non geospatial dimension name.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_attrs</span><span class="p">(</span><span class="s2">&quot;dim0&quot;</span><span class="p">)</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_obj</span><span class="o">.</span><span class="n">dims</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_check_dimensions</span><span class="p">()</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_attrs</span><span class="p">(</span><span class="s2">&quot;dim0&quot;</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">dims</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Return tuple of geospatial dimensions names.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return tuple of geospatial dimensions names.&quot;&quot;&quot;</span>
         <span class="c1"># if self.dim0 is not None:</span>
         <span class="c1">#     return self.dim0, self.y_dim, self.x_dim</span>
         <span class="c1"># else:</span>
@@ -659,33 +659,33 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">coords</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Return dict of geospatial dimensions coordinates.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return dict of geospatial dimensions coordinates.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="p">{</span><span class="n">dim</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_obj</span><span class="o">.</span><span class="n">coords</span><span class="p">[</span><span class="n">dim</span><span class="p">]</span> <span class="k">for</span> <span class="n">dim</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dims</span><span class="p">)}</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">shape</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Return shape of geospatial dimension (height, width).&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return shape of geospatial dimension (height, width).&quot;&quot;&quot;</span>
         <span class="c1"># return tuple([self._obj.coords[d].size for d in list(self.dims)])</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">height</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">width</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">size</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Return size of geospatial grid.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return size of geospatial grid.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">width</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Return the width of the object (x dimension size).&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the width of the object (x dimension size).&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">xcoords</span><span class="o">.</span><span class="n">size</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">height</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Return the height of the object (y dimension size).&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the height of the object (y dimension size).&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">ycoords</span><span class="o">.</span><span class="n">size</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">transform</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Return the affine transform of the object.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the affine transform of the object.&quot;&quot;&quot;</span>
         <span class="n">transform</span> <span class="o">=</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">from_bounds</span><span class="p">(</span>
             <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">internal_bounds</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">height</span>
         <span class="p">)</span>
@@ -693,7 +693,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">internal_bounds</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Return the internal bounds of the object.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the internal bounds of the object.&quot;&quot;&quot;</span>
         <span class="n">res_x</span><span class="p">,</span> <span class="n">res_y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">res</span>
         <span class="n">left</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">xcoords</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">-</span> <span class="n">res_x</span> <span class="o">/</span> <span class="mf">2.0</span>
         <span class="n">right</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">xcoords</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">+</span> <span class="n">res_x</span> <span class="o">/</span> <span class="mf">2.0</span>
@@ -703,7 +703,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">bounds</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Return the bounds (xmin, ymin, xmax, ymax) of the object.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the bounds (xmin, ymin, xmax, ymax) of the object.&quot;&quot;&quot;</span>
         <span class="n">left</span><span class="p">,</span> <span class="n">bottom</span><span class="p">,</span> <span class="n">right</span><span class="p">,</span> <span class="n">top</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">internal_bounds</span>
         <span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">)</span>
         <span class="n">ymin</span><span class="p">,</span> <span class="n">ymax</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">top</span><span class="p">,</span> <span class="n">bottom</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">top</span><span class="p">,</span> <span class="n">bottom</span><span class="p">)</span>
@@ -711,7 +711,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">box</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Return :py:meth:`~geopandas.GeoDataFrame` of bounding box&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return :py:meth:`~geopandas.GeoDataFrame` of bounding box&quot;&quot;&quot;</span>
         <span class="n">crs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">crs</span>
         <span class="k">if</span> <span class="n">crs</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">crs</span><span class="o">.</span><span class="n">to_epsg</span><span class="p">()</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">crs</span> <span class="o">=</span> <span class="n">crs</span><span class="o">.</span><span class="n">to_epsg</span><span class="p">()</span>  <span class="c1"># not all CRS have an EPSG code</span>
@@ -719,7 +719,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">res</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Return resolution (x, y) tuple.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return resolution (x, y) tuple.&quot;&quot;&quot;</span>
         <span class="n">left</span><span class="p">,</span> <span class="n">right</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">xcoords</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">xcoords</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
         <span class="n">top</span><span class="p">,</span> <span class="n">bottom</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ycoords</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ycoords</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
         <span class="n">res_x</span> <span class="o">=</span> <span class="p">(</span><span class="n">right</span> <span class="o">-</span> <span class="n">left</span><span class="p">)</span> <span class="o">/</span> <span class="nb">max</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
@@ -727,7 +727,7 @@
         <span class="k">return</span> <span class="n">res_x</span><span class="p">,</span> <span class="n">res_y</span>
 
     <span class="k">def</span> <span class="nf">_check_dimensions</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Validates the dimensions number of dimensions and dimension order.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Validates the dimensions number of dimensions and dimension order.&quot;&quot;&quot;</span>
         <span class="n">dims</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">y_dim</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">x_dim</span><span class="p">)</span>
         <span class="n">da</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_obj</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">vars</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_obj</span><span class="p">,</span> <span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">)</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">_obj</span>
         <span class="n">extra_dims</span> <span class="o">=</span> <span class="p">[</span><span class="n">dim</span> <span class="k">for</span> <span class="n">dim</span> <span class="ow">in</span> <span class="n">da</span><span class="o">.</span><span class="n">dims</span> <span class="k">if</span> <span class="n">dim</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">dims</span><span class="p">]</span>
@@ -749,7 +749,7 @@
             <span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">identical_grid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Return True if other has an same grid as object (crs, transform, shape).&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return True if other has an same grid as object (crs, transform, shape).&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="p">(</span>
             <span class="p">(</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">crs</span> <span class="ow">is</span> <span class="kc">None</span>
@@ -761,7 +761,7 @@
         <span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">aligned_grid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Return True if other grid aligns with object grid (crs, resolution, origin),</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return True if other grid aligns with object grid (crs, resolution, origin),</span>
 <span class="sd">        but with a smaller extent&quot;&quot;&quot;</span>
         <span class="n">w</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bounds</span>
         <span class="n">w1</span><span class="p">,</span> <span class="n">s1</span><span class="p">,</span> <span class="n">e1</span><span class="p">,</span> <span class="n">n1</span> <span class="o">=</span> <span class="n">other</span><span class="o">.</span><span class="n">raster</span><span class="o">.</span><span class="n">bounds</span>
@@ -780,7 +780,7 @@
         <span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">gdal_compliant</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rename_dims</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">force_sn</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Updates attributes to get GDAL compliant NetCDF files.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Updates attributes to get GDAL compliant NetCDF files.</span>
 
 <span class="sd">        Arguments</span>
 <span class="sd">        ----------</span>
@@ -819,7 +819,7 @@
         <span class="k">return</span> <span class="n">obj_out</span>
 
     <span class="k">def</span> <span class="nf">transform_bounds</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dst_crs</span><span class="p">,</span> <span class="n">densify_pts</span><span class="o">=</span><span class="mi">21</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Transform bounds from object to destination CRS.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Transform bounds from object to destination CRS.</span>
 
 <span class="sd">        Optionally densifying the edges (to account for nonlinear transformations</span>
 <span class="sd">        along these edges) and extracting the outermost bounds.</span>
@@ -850,12 +850,12 @@
         <span class="k">return</span> <span class="n">bounds</span>
 
     <span class="k">def</span> <span class="nf">flipud</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Returns raster flipped along y-axis&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns raster flipped along y-axis&quot;&quot;&quot;</span>
         <span class="n">yrev</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">reversed</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ycoords</span><span class="p">))</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_obj</span><span class="o">.</span><span class="n">reindex</span><span class="p">({</span><span class="bp">self</span><span class="o">.</span><span class="n">y_dim</span><span class="p">:</span> <span class="n">yrev</span><span class="p">})</span>
 
     <span class="k">def</span> <span class="nf">rowcol</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">mask_outside</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">nodata</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Return row, col indices of x, y coordinates</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return row, col indices of x, y coordinates</span>
 
 <span class="sd">        Arguments</span>
 <span class="sd">        ----------</span>
@@ -890,7 +890,7 @@
         <span class="k">return</span> <span class="n">r</span><span class="p">,</span> <span class="n">c</span>
 
     <span class="k">def</span> <span class="nf">xy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">mask_outside</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">nodata</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Return x,y coordinates at cell center of row, col indices</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return x,y coordinates at cell center of row, col indices</span>
 
 <span class="sd">        Arguments</span>
 <span class="sd">        ----------</span>
@@ -925,7 +925,7 @@
         <span class="k">return</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span>
 
     <span class="k">def</span> <span class="nf">idx_to_xy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">mask_outside</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">nodata</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Return x,y coordinates at linear index</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return x,y coordinates at linear index</span>
 
 <span class="sd">        Arguments</span>
 <span class="sd">        ----------</span>
@@ -949,7 +949,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">xy</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">,</span> <span class="n">mask_outside</span><span class="o">=</span><span class="n">mask_outside</span><span class="p">,</span> <span class="n">nodata</span><span class="o">=</span><span class="n">nodata</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">xy_to_idx</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">mask_outside</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">nodata</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Return linear index of x, y coordinates</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return linear index of x, y coordinates</span>
 
 <span class="sd">        Arguments</span>
 <span class="sd">        ----------</span>
@@ -975,7 +975,7 @@
         <span class="k">return</span> <span class="n">idx</span>
 
     <span class="k">def</span> <span class="nf">sample</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gdf</span><span class="p">,</span> <span class="n">wdw</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Sample from map at point locations with optional window around the points.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sample from map at point locations with optional window around the points.</span>
 
 <span class="sd">        Arguments</span>
 <span class="sd">        ---------</span>
@@ -1032,7 +1032,7 @@
         <span class="k">return</span> <span class="n">obj_out</span>
 
     <span class="k">def</span> <span class="nf">zonal_stats</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gdf</span><span class="p">,</span> <span class="n">stats</span><span class="p">,</span> <span class="n">all_touched</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Calculate zonal statistics of raster samples aggregated for geometries.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Calculate zonal statistics of raster samples aggregated for geometries.</span>
 
 <span class="sd">        Arguments</span>
 <span class="sd">        ---------</span>
@@ -1129,7 +1129,7 @@
         <span class="k">return</span> <span class="n">ds_out</span>
 
     <span class="k">def</span> <span class="nf">reclassify</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">reclass_table</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">method</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;exact&quot;</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Reclass columns in df from raster map (DataArray).</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Reclass columns in df from raster map (DataArray).</span>
 
 <span class="sd">        Arguments</span>
 <span class="sd">        ---------</span>
@@ -1175,7 +1175,7 @@
         <span class="k">return</span> <span class="n">ds_out</span>
 
     <span class="k">def</span> <span class="nf">clip_bbox</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bbox</span><span class="p">,</span> <span class="n">align</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">buffer</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Clip object based on a bounding box.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Clip object based on a bounding box.</span>
 
 <span class="sd">        Arguments</span>
 <span class="sd">        ----------</span>
@@ -1221,7 +1221,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_obj</span><span class="o">.</span><span class="n">sel</span><span class="p">({</span><span class="bp">self</span><span class="o">.</span><span class="n">x_dim</span><span class="p">:</span> <span class="n">x_slice</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y_dim</span><span class="p">:</span> <span class="n">y_slice</span><span class="p">})</span>
 
     <span class="k">def</span> <span class="nf">clip_mask</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mask</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Clip object to region with mask values greater than zero.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Clip object to region with mask values greater than zero.</span>
 
 <span class="sd">        Arguments</span>
 <span class="sd">        ---------</span>
@@ -1245,7 +1245,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_obj</span><span class="o">.</span><span class="n">isel</span><span class="p">({</span><span class="bp">self</span><span class="o">.</span><span class="n">x_dim</span><span class="p">:</span> <span class="n">col_slice</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y_dim</span><span class="p">:</span> <span class="n">row_slice</span><span class="p">})</span>
 
     <span class="k">def</span> <span class="nf">clip_geom</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">geom</span><span class="p">,</span> <span class="n">align</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">buffer</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Clip object to the bounding box of the geometry and add geometry &#39;mask&#39; coordinate.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Clip object to the bounding box of the geometry and add geometry &#39;mask&#39; coordinate.</span>
 
 <span class="sd">        Arguments</span>
 <span class="sd">        ---------</span>
@@ -1286,7 +1286,7 @@
         <span class="n">sindex</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
         <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Return an object with input geometry values burned in.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return an object with input geometry values burned in.</span>
 
 <span class="sd">        Arguments</span>
 <span class="sd">        ---------</span>
@@ -1351,7 +1351,7 @@
         <span class="k">return</span> <span class="n">da_out</span>
 
     <span class="k">def</span> <span class="nf">geometry_mask</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gdf</span><span class="p">,</span> <span class="n">all_touched</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">invert</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Return a grid with True values where shapes overlap pixels.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return a grid with True values where shapes overlap pixels.</span>
 
 <span class="sd">        Arguments</span>
 <span class="sd">        ---------</span>
@@ -1383,7 +1383,7 @@
         <span class="k">return</span> <span class="n">da_out</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">bool</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">vector_grid</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Return a geopandas GeoDataFrame with a box for each grid cell.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return a geopandas GeoDataFrame with a box for each grid cell.&quot;&quot;&quot;</span>
         <span class="n">w</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bounds</span>
         <span class="n">dx</span><span class="p">,</span> <span class="n">dy</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">res</span>
         <span class="n">nrow</span><span class="p">,</span> <span class="n">ncol</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">shape</span>
@@ -1398,7 +1398,7 @@
         <span class="k">return</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">(</span><span class="n">geometry</span><span class="o">=</span><span class="n">cells</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">crs</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">area_grid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Returns the grid cell area [m2].</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the grid cell area [m2].</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1420,7 +1420,7 @@
         <span class="k">return</span> <span class="n">da_area</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s2">&quot;area&quot;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">density_grid</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Returns the density in [unit/m2] of raster(s). The cell areas are calculated</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the density in [unit/m2] of raster(s). The cell areas are calculated</span>
 <span class="sd">        using :py:meth:`~hydromt.raster.XRasterBase.area_grid`.</span>
 
 <span class="sd">        Returns</span>
@@ -1494,7 +1494,7 @@
         <span class="n">dst_height</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">align</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Prepare nearest index mapping for the reprojection of a gridded timeseries</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Prepare nearest index mapping for the reprojection of a gridded timeseries</span>
 <span class="sd">        file, powered by pyproj and k-d tree lookup.</span>
 
 <span class="sd">        Index mappings typically are used in reprojection workflows of time series,</span>
@@ -1571,14 +1571,14 @@
 
 <span class="nd">@xr</span><span class="o">.</span><span class="n">register_dataarray_accessor</span><span class="p">(</span><span class="s2">&quot;raster&quot;</span><span class="p">)</span>
 <span class="k">class</span> <span class="nc">RasterDataArray</span><span class="p">(</span><span class="n">XRasterBase</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;This is the GIS extension for xarray.DataArray&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;This is the GIS extension for xarray.DataArray&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">xarray_obj</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">RasterDataArray</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">xarray_obj</span><span class="p">)</span>
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">from_numpy</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">transform</span><span class="p">,</span> <span class="n">nodata</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="p">{},</span> <span class="n">crs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Transform a 2D/3D numpy array into a DataArray with geospatial attributes.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Transform a 2D/3D numpy array into a DataArray with geospatial attributes.</span>
 <span class="sd">        The data dimensions should have the y and x on the second last and last dimensions.</span>
 
 <span class="sd">        Arguments</span>
@@ -1622,7 +1622,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">nodata</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Nodata value of the DataArray.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Nodata value of the DataArray.&quot;&quot;&quot;</span>
         <span class="c1"># first check attrs, then encoding</span>
         <span class="n">nodata</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_obj</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">nodata</span>
         <span class="k">if</span> <span class="n">nodata</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -1632,7 +1632,7 @@
         <span class="k">return</span> <span class="n">nodata</span>
 
     <span class="k">def</span> <span class="nf">set_nodata</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nodata</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="n">logger</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Set the nodata value as CF compliant attribute of the DataArray.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set the nodata value as CF compliant attribute of the DataArray.</span>
 
 <span class="sd">        Arguments</span>
 <span class="sd">        ----------</span>
@@ -1654,7 +1654,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">_obj</span><span class="o">.</span><span class="n">attrs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;_FillValue&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">mask_nodata</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fill_value</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Mask nodata values with fill_value (default np.nan).</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Mask nodata values with fill_value (default np.nan).</span>
 <span class="sd">        Note that masking with np.nan will change integer dtypes to float.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">_da</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_obj</span>
@@ -1665,7 +1665,7 @@
         <span class="k">return</span> <span class="n">_da</span>
 
     <span class="k">def</span> <span class="nf">mask</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mask</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="n">logger</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Mask cells where mask equals False with the data nodata value.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Mask cells where mask equals False with the data nodata value.</span>
 <span class="sd">        A warning is raised if no the data has no nodata value.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">nodata</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">da_masked</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_obj</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">mask</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nodata</span><span class="p">)</span>
@@ -1683,7 +1683,7 @@
         <span class="n">dst_nodata</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span>
         <span class="n">method</span><span class="o">=</span><span class="s2">&quot;nearest&quot;</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Reproject a DataArray, powered by :py:meth:`rasterio.warp.reproject`.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Reproject a DataArray, powered by :py:meth:`rasterio.warp.reproject`.&quot;&quot;&quot;</span>
         <span class="n">resampling</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">Resampling</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">resampling</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Resampling method unknown: </span><span class="si">{</span><span class="n">method</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
@@ -1714,7 +1714,7 @@
         <span class="k">return</span> <span class="n">da_reproject</span>
 
     <span class="k">def</span> <span class="nf">_reindex2d</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">dst_nodata</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Return reindexed (reprojected) object&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return reindexed (reprojected) object&quot;&quot;&quot;</span>
         <span class="c1"># create new DataArray for output</span>
         <span class="n">dst_coords</span> <span class="o">=</span> <span class="p">{</span><span class="n">d</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_obj</span><span class="o">.</span><span class="n">coords</span><span class="p">[</span><span class="n">d</span><span class="p">]</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_obj</span><span class="o">.</span><span class="n">dims</span><span class="p">}</span>
         <span class="n">ys</span><span class="p">,</span> <span class="n">xs</span> <span class="o">=</span> <span class="n">index</span><span class="o">.</span><span class="n">raster</span><span class="o">.</span><span class="n">ycoords</span><span class="p">,</span> <span class="n">index</span><span class="o">.</span><span class="n">raster</span><span class="o">.</span><span class="n">xcoords</span>
@@ -1749,7 +1749,7 @@
         <span class="n">method</span><span class="o">=</span><span class="s2">&quot;nearest&quot;</span><span class="p">,</span>
         <span class="n">align</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Reproject a DataArray with geospatial coordinates, powered</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Reproject a DataArray with geospatial coordinates, powered</span>
 <span class="sd">        by :py:meth:`rasterio.warp.reproject`.</span>
 
 <span class="sd">        Arguments</span>
@@ -1829,7 +1829,7 @@
         <span class="k">return</span> <span class="n">da_reproj</span><span class="o">.</span><span class="n">raster</span><span class="o">.</span><span class="n">reset_spatial_dims_attrs</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">reproject_like</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;nearest&quot;</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Reproject a object to match the grid of ``other``.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Reproject a object to match the grid of ``other``.</span>
 
 <span class="sd">        Arguments</span>
 <span class="sd">        ----------</span>
@@ -1876,7 +1876,7 @@
         <span class="k">return</span> <span class="n">da</span>
 
     <span class="k">def</span> <span class="nf">reindex2d</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">dst_nodata</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Return reprojected DataArray object based on simple reindexing using</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return reprojected DataArray object based on simple reindexing using</span>
 <span class="sd">        linear indices in ``index``, which can be calculated with</span>
 <span class="sd">        :py:meth:`~hydromt.raster.RasterDataArray.nearest_index`.</span>
 
@@ -1928,7 +1928,7 @@
     <span class="k">def</span> <span class="nf">_interpolate_na</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">src_data</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">method</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;nearest&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Returns interpolated array&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns interpolated array&quot;&quot;&quot;</span>
         <span class="n">data_isnan</span> <span class="o">=</span> <span class="kc">True</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">nodata</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nodata</span><span class="p">)</span>
         <span class="n">mask</span> <span class="o">=</span> <span class="o">~</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">src_data</span><span class="p">)</span> <span class="k">if</span> <span class="n">data_isnan</span> <span class="k">else</span> <span class="n">src_data</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nodata</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">mask</span><span class="o">.</span><span class="n">any</span><span class="p">()</span> <span class="ow">or</span> <span class="n">mask</span><span class="o">.</span><span class="n">all</span><span class="p">():</span>
@@ -1952,7 +1952,7 @@
         <span class="k">return</span> <span class="n">interp_data</span>
 
     <span class="k">def</span> <span class="nf">interpolate_na</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">method</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;nearest&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Interpolate missing data</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Interpolate missing data</span>
 
 <span class="sd">        Arguments</span>
 <span class="sd">        ----------</span>
@@ -1999,7 +1999,7 @@
         <span class="n">logger</span><span class="o">=</span><span class="n">logger</span><span class="p">,</span>
         <span class="o">**</span><span class="n">profile_kwargs</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Write DataArray object to a gdal-writable raster file.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Write DataArray object to a gdal-writable raster file.</span>
 
 <span class="sd">        Arguments</span>
 <span class="sd">        ----------</span>
@@ -2098,7 +2098,7 @@
                     <span class="n">dst</span><span class="o">.</span><span class="n">update_tags</span><span class="p">(</span><span class="o">**</span><span class="n">tags</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">vectorize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">connectivity</span><span class="o">=</span><span class="mi">8</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Return geometry of grouped pixels with the same value in a DataArray object.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return geometry of grouped pixels with the same value in a DataArray object.</span>
 
 <span class="sd">        Arguments</span>
 <span class="sd">        ---------</span>
@@ -2135,15 +2135,15 @@
 
 <span class="nd">@xr</span><span class="o">.</span><span class="n">register_dataset_accessor</span><span class="p">(</span><span class="s2">&quot;raster&quot;</span><span class="p">)</span>
 <span class="k">class</span> <span class="nc">RasterDataset</span><span class="p">(</span><span class="n">XRasterBase</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;This is the GIS extension for :class:`xarray.Dataset`&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;This is the GIS extension for :class:`xarray.Dataset`&quot;&quot;&quot;</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">vars</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;list: Returns non-coordinate varibles&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;list: Returns non-coordinate varibles&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_obj</span><span class="o">.</span><span class="n">data_vars</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
 
     <span class="k">def</span> <span class="nf">mask_nodata</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Mask nodata values with np.nan.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Mask nodata values with np.nan.</span>
 <span class="sd">        Note this will change integer dtypes to float.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">ds_out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_obj</span>
@@ -2152,7 +2152,7 @@
         <span class="k">return</span> <span class="n">ds_out</span>
 
     <span class="k">def</span> <span class="nf">mask</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mask</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Mask cells where mask equals False with the data nodata value.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Mask cells where mask equals False with the data nodata value.</span>
 <span class="sd">        A warning is raised if no the data has no nodata value.&quot;&quot;&quot;</span>
         <span class="n">ds_out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_obj</span>
         <span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">vars</span><span class="p">:</span>
@@ -2161,7 +2161,7 @@
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">from_numpy</span><span class="p">(</span><span class="n">data_vars</span><span class="p">,</span> <span class="n">transform</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Transform multiple numpy arrays to a Dataset object.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Transform multiple numpy arrays to a Dataset object.</span>
 <span class="sd">        The arrays should have identical shape.</span>
 
 <span class="sd">        Arguments</span>
@@ -2213,7 +2213,7 @@
         <span class="n">method</span><span class="o">=</span><span class="s2">&quot;nearest&quot;</span><span class="p">,</span>
         <span class="n">align</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Reproject a Dataset object, powered by :py:meth:`rasterio.warp.reproject`.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Reproject a Dataset object, powered by :py:meth:`rasterio.warp.reproject`.</span>
 
 <span class="sd">        Arguments</span>
 <span class="sd">        ----------</span>
@@ -2262,7 +2262,7 @@
         <span class="k">return</span> <span class="n">ds</span>
 
     <span class="k">def</span> <span class="nf">interpolate_na</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">method</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;nearest&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Interpolate missing data</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Interpolate missing data</span>
 
 <span class="sd">        Arguments</span>
 <span class="sd">        ----------</span>
@@ -2284,7 +2284,7 @@
         <span class="k">return</span> <span class="n">ds_out</span>
 
     <span class="k">def</span> <span class="nf">reproject_like</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;nearest&quot;</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Reproject a Dataset object to match the resolution, projection,</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Reproject a Dataset object to match the resolution, projection,</span>
 <span class="sd">        and region of ``other``.</span>
 
 <span class="sd">        Arguments</span>
@@ -2333,7 +2333,7 @@
         <span class="k">return</span> <span class="n">ds</span>
 
     <span class="k">def</span> <span class="nf">reindex2d</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Return reprojected Dataset object based on simple reindexing using</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return reprojected Dataset object based on simple reindexing using</span>
 <span class="sd">        linear indices in ``index``, which can be calculated with</span>
 <span class="sd">        :py:meth:`~hydromt.raster.RasterDataArray.nearest_index`.</span>
 
@@ -2366,7 +2366,7 @@
         <span class="n">logger</span><span class="o">=</span><span class="n">logger</span><span class="p">,</span>
         <span class="o">**</span><span class="n">profile_kwargs</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Write the Dataset object to one gdal-writable raster files per variable.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Write the Dataset object to one gdal-writable raster files per variable.</span>
 <span class="sd">        The files are written to the ``root`` directory using the following filename</span>
 <span class="sd">        ``&lt;prefix&gt;&lt;variable_name&gt;&lt;postfix&gt;.&lt;ext&gt;``.</span>
 

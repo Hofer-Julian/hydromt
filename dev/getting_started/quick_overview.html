@@ -387,13 +387,13 @@ Here, we illustrate this for the <a class="reference external" href="https://del
 <p>If you haven’t already done so, first install HydroMT and the <a class="reference external" href="https://deltares.github.io/hydromt_wflow/">HydroMT-Wflow plugin</a>
 in a new <strong>hydromt</strong> environment and activate this environment.
 For more information about the installation, please refer to the <a class="reference internal" href="installation.html#installation-guide"><span class="std std-ref">installation guide</span></a>.</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>conda create -n hydromt -c conda-forge <span class="nv">python</span><span class="o">=</span><span class="m">3</span>.9 hydromt hydromt_wflow
-<span class="gp">$ </span>conda activate hydromt
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>hydromt<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.9<span class="w"> </span>hydromt<span class="w"> </span>hydromt_wflow
+<span class="gp">$ </span>conda<span class="w"> </span>activate<span class="w"> </span>hydromt
 </pre></div>
 </div>
 <p>Next, check if the installation was successful by running the command below.
 This returns the available models for HydroMT and should at least contain wflow and wflow_sediment.</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>hydromt --models
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>hydromt<span class="w"> </span>--models
 
 <span class="go">&gt;&gt; hydroMT model plugins: wflow (vx.x.x), wflow_sediment (vx.x.x)</span>
 </pre></div>
@@ -413,7 +413,7 @@ For information about specific options, please visit the documentation of the Hy
 </ol>
 <p>These steps are combined into the following command which saves all Wflow model files and a <cite>hydromt.log</cite> file
 in the <cite>wflow_test</cite> folder. This Wflow model instance is ready to be <a class="reference external" href="https://deltares.github.io/Wflow.jl/dev/user_guide/step4_running/">run with Wflow</a>.</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>hydromt build wflow ./wflow_test <span class="s2">&quot;{&#39;subbasin&#39;: [12.2051, 45.8331], &#39;strord&#39;: 4}&quot;</span> -vv -i build_wflow.ini
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>hydromt<span class="w"> </span>build<span class="w"> </span>wflow<span class="w"> </span>./wflow_test<span class="w"> </span><span class="s2">&quot;{&#39;subbasin&#39;: [12.2051, 45.8331], &#39;strord&#39;: 4}&quot;</span><span class="w"> </span>-vv<span class="w"> </span>-i<span class="w"> </span>build_wflow.ini
 </pre></div>
 </div>
 </section>

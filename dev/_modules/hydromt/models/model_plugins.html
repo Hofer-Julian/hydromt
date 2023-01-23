@@ -356,7 +356,7 @@
 
 
 <span class="k">def</span> <span class="nf">get_general_eps</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Get local hydromt generic model class entrypoints</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get local hydromt generic model class entrypoints</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
@@ -373,12 +373,12 @@
 
 
 <span class="k">def</span> <span class="nf">_discover</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Discover drivers via entrypoints&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Discover drivers via entrypoints&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">get_group_all</span><span class="p">(</span><span class="s2">&quot;hydromt.models&quot;</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="n">path</span><span class="p">)</span>
 
 
 <span class="k">def</span> <span class="nf">get_plugin_eps</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="n">logger</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Discover hydromt model plugins based on &#39;hydromt.models&#39; entrypoints</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Discover hydromt model plugins based on &#39;hydromt.models&#39; entrypoints</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -405,7 +405,7 @@
 
 
 <span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="n">ep</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="n">logger</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Model</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Load entrypoint and return plugin model class</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Load entrypoint and return plugin model class</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -437,7 +437,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">eps</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Returns dictionary with available model entrypoints.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns dictionary with available model entrypoints.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_eps</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">plugins</span>  <span class="c1"># discover plugins</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">generic</span>  <span class="c1"># get generic local model classes</span>
@@ -445,7 +445,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">cls</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Returns dictionary with available model classes.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns dictionary with available model classes.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cls</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">eps</span><span class="p">):</span>
             <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">eps</span><span class="p">:</span>
                 <span class="k">if</span> <span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cls</span><span class="p">:</span>
@@ -454,7 +454,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">plugins</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Returns list with names of model plugins&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns list with names of model plugins&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_plugins</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
             <span class="n">eps</span> <span class="o">=</span> <span class="n">get_plugin_eps</span><span class="p">()</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_plugins</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">eps</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
@@ -463,7 +463,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">generic</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Returns list with names of generic models&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns list with names of generic models&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_general</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
             <span class="n">eps</span> <span class="o">=</span> <span class="n">get_general_eps</span><span class="p">()</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_general</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">eps</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
@@ -471,7 +471,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_general</span>
 
     <span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Model</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Returns model class&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns model class&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cls</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_cls</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">load</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="n">name</span><span class="p">])</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cls</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>

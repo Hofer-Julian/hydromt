@@ -421,14 +421,14 @@ Although this is not enforced in the code, by convention we start enumerating th
 <li><p>Arguments ending with <code class="docutils literal notranslate"><span class="pre">_fn</span></code> (short for filename) are by convention used to set a data source from the data catalog based on its source name, see <a class="reference internal" href="data_overview.html#get-data"><span class="std std-ref">Working with data in HydroMT</span></a>.</p></li>
 </ul>
 <p>An example .ini file is shown below. Note that this .ini file does not apply to any supported model plugin.</p>
-<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[setup_basemaps]</span><span class="w"></span>
-<span class="na">topography_fn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">merit   # source name of topography data</span><span class="w"></span>
-<span class="na">crs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">4326              # CRS EPSG code</span><span class="w"></span>
-<span class="na">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">100               # resolution [m]</span><span class="w"></span>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[setup_basemaps]</span>
+<span class="na">topography_fn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">merit</span><span class="w">   </span><span class="c1"># source name of topography data</span>
+<span class="na">crs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">4326</span><span class="w">              </span><span class="c1"># CRS EPSG code</span>
+<span class="na">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">100</span><span class="w">               </span><span class="c1"># resolution [m]</span>
 
-<span class="k">[setup_manning_roughness]</span><span class="w"></span>
-<span class="na">lulc_fn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">globcover             # source name of landuse-landcover data</span><span class="w"></span>
-<span class="na">mapping_fn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">globcover_mapping  # source name of mapping table converting lulc classes to N values</span><span class="w"></span>
+<span class="k">[setup_manning_roughness]</span>
+<span class="na">lulc_fn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">globcover</span><span class="w">             </span><span class="c1"># source name of landuse-landcover data</span>
+<span class="na">mapping_fn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">globcover_mapping</span><span class="w">  </span><span class="c1"># source name of mapping table converting lulc classes to N values</span>
 </pre></div>
 </div>
 </section>
