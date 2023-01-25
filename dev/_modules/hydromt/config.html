@@ -359,7 +359,8 @@
     <span class="n">noheader</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="n">abs_path</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="n">skip_eval</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-    <span class="n">skip_eval_sections</span><span class="p">:</span> <span class="n">List</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;setup_config&quot;</span><span class="p">],</span>
+    <span class="n">skip_eval_sections</span><span class="p">:</span> <span class="n">List</span> <span class="o">=</span> <span class="p">[],</span>
+    <span class="n">skip_abspath_sections</span><span class="p">:</span> <span class="n">List</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;setup_config&quot;</span><span class="p">],</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Read configuration file and parse to (nested) dictionary.</span>
 <span class="sd">    Values are evaluated and if possible parsed into python int, float, list or boolean types.</span>
@@ -383,6 +384,9 @@
 <span class="sd">        Skip evaluating argument values for python types, by default False</span>
 <span class="sd">    skip_eval_sections: list, optional</span>
 <span class="sd">        These sections are not evaluated for python types or absolute paths</span>
+<span class="sd">        if abs_path=True, by default []</span>
+<span class="sd">    skip_abspath_sections: list, optional</span>
+<span class="sd">        These sections are not evaluated for absolute paths</span>
 <span class="sd">        if abs_path=True, by default [&#39;update_config&#39;]</span>
 
 <span class="sd">    Returns</span>
@@ -415,7 +419,7 @@
                 <span class="k">pass</span>
             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
                 <span class="n">value</span> <span class="o">=</span> <span class="kc">None</span>
-            <span class="k">if</span> <span class="n">abs_path</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">abs_path</span> <span class="ow">and</span> <span class="n">section</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">skip_abspath_sections</span><span class="p">:</span>
                 <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">and</span> <span class="n">exists</span><span class="p">(</span><span class="n">join</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">value</span><span class="p">)):</span>
                     <span class="n">value</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">abspath</span><span class="p">(</span><span class="n">join</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">value</span><span class="p">)))</span>
                 <span class="k">elif</span> <span class="p">(</span>
