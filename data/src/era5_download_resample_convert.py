@@ -127,10 +127,16 @@ def flatten_era5_temp(
         print(f"flattening {basename(fn)}")
         fn_out = fn.replace(".nc", "_flat.nc")
         with xr.open_dataset(fn, chunks=chunks) as ds:
-            # expver5 (ERA5T) contains NaNs when out of range,
-            # while expver1 might contain large odd values
+            # The ERA5 hourly and monthly data are made available with a 3 month delay. This means that after a month has passed, another month's worth of ERA5 data is written to the dataset.
+            # ERA5T (near real time) preliminary data are used to fill the gap between the end of the ERA5 data and 5 days before the present date. The oldest month of these is overwritten each month as new ERA5 data become available.
+            # ERA5 data are currently from 1/1/1979 - 30/11/2019 (instantaneous variables)  and 1/1/1979 - 1/12/2019 (00-06 UTC, accumulated variables)
+            # ERA5T data (with a 5 day delay) are from 1/12/2019- 10/2/2020 (instantaneous variables)  and 1/12/2019 (07-23 UTC, accumulated variables)- 10/2/2020
+            # For requests which return a mixture of ERA5 and ERA5T data  (such as for data from the 1st of the month), instantaneous variables (e.g temperature) come from ERA5T (which has 'experiment version'  of 5) while accumulated variables (fluxes, precipitation) come from both datasets with the following structure:
+            # When these data are converted to netCDF a new dimension is created called expver containing 1 and 5. Moreover, a single time coordinate is used which covers the entire requested period.
+            # expver=1 ERA5 data
+            # expver5 (ERA5T) contains NaNs when out of range (BUT ALSO STRANGE LARGE VALUES FOR PLACE THAT SHOULD HAVE NaNs)
             # https://confluence.ecmwf.int/display/CUSF/ERA5+CDS+requests+which+return+a+mixture+of+ERA5+and+ERA5T+data
-            ds_out = ds.sel(expver=5).combine_first(ds.sel(expver=1)).fillna(nodata)
+            ds_out = ds.sel(expver=1).combine_first(ds.sel(expver=5)).fillna(nodata)
             chunksizes = tuple([s[0] for s in ds_out.chunks.values()])
             e0 = {
                 "zlib": True,
