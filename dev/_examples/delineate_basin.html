@@ -328,6 +328,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/data_types.html">Supported data types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/data_existing_cat.html">Pre-defined data catalogs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/data_conventions.html">Data conventions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="prep_data_catalog.html">Example: Preparing a data catalog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="export_data.html">Example: Exporting data from a data catalog</a></li>
 <li class="toctree-l1"><a class="reference internal" href="reading_raster_data.html">Example: Reading raster data</a></li>
 
 
@@ -339,8 +341,8 @@
 <li class="toctree-l1"><a class="reference internal" href="reading_point_data.html">Example: Reading geospatial point time-series</a></li>
 
 
-<li class="toctree-l1"><a class="reference internal" href="prep_data_catalog.html">Example: Preparing a data catalog</a></li>
-<li class="toctree-l1"><a class="reference internal" href="export_data.html">Example: Exporting data from a data catalog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reading_tabular_data.html">Example: Reading 2D tabular data (DataFrame)</a></li>
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Working with models in HydroMT</span></p>
 <ul class="current nav bd-sidenav">
@@ -702,7 +704,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-2023-01-30 15:21:01,927 - basin_delineation - log - INFO - HydroMT version: 0.6.1.dev
+2023-01-30 18:12:02,260 - basin_delineation - log - INFO - HydroMT version: 0.6.1.dev
 </pre></div></div>
 </div>
 </section>
@@ -724,8 +726,8 @@ the original <code class="docutils literal notranslate"><span class="pre">'MERIT
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-2023-01-30 15:21:02,196 - basin_delineation - data_catalog - INFO - Reading data catalog artifact_data v0.0.7 from archive
-2023-01-30 15:21:02,198 - basin_delineation - data_catalog - INFO - Parsing data catalog from /home/runner/.hydromt_data/artifact_data/v0.0.7/data_catalog.yml
+2023-01-30 18:12:02,408 - basin_delineation - data_catalog - INFO - Reading data catalog artifact_data v0.0.7 from archive
+2023-01-30 18:12:02,409 - basin_delineation - data_catalog - INFO - Parsing data catalog from /home/runner/.hydromt_data/artifact_data/v0.0.7/data_catalog.yml
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -755,7 +757,7 @@ meta:
   source_version: 1.0
 path: /home/runner/.hydromt_data/artifact_data/v0.0.7/merit_hydro/{variable}.tif
 
-2023-01-30 15:21:02,272 - basin_delineation - data_catalog - INFO - DataCatalog: Getting merit_hydro RasterDataset raster data from /home/runner/.hydromt_data/artifact_data/v0.0.7/merit_hydro/{variable}.tif
+2023-01-30 18:12:02,479 - basin_delineation - data_catalog - INFO - DataCatalog: Getting merit_hydro RasterDataset raster data from /home/runner/.hydromt_data/artifact_data/v0.0.7/merit_hydro/{variable}.tif
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -837,8 +839,8 @@ path: /home/runner/.hydromt_data/artifact_data/v0.0.7/merit_hydro_index.gpkg
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-2023-01-30 15:21:06,106 - basin_delineation - basin_mask - DEBUG - Getting basin IDs at point locations.
-2023-01-30 15:21:06,180 - basin_delineation - basin_mask - INFO - basin bbox: [12.1958, 45.5850, 12.8983, 46.4167]
+2023-01-30 18:12:06,322 - basin_delineation - basin_mask - DEBUG - Getting basin IDs at point locations.
+2023-01-30 18:12:06,404 - basin_delineation - basin_mask - INFO - basin bbox: [12.1958, 45.5850, 12.8983, 46.4167]
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -899,7 +901,7 @@ path: /home/runner/.hydromt_data/artifact_data/v0.0.7/merit_hydro_index.gpkg
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-2023-01-30 15:21:10,268 - basin_delineation - basin_mask - INFO - subbasin bbox: [12.2350, 45.7950, 12.8783, 46.4167]
+2023-01-30 18:12:10,650 - basin_delineation - basin_mask - INFO - subbasin bbox: [12.2350, 45.7950, 12.8783, 46.4167]
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -956,8 +958,8 @@ path: /home/runner/.hydromt_data/artifact_data/v0.0.7/merit_hydro_index.gpkg
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-2023-01-30 15:21:11,888 - basin_delineation - basin_mask - DEBUG - Getting IDs of intersecting basins.
-2023-01-30 15:21:12,286 - basin_delineation - basin_mask - INFO - subbasin bbox: [12.1958, 45.7192, 12.8783, 46.4167]
+2023-01-30 18:12:14,007 - basin_delineation - basin_mask - DEBUG - Getting IDs of intersecting basins.
+2023-01-30 18:12:14,389 - basin_delineation - basin_mask - INFO - subbasin bbox: [12.1958, 45.7192, 12.8783, 46.4167]
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -1017,7 +1019,7 @@ path: /home/runner/.hydromt_data/artifact_data/v0.0.7/merit_hydro_index.gpkg
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-2023-01-30 15:21:15,677 - basin_delineation - basin_mask - INFO - interbasin bbox: [12.5000, 45.7200, 12.7000, 46.0000]
+2023-01-30 18:12:20,008 - basin_delineation - basin_mask - INFO - interbasin bbox: [12.5000, 45.7200, 12.7000, 46.0000]
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
