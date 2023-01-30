@@ -659,7 +659,7 @@ div.rendered_html tbody tr:hover {
 <p>The first step when building a model is to define the model domain. For hydrological models this is typically a full <strong>basin</strong> or <strong>sub-basin</strong> which includes all upstream cells. For hydrodynamic models this can also be an <strong>inter-basin</strong> which does not necessary include all upstream cells. <em>HydroMT</em> has the <a class="reference external" href="https://deltares.github.io/hydromt/latest/_generated/hydromt.workflows.basin_mask.get_basin_geometry.html">get_basin_geometry()</a> method to do just that.</p>
 <section id="Import-packages">
 <h2>Import packages<a class="headerlink" href="#Import-packages" title="Permalink to this heading">#</a></h2>
-<div class="nbinput docutils container">
+<div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
@@ -669,21 +669,6 @@ div.rendered_html tbody tr:hover {
 <span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
 </pre></div>
 </div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area stderr docutils container">
-<div class="highlight"><pre>
-/tmp/ipykernel_2702/1125108548.py:2: UserWarning: Shapely 2.0 is installed, but because PyGEOS is also installed, GeoPandas will still use PyGEOS by default for now. To force to use and test Shapely 2.0, you have to set the environment variable USE_PYGEOS=0. You can do this before starting the Python process, or in your code before importing geopandas:
-
-import os
-os.environ[&#39;USE_PYGEOS&#39;] = &#39;0&#39;
-import geopandas
-
-In a future release, GeoPandas will switch to using Shapely by default. If you are using PyGEOS directly (calling PyGEOS functions on geometries from GeoPandas), this will then stop working and you are encouraged to migrate from PyGEOS to Shapely 2.0 (https://shapely.readthedocs.io/en/latest/migration_pygeos.html).
-  import geopandas as gpd
-</pre></div></div>
 </div>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
@@ -712,27 +697,12 @@ In a future release, GeoPandas will switch to using Shapely by default. If you a
 </pre></div>
 </div>
 </div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area stderr docutils container">
-<div class="highlight"><pre>
-/usr/share/miniconda3/envs/hydromt-dev/lib/python3.10/site-packages/hydromt/io.py:14: UserWarning: Shapely 2.0 is installed, but because PyGEOS is also installed, GeoPandas will still use PyGEOS by default for now. To force to use and test Shapely 2.0, you have to set the environment variable USE_PYGEOS=0. You can do this before starting the Python process, or in your code before importing geopandas:
-
-import os
-os.environ[&#39;USE_PYGEOS&#39;] = &#39;0&#39;
-import geopandas
-
-In a future release, GeoPandas will switch to using Shapely by default. If you are using PyGEOS directly (calling PyGEOS functions on geometries from GeoPandas), this will then stop working and you are encouraged to migrate from PyGEOS to Shapely 2.0 (https://shapely.readthedocs.io/en/latest/migration_pygeos.html).
-  from . import raster, vector, gis_utils, merge
-</pre></div></div>
-</div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-2023-01-25 07:04:31,238 - basin_delineation - log - INFO - HydroMT version: 0.6.1.dev
+2023-01-30 15:21:01,927 - basin_delineation - log - INFO - HydroMT version: 0.6.1.dev
 </pre></div></div>
 </div>
 </section>
@@ -754,8 +724,8 @@ the original <code class="docutils literal notranslate"><span class="pre">'MERIT
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-2023-01-25 07:04:31,506 - basin_delineation - data_catalog - INFO - Reading data catalog artifact_data v0.0.7 from archive
-2023-01-25 07:04:31,507 - basin_delineation - data_catalog - INFO - Parsing data catalog from /home/runner/.hydromt_data/artifact_data/v0.0.7/data_catalog.yml
+2023-01-30 15:21:02,196 - basin_delineation - data_catalog - INFO - Reading data catalog artifact_data v0.0.7 from archive
+2023-01-30 15:21:02,198 - basin_delineation - data_catalog - INFO - Parsing data catalog from /home/runner/.hydromt_data/artifact_data/v0.0.7/data_catalog.yml
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -785,7 +755,7 @@ meta:
   source_version: 1.0
 path: /home/runner/.hydromt_data/artifact_data/v0.0.7/merit_hydro/{variable}.tif
 
-2023-01-25 07:04:31,599 - basin_delineation - data_catalog - INFO - DataCatalog: Getting merit_hydro RasterDataset raster data from /home/runner/.hydromt_data/artifact_data/v0.0.7/merit_hydro/{variable}.tif
+2023-01-30 15:21:02,272 - basin_delineation - data_catalog - INFO - DataCatalog: Getting merit_hydro RasterDataset raster data from /home/runner/.hydromt_data/artifact_data/v0.0.7/merit_hydro/{variable}.tif
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -867,8 +837,8 @@ path: /home/runner/.hydromt_data/artifact_data/v0.0.7/merit_hydro_index.gpkg
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-2023-01-25 07:04:36,624 - basin_delineation - basin_mask - DEBUG - Getting basin IDs at point locations.
-2023-01-25 07:04:36,718 - basin_delineation - basin_mask - INFO - basin bbox: [12.1958, 45.5850, 12.8983, 46.4167]
+2023-01-30 15:21:06,106 - basin_delineation - basin_mask - DEBUG - Getting basin IDs at point locations.
+2023-01-30 15:21:06,180 - basin_delineation - basin_mask - INFO - basin bbox: [12.1958, 45.5850, 12.8983, 46.4167]
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -929,7 +899,7 @@ path: /home/runner/.hydromt_data/artifact_data/v0.0.7/merit_hydro_index.gpkg
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-2023-01-25 07:04:42,256 - basin_delineation - basin_mask - INFO - subbasin bbox: [12.2350, 45.7950, 12.8783, 46.4167]
+2023-01-30 15:21:10,268 - basin_delineation - basin_mask - INFO - subbasin bbox: [12.2350, 45.7950, 12.8783, 46.4167]
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -986,8 +956,8 @@ path: /home/runner/.hydromt_data/artifact_data/v0.0.7/merit_hydro_index.gpkg
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-2023-01-25 07:04:44,181 - basin_delineation - basin_mask - DEBUG - Getting IDs of intersecting basins.
-2023-01-25 07:04:44,633 - basin_delineation - basin_mask - INFO - subbasin bbox: [12.1958, 45.7192, 12.8783, 46.4167]
+2023-01-30 15:21:11,888 - basin_delineation - basin_mask - DEBUG - Getting IDs of intersecting basins.
+2023-01-30 15:21:12,286 - basin_delineation - basin_mask - INFO - subbasin bbox: [12.1958, 45.7192, 12.8783, 46.4167]
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -1047,7 +1017,7 @@ path: /home/runner/.hydromt_data/artifact_data/v0.0.7/merit_hydro_index.gpkg
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-2023-01-25 07:04:48,965 - basin_delineation - basin_mask - INFO - interbasin bbox: [12.5000, 45.7200, 12.7000, 46.0000]
+2023-01-30 15:21:15,677 - basin_delineation - basin_mask - INFO - interbasin bbox: [12.5000, 45.7200, 12.7000, 46.0000]
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">

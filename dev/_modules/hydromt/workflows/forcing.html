@@ -384,7 +384,8 @@
     <span class="c1"># correct precip based on high-res monthly climatology</span>
     <span class="k">if</span> <span class="n">clim</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
         <span class="c1"># make sure first dim is month</span>
-        <span class="n">clim</span> <span class="o">=</span> <span class="n">clim</span><span class="o">.</span><span class="n">rename</span><span class="p">({</span><span class="n">clim</span><span class="o">.</span><span class="n">raster</span><span class="o">.</span><span class="n">dim0</span><span class="p">:</span> <span class="s2">&quot;month&quot;</span><span class="p">})</span>
+        <span class="k">if</span> <span class="n">clim</span><span class="o">.</span><span class="n">raster</span><span class="o">.</span><span class="n">dim0</span> <span class="o">!=</span> <span class="s2">&quot;month&quot;</span><span class="p">:</span>
+            <span class="n">clim</span> <span class="o">=</span> <span class="n">clim</span><span class="o">.</span><span class="n">rename</span><span class="p">({</span><span class="n">clim</span><span class="o">.</span><span class="n">raster</span><span class="o">.</span><span class="n">dim0</span><span class="p">:</span> <span class="s2">&quot;month&quot;</span><span class="p">})</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">clim</span><span class="p">[</span><span class="s2">&quot;month&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">size</span> <span class="o">==</span> <span class="mi">12</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Precip climatology does not contain 12 months.&quot;</span><span class="p">)</span>
         <span class="c1"># set missings to NaN</span>

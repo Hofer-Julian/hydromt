@@ -345,16 +345,15 @@
 <span class="kn">import</span> <span class="nn">rasterio</span>
 <span class="kn">from</span> <span class="nn">rasterio.crs</span> <span class="kn">import</span> <span class="n">CRS</span>
 <span class="kn">from</span> <span class="nn">rasterio.transform</span> <span class="kn">import</span> <span class="n">Affine</span>
-<span class="kn">from</span> <span class="nn">osgeo</span> <span class="kn">import</span> <span class="n">gdal</span>
 <span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>
 <span class="kn">from</span> <span class="nn">shapely.geometry.base</span> <span class="kn">import</span> <span class="n">BaseGeometry</span>
 <span class="kn">from</span> <span class="nn">shapely.geometry</span> <span class="kn">import</span> <span class="n">box</span>
-<span class="kn">import</span> <span class="nn">pygeos</span>
-<span class="kn">import</span> <span class="nn">tempfile</span>
 <span class="kn">import</span> <span class="nn">logging</span>
 <span class="kn">from</span> <span class="nn">pyflwdir</span> <span class="kn">import</span> <span class="n">core_conversion</span><span class="p">,</span> <span class="n">core_d8</span><span class="p">,</span> <span class="n">core_ldd</span>
 <span class="kn">from</span> <span class="nn">pyflwdir</span> <span class="kn">import</span> <span class="n">gis_utils</span> <span class="k">as</span> <span class="n">gis</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Tuple</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">_compat</span>
+
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;spread2d&quot;</span><span class="p">,</span> <span class="s2">&quot;nearest&quot;</span><span class="p">,</span> <span class="s2">&quot;nearest_merge&quot;</span><span class="p">]</span>
 
@@ -521,9 +520,11 @@
         <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Mixed geometry dataframes are not yet supported.&quot;</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">gdf1</span><span class="o">.</span><span class="n">crs</span> <span class="o">!=</span> <span class="n">gdf2</span><span class="o">.</span><span class="n">crs</span><span class="p">:</span>
         <span class="n">pnts</span> <span class="o">=</span> <span class="n">pnts</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="n">gdf2</span><span class="o">.</span><span class="n">crs</span><span class="p">)</span>
-    <span class="c1"># find nearest using pygeos</span>
-    <span class="c1"># NOTE: requires geopandas 0.10</span>
-    <span class="n">other</span> <span class="o">=</span> <span class="n">pygeos</span><span class="o">.</span><span class="n">from_shapely</span><span class="p">(</span><span class="n">pnts</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+    <span class="c1"># find nearest</span>
+    <span class="c1"># NOTE: requires shapely v2.0; changed in v0.6.1</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">_compat</span><span class="o">.</span><span class="n">HAS_SHAPELY20</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span><span class="s2">&quot;Shapely &gt;= 2.0.0 is required for execution&quot;</span><span class="p">)</span>
+    <span class="n">other</span> <span class="o">=</span> <span class="n">pnts</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">values</span>
     <span class="n">idx</span> <span class="o">=</span> <span class="n">gdf2</span><span class="o">.</span><span class="n">sindex</span><span class="o">.</span><span class="n">nearest</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">return_all</span><span class="o">=</span><span class="kc">False</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
     <span class="c1"># get distance in meters</span>
     <span class="n">gdf2_nearest</span> <span class="o">=</span> <span class="n">gdf2</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
@@ -780,6 +781,8 @@
 
 <div class="viewcode-block" id="write_clone"><a class="viewcode-back" href="../../_generated/hydromt.gis_utils.write_clone.html#hydromt.gis_utils.write_clone">[docs]</a><span class="k">def</span> <span class="nf">write_clone</span><span class="p">(</span><span class="n">tmpdir</span><span class="p">,</span> <span class="n">gdal_transform</span><span class="p">,</span> <span class="n">wkt_projection</span><span class="p">,</span> <span class="n">shape</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;write pcraster clone file to a tmpdir using gdal&quot;&quot;&quot;</span>
+    <span class="kn">from</span> <span class="nn">osgeo</span> <span class="kn">import</span> <span class="n">gdal</span>
+
     <span class="n">gdal</span><span class="o">.</span><span class="n">AllRegister</span><span class="p">()</span>
     <span class="n">driver1</span> <span class="o">=</span> <span class="n">gdal</span><span class="o">.</span><span class="n">GetDriverByName</span><span class="p">(</span><span class="s2">&quot;GTiff&quot;</span><span class="p">)</span>
     <span class="n">driver2</span> <span class="o">=</span> <span class="n">gdal</span><span class="o">.</span><span class="n">GetDriverByName</span><span class="p">(</span><span class="s2">&quot;PCRaster&quot;</span><span class="p">)</span>
@@ -836,10 +839,11 @@
 <span class="sd">    ValueError</span>
 <span class="sd">        if invalid ldd</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="kn">import</span> <span class="nn">pcraster</span> <span class="k">as</span> <span class="nn">pcr</span>
-    <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">_compat</span><span class="o">.</span><span class="n">HAS_PCRASTER</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span><span class="s2">&quot;The pcraster package is required to write map files&quot;</span><span class="p">)</span>
+    <span class="kn">import</span> <span class="nn">tempfile</span>
+    <span class="kn">import</span> <span class="nn">pcraster</span> <span class="k">as</span> <span class="nn">pcr</span>
+
     <span class="k">with</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">TemporaryDirectory</span><span class="p">()</span> <span class="k">as</span> <span class="n">tmpdir</span><span class="p">:</span>
         <span class="c1"># deal with pcr clone map</span>
         <span class="k">if</span> <span class="n">clone_path</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
