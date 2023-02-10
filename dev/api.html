@@ -493,6 +493,7 @@
 <li class="toctree-l1"><a class="reference internal" href="_generated/hydromt.workflows.forcing.temp.html">hydromt.workflows.forcing.temp</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_generated/hydromt.workflows.forcing.press.html">hydromt.workflows.forcing.press</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_generated/hydromt.workflows.forcing.pet.html">hydromt.workflows.forcing.pet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_generated/hydromt.workflows.forcing.wind.html">hydromt.workflows.forcing.wind</a></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="_generated/hydromt.workflows.forcing.press_correction.html">hydromt.workflows.forcing.press_correction</a></li>
@@ -505,6 +506,7 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="_generated/hydromt.workflows.forcing.pet_debruin.html">hydromt.workflows.forcing.pet_debruin</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_generated/hydromt.workflows.forcing.pet_makkink.html">hydromt.workflows.forcing.pet_makkink</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_generated/hydromt.workflows.forcing.pm_fao56.html">hydromt.workflows.forcing.pm_fao56</a></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="_generated/hydromt.io.open_raster.html">hydromt.io.open_raster</a></li>
@@ -1280,6 +1282,9 @@
 <tr class="row-even"><td><p><a class="reference internal" href="_generated/hydromt.workflows.forcing.pet.html#hydromt.workflows.forcing.pet" title="hydromt.workflows.forcing.pet"><code class="xref py py-obj docutils literal notranslate"><span class="pre">workflows.forcing.pet</span></code></a>(ds, temp, dem_model[, ...])</p></td>
 <td><p>Determines reference evapotranspiration (lazy reprojection on model grid and resampling of time dimension to frequency).</p></td>
 </tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="_generated/hydromt.workflows.forcing.wind.html#hydromt.workflows.forcing.wind" title="hydromt.workflows.forcing.wind"><code class="xref py py-obj docutils literal notranslate"><span class="pre">workflows.forcing.wind</span></code></a>(da_model[, wind, ...])</p></td>
+<td><p>Lazy reprojection of wind speed to model grid and resampling of time dimension to frequency.</p></td>
+</tr>
 </tbody>
 </table>
 </section>
@@ -1319,6 +1324,9 @@
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="_generated/hydromt.workflows.forcing.pet_makkink.html#hydromt.workflows.forcing.pet_makkink" title="hydromt.workflows.forcing.pet_makkink"><code class="xref py py-obj docutils literal notranslate"><span class="pre">workflows.forcing.pet_makkink</span></code></a>(temp, press, k_in)</p></td>
 <td><p>Determnines Makkink reference evapotranspiration.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="_generated/hydromt.workflows.forcing.pm_fao56.html#hydromt.workflows.forcing.pm_fao56" title="hydromt.workflows.forcing.pm_fao56"><code class="xref py py-obj docutils literal notranslate"><span class="pre">workflows.forcing.pm_fao56</span></code></a>(temp, temp_max, ...)</p></td>
+<td><p>Estimate daily reference evapotranspiration (ETo) from a hypothetical short grass reference surface using the FAO-56 Penman-Monteith equation.</p></td>
 </tr>
 </tbody>
 </table>

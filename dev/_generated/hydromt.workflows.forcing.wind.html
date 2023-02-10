@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>hydromt.data_catalog.DataCatalog.set_predefined_catalogs &#8212; HydroMT  documentation</title>
+    <title>hydromt.workflows.forcing.wind &#8212; HydroMT  documentation</title>
   
   
   
@@ -42,11 +42,11 @@
     <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/design-tabs.js"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = '_generated/hydromt.data_catalog.DataCatalog.set_predefined_catalogs';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_generated/hydromt.workflows.forcing.wind';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="hydromt.data_catalog.DataCatalog.from_predefined_catalogs" href="hydromt.data_catalog.DataCatalog.from_predefined_catalogs.html" />
-    <link rel="prev" title="hydromt.data_catalog.DataCatalog.export_data" href="hydromt.data_catalog.DataCatalog.export_data.html" />
+    <link rel="next" title="hydromt.workflows.forcing.press_correction" href="hydromt.workflows.forcing.press_correction.html" />
+    <link rel="prev" title="hydromt.workflows.forcing.pet" href="hydromt.workflows.forcing.pet.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="docsearch:language" content="en">
   </head>
@@ -329,8 +329,8 @@
 <li class="toctree-l1"><a class="reference internal" href="hydromt.data_catalog.DataCatalog.to_yml.html">hydromt.data_catalog.DataCatalog.to_yml</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hydromt.data_catalog.DataCatalog.export_data.html">hydromt.data_catalog.DataCatalog.export_data</a></li>
 </ul>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">hydromt.data_catalog.DataCatalog.set_predefined_catalogs</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="hydromt.data_catalog.DataCatalog.set_predefined_catalogs.html">hydromt.data_catalog.DataCatalog.set_predefined_catalogs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hydromt.data_catalog.DataCatalog.from_predefined_catalogs.html">hydromt.data_catalog.DataCatalog.from_predefined_catalogs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hydromt.data_catalog.DataCatalog.from_archive.html">hydromt.data_catalog.DataCatalog.from_archive</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hydromt.data_catalog.DataCatalog.from_yml.html">hydromt.data_catalog.DataCatalog.from_yml</a></li>
@@ -488,12 +488,12 @@
 <li class="toctree-l1"><a class="reference internal" href="hydromt.workflows.rivers.river_width.html">hydromt.workflows.rivers.river_width</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hydromt.workflows.rivers.river_depth.html">hydromt.workflows.rivers.river_depth</a></li>
 </ul>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="hydromt.workflows.forcing.precip.html">hydromt.workflows.forcing.precip</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hydromt.workflows.forcing.temp.html">hydromt.workflows.forcing.temp</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hydromt.workflows.forcing.press.html">hydromt.workflows.forcing.press</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hydromt.workflows.forcing.pet.html">hydromt.workflows.forcing.pet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="hydromt.workflows.forcing.wind.html">hydromt.workflows.forcing.wind</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">hydromt.workflows.forcing.wind</a></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="hydromt.workflows.forcing.press_correction.html">hydromt.workflows.forcing.press_correction</a></li>
@@ -715,12 +715,35 @@
             
             <article class="bd-article" role="main">
               
-  <section id="hydromt-data-catalog-datacatalog-set-predefined-catalogs">
-<h1>hydromt.data_catalog.DataCatalog.set_predefined_catalogs<a class="headerlink" href="#hydromt-data-catalog-datacatalog-set-predefined-catalogs" title="Permalink to this heading">#</a></h1>
-<dl class="py method">
-<dt class="sig sig-object py" id="hydromt.data_catalog.DataCatalog.set_predefined_catalogs">
-<span class="sig-prename descclassname"><span class="pre">DataCatalog.</span></span><span class="sig-name descname"><span class="pre">set_predefined_catalogs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">urlpath</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.11)"><span class="pre">Union</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.11)"><span class="pre">Path</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.11)"><span class="pre">Dict</span></a></span></span><a class="reference internal" href="../_modules/hydromt/data_catalog.html#DataCatalog.set_predefined_catalogs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hydromt.data_catalog.DataCatalog.set_predefined_catalogs" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
+  <section id="hydromt-workflows-forcing-wind">
+<h1>hydromt.workflows.forcing.wind<a class="headerlink" href="#hydromt-workflows-forcing-wind" title="Permalink to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="hydromt.workflows.forcing.wind">
+<span class="sig-prename descclassname"><span class="pre">hydromt.workflows.forcing.</span></span><span class="sig-name descname"><span class="pre">wind</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">da_model:</span> <span class="pre">~typing.Union[~xarray.core.dataarray.DataArray,</span> <span class="pre">~xarray.core.dataset.Dataset],</span> <span class="pre">wind:</span> <span class="pre">~typing.Optional[~xarray.core.dataarray.DataArray]</span> <span class="pre">=</span> <span class="pre">None,</span> <span class="pre">wind_u:</span> <span class="pre">~typing.Optional[~xarray.core.dataarray.DataArray]</span> <span class="pre">=</span> <span class="pre">None,</span> <span class="pre">wind_v:</span> <span class="pre">~typing.Optional[~xarray.core.dataarray.DataArray]</span> <span class="pre">=</span> <span class="pre">None,</span> <span class="pre">altitude:</span> <span class="pre">float</span> <span class="pre">=</span> <span class="pre">10,</span> <span class="pre">altitude_correction:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">False,</span> <span class="pre">freq:</span> <span class="pre">~typing.Optional[~pandas._libs.tslibs.timedeltas.Timedelta]</span> <span class="pre">=</span> <span class="pre">None,</span> <span class="pre">reproj_method:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">'nearest_index',</span> <span class="pre">resample_kwargs:</span> <span class="pre">dict</span> <span class="pre">=</span> <span class="pre">{},</span> <span class="pre">logger=&lt;Logger</span> <span class="pre">hydromt.workflows.forcing</span> <span class="pre">(WARNING)&gt;</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hydromt/workflows/forcing.html#wind"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hydromt.workflows.forcing.wind" title="Permalink to this definition">#</a></dt>
+<dd><p>Lazy reprojection of wind speed to model grid and resampling of time dimension to frequency.</p>
+<p>Either provide wind speed directly or both wind_u and wind_v components.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>wind</strong> (<em>xarray.DataArray</em>) – DataArray of wind speed forcing [m s-1]</p></li>
+<li><p><strong>wind_u</strong> (<em>xarray.DataArray</em>) – DataArray of U component of wind speed forcing [m s-1]</p></li>
+<li><p><strong>wind_v</strong> (<em>xarray.DataArray</em>) – DataArray of V component of wind speed forcing [m s-1]</p></li>
+<li><p><strong>da_model</strong> (<em>xarray.DataArray</em>) – DataArray of the target resolution and projection</p></li>
+<li><p><strong>altitude</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a><em>, </em><em>optional</em>) – ALtitude of wind speed data. By default 10m.</p></li>
+<li><p><strong>altitude_correction</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>, </em><em>optional</em>) – If True wind speed is re-calculated to wind speed at 2 meters using original <cite>altitude</cite>.</p></li>
+<li><p><strong>freq</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>, </em><em>Timedelta</em>) – output frequency of timedimension</p></li>
+<li><p><strong>reproj_method</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>, </em><em>optional</em>) – Method for spatital reprojection of precip, by default ‘nearest_index’</p></li>
+<li><p><strong>resample_kwargs</strong> – Additional key-word arguments (e.g. label, closed) for time resampling method</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>wind_out</strong> – processed wind forcing</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>xarray.DataArray (lazy)</p>
+</dd>
+</dl>
+</dd></dl>
 
 </section>
 
@@ -732,17 +755,17 @@
             <footer class="bd-footer-article">
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-  <a class='left-prev' id="prev-link" href="hydromt.data_catalog.DataCatalog.export_data.html" title="previous page">
+  <a class='left-prev' id="prev-link" href="hydromt.workflows.forcing.pet.html" title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
           <p class="prev-next-subtitle">previous</p>
-          <p class="prev-next-title">hydromt.data_catalog.DataCatalog.export_data</p>
+          <p class="prev-next-title">hydromt.workflows.forcing.pet</p>
       </div>
   </a>
-  <a class='right-next' id="next-link" href="hydromt.data_catalog.DataCatalog.from_predefined_catalogs.html" title="next page">
+  <a class='right-next' id="next-link" href="hydromt.workflows.forcing.press_correction.html" title="next page">
   <div class="prev-next-info">
       <p class="prev-next-subtitle">next</p>
-      <p class="prev-next-title">hydromt.data_catalog.DataCatalog.from_predefined_catalogs</p>
+      <p class="prev-next-title">hydromt.workflows.forcing.press_correction</p>
   </div>
   <i class="fa-solid fa-angle-right"></i>
   </a>
@@ -763,10 +786,10 @@
 <nav id="bd-toc-nav" class="page-toc">
     <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#hydromt.data_catalog.DataCatalog.set_predefined_catalogs">
+  <a class="reference internal nav-link" href="#hydromt.workflows.forcing.wind">
    <code class="docutils literal notranslate">
     <span class="pre">
-     DataCatalog.set_predefined_catalogs()
+     wind()
     </span>
    </code>
   </a>
@@ -785,7 +808,7 @@
   
 
 <div class="tocsection editthispage">
-    <a href="https://github.com/Deltares/hydromt/edit/main/docs/_generated/hydromt.data_catalog.DataCatalog.set_predefined_catalogs.rst">
+    <a href="https://github.com/Deltares/hydromt/edit/main/docs/_generated/hydromt.workflows.forcing.wind.rst">
         <i class="fa-solid fa-pencil"></i> Edit this page
     </a>
 </div>
@@ -795,7 +818,7 @@
 <div class="toc-item">
   
 <div class="tocsection sourcelink">
-    <a href="../_sources/_generated/hydromt.data_catalog.DataCatalog.set_predefined_catalogs.rst.txt">
+    <a href="../_sources/_generated/hydromt.workflows.forcing.wind.rst.txt">
         <i class="fa-solid fa-file-lines"></i> Show Source
     </a>
 </div>

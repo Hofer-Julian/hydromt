@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>hydromt.data_catalog.DataCatalog.set_predefined_catalogs &#8212; HydroMT  documentation</title>
+    <title>hydromt.workflows.forcing.pm_fao56 &#8212; HydroMT  documentation</title>
   
   
   
@@ -42,11 +42,11 @@
     <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/design-tabs.js"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = '_generated/hydromt.data_catalog.DataCatalog.set_predefined_catalogs';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_generated/hydromt.workflows.forcing.pm_fao56';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="hydromt.data_catalog.DataCatalog.from_predefined_catalogs" href="hydromt.data_catalog.DataCatalog.from_predefined_catalogs.html" />
-    <link rel="prev" title="hydromt.data_catalog.DataCatalog.export_data" href="hydromt.data_catalog.DataCatalog.export_data.html" />
+    <link rel="next" title="hydromt.io.open_raster" href="hydromt.io.open_raster.html" />
+    <link rel="prev" title="hydromt.workflows.forcing.pet_makkink" href="hydromt.workflows.forcing.pet_makkink.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="docsearch:language" content="en">
   </head>
@@ -329,8 +329,8 @@
 <li class="toctree-l1"><a class="reference internal" href="hydromt.data_catalog.DataCatalog.to_yml.html">hydromt.data_catalog.DataCatalog.to_yml</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hydromt.data_catalog.DataCatalog.export_data.html">hydromt.data_catalog.DataCatalog.export_data</a></li>
 </ul>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">hydromt.data_catalog.DataCatalog.set_predefined_catalogs</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="hydromt.data_catalog.DataCatalog.set_predefined_catalogs.html">hydromt.data_catalog.DataCatalog.set_predefined_catalogs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hydromt.data_catalog.DataCatalog.from_predefined_catalogs.html">hydromt.data_catalog.DataCatalog.from_predefined_catalogs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hydromt.data_catalog.DataCatalog.from_archive.html">hydromt.data_catalog.DataCatalog.from_archive</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hydromt.data_catalog.DataCatalog.from_yml.html">hydromt.data_catalog.DataCatalog.from_yml</a></li>
@@ -503,10 +503,10 @@
 <li class="toctree-l1"><a class="reference internal" href="hydromt.workflows.forcing.resample_time.html">hydromt.workflows.forcing.resample_time</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hydromt.workflows.forcing.delta_freq.html">hydromt.workflows.forcing.delta_freq</a></li>
 </ul>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="hydromt.workflows.forcing.pet_debruin.html">hydromt.workflows.forcing.pet_debruin</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hydromt.workflows.forcing.pet_makkink.html">hydromt.workflows.forcing.pet_makkink</a></li>
-<li class="toctree-l1"><a class="reference internal" href="hydromt.workflows.forcing.pm_fao56.html">hydromt.workflows.forcing.pm_fao56</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">hydromt.workflows.forcing.pm_fao56</a></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="hydromt.io.open_raster.html">hydromt.io.open_raster</a></li>
@@ -715,12 +715,40 @@
             
             <article class="bd-article" role="main">
               
-  <section id="hydromt-data-catalog-datacatalog-set-predefined-catalogs">
-<h1>hydromt.data_catalog.DataCatalog.set_predefined_catalogs<a class="headerlink" href="#hydromt-data-catalog-datacatalog-set-predefined-catalogs" title="Permalink to this heading">#</a></h1>
-<dl class="py method">
-<dt class="sig sig-object py" id="hydromt.data_catalog.DataCatalog.set_predefined_catalogs">
-<span class="sig-prename descclassname"><span class="pre">DataCatalog.</span></span><span class="sig-name descname"><span class="pre">set_predefined_catalogs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">urlpath</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.11)"><span class="pre">Union</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.11)"><span class="pre">Path</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.11)"><span class="pre">Dict</span></a></span></span><a class="reference internal" href="../_modules/hydromt/data_catalog.html#DataCatalog.set_predefined_catalogs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hydromt.data_catalog.DataCatalog.set_predefined_catalogs" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
+  <section id="hydromt-workflows-forcing-pm-fao56">
+<h1>hydromt.workflows.forcing.pm_fao56<a class="headerlink" href="#hydromt-workflows-forcing-pm-fao56" title="Permalink to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="hydromt.workflows.forcing.pm_fao56">
+<span class="sig-prename descclassname"><span class="pre">hydromt.workflows.forcing.</span></span><span class="sig-name descname"><span class="pre">pm_fao56</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">temp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataArray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">temp_max</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataArray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">temp_min</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataArray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">press</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataArray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kin</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataArray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wind</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataArray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">temp_dew</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataArray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dem</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataArray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">var</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'temp_dew'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataArray</span></span></span><a class="reference internal" href="../_modules/hydromt/workflows/forcing.html#pm_fao56"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hydromt.workflows.forcing.pm_fao56" title="Permalink to this definition">#</a></dt>
+<dd><p>Estimate daily reference evapotranspiration (ETo) from a hypothetical
+short grass reference surface using the FAO-56 Penman-Monteith equation.</p>
+<p>Actual vapor pressure is derived either from relative humidity or dewpoint temperature (depending on var_for_avp_name).</p>
+<p>Based on equation 6 in Allen et al (1998) and using the functions provided by the pyet package ()</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>temp</strong> (<em>xarray.DataArray</em>) – DataArray with daily temperature [°C]</p></li>
+<li><p><strong>temp_max</strong> (<em>xarray.DataArray</em>) – DataArray with maximum daily temperature [°C]</p></li>
+<li><p><strong>temp_min</strong> (<em>xarray.DataArray</em>) – DataArray with minimum daily temperature [°C]</p></li>
+<li><p><strong>press</strong> (<em>xarray.DataArray</em>) – DataArray with pressure [hPa]</p></li>
+<li><p><strong>kin</strong> (<em>xarray.DataArray</em>) – DataArray with global radiation [W m-2]</p></li>
+<li><p><strong>wind</strong> (<em>xarray.DataArray</em>) – DataArray with wind speed at 2m above the surface [m s-1]</p></li>
+<li><p><strong>temp_dew</strong> (<em>xarray.DataArray</em>) – DataArray with either temp_dew (dewpoint temperature at 2m above surface [°C]) or rh (relative humidity [%]) to estimate actual vapor pressure</p></li>
+<li><p><strong>dem</strong> (<em>xarray.DataArray</em>) – DataArray with elevation at model resolution [m]</p></li>
+<li><p><strong>var</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>, </em><em>optional</em>) – String with variable name used to estimate actual vapor pressure (chose from [“temp_dew”, “rh”])</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>DataArray with the estimated daily reference evapotranspiration pet [mm d-1]</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>xarray.DataArray</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ModuleNotFoundError" title="(in Python v3.11)"><strong>ModuleNotFoundError</strong></a> – In case the pyet module is not installed</p>
+</dd>
+</dl>
+</dd></dl>
 
 </section>
 
@@ -732,17 +760,17 @@
             <footer class="bd-footer-article">
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-  <a class='left-prev' id="prev-link" href="hydromt.data_catalog.DataCatalog.export_data.html" title="previous page">
+  <a class='left-prev' id="prev-link" href="hydromt.workflows.forcing.pet_makkink.html" title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
           <p class="prev-next-subtitle">previous</p>
-          <p class="prev-next-title">hydromt.data_catalog.DataCatalog.export_data</p>
+          <p class="prev-next-title">hydromt.workflows.forcing.pet_makkink</p>
       </div>
   </a>
-  <a class='right-next' id="next-link" href="hydromt.data_catalog.DataCatalog.from_predefined_catalogs.html" title="next page">
+  <a class='right-next' id="next-link" href="hydromt.io.open_raster.html" title="next page">
   <div class="prev-next-info">
       <p class="prev-next-subtitle">next</p>
-      <p class="prev-next-title">hydromt.data_catalog.DataCatalog.from_predefined_catalogs</p>
+      <p class="prev-next-title">hydromt.io.open_raster</p>
   </div>
   <i class="fa-solid fa-angle-right"></i>
   </a>
@@ -763,10 +791,10 @@
 <nav id="bd-toc-nav" class="page-toc">
     <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#hydromt.data_catalog.DataCatalog.set_predefined_catalogs">
+  <a class="reference internal nav-link" href="#hydromt.workflows.forcing.pm_fao56">
    <code class="docutils literal notranslate">
     <span class="pre">
-     DataCatalog.set_predefined_catalogs()
+     pm_fao56()
     </span>
    </code>
   </a>
@@ -785,7 +813,7 @@
   
 
 <div class="tocsection editthispage">
-    <a href="https://github.com/Deltares/hydromt/edit/main/docs/_generated/hydromt.data_catalog.DataCatalog.set_predefined_catalogs.rst">
+    <a href="https://github.com/Deltares/hydromt/edit/main/docs/_generated/hydromt.workflows.forcing.pm_fao56.rst">
         <i class="fa-solid fa-pencil"></i> Edit this page
     </a>
 </div>
@@ -795,7 +823,7 @@
 <div class="toc-item">
   
 <div class="tocsection sourcelink">
-    <a href="../_sources/_generated/hydromt.data_catalog.DataCatalog.set_predefined_catalogs.rst.txt">
+    <a href="../_sources/_generated/hydromt.workflows.forcing.pm_fao56.rst.txt">
         <i class="fa-solid fa-file-lines"></i> Show Source
     </a>
 </div>

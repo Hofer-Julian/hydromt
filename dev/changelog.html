@@ -367,6 +367,8 @@
 <section id="added">
 <h3>Added<a class="headerlink" href="#added" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
+<li><p>New methods to compute PET in workflows.forcing.pet using Penman Monteith FAO-56 based on the <cite>pyet</cite> module. Available arguments are now
+method = [‘debruin’, ‘makkink’, ‘penman-monteith_rh_simple’, ‘penman-monteith_tdew’] <a class="reference external" href="https://github.com/Deltares/hydromt/pull/266">PR #266</a></p></li>
 <li><p>New get_region method in cli/api.py that returns a geojson representation of the parsed region <a class="reference external" href="https://github.com/Deltares/hydromt/pull/209">PR #209</a></p></li>
 </ul>
 </section>
@@ -384,6 +386,7 @@
 <ul class="simple">
 <li><p>fix reading lists and none with config <a class="reference external" href="https://github.com/Deltares/hydromt/pull/246">PR #246</a></p></li>
 <li><p>fix <cite>DataCatalog.to_yml</cite> and <cite>DataCatalog.export()</cite> with relative path and add meta section <a class="reference external" href="https://github.com/Deltares/hydromt/pull/238">PR #238</a></p></li>
+<li><p>fixed <cite>pet</cite> (workflows.forcing), variables are now defined correctly</p></li>
 </ul>
 </section>
 <section id="deprecated">

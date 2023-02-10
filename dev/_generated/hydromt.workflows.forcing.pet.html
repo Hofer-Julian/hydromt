@@ -45,7 +45,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = '_generated/hydromt.workflows.forcing.pet';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="hydromt.workflows.forcing.press_correction" href="hydromt.workflows.forcing.press_correction.html" />
+    <link rel="next" title="hydromt.workflows.forcing.wind" href="hydromt.workflows.forcing.wind.html" />
     <link rel="prev" title="hydromt.workflows.forcing.press" href="hydromt.workflows.forcing.press.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="docsearch:language" content="en">
@@ -493,6 +493,7 @@
 <li class="toctree-l1"><a class="reference internal" href="hydromt.workflows.forcing.temp.html">hydromt.workflows.forcing.temp</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hydromt.workflows.forcing.press.html">hydromt.workflows.forcing.press</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">hydromt.workflows.forcing.pet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hydromt.workflows.forcing.wind.html">hydromt.workflows.forcing.wind</a></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="hydromt.workflows.forcing.press_correction.html">hydromt.workflows.forcing.press_correction</a></li>
@@ -505,6 +506,7 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="hydromt.workflows.forcing.pet_debruin.html">hydromt.workflows.forcing.pet_debruin</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hydromt.workflows.forcing.pet_makkink.html">hydromt.workflows.forcing.pet_makkink</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hydromt.workflows.forcing.pm_fao56.html">hydromt.workflows.forcing.pm_fao56</a></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="hydromt.io.open_raster.html">hydromt.io.open_raster</a></li>
@@ -717,17 +719,27 @@
 <h1>hydromt.workflows.forcing.pet<a class="headerlink" href="#hydromt-workflows-forcing-pet" title="Permalink to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="hydromt.workflows.forcing.pet">
-<span class="sig-prename descclassname"><span class="pre">hydromt.workflows.forcing.</span></span><span class="sig-name descname"><span class="pre">pet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">temp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dem_model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method='debruin'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">press_correction=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reproj_method='nearest_index'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lapse_rate=-0.0065</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">freq=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resample_kwargs={}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logger=&lt;Logger</span> <span class="pre">hydromt.workflows.forcing</span> <span class="pre">(WARNING)&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hydromt/workflows/forcing.html#pet"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hydromt.workflows.forcing.pet" title="Permalink to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">hydromt.workflows.forcing.</span></span><span class="sig-name descname"><span class="pre">pet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ds:</span> <span class="pre">~xarray.core.dataset.Dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">temp:</span> <span class="pre">~xarray.core.dataarray.DataArray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dem_model:</span> <span class="pre">~xarray.core.dataarray.DataArray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">'debruin'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">press_correction:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wind_correction:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wind_altitude:</span> <span class="pre">float</span> <span class="pre">=</span> <span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reproj_method:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">'nearest_index'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">freq:</span> <span class="pre">~typing.Optional[str]</span> <span class="pre">=</span> <span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resample_kwargs:</span> <span class="pre">dict</span> <span class="pre">=</span> <span class="pre">{}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logger=&lt;Logger</span> <span class="pre">hydromt.workflows.forcing</span> <span class="pre">(WARNING)&gt;</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataArray</span></span></span><a class="reference internal" href="../_modules/hydromt/workflows/forcing.html#pet"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hydromt.workflows.forcing.pet" title="Permalink to this definition">#</a></dt>
 <dd><p>Determines reference evapotranspiration (lazy reprojection on model grid and resampling of time dimension to frequency).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>ds</strong> (<em>xarray.Dataset</em>) – Dataset with pressure [hPa], global radiation [W m-2], TOA incident solar radiation [W m-2]</p></li>
-<li><p><strong>temp</strong> (<em>xarray.DataArray</em>) – DataArray with temperature [°C]</p></li>
+<li><p><strong>ds</strong> (<em>xarray.Dataset</em>) – <p>Dataset with climate variables: pressure [hPa], global radiation [W m-2], TOA incident solar radiation [W m-2], wind [m s-1]</p>
+<ul>
+<li><p>Required variables: {“temp”, “press” or “press_msl”, “kin”}</p></li>
+<li><p>additional variables for debruin: {“kout”}</p></li>
+<li><p>additional variables for penman-monteith_rh_simple: {“temp_min”, “temp_max”, “wind” or “wind_u”+”wind_v”, “rh”}</p></li>
+<li><p>additional variables for penman-monteith_tdew: {“temp_min”, “temp_max”, “wind” or “wind_u”+”wind_v”, “temp_dew”}</p></li>
+</ul>
+</p></li>
+<li><p><strong>temp</strong> (<em>xarray.DataArray</em>) – DataArray with temperature on model grid resolution [°C]</p></li>
 <li><p><strong>dem_model</strong> (<em>xarray.DataArray</em>) – DataArray of the target resolution and projection, contains elevation
 data</p></li>
-<li><p><strong>method</strong> (<em>{'debruin'</em><em>, </em><em>'makkink'}</em>) – Potential evapotranspiration method.</p></li>
+<li><p><strong>method</strong> (<em>{'debruin'</em><em>, </em><em>'makkink'</em><em>, </em><em>&quot;penman-monteith_rh_simple&quot;</em><em>, </em><em>&quot;penman-monteith_tdew&quot;}</em>) – Potential evapotranspiration method.
+if penman-monteith is used, requires the installation of the pyet package.</p></li>
 <li><p><strong>press_correction</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a><em>, </em><em>default False</em>) – If True pressure is corrected, based on elevation data of <cite>dem_model</cite></p></li>
+<li><p><strong>wind_altitude</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a><em>, </em><em>optional</em>) – ALtitude of wind speed data. By default 10m.</p></li>
+<li><p><strong>wind_correction</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>, </em><em>optional</em>) – If True wind speed is re-calculated to wind speed at 2 meters using original <cite>wind_altitude</cite>.</p></li>
 <li><p><strong>freq</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>, </em><em>Timedelta</em><em>, </em><em>default None</em>) – output frequency of timedimension</p></li>
 <li><p><strong>resample_kwargs</strong> – Additional key-word arguments (e.g. label, closed) for time resampling method</p></li>
 </ul>
@@ -758,10 +770,10 @@ data</p></li>
           <p class="prev-next-title">hydromt.workflows.forcing.press</p>
       </div>
   </a>
-  <a class='right-next' id="next-link" href="hydromt.workflows.forcing.press_correction.html" title="next page">
+  <a class='right-next' id="next-link" href="hydromt.workflows.forcing.wind.html" title="next page">
   <div class="prev-next-info">
       <p class="prev-next-subtitle">next</p>
-      <p class="prev-next-title">hydromt.workflows.forcing.press_correction</p>
+      <p class="prev-next-title">hydromt.workflows.forcing.wind</p>
   </div>
   <i class="fa-solid fa-angle-right"></i>
   </a>
