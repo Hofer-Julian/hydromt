@@ -700,7 +700,7 @@ generic models (hydromt 0.6.1.dev):
 </ol>
 <p>Here we focus steps 2-4 and use data from the <a class="reference external" href="https://deltares.github.io/hydromt/latest/user_guide/data_existing_cat.html">predefined aritifact_data data catalog</a></p>
 <p>Using the <strong>hydromt build</strong> method we can setup a complete model from scratch. Let’s get an overview of the method and its arguments.</p>
-<p>Note the required <code class="docutils literal notranslate"><span class="pre">MODEL</span></code> (i.e. name of the model), <code class="docutils literal notranslate"><span class="pre">MODEL_ROOT</span></code> (i.e. folder where to save the model), and <code class="docutils literal notranslate"><span class="pre">REGION</span></code> (i.e. area of interest) arguments.</p>
+<p>Note the required <code class="docutils literal notranslate"><span class="pre">MODEL</span></code> (i.e. name of the model), <code class="docutils literal notranslate"><span class="pre">MODEL_ROOT</span></code> (i.e. folder where to save the model) arguments. As of version v0.7.0 the <code class="docutils literal notranslate"><span class="pre">REGION</span></code> (i.e. area of interest) argument is optional. This argument can be used by adding -r or –region flag.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
@@ -714,7 +714,7 @@ generic models (hydromt 0.6.1.dev):
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Usage: hydromt build [OPTIONS] MODEL MODEL_ROOT REGION
+Usage: hydromt build [OPTIONS] MODEL MODEL_ROOT
 
   Build models from scratch.
 
@@ -722,25 +722,26 @@ Usage: hydromt build [OPTIONS] MODEL MODEL_ROOT REGION
   --------------
 
   To build a wflow model for a subbasin using and point coordinates snapped to cells with stream order &gt;= 4
-  hydromt build wflow /path/to/model_root &#34;{&#39;subbasin&#39;: [-7.24, 62.09], &#39;strord&#39;: 4}&#34; -i /path/to/wflow_config.ini -d deltares_data -d /path/to/data_catalog.yml -v
+  hydromt build wflow /path/to/model_root -i /path/to/wflow_config.ini -r &#34;{&#39;subbasin&#39;: [-7.24, 62.09], &#39;strord&#39;: 4}&#34; -d deltares_data -d /path/to/data_catalog.yml -v
 
   To build a sfincs model based on a bbox
-  hydromt build sfincs /path/to/model_root &#34;{&#39;bbox&#39;: [4.6891,52.9750,4.9576,53.1994]}&#34; -i /path/to/sfincs_config.ini -d /path/to/data_catalog.yml -v
+  hydromt build sfincs /path/to/model_root  -i /path/to/sfincs_config.ini -r &#34;{&#39;bbox&#39;: [4.6891,52.9750,4.9576,53.1994]}&#34; -d /path/to/data_catalog.yml -v
 
 Options:
-  -r, --res FLOAT             Model resolution in model src.
-  --build-base / --build-all  Deprecated!
-  --opt TEXT                  Method specific keyword arguments, see the
-                              method documentation of the specific model for
-                              more information about the arguments.
-  -i, --config PATH           Path to hydroMT configuration file, for the
-                              model specific implementation.
-  -d, --data TEXT             Path to local yaml data catalog file OR name of
-                              predefined data catalog.
-  --dd, --deltares-data       Shortcut to add the &#34;deltares_data&#34; catalog
-  -q, --quiet                 Decrease verbosity.
-  -v, --verbose               Increase verbosity.
-  --help                      Show this message and exit.
+  --opt TEXT               Method specific keyword arguments, see the method
+                           documentation of the specific model for more
+                           information about the arguments.
+  -i, --config PATH        Path to hydroMT configuration file, for the model
+                           specific implementation.
+  -r, --region TEXT        Set the region for which to build the model, e.g.
+                           {&#39;subbasin&#39;: [-7.24, 62.09]}
+  -d, --data TEXT          Path to local yaml data catalog file OR name of
+                           predefined data catalog.
+  --dd, --deltares-data    Flag: Shortcut to add the &#34;deltares_data&#34; catalog
+  --fo, --force-overwrite  Flag: If provided overwrite existing model files
+  -v, --verbose            Increase verbosity.
+  -q, --quiet              Decrease verbosity.
+  --help                   Show this message and exit.
 
 </pre></div></div>
 </div>
@@ -748,7 +749,7 @@ Options:
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>hydromt<span class="w"> </span>build<span class="w"> </span>grid_model<span class="w"> </span>./tmp_grid_model<span class="w"> </span><span class="s2">&quot;{&#39;bbox&#39;: [11.70, 45.35, 12.95, 46.70]}&quot;</span><span class="w"> </span>-vv
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>hydromt<span class="w"> </span>build<span class="w"> </span>grid_model<span class="w"> </span>./tmp_grid_model<span class="w"> </span>--region<span class="w"> </span><span class="s2">&quot;{&#39;bbox&#39;: [11.70, 45.35, 12.95, 46.70]}&quot;</span><span class="w"> </span>-vv
 </pre></div>
 </div>
 </div>
@@ -757,22 +758,21 @@ Options:
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-2023-02-10 08:36:52,453 - build - log - DEBUG - Writing log messages to new file /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model/hydromt.log.
-2023-02-10 08:36:52,453 - build - log - INFO - HydroMT version: 0.6.1.dev
-2023-02-10 08:36:52,453 - build - main - INFO - Building instance of grid_model model at /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model.
-2023-02-10 08:36:52,453 - build - main - INFO - User settings:
-2023-02-10 08:36:52,466 - build - model_api - WARNING - Model dir already exists and files might be overwritten: /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model/.
-2023-02-10 08:36:52,467 - build - model_api - INFO - Initializing grid_model model from hydromt (v0.6.1.dev).
-2023-02-10 08:36:52,467 - build - model_api - INFO - setup_region.region: {&#39;bbox&#39;: [11.7, 45.35, 12.95, 46.7]}
-2023-02-10 08:36:52,467 - build - model_api - INFO - setup_region.hydrography_fn: merit_hydro
-2023-02-10 08:36:52,467 - build - model_api - INFO - setup_region.basin_index_fn: merit_hydro_index
-2023-02-10 08:36:52,467 - build - basin_mask - DEBUG - Parsed region (kind=bbox): {&#39;bbox&#39;: [11.7, 45.35, 12.95, 46.7]}
-2023-02-10 08:36:52,471 - build - model_api - INFO - Writing model data to /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model
-2023-02-10 08:36:52,471 - build - model_api - INFO - Writing model config to /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model/model.ini
-2023-02-10 08:36:52,471 - build - model_grid - DEBUG - No grid data found, skip writing.
-2023-02-10 08:36:52,472 - build - model_api - DEBUG - Writing file geoms/region.geojson
-2023-02-10 08:36:52,511 - build - model_api - DEBUG - No forcing data found, skip writing.
-2023-02-10 08:36:52,511 - build - model_api - DEBUG - No states data found, skip writing.
+2023-02-10 09:47:25,788 - build - log - DEBUG - Writing log messages to new file /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model/hydromt.log.
+2023-02-10 09:47:25,788 - build - log - INFO - HydroMT version: 0.6.1.dev
+2023-02-10 09:47:25,788 - build - main - INFO - Building instance of grid_model model at /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model.
+2023-02-10 09:47:25,788 - build - main - INFO - User settings:
+2023-02-10 09:47:25,804 - build - model_api - INFO - Initializing grid_model model from hydromt (v0.6.1.dev).
+2023-02-10 09:47:25,804 - build - model_api - INFO - setup_region.region: {&#39;bbox&#39;: [11.7, 45.35, 12.95, 46.7]}
+2023-02-10 09:47:25,804 - build - model_api - INFO - setup_region.hydrography_fn: merit_hydro
+2023-02-10 09:47:25,804 - build - model_api - INFO - setup_region.basin_index_fn: merit_hydro_index
+2023-02-10 09:47:25,805 - build - basin_mask - DEBUG - Parsed region (kind=bbox): {&#39;bbox&#39;: [11.7, 45.35, 12.95, 46.7]}
+2023-02-10 09:47:25,809 - build - model_api - INFO - Writing model data to /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model
+2023-02-10 09:47:25,809 - build - model_api - INFO - Writing model config to /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model/model.ini
+2023-02-10 09:47:25,810 - build - model_grid - DEBUG - No grid data found, skip writing.
+2023-02-10 09:47:25,810 - build - model_api - DEBUG - Writing file geoms/region.geojson
+2023-02-10 09:47:25,854 - build - model_api - DEBUG - No forcing data found, skip writing.
+2023-02-10 09:47:25,854 - build - model_api - DEBUG - No states data found, skip writing.
 
 </pre></div></div>
 </div>
@@ -780,7 +780,7 @@ Options:
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">grid_model</span></code>: i.e. build a generic GridModel instance</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">./tmp_grid_model</span></code>: output model folder</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">&quot;{'bbox':</span> <span class="pre">[11.70,</span> <span class="pre">45.35,</span> <span class="pre">12.95,</span> <span class="pre">46.70]}&quot;</span></code>: set the region of interest using a bounding box defined by its [xmin, ymin, xmax, ymax] coordinates (in WGS84)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--region</span> <span class="pre">&quot;{'bbox':</span> <span class="pre">[11.70,</span> <span class="pre">45.35,</span> <span class="pre">12.95,</span> <span class="pre">46.70]}&quot;</span></code>: set the region of interest using a bounding box defined by its [xmin, ymin, xmax, ymax] coordinates (in WGS84)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">-vv</span></code> : give some extra verbosity (2 * v) to display feedback on screen. Now debug messages are provided.</p></li>
 </ul>
 <p>As we did not specify a hydromt configuration, besides the hydromt.log file, an empty model simulation configuration file, only the model region (area of interest) has been defined and is saved in the geoms folder. To build a complete model we need the use a hydromt configuration ini-file.</p>
@@ -868,7 +868,7 @@ components = [&#39;config&#39;, &#39;geoms&#39;, &#39;maps&#39;]
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>hydromt<span class="w"> </span>build<span class="w"> </span>grid_model<span class="w"> </span>./tmp_grid_model1<span class="w"> </span><span class="s2">&quot;{&#39;bbox&#39;: [11.70, 45.35, 12.95, 46.70]}&quot;</span><span class="w"> </span>-i<span class="w"> </span>grid_model_build.ini<span class="w"> </span>-d<span class="w"> </span>artifact_data<span class="w"> </span>-d<span class="w"> </span>data/vito_reclass.yml<span class="w"> </span>-vv
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>hydromt<span class="w"> </span>build<span class="w"> </span>grid_model<span class="w"> </span>./tmp_grid_model1<span class="w"> </span>-r<span class="w"> </span><span class="s2">&quot;{&#39;bbox&#39;: [11.70, 45.35, 12.95, 46.70]}&quot;</span><span class="w"> </span>-i<span class="w"> </span>grid_model_build.ini<span class="w"> </span>-d<span class="w"> </span>artifact_data<span class="w"> </span>-d<span class="w"> </span>data/vito_reclass.yml<span class="w"> </span>-vv
 </pre></div>
 </div>
 </div>
@@ -877,54 +877,53 @@ components = [&#39;config&#39;, &#39;geoms&#39;, &#39;maps&#39;]
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-2023-02-10 08:36:54,498 - build - log - DEBUG - Writing log messages to new file /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model1/hydromt.log.
-2023-02-10 08:36:54,498 - build - log - INFO - HydroMT version: 0.6.1.dev
-2023-02-10 08:36:54,498 - build - main - INFO - Building instance of grid_model model at /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model1.
-2023-02-10 08:36:54,498 - build - main - INFO - User settings:
-2023-02-10 08:36:54,567 - build - data_catalog - INFO - Reading data catalog artifact_data v0.0.8 from archive
-2023-02-10 08:36:54,567 - build - data_catalog - INFO - Parsing data catalog from /home/runner/.hydromt_data/artifact_data/v0.0.8/data_catalog.yml
-2023-02-10 08:36:54,633 - build - data_catalog - INFO - Parsing data catalog from data/vito_reclass.yml
-2023-02-10 08:36:54,635 - build - model_api - WARNING - Model dir already exists and files might be overwritten: /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model1/.
-2023-02-10 08:36:54,635 - build - model_api - INFO - Initializing grid_model model from hydromt (v0.6.1.dev).
-2023-02-10 08:36:54,635 - build - model_api - DEBUG - Setting model config options.
-2023-02-10 08:36:54,635 - build - model_api - INFO - setup_region.region: {&#39;bbox&#39;: [11.7, 45.35, 12.95, 46.7]}
-2023-02-10 08:36:54,635 - build - model_api - INFO - setup_region.hydrography_fn: merit_hydro
-2023-02-10 08:36:54,635 - build - model_api - INFO - setup_region.basin_index_fn: merit_hydro_index
-2023-02-10 08:36:54,635 - build - basin_mask - DEBUG - Parsed region (kind=bbox): {&#39;bbox&#39;: [11.7, 45.35, 12.95, 46.7]}
-2023-02-10 08:36:54,639 - build - model_api - INFO - setup_maps_from_raster.raster_fn: merit_hydro_1k
-2023-02-10 08:36:54,639 - build - model_api - INFO - setup_maps_from_raster.variables: elevtn
-2023-02-10 08:36:54,639 - build - model_api - INFO - setup_maps_from_raster.fill_method: None
-2023-02-10 08:36:54,639 - build - model_api - INFO - setup_maps_from_raster.name: None
-2023-02-10 08:36:54,639 - build - model_api - INFO - setup_maps_from_raster.reproject_method: None
-2023-02-10 08:36:54,639 - build - model_api - INFO - setup_maps_from_raster.split_dataset: True
-2023-02-10 08:36:54,639 - build - model_api - INFO - Preparing maps data from raster source merit_hydro_1k
-2023-02-10 08:36:54,640 - build - data_catalog - INFO - DataCatalog: Getting merit_hydro_1k RasterDataset raster data from /home/runner/.hydromt_data/artifact_data/v0.0.8/merit_hydro_1k/{variable}.tif
-2023-02-10 08:36:54,668 - build - rasterdataset - DEBUG - RasterDataset: Clip with geom - [11.700, 45.350, 12.950, 46.700]
-2023-02-10 08:36:54,680 - build - model_api - INFO - setup_maps_from_raster_reclass.raster_fn: vito
-2023-02-10 08:36:54,680 - build - model_api - INFO - setup_maps_from_raster_reclass.reclass_table_fn: vito_reclass
-2023-02-10 08:36:54,680 - build - model_api - INFO - setup_maps_from_raster_reclass.reclass_variables: [&#39;manning&#39;]
-2023-02-10 08:36:54,680 - build - model_api - INFO - setup_maps_from_raster_reclass.variable: None
-2023-02-10 08:36:54,680 - build - model_api - INFO - setup_maps_from_raster_reclass.fill_method: None
-2023-02-10 08:36:54,680 - build - model_api - INFO - setup_maps_from_raster_reclass.reproject_method: None
-2023-02-10 08:36:54,680 - build - model_api - INFO - setup_maps_from_raster_reclass.name: None
-2023-02-10 08:36:54,680 - build - model_api - INFO - setup_maps_from_raster_reclass.split_dataset: True
-2023-02-10 08:36:54,680 - build - model_api - INFO - Preparing map data by reclassifying the data in vito based on vito_reclass
-2023-02-10 08:36:54,681 - build - data_catalog - INFO - DataCatalog: Getting vito RasterDataset raster data from /home/runner/.hydromt_data/artifact_data/v0.0.8/vito.tif
-2023-02-10 08:36:54,695 - build - rasterdataset - DEBUG - RasterDataset: Clip with geom - [11.700, 45.350, 12.950, 46.700]
-2023-02-10 08:36:54,710 - build - data_catalog - INFO - DataCatalog: Getting vito_reclass DataFrame csv data from /home/runner/work/hydromt/hydromt/docs/_examples/data/vito_reclass.csv
-2023-02-10 08:36:54,711 - build - dataframe - INFO - DataFrame: Read csv data.
-2023-02-10 08:36:54,721 - build - model_api - INFO - write.components: [&#39;config&#39;, &#39;geoms&#39;, &#39;maps&#39;]
-2023-02-10 08:36:54,721 - build - model_api - INFO - Writing model data to /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model1
-2023-02-10 08:36:54,721 - build - model_api - INFO - Writing model config to /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model1/model.ini
-2023-02-10 08:36:54,721 - build - model_api - DEBUG - Writing file geoms/region.geojson
-2023-02-10 08:36:54,756 - build - model_api - DEBUG - Writing file maps/elevtn.nc
-2023-02-10 08:36:54,915 - build - model_api - DEBUG - Writing file maps/manning.nc
-2023-02-10 08:36:55,134 - build - model_api - INFO - Writing model data to /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model1
-2023-02-10 08:36:55,134 - build - model_api - INFO - Writing model config to /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model1/model.ini
-2023-02-10 08:36:55,135 - build - model_grid - DEBUG - No grid data found, skip writing.
-2023-02-10 08:36:55,135 - build - model_api - DEBUG - Writing file geoms/region.geojson
-2023-02-10 08:36:55,142 - build - model_api - DEBUG - No forcing data found, skip writing.
-2023-02-10 08:36:55,142 - build - model_api - DEBUG - No states data found, skip writing.
+2023-02-10 09:47:28,240 - build - log - DEBUG - Writing log messages to new file /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model1/hydromt.log.
+2023-02-10 09:47:28,241 - build - log - INFO - HydroMT version: 0.6.1.dev
+2023-02-10 09:47:28,241 - build - main - INFO - Building instance of grid_model model at /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model1.
+2023-02-10 09:47:28,241 - build - main - INFO - User settings:
+2023-02-10 09:47:28,309 - build - data_catalog - INFO - Reading data catalog artifact_data v0.0.8 from archive
+2023-02-10 09:47:28,309 - build - data_catalog - INFO - Parsing data catalog from /home/runner/.hydromt_data/artifact_data/v0.0.8/data_catalog.yml
+2023-02-10 09:47:28,387 - build - data_catalog - INFO - Parsing data catalog from data/vito_reclass.yml
+2023-02-10 09:47:28,390 - build - model_api - INFO - Initializing grid_model model from hydromt (v0.6.1.dev).
+2023-02-10 09:47:28,390 - build - model_api - DEBUG - Setting model config options.
+2023-02-10 09:47:28,390 - build - model_api - INFO - setup_region.region: {&#39;bbox&#39;: [11.7, 45.35, 12.95, 46.7]}
+2023-02-10 09:47:28,390 - build - model_api - INFO - setup_region.hydrography_fn: merit_hydro
+2023-02-10 09:47:28,390 - build - model_api - INFO - setup_region.basin_index_fn: merit_hydro_index
+2023-02-10 09:47:28,391 - build - basin_mask - DEBUG - Parsed region (kind=bbox): {&#39;bbox&#39;: [11.7, 45.35, 12.95, 46.7]}
+2023-02-10 09:47:28,395 - build - model_api - INFO - setup_maps_from_raster.raster_fn: merit_hydro_1k
+2023-02-10 09:47:28,395 - build - model_api - INFO - setup_maps_from_raster.variables: elevtn
+2023-02-10 09:47:28,395 - build - model_api - INFO - setup_maps_from_raster.fill_method: None
+2023-02-10 09:47:28,395 - build - model_api - INFO - setup_maps_from_raster.name: None
+2023-02-10 09:47:28,395 - build - model_api - INFO - setup_maps_from_raster.reproject_method: None
+2023-02-10 09:47:28,395 - build - model_api - INFO - setup_maps_from_raster.split_dataset: True
+2023-02-10 09:47:28,395 - build - model_api - INFO - Preparing maps data from raster source merit_hydro_1k
+2023-02-10 09:47:28,396 - build - data_catalog - INFO - DataCatalog: Getting merit_hydro_1k RasterDataset raster data from /home/runner/.hydromt_data/artifact_data/v0.0.8/merit_hydro_1k/{variable}.tif
+2023-02-10 09:47:28,430 - build - rasterdataset - DEBUG - RasterDataset: Clip with geom - [11.700, 45.350, 12.950, 46.700]
+2023-02-10 09:47:28,444 - build - model_api - INFO - setup_maps_from_raster_reclass.raster_fn: vito
+2023-02-10 09:47:28,444 - build - model_api - INFO - setup_maps_from_raster_reclass.reclass_table_fn: vito_reclass
+2023-02-10 09:47:28,444 - build - model_api - INFO - setup_maps_from_raster_reclass.reclass_variables: [&#39;manning&#39;]
+2023-02-10 09:47:28,444 - build - model_api - INFO - setup_maps_from_raster_reclass.variable: None
+2023-02-10 09:47:28,444 - build - model_api - INFO - setup_maps_from_raster_reclass.fill_method: None
+2023-02-10 09:47:28,444 - build - model_api - INFO - setup_maps_from_raster_reclass.reproject_method: None
+2023-02-10 09:47:28,444 - build - model_api - INFO - setup_maps_from_raster_reclass.name: None
+2023-02-10 09:47:28,444 - build - model_api - INFO - setup_maps_from_raster_reclass.split_dataset: True
+2023-02-10 09:47:28,444 - build - model_api - INFO - Preparing map data by reclassifying the data in vito based on vito_reclass
+2023-02-10 09:47:28,445 - build - data_catalog - INFO - DataCatalog: Getting vito RasterDataset raster data from /home/runner/.hydromt_data/artifact_data/v0.0.8/vito.tif
+2023-02-10 09:47:28,463 - build - rasterdataset - DEBUG - RasterDataset: Clip with geom - [11.700, 45.350, 12.950, 46.700]
+2023-02-10 09:47:28,482 - build - data_catalog - INFO - DataCatalog: Getting vito_reclass DataFrame csv data from /home/runner/work/hydromt/hydromt/docs/_examples/data/vito_reclass.csv
+2023-02-10 09:47:28,482 - build - dataframe - INFO - DataFrame: Read csv data.
+2023-02-10 09:47:28,494 - build - model_api - INFO - write.components: [&#39;config&#39;, &#39;geoms&#39;, &#39;maps&#39;]
+2023-02-10 09:47:28,495 - build - model_api - INFO - Writing model data to /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model1
+2023-02-10 09:47:28,495 - build - model_api - INFO - Writing model config to /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model1/model.ini
+2023-02-10 09:47:28,495 - build - model_api - DEBUG - Writing file geoms/region.geojson
+2023-02-10 09:47:28,537 - build - model_api - DEBUG - Writing file maps/elevtn.nc
+2023-02-10 09:47:28,728 - build - model_api - DEBUG - Writing file maps/manning.nc
+2023-02-10 09:47:28,985 - build - model_api - INFO - Writing model data to /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model1
+2023-02-10 09:47:28,986 - build - model_api - INFO - Writing model config to /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model1/model.ini
+2023-02-10 09:47:28,987 - build - model_grid - DEBUG - No grid data found, skip writing.
+2023-02-10 09:47:28,987 - build - model_api - DEBUG - Writing file geoms/region.geojson
+2023-02-10 09:47:28,999 - build - model_api - DEBUG - No forcing data found, skip writing.
+2023-02-10 09:47:28,999 - build - model_api - DEBUG - No states data found, skip writing.
 
 </pre></div></div>
 </div>
@@ -932,7 +931,7 @@ components = [&#39;config&#39;, &#39;geoms&#39;, &#39;maps&#39;]
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">grid_model</span></code>: i.e. build a generic GridModel instance</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">./tmp_grid_model1</span></code>: output model folder</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">&quot;{'bbox':</span> <span class="pre">[11.70,</span> <span class="pre">45.35,</span> <span class="pre">12.95,</span> <span class="pre">46.70]}&quot;</span></code>: set the region of interest using a bounding box defined by its [xmin, ymin, xmax, ymax] coordinates (in WGS84)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-r</span> <span class="pre">&quot;{'bbox':</span> <span class="pre">[11.70,</span> <span class="pre">45.35,</span> <span class="pre">12.95,</span> <span class="pre">46.70]}&quot;</span></code>: set the region of interest using a bounding box defined by its [xmin, ymin, xmax, ymax] coordinates (in WGS84)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">-i</span> <span class="pre">grid_model_build.ini</span></code>: use this ini file to configure the model build</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">-d</span> <span class="pre">artifact_data</span> <span class="pre">-d</span> <span class="pre">data/vito_reclass.yml</span></code>: parse the pre-defined artifact_data and the local vito_reclass data catalogs</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">-vv</span></code> : give some extra verbosity (2 * v) to display feedback on screen. Now debug messages are provided.</p></li>
@@ -1030,7 +1029,7 @@ Options:
                              specific implementation.
   -d, --data TEXT            Path to local yaml data catalog file OR name of
                              predefined data catalog.
-  --dd, --deltares-data      Shortcut to add the &#34;deltares_data&#34; catalog
+  --dd, --deltares-data      Flag: Shortcut to add the &#34;deltares_data&#34; catalog
   -q, --quiet                Decrease verbosity.
   -v, --verbose              Increase verbosity.
   --help                     Show this message and exit.
@@ -1073,26 +1072,51 @@ Writing ./tmp_grid_model1/grid_model_update.ini
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-2023-02-10 08:36:59,084 - update - log - DEBUG - Appending log messages to file /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model1/hydromt.log.
-2023-02-10 08:36:59,084 - update - log - INFO - HydroMT version: 0.6.1.dev
-2023-02-10 08:36:59,084 - update - main - INFO - Updating grid_model model at /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model1 (r+).
-2023-02-10 08:36:59,084 - update - main - INFO - Output dir: /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model1
-2023-02-10 08:36:59,084 - update - main - INFO - User settings:
-2023-02-10 08:36:59,099 - update - model_api - INFO - Initializing grid_model model from hydromt (v0.6.1.dev).
-2023-02-10 08:36:59,100 - update - model_api - DEBUG - Reading model file region.
-2023-02-10 08:36:59,128 - update - model_api - INFO - setup_maps_from_raster.raster_fn: merit_hydro_1k
-2023-02-10 08:36:59,128 - update - model_api - INFO - setup_maps_from_raster.variables: uparea
-2023-02-10 08:36:59,128 - update - model_api - INFO - setup_maps_from_raster.fill_method: None
-2023-02-10 08:36:59,128 - update - model_api - INFO - setup_maps_from_raster.name: None
-2023-02-10 08:36:59,128 - update - model_api - INFO - setup_maps_from_raster.reproject_method: None
-2023-02-10 08:36:59,128 - update - model_api - INFO - setup_maps_from_raster.split_dataset: True
-2023-02-10 08:36:59,128 - update - model_api - INFO - Preparing maps data from raster source merit_hydro_1k
-2023-02-10 08:36:59,186 - update - data_catalog - INFO - Reading data catalog artifact_data v0.0.8 from archive
-2023-02-10 08:36:59,186 - update - data_catalog - INFO - Parsing data catalog from /home/runner/.hydromt_data/artifact_data/v0.0.8/data_catalog.yml
-2023-02-10 08:36:59,254 - update - data_catalog - INFO - DataCatalog: Getting merit_hydro_1k RasterDataset raster data from /home/runner/.hydromt_data/artifact_data/v0.0.8/merit_hydro_1k/{variable}.tif
-2023-02-10 08:36:59,280 - update - rasterdataset - DEBUG - RasterDataset: Clip with geom - [11.700, 45.350, 12.950, 46.700]
-2023-02-10 08:36:59,293 - update - model_api - INFO - write_maps.fn: maps/{name}.nc
-2023-02-10 08:36:59,293 - update - model_api - DEBUG - Writing file maps/uparea.nc
+2023-02-10 09:47:33,714 - update - log - DEBUG - Appending log messages to file /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model1/hydromt.log.
+2023-02-10 09:47:33,714 - update - log - INFO - HydroMT version: 0.6.1.dev
+2023-02-10 09:47:33,715 - update - main - INFO - Updating grid_model model at /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model1 (r+).
+2023-02-10 09:47:33,715 - update - main - INFO - Output dir: /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model1
+2023-02-10 09:47:33,715 - update - main - INFO - User settings:
+2023-02-10 09:47:33,731 - update - model_api - ERROR - Model dir already exists and cannot be overwritten: /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model1/.Use &#39;mode=w+&#39; to force overwrite existing files.
+2023-02-10 09:47:33,731 - update - main - ERROR - Model dir already exists and cannot be overwritten: /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model1/.Use &#39;mode=w+&#39; to force overwrite existing files.
+Traceback (most recent call last):
+  File &#34;/usr/share/miniconda3/envs/hydromt-dev/lib/python3.10/site-packages/hydromt/cli/main.py&#34;, line 268, in update
+    mod = MODELS.load(model)(
+  File &#34;/usr/share/miniconda3/envs/hydromt-dev/lib/python3.10/site-packages/hydromt/models/model_grid.py&#34;, line 124, in __init__
+    super().__init__(
+  File &#34;/usr/share/miniconda3/envs/hydromt-dev/lib/python3.10/site-packages/hydromt/models/model_grid.py&#34;, line 26, in __init__
+    super().__init__(*args, **kwargs)
+  File &#34;/usr/share/miniconda3/envs/hydromt-dev/lib/python3.10/site-packages/hydromt/models/model_api.py&#34;, line 112, in __init__
+    self.set_root(root, mode)  # also creates hydromt.log file
+  File &#34;/usr/share/miniconda3/envs/hydromt-dev/lib/python3.10/site-packages/hydromt/models/model_api.py&#34;, line 439, in set_root
+    raise IOError(msg)
+OSError: Model dir already exists and cannot be overwritten: /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model1/.Use &#39;mode=w+&#39; to force overwrite existing files.
+Traceback (most recent call last):
+  File &#34;/usr/share/miniconda3/envs/hydromt-dev/bin/hydromt&#34;, line 8, in &lt;module&gt;
+    sys.exit(main())
+  File &#34;/usr/share/miniconda3/envs/hydromt-dev/lib/python3.10/site-packages/click/core.py&#34;, line 1130, in __call__
+    return self.main(*args, **kwargs)
+  File &#34;/usr/share/miniconda3/envs/hydromt-dev/lib/python3.10/site-packages/click/core.py&#34;, line 1055, in main
+    rv = self.invoke(ctx)
+  File &#34;/usr/share/miniconda3/envs/hydromt-dev/lib/python3.10/site-packages/click/core.py&#34;, line 1657, in invoke
+    return _process_result(sub_ctx.command.invoke(sub_ctx))
+  File &#34;/usr/share/miniconda3/envs/hydromt-dev/lib/python3.10/site-packages/click/core.py&#34;, line 1404, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+  File &#34;/usr/share/miniconda3/envs/hydromt-dev/lib/python3.10/site-packages/click/core.py&#34;, line 760, in invoke
+    return __callback(*args, **kwargs)
+  File &#34;/usr/share/miniconda3/envs/hydromt-dev/lib/python3.10/site-packages/click/decorators.py&#34;, line 26, in new_func
+    return f(get_current_context(), *args, **kwargs)
+  File &#34;/usr/share/miniconda3/envs/hydromt-dev/lib/python3.10/site-packages/hydromt/cli/main.py&#34;, line 268, in update
+    mod = MODELS.load(model)(
+  File &#34;/usr/share/miniconda3/envs/hydromt-dev/lib/python3.10/site-packages/hydromt/models/model_grid.py&#34;, line 124, in __init__
+    super().__init__(
+  File &#34;/usr/share/miniconda3/envs/hydromt-dev/lib/python3.10/site-packages/hydromt/models/model_grid.py&#34;, line 26, in __init__
+    super().__init__(*args, **kwargs)
+  File &#34;/usr/share/miniconda3/envs/hydromt-dev/lib/python3.10/site-packages/hydromt/models/model_api.py&#34;, line 112, in __init__
+    self.set_root(root, mode)  # also creates hydromt.log file
+  File &#34;/usr/share/miniconda3/envs/hydromt-dev/lib/python3.10/site-packages/hydromt/models/model_api.py&#34;, line 439, in set_root
+    raise IOError(msg)
+OSError: Model dir already exists and cannot be overwritten: /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model1/.Use &#39;mode=w+&#39; to force overwrite existing files.
 
 </pre></div></div>
 </div>
@@ -1123,7 +1147,6 @@ tmp_grid_model1
  - hydromt.log
 tmp_grid_model1/maps
  - elevtn.nc
- - uparea.nc
  - manning.nc
 tmp_grid_model1/geoms
  - region.geojson

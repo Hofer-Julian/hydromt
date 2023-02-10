@@ -339,7 +339,8 @@
 <span class="sd">&quot;&quot;&quot;General and basic API for models in HydroMT&quot;&quot;&quot;</span>
 
 <span class="kn">from</span> <span class="nn">abc</span> <span class="kn">import</span> <span class="n">ABCMeta</span>
-<span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">glob</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">glob</span>
 <span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">join</span><span class="p">,</span> <span class="n">isdir</span><span class="p">,</span> <span class="n">isfile</span><span class="p">,</span> <span class="n">abspath</span><span class="p">,</span> <span class="n">dirname</span><span class="p">,</span> <span class="n">basename</span><span class="p">,</span> <span class="n">isabs</span>
 <span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -491,8 +492,7 @@
 
 <div class="viewcode-block" id="Model.build"><a class="viewcode-back" href="../../../_generated/hydromt.Model.build.html#hydromt.Model.build">[docs]</a>    <span class="k">def</span> <span class="nf">build</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">region</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span>
-        <span class="n">res</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">region</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">dict</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">write</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
         <span class="n">opt</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">dict</span><span class="p">]</span> <span class="o">=</span> <span class="p">{},</span>
     <span class="p">):</span>
@@ -509,8 +509,6 @@
 <span class="sd">        region: dict</span>
 <span class="sd">            Description of model region. See :py:meth:`~hydromt.workflows.parse_region`</span>
 <span class="sd">            for all options.</span>
-<span class="sd">        res: float, optional</span>
-<span class="sd">            Model resolution. Use only if applicable to your model. By default None.</span>
 <span class="sd">        write: bool, optional</span>
 <span class="sd">            Write the complete model after executing all methods in opt, by default True.</span>
 <span class="sd">        opt: dict, optional</span>
@@ -534,21 +532,10 @@
         <span class="n">opt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_check_get_opt</span><span class="p">(</span><span class="n">opt</span><span class="p">)</span>
 
         <span class="c1"># merge cli region and res arguments with opt</span>
-        <span class="c1"># insert region method if it does not exist in opt</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_CLI_ARGS</span><span class="p">[</span><span class="s2">&quot;region&quot;</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">opt</span><span class="p">:</span>
-            <span class="n">opt</span> <span class="o">=</span> <span class="p">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_CLI_ARGS</span><span class="p">[</span><span class="s2">&quot;region&quot;</span><span class="p">]:</span> <span class="p">{},</span> <span class="o">**</span><span class="n">opt</span><span class="p">}</span>
-        <span class="c1"># update region method kwargs with region</span>
-        <span class="n">opt</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_CLI_ARGS</span><span class="p">[</span><span class="s2">&quot;region&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">region</span><span class="o">=</span><span class="n">region</span><span class="p">)</span>
-        <span class="c1"># update res method kwargs with res (optional)</span>
-        <span class="k">if</span> <span class="n">res</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_CLI_ARGS</span><span class="p">[</span><span class="s2">&quot;res&quot;</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">opt</span><span class="p">:</span>
-                <span class="n">m</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_CLI_ARGS</span><span class="p">[</span><span class="s2">&quot;res&quot;</span><span class="p">]</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
-                    <span class="sa">f</span><span class="s1">&#39;&quot;res&quot; argument ignored as the &quot;</span><span class="si">{</span><span class="n">m</span><span class="si">}</span><span class="s1">&quot; is not in the model build configuration.&#39;</span>
-                <span class="p">)</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">opt</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_CLI_ARGS</span><span class="p">[</span><span class="s2">&quot;res&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">res</span><span class="o">=</span><span class="n">res</span><span class="p">)</span>
-
+        <span class="k">if</span> <span class="n">region</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_CLI_ARGS</span><span class="p">[</span><span class="s2">&quot;region&quot;</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">opt</span><span class="p">:</span>
+                <span class="n">opt</span> <span class="o">=</span> <span class="p">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_CLI_ARGS</span><span class="p">[</span><span class="s2">&quot;region&quot;</span><span class="p">]:</span> <span class="p">{},</span> <span class="o">**</span><span class="n">opt</span><span class="p">}</span>
+            <span class="n">opt</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_CLI_ARGS</span><span class="p">[</span><span class="s2">&quot;region&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">region</span><span class="o">=</span><span class="n">region</span><span class="p">)</span>
         <span class="c1"># then loop over other methods</span>
         <span class="k">for</span> <span class="n">method</span> <span class="ow">in</span> <span class="n">opt</span><span class="p">:</span>
             <span class="c1"># if any write_* functions are present in opt, skip the final self.write() call</span>
@@ -753,23 +740,40 @@
 <span class="sd">        mode : {&quot;r&quot;, &quot;r+&quot;, &quot;w&quot;}, optional</span>
 <span class="sd">            read/append/write mode for model files</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="n">mode</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="s2">&quot;r+&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">]:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;mode &quot;</span><span class="si">{</span><span class="n">mode</span><span class="si">}</span><span class="s1">&quot; unknown, select from &quot;r&quot;, &quot;r+&quot; or &quot;w&quot;&#39;</span><span class="p">)</span>
+        <span class="n">ignore_ext</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="s2">&quot;.log&quot;</span><span class="p">,</span> <span class="s2">&quot;.yml&quot;</span><span class="p">])</span>
+        <span class="k">if</span> <span class="n">mode</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="s2">&quot;r+&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="s2">&quot;w+&quot;</span><span class="p">]:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s1">&#39;mode &quot;</span><span class="si">{</span><span class="n">mode</span><span class="si">}</span><span class="s1">&quot; unknown, select from &quot;r&quot;, &quot;r+&quot;, &quot;w&quot; or &quot;w+&quot;&#39;</span>
+            <span class="p">)</span>
         <span class="c1"># old_root = getattr(self, &quot;_root&quot;, None)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_root</span> <span class="o">=</span> <span class="n">root</span> <span class="k">if</span> <span class="n">root</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">abspath</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_read</span> <span class="o">=</span> <span class="n">mode</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;r&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_write</span> <span class="o">=</span> <span class="n">mode</span> <span class="o">!=</span> <span class="s2">&quot;r&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_overwrite</span> <span class="o">=</span> <span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;w+&quot;</span>
         <span class="k">if</span> <span class="n">root</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_write</span><span class="p">:</span>
                 <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_FOLDERS</span><span class="p">:</span>
                     <span class="n">path</span> <span class="o">=</span> <span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_root</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
                     <span class="k">if</span> <span class="ow">not</span> <span class="n">isdir</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
                         <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
-                    <span class="k">elif</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read</span><span class="p">:</span>
-                        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
-                            <span class="s2">&quot;Model dir already exists and &quot;</span>
-                            <span class="sa">f</span><span class="s2">&quot;files might be overwritten: </span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2">.&quot;</span>
-                        <span class="p">)</span>
+                        <span class="k">continue</span>
+                    <span class="c1"># path already exists check files</span>
+                    <span class="n">fns</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s2">&quot;*.*&quot;</span><span class="p">))</span>
+                    <span class="n">exts</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">fn</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">fn</span> <span class="ow">in</span> <span class="n">fns</span><span class="p">])</span>
+                    <span class="n">exts</span> <span class="o">-=</span> <span class="n">ignore_ext</span>
+                    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">exts</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+                        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_overwrite</span><span class="p">:</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                                <span class="s2">&quot;Model dir already exists and &quot;</span>
+                                <span class="sa">f</span><span class="s2">&quot;files might be overwritten: </span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2">.&quot;</span>
+                            <span class="p">)</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="n">msg</span> <span class="o">=</span> <span class="p">(</span>
+                                <span class="sa">f</span><span class="s2">&quot;Model dir already exists and cannot be overwritten: </span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2">.&quot;</span>
+                                <span class="s2">&quot;Use &#39;mode=w+&#39; to force overwrite existing files.&quot;</span>
+                            <span class="p">)</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+                            <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
             <span class="c1"># check directory</span>
             <span class="k">elif</span> <span class="ow">not</span> <span class="n">isdir</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_root</span><span class="p">):</span>
                 <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;model root not found at &quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_root</span><span class="si">}</span><span class="s1">&quot;&#39;</span><span class="p">)</span>
