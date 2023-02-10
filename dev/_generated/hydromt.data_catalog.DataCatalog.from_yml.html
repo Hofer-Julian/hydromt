@@ -774,12 +774,15 @@ should be filled by the user. Multiple data sources of the same
 data type should be grouped.  Currently the following data types are supported:
 {‘RasterDataset’, ‘GeoDataset’, ‘GeoDataFrame’}. See the specific data adapters
 for more information about the required and optional arguments.</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">root: &lt;path&gt;</span>
-<span class="go">category: &lt;category&gt;</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">meta:</span>
+<span class="go">  root: &lt;path&gt;</span>
+<span class="go">  category: &lt;category&gt;</span>
+<span class="go">  version: &lt;version&gt;</span>
 <span class="go">&lt;name&gt;:</span>
 <span class="go">  path: &lt;path&gt;</span>
 <span class="go">  data_type: &lt;data_type&gt;</span>
 <span class="go">  driver: &lt;driver&gt;</span>
+<span class="go">  filesystem: &lt;filesystem&gt;</span>
 <span class="go">  kwargs:</span>
 <span class="go">    &lt;key&gt;: &lt;value&gt;</span>
 <span class="go">  crs: &lt;crs&gt;</span>

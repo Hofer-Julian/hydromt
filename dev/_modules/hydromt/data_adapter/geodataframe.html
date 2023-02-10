@@ -368,6 +368,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">path</span><span class="p">,</span>
         <span class="n">driver</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">filesystem</span><span class="o">=</span><span class="s2">&quot;local&quot;</span><span class="p">,</span>
         <span class="n">crs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">nodata</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">rename</span><span class="o">=</span><span class="p">{},</span>
@@ -392,6 +393,9 @@
 <span class="sd">            for {&#39;vector_table&#39;} :py:func:`hydromt.io.open_vector_from_table`</span>
 <span class="sd">            By default the driver is inferred from the file extension and falls back to</span>
 <span class="sd">            &#39;vector&#39; if unknown.</span>
+<span class="sd">        filesystem: {&#39;local&#39;, &#39;gcs&#39;, &#39;s3&#39;}, optional</span>
+<span class="sd">            Filesystem where the data is stored (local, cloud, http etc.).</span>
+<span class="sd">            By default, local.</span>
 <span class="sd">        crs: int, dict, or str, optional</span>
 <span class="sd">            Coordinate Reference System. Accepts EPSG codes (int or str); proj (str or dict)</span>
 <span class="sd">            or wkt (str). Only used if the data has no native CRS.</span>
@@ -415,6 +419,7 @@
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
             <span class="n">path</span><span class="o">=</span><span class="n">path</span><span class="p">,</span>
             <span class="n">driver</span><span class="o">=</span><span class="n">driver</span><span class="p">,</span>
+            <span class="n">filesystem</span><span class="o">=</span><span class="n">filesystem</span><span class="p">,</span>
             <span class="n">crs</span><span class="o">=</span><span class="n">crs</span><span class="p">,</span>
             <span class="n">nodata</span><span class="o">=</span><span class="n">nodata</span><span class="p">,</span>
             <span class="n">rename</span><span class="o">=</span><span class="n">rename</span><span class="p">,</span>
@@ -506,6 +511,12 @@
             <span class="n">variables</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">atleast_1d</span><span class="p">(</span><span class="n">variables</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
 
         <span class="n">kwargs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="k">if</span> <span class="s2">&quot;storage_options&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="c1"># not sure if storage options can be passed to fiona.open()</span>
+            <span class="c1"># for now throw NotImplemented Error</span>
+            <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span>
+                <span class="s2">&quot;Remote file storage_options not implemented for GeoDataFrame&quot;</span>
+            <span class="p">)</span>
         <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">resolve_paths</span><span class="p">()</span>  <span class="c1"># throw nice error if data not found</span>
 
         <span class="c1"># parse geom, bbox and buffer arguments</span>
@@ -533,6 +544,7 @@
             <span class="c1"># specific driver should be added to open_vector kwargs</span>
             <span class="k">if</span> <span class="s2">&quot;driver&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">driver</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;csv&quot;</span><span class="p">,</span> <span class="s2">&quot;xls&quot;</span><span class="p">,</span> <span class="s2">&quot;xlsx&quot;</span><span class="p">,</span> <span class="s2">&quot;xy&quot;</span><span class="p">]:</span>
                 <span class="n">kwargs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">driver</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="p">)</span>
+            <span class="c1"># Check if file-object is required because of additional options</span>
             <span class="n">gdf</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">open_vector</span><span class="p">(</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">crs</span><span class="p">,</span> <span class="n">geom</span><span class="o">=</span><span class="n">geom</span><span class="p">,</span> <span class="n">predicate</span><span class="o">=</span><span class="n">predicate</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
             <span class="p">)</span>

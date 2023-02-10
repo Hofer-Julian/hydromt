@@ -372,6 +372,12 @@ method = [‘debruin’, ‘makkink’, ‘penman-monteith_rh_simple’, ‘penm
 <li><p>New get_region method in cli/api.py that returns a geojson representation of the parsed region <a class="reference external" href="https://github.com/Deltares/hydromt/pull/209">PR #209</a></p></li>
 <li><p>Support for polygon and linestrings in wkt or shapely geometry formats in GeoDataset/GeoDataArray</p></li>
 <li><p>Added a ‘Working with GeoDatasets’ python notebook</p></li>
+<li><p>experimental: support for remote data with a new yml data source <code class="docutils literal notranslate"><span class="pre">filesystem</span></code> attribute. Supported filesystems are [local, gcs, s3].
+Profile information can be passed in the data catalog <code class="docutils literal notranslate"><span class="pre">kwargs</span></code> under <strong>storage_options</strong>.</p></li>
+<li><p>new predefined catalog for cmip6 data stored on Google Cloud Storage <code class="docutils literal notranslate"><span class="pre">cmip6_data</span></code>. Requires dependency gcsfs.</p></li>
+<li><p>new predefined catalog for public data stored on Amazon Web Services <code class="docutils literal notranslate"><span class="pre">aws_data</span></code>. Requires dependency s3fs.</p></li>
+<li><p>support for CMIP6 dataset.</p></li>
+<li><p>new preprocess function <code class="docutils literal notranslate"><span class="pre">harmonise_dims</span></code> for manipulation and harmonisation of array dimensions.</p></li>
 </ul>
 </section>
 <section id="changed">
@@ -386,6 +392,8 @@ method = [‘debruin’, ‘makkink’, ‘penman-monteith_rh_simple’, ‘penm
 <li><p>Changed shapely to require version ‘2.0.0’ or later</p></li>
 <li><p>strict and consistent read/write mode policy <a class="reference external" href="https://github.com/Deltares/hydromt/pull/238">PR #238</a></p></li>
 <li><p>do not automatically read hydromt_data.yml file in model root <a class="reference external" href="https://github.com/Deltares/hydromt/pull/238">PR #238</a></p></li>
+<li><p>RasterDataset zarr driver: possiblility to read from several zarr stores. The datasets are then merged and <code class="docutils literal notranslate"><span class="pre">preprocess</span></code> can
+be applied similar to netcdf driver.</p></li>
 </ul>
 </section>
 <section id="fixed">

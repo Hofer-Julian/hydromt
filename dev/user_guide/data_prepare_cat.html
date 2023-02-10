@@ -418,6 +418,7 @@ The <code class="docutils literal notranslate"><span class="pre">rename</span></
 <span class="w">  </span><span class="nt">crs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EPSG/WKT</span>
 <span class="w">  </span><span class="nt">data_type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RasterDataset/GeoDataset/GeoDataFrame</span>
 <span class="w">  </span><span class="nt">driver</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">raster/raster_tindex/netcdf/zarr/vector/vector_table</span>
+<span class="w">  </span><span class="nt">filesystem</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">local/gcs/s3</span>
 <span class="w">  </span><span class="nt">kwargs</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">value</span>
 <span class="w">  </span><span class="nt">meta</span><span class="p">:</span>
@@ -467,6 +468,9 @@ the month always has two digits and is zero-padded for Jan-Sep (e.g. January 201
 <p>A full list of <strong>optional data source arguments</strong> is given below</p>
 <ul class="simple">
 <li><p><strong>crs</strong> (required if missing in the data): EPSG code or WKT string of the reference coordinate system of the data.</p></li>
+<li><p><strong>filesystem</strong> (required if different than local): specify if the data is stored locally or remotely (e.g cloud). Supported filesystems are <em>local</em> for local data,
+<em>gcs</em> for data stored on Google Cloud Storage, and <em>aws</em> for data stored on Amazon Web Services. Profile or authentication information can be passed to <code class="docutils literal notranslate"><span class="pre">kwargs</span></code> via
+<em>storage_options</em>.</p></li>
 <li><p><strong>kwargs</strong>: pairs of key value arguments to pass to the driver specific open data method (eg xr.open_mfdataset for netdcf raster, see the full list below).
 Only used if not crs can be inferred from the input data.</p></li>
 <li><p><strong>meta</strong> (recommended): additional information on the dataset organized in a sub-list.
@@ -489,6 +493,11 @@ addition or multiplication (e.g. conversion from mm water equivalent to m3/s of 
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The <strong>alias</strong> argument will be deprecated and should no longer be used, see <a class="reference external" href="https://github.com/Deltares/hydromt/issues/148">github issue for more information</a></p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Using cloud data is still experimental and only supported for <em>DataFrame</em>, <em>RasterDataset</em> and <em>Geodataset</em> with <em>zarr</em>. <em>RasterDataset</em> with <em>raster</em> driver is also possible
+but in case of multiple files (mosaic) we strongly recommend using a vrt file for speed and computation efficiency.</p>
 </div>
 </section>
 </section>

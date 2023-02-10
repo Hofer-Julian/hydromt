@@ -336,6 +336,7 @@
               
   <h1>Source code for hydromt.data_adapter.dataframe</h1><div class="highlight"><pre>
 <span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">join</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -358,6 +359,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">path</span><span class="p">,</span>
         <span class="n">driver</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">filesystem</span><span class="o">=</span><span class="s2">&quot;local&quot;</span><span class="p">,</span>
         <span class="n">nodata</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">rename</span><span class="o">=</span><span class="p">{},</span>
         <span class="n">unit_mult</span><span class="o">=</span><span class="p">{},</span>
@@ -382,6 +384,9 @@
 <span class="sd">            :py:func:`~pandas.read_fwf`.</span>
 <span class="sd">            By default the driver is inferred from the file extension and falls back to</span>
 <span class="sd">            &#39;csv&#39; if unknown.</span>
+<span class="sd">        filesystem: {&#39;local&#39;, &#39;gcs&#39;, &#39;s3&#39;}, optional</span>
+<span class="sd">            Filesystem where the data is stored (local, cloud, http etc.).</span>
+<span class="sd">            By default, local.</span>
 <span class="sd">        nodata: (dictionary) float, int, optional</span>
 <span class="sd">            Missing value number. Only used if the data has no native missing value.</span>
 <span class="sd">            Multiple nodata values can be provided in a list and differentiated between</span>
@@ -402,6 +407,7 @@
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
             <span class="n">path</span><span class="o">=</span><span class="n">path</span><span class="p">,</span>
             <span class="n">driver</span><span class="o">=</span><span class="n">driver</span><span class="p">,</span>
+            <span class="n">filesystem</span><span class="o">=</span><span class="n">filesystem</span><span class="p">,</span>
             <span class="n">nodata</span><span class="o">=</span><span class="n">nodata</span><span class="p">,</span>
             <span class="n">rename</span><span class="o">=</span><span class="n">rename</span><span class="p">,</span>
             <span class="n">unit_mult</span><span class="o">=</span><span class="n">unit_mult</span><span class="p">,</span>
@@ -480,8 +486,18 @@
 <span class="sd">        For a detailed description see: :py:func:`~hydromt.data_catalog.DataCatalog.get_dataframe`</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
+        <span class="c1"># Extract storage_options from kwargs to instantiate fsspec object correctly</span>
+        <span class="k">if</span> <span class="s2">&quot;storage_options&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">kwargs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;storage_options&quot;</span><span class="p">]</span>
+            <span class="c1"># For s3, anonymous connection still requires --no-sign-request profile to read the data</span>
+            <span class="c1"># setting environment variable works</span>
+            <span class="k">if</span> <span class="s2">&quot;anon&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;AWS_NO_SIGN_REQUEST&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;YES&quot;</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;AWS_NO_SIGN_REQUEST&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;NO&quot;</span>
+        <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">resolve_paths</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>  <span class="c1"># throw nice error if data not found</span>
+
         <span class="n">kwargs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-        <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">resolve_paths</span><span class="p">()</span>  <span class="c1"># throw nice error if data not found</span>
 
         <span class="c1"># read and clip</span>
         <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;DataFrame: Read </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="si">}</span><span class="s2"> data.&quot;</span><span class="p">)</span>
