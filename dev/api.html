@@ -537,6 +537,8 @@
 <li class="toctree-l1"><a class="reference internal" href="_generated/hydromt.DataArray.raster.bounds.html">hydromt.DataArray.raster.bounds</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_generated/hydromt.DataArray.raster.transform.html">hydromt.DataArray.raster.transform</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_generated/hydromt.DataArray.raster.res.html">hydromt.DataArray.raster.res</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_generated/hydromt.DataArray.raster.rotation.html">hydromt.DataArray.raster.rotation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_generated/hydromt.DataArray.raster.origin.html">hydromt.DataArray.raster.origin</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_generated/hydromt.DataArray.raster.nodata.html">hydromt.DataArray.raster.nodata</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_generated/hydromt.DataArray.raster.dims.html">hydromt.DataArray.raster.dims</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_generated/hydromt.DataArray.raster.coords.html">hydromt.DataArray.raster.coords</a></li>
@@ -1427,6 +1429,12 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="_generated/hydromt.DataArray.raster.res.html#hydromt.DataArray.raster.res" title="hydromt.DataArray.raster.res"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataArray.raster.res</span></code></a></p></td>
 <td><p>Return resolution (x, y) tuple.</p></td>
 </tr>
+<tr class="row-even"><td><p><a class="reference internal" href="_generated/hydromt.DataArray.raster.rotation.html#hydromt.DataArray.raster.rotation" title="hydromt.DataArray.raster.rotation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataArray.raster.rotation</span></code></a></p></td>
+<td><p>Return rotation of grid (degree) NOTE: rotated rasters with a negative dx are not supported</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="_generated/hydromt.DataArray.raster.origin.html#hydromt.DataArray.raster.origin" title="hydromt.DataArray.raster.origin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataArray.raster.origin</span></code></a></p></td>
+<td><p>Return origin of grid (x0, y0) tuple.</p></td>
+</tr>
 <tr class="row-even"><td><p><a class="reference internal" href="_generated/hydromt.DataArray.raster.nodata.html#hydromt.DataArray.raster.nodata" title="hydromt.DataArray.raster.nodata"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataArray.raster.nodata</span></code></a></p></td>
 <td><p>Nodata value of the DataArray.</p></td>
 </tr>
@@ -1464,7 +1472,7 @@
 <td><p>Return the height of the object (y dimension size).</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="_generated/hydromt.DataArray.raster.internal_bounds.html#hydromt.DataArray.raster.internal_bounds" title="hydromt.DataArray.raster.internal_bounds"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataArray.raster.internal_bounds</span></code></a></p></td>
-<td><p>Return the internal bounds of the object.</p></td>
+<td><p>Return the internal bounds (left, bottom, right, top) the object.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="_generated/hydromt.DataArray.raster.box.html#hydromt.DataArray.raster.box" title="hydromt.DataArray.raster.box"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataArray.raster.box</span></code></a></p></td>
 <td><p>Return <code class="xref py py-meth docutils literal notranslate"><span class="pre">GeoDataFrame()</span></code> of bounding box</p></td>
@@ -1507,7 +1515,7 @@
 <td><p>Return x,y coordinates at cell center of row, col indices</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="_generated/hydromt.DataArray.raster.flipud.html#hydromt.DataArray.raster.flipud" title="hydromt.DataArray.raster.flipud"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataArray.raster.flipud</span></code></a>()</p></td>
-<td><p>Returns raster flipped along y-axis</p></td>
+<td><p>Returns raster flipped along y dimension</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="_generated/hydromt.DataArray.raster.area_grid.html#hydromt.DataArray.raster.area_grid" title="hydromt.DataArray.raster.area_grid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataArray.raster.area_grid</span></code></a>([dtype])</p></td>
 <td><p>Returns the grid cell area [m2].</p></td>
@@ -1541,7 +1549,7 @@
 <h3>Clip<a class="headerlink" href="#clip" title="Permalink to this heading">#</a></h3>
 <table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="_generated/hydromt.DataArray.raster.clip_bbox.html#hydromt.DataArray.raster.clip_bbox" title="hydromt.DataArray.raster.clip_bbox"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataArray.raster.clip_bbox</span></code></a>(bbox[, align, buffer])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="_generated/hydromt.DataArray.raster.clip_bbox.html#hydromt.DataArray.raster.clip_bbox" title="hydromt.DataArray.raster.clip_bbox"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataArray.raster.clip_bbox</span></code></a>(bbox[, align, ...])</p></td>
 <td><p>Clip object based on a bounding box.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="_generated/hydromt.DataArray.raster.clip_mask.html#hydromt.DataArray.raster.clip_mask" title="hydromt.DataArray.raster.clip_mask"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataArray.raster.clip_mask</span></code></a>(mask)</p></td>
@@ -1589,7 +1597,7 @@
 <td><p>Return geometry of grouped pixels with the same value in a DataArray object.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="_generated/hydromt.DataArray.raster.vector_grid.html#hydromt.DataArray.raster.vector_grid" title="hydromt.DataArray.raster.vector_grid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataArray.raster.vector_grid</span></code></a>()</p></td>
-<td><p>Return a geopandas GeoDataFrame with a box for each grid cell.</p></td>
+<td><p>Return a geopandas GeoDataFrame with a geometry for each grid cell.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1796,7 +1804,7 @@ visit the <a class="reference external" href="https://deltares.github.io/pyflwdi
 <td><p>Returns wkt string of nearest UTM projects</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="_generated/hydromt.gis_utils.affine_to_coords.html#hydromt.gis_utils.affine_to_coords" title="hydromt.gis_utils.affine_to_coords"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gis_utils.affine_to_coords</span></code></a>(transform, shape)</p></td>
-<td><p>Returs a raster axis with pixel center coordinates based on the transform.</p></td>
+<td><p>Returns a raster axis with pixel center coordinates based on the transform.</p></td>
 </tr>
 </tbody>
 </table>

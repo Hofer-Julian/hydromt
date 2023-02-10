@@ -537,6 +537,8 @@
 <li class="toctree-l1"><a class="reference internal" href="hydromt.DataArray.raster.bounds.html">hydromt.DataArray.raster.bounds</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hydromt.DataArray.raster.transform.html">hydromt.DataArray.raster.transform</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hydromt.DataArray.raster.res.html">hydromt.DataArray.raster.res</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hydromt.DataArray.raster.rotation.html">hydromt.DataArray.raster.rotation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hydromt.DataArray.raster.origin.html">hydromt.DataArray.raster.origin</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hydromt.DataArray.raster.nodata.html">hydromt.DataArray.raster.nodata</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hydromt.DataArray.raster.dims.html">hydromt.DataArray.raster.dims</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hydromt.DataArray.raster.coords.html">hydromt.DataArray.raster.coords</a></li>
@@ -730,7 +732,7 @@ provide the <cite>variables</cite> argument.</p>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>path_or_key</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – Data catalog key. If a path to a vector file is provided it will be added
 to the data_catalog with its based on the file basename without extension.</p></li>
-<li><p><strong>bbox</strong> (<em>array-like</em><em> of </em><em>floats</em>) – (xmin, ymin, xmax, ymax) bounding box of area of interest.</p></li>
+<li><p><strong>bbox</strong> (<em>array-like</em><em> of </em><em>floats</em>) – (xmin, ymin, xmax, ymax) bounding box of area of interest (in WGS84 coordinates).</p></li>
 <li><p><strong>geom</strong> (<em>geopandas.GeoDataFrame/Series</em><em>,</em>) – A geometry defining the area of interest.</p></li>
 <li><p><strong>buffer</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a><em>, </em><em>optional</em>) – Buffer around the <cite>bbox</cite> or <cite>geom</cite> area of interest in meters. By default 0.</p></li>
 <li><p><strong>predicate</strong> (<em>{'intersects'</em><em>, </em><em>'within'</em><em>, </em><em>'contains'</em><em>, </em><em>'overlaps'</em><em>, </em><em>'crosses'</em><em>, </em><em>'touches'}</em><em>, </em><em>optional</em>) – If predicate is provided, the GeoDataFrame is filtered by testing

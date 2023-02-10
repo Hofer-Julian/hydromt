@@ -537,6 +537,8 @@
 <li class="toctree-l1"><a class="reference internal" href="hydromt.DataArray.raster.bounds.html">hydromt.DataArray.raster.bounds</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hydromt.DataArray.raster.transform.html">hydromt.DataArray.raster.transform</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hydromt.DataArray.raster.res.html">hydromt.DataArray.raster.res</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hydromt.DataArray.raster.rotation.html">hydromt.DataArray.raster.rotation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hydromt.DataArray.raster.origin.html">hydromt.DataArray.raster.origin</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hydromt.DataArray.raster.nodata.html">hydromt.DataArray.raster.nodata</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hydromt.DataArray.raster.dims.html">hydromt.DataArray.raster.dims</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hydromt.DataArray.raster.coords.html">hydromt.DataArray.raster.coords</a></li>
@@ -719,20 +721,22 @@
 <h1>hydromt.gis_utils.affine_to_coords<a class="headerlink" href="#hydromt-gis-utils-affine-to-coords" title="Permalink to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="hydromt.gis_utils.affine_to_coords">
-<span class="sig-prename descclassname"><span class="pre">hydromt.gis_utils.</span></span><span class="sig-name descname"><span class="pre">affine_to_coords</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">transform</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hydromt/gis_utils.html#affine_to_coords"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hydromt.gis_utils.affine_to_coords" title="Permalink to this definition">#</a></dt>
-<dd><p>Returs a raster axis with pixel center coordinates based on the transform.</p>
+<span class="sig-prename descclassname"><span class="pre">hydromt.gis_utils.</span></span><span class="sig-name descname"><span class="pre">affine_to_coords</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">transform</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'x'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'y'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hydromt/gis_utils.html#affine_to_coords"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hydromt.gis_utils.affine_to_coords" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns a raster axis with pixel center coordinates based on the transform.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>transform</strong> (<em>affine transform</em>) – Two dimensional affine transform for 2D linear mapping</p></li>
 <li><p><strong>shape</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.11)"><em>tuple</em></a><em> of </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a>) – The height, width  of the raster.</p></li>
+<li><p><strong>x_dim</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – The name of the x and y dimensions</p></li>
+<li><p><strong>y_dim</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – The name of the x and y dimensions</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>x, y coordinate arrays</strong></p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.11)">tuple</a> of ndarray of <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)">float</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.11)">dict</a> of tuple with dims and coords</p>
 </dd>
 </dl>
 </dd></dl>

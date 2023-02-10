@@ -537,6 +537,8 @@
 <li class="toctree-l1"><a class="reference internal" href="hydromt.DataArray.raster.bounds.html">hydromt.DataArray.raster.bounds</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hydromt.DataArray.raster.transform.html">hydromt.DataArray.raster.transform</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hydromt.DataArray.raster.res.html">hydromt.DataArray.raster.res</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hydromt.DataArray.raster.rotation.html">hydromt.DataArray.raster.rotation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hydromt.DataArray.raster.origin.html">hydromt.DataArray.raster.origin</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hydromt.DataArray.raster.nodata.html">hydromt.DataArray.raster.nodata</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hydromt.DataArray.raster.dims.html">hydromt.DataArray.raster.dims</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hydromt.DataArray.raster.coords.html">hydromt.DataArray.raster.coords</a></li>
@@ -720,16 +722,15 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="hydromt.DataArray.raster.clip_mask">
 <span class="sig-prename descclassname"><span class="pre">DataArray.raster.</span></span><span class="sig-name descname"><span class="pre">clip_mask</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mask</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hydromt.DataArray.raster.clip_mask" title="Permalink to this definition">#</a></dt>
-<dd><p>Clip object to region with mask values greater than zero.</p>
+<dd><p>Clip object to region with mask values greater than zero.
+:param mask: Mask array.
+:type mask: xarray.DataArray</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>mask</strong> (<a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.DataArray.html#xarray.DataArray" title="(in xarray v2023.2.1.dev0)"><em>xarray.DataArray</em></a>) – Mask array.</p>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Data clipped to mask</p>
 </dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Data clipped to mask</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>xarray.DataSet or DataArray</p>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>xarray.DataSet or DataArray</p>
 </dd>
 </dl>
 </dd></dl>

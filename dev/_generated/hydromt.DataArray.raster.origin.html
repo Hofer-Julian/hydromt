@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>hydromt.data_adapter.GeoDatasetAdapter.to_dict &#8212; HydroMT  documentation</title>
+    <title>hydromt.DataArray.raster.origin &#8212; HydroMT  documentation</title>
   
   
   
@@ -42,11 +42,11 @@
     <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/design-tabs.js"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = '_generated/hydromt.data_adapter.GeoDatasetAdapter.to_dict';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_generated/hydromt.DataArray.raster.origin';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="hydromt.data_adapter.GeoDatasetAdapter.to_file" href="hydromt.data_adapter.GeoDatasetAdapter.to_file.html" />
-    <link rel="prev" title="hydromt.data_adapter.GeoDatasetAdapter.get_data" href="hydromt.data_adapter.GeoDatasetAdapter.get_data.html" />
+    <link rel="next" title="hydromt.DataArray.raster.nodata" href="hydromt.DataArray.raster.nodata.html" />
+    <link rel="prev" title="hydromt.DataArray.raster.rotation" href="hydromt.DataArray.raster.rotation.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="docsearch:language" content="en">
   </head>
@@ -349,11 +349,11 @@
 <li class="toctree-l1"><a class="reference internal" href="hydromt.data_adapter.RasterDatasetAdapter.to_dict.html">hydromt.data_adapter.RasterDatasetAdapter.to_dict</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hydromt.data_adapter.RasterDatasetAdapter.to_file.html">hydromt.data_adapter.RasterDatasetAdapter.to_file</a></li>
 </ul>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="hydromt.data_adapter.GeoDatasetAdapter.html">hydromt.data_adapter.GeoDatasetAdapter</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hydromt.data_adapter.GeoDatasetAdapter.summary.html">hydromt.data_adapter.GeoDatasetAdapter.summary</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hydromt.data_adapter.GeoDatasetAdapter.get_data.html">hydromt.data_adapter.GeoDatasetAdapter.get_data</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">hydromt.data_adapter.GeoDatasetAdapter.to_dict</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hydromt.data_adapter.GeoDatasetAdapter.to_dict.html">hydromt.data_adapter.GeoDatasetAdapter.to_dict</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hydromt.data_adapter.GeoDatasetAdapter.to_file.html">hydromt.data_adapter.GeoDatasetAdapter.to_file</a></li>
 </ul>
 <ul class="nav bd-sidenav">
@@ -531,14 +531,14 @@
 <li class="toctree-l1"><a class="reference internal" href="hydromt.DataArray.raster.from_numpy.html">hydromt.DataArray.raster.from_numpy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hydromt.Dataset.raster.from_numpy.html">hydromt.Dataset.raster.from_numpy</a></li>
 </ul>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="hydromt.DataArray.raster.attrs.html">hydromt.DataArray.raster.attrs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hydromt.DataArray.raster.crs.html">hydromt.DataArray.raster.crs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hydromt.DataArray.raster.bounds.html">hydromt.DataArray.raster.bounds</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hydromt.DataArray.raster.transform.html">hydromt.DataArray.raster.transform</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hydromt.DataArray.raster.res.html">hydromt.DataArray.raster.res</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hydromt.DataArray.raster.rotation.html">hydromt.DataArray.raster.rotation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="hydromt.DataArray.raster.origin.html">hydromt.DataArray.raster.origin</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">hydromt.DataArray.raster.origin</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hydromt.DataArray.raster.nodata.html">hydromt.DataArray.raster.nodata</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hydromt.DataArray.raster.dims.html">hydromt.DataArray.raster.dims</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hydromt.DataArray.raster.coords.html">hydromt.DataArray.raster.coords</a></li>
@@ -717,13 +717,12 @@
             
             <article class="bd-article" role="main">
               
-  <section id="hydromt-data-adapter-geodatasetadapter-to-dict">
-<h1>hydromt.data_adapter.GeoDatasetAdapter.to_dict<a class="headerlink" href="#hydromt-data-adapter-geodatasetadapter-to-dict" title="Permalink to this heading">#</a></h1>
-<dl class="py method">
-<dt class="sig sig-object py" id="hydromt.data_adapter.GeoDatasetAdapter.to_dict">
-<span class="sig-prename descclassname"><span class="pre">GeoDatasetAdapter.</span></span><span class="sig-name descname"><span class="pre">to_dict</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#hydromt.data_adapter.GeoDatasetAdapter.to_dict" title="Permalink to this definition">#</a></dt>
-<dd><p>Returns a dictionary view of the data source. Can be used to initialize
-the data adapter.</p>
+  <section id="hydromt-dataarray-raster-origin">
+<h1>hydromt.DataArray.raster.origin<a class="headerlink" href="#hydromt-dataarray-raster-origin" title="Permalink to this heading">#</a></h1>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hydromt.DataArray.raster.origin">
+<span class="sig-prename descclassname"><span class="pre">DataArray.raster.</span></span><span class="sig-name descname"><span class="pre">origin</span></span><a class="headerlink" href="#hydromt.DataArray.raster.origin" title="Permalink to this definition">#</a></dt>
+<dd><p>Return origin of grid (x0, y0) tuple.</p>
 </dd></dl>
 
 </section>
@@ -736,17 +735,17 @@ the data adapter.</p>
             <footer class="bd-footer-article">
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-  <a class='left-prev' id="prev-link" href="hydromt.data_adapter.GeoDatasetAdapter.get_data.html" title="previous page">
+  <a class='left-prev' id="prev-link" href="hydromt.DataArray.raster.rotation.html" title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
           <p class="prev-next-subtitle">previous</p>
-          <p class="prev-next-title">hydromt.data_adapter.GeoDatasetAdapter.get_data</p>
+          <p class="prev-next-title">hydromt.DataArray.raster.rotation</p>
       </div>
   </a>
-  <a class='right-next' id="next-link" href="hydromt.data_adapter.GeoDatasetAdapter.to_file.html" title="next page">
+  <a class='right-next' id="next-link" href="hydromt.DataArray.raster.nodata.html" title="next page">
   <div class="prev-next-info">
       <p class="prev-next-subtitle">next</p>
-      <p class="prev-next-title">hydromt.data_adapter.GeoDatasetAdapter.to_file</p>
+      <p class="prev-next-title">hydromt.DataArray.raster.nodata</p>
   </div>
   <i class="fa-solid fa-angle-right"></i>
   </a>
@@ -767,10 +766,10 @@ the data adapter.</p>
 <nav id="bd-toc-nav" class="page-toc">
     <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#hydromt.data_adapter.GeoDatasetAdapter.to_dict">
+  <a class="reference internal nav-link" href="#hydromt.DataArray.raster.origin">
    <code class="docutils literal notranslate">
     <span class="pre">
-     GeoDatasetAdapter.to_dict()
+     DataArray.raster.origin
     </span>
    </code>
   </a>
@@ -789,7 +788,7 @@ the data adapter.</p>
   
 
 <div class="tocsection editthispage">
-    <a href="https://github.com/Deltares/hydromt/edit/main/docs/_generated/hydromt.data_adapter.GeoDatasetAdapter.to_dict.rst">
+    <a href="https://github.com/Deltares/hydromt/edit/main/docs/_generated/hydromt.DataArray.raster.origin.rst">
         <i class="fa-solid fa-pencil"></i> Edit this page
     </a>
 </div>
@@ -799,7 +798,7 @@ the data adapter.</p>
 <div class="toc-item">
   
 <div class="tocsection sourcelink">
-    <a href="../_sources/_generated/hydromt.data_adapter.GeoDatasetAdapter.to_dict.rst.txt">
+    <a href="../_sources/_generated/hydromt.DataArray.raster.origin.rst.txt">
         <i class="fa-solid fa-file-lines"></i> Show Source
     </a>
 </div>
