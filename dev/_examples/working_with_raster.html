@@ -47,7 +47,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = '_examples/working_with_raster';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Example: Working with flow direction data" href="working_with_flow_directions.html" />
+    <link rel="next" title="Example: Working with geodatasets" href="working_with_geodatasets.html" />
     <link rel="prev" title="Statistical methods" href="../user_guide/methods_stats.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="docsearch:language" content="en">
@@ -361,6 +361,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/methods_main.html">Overview methods and workflows</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/methods_stats.html">Statistical methods</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Example: Working with raster data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="working_with_geodatasets.html">Example: Working with geodatasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="working_with_flow_directions.html">Example: Working with flow direction data</a></li>
 </ul>
 
@@ -676,9 +677,9 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-2023-02-10 13:17:09,201 - raster data - log - INFO - HydroMT version: 0.6.1.dev
-2023-02-10 13:17:09,247 - raster data - data_catalog - INFO - Reading data catalog artifact_data v0.0.8 from archive
-2023-02-10 13:17:09,248 - raster data - data_catalog - INFO - Parsing data catalog from /home/runner/.hydromt_data/artifact_data/v0.0.8/data_catalog.yml
+2023-02-10 15:11:46,108 - raster data - log - INFO - HydroMT version: 0.6.1.dev
+2023-02-10 15:11:46,189 - raster data - data_catalog - INFO - Reading data catalog artifact_data v0.0.8 from archive
+2023-02-10 15:11:46,190 - raster data - data_catalog - INFO - Parsing data catalog from /home/runner/.hydromt_data/artifact_data/v0.0.8/data_catalog.yml
 </pre></div></div>
 </div>
 <p>Here, we illustrate some common GIS problems and how the functionality of the DataArray/Dataset <a class="reference external" href="https://deltares.github.io/hydromt/latest/api.html#raster-methods">raster</a> accessor can be used. The data is accessed using the HydroMT <a class="reference external" href="https://deltares.github.io/hydromt/latest/api.html#data-catalog">DataCatalog</a>. For more information see the <a class="reference external" href="https://deltares.github.io/hydromt/latest/_examples/reading_raster_data.html">Reading raster data</a> example.</p>
@@ -702,7 +703,7 @@ GDAL driver. Currently the key difference between both packages, besides the nam
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-2023-02-10 13:17:09,320 - raster data - data_catalog - INFO - DataCatalog: Getting ghs_pop_2015 RasterDataset raster data from /home/runner/.hydromt_data/artifact_data/v0.0.8/ghs_pop_2015.tif
+2023-02-10 15:11:46,265 - raster data - data_catalog - INFO - DataCatalog: Getting ghs_pop_2015 RasterDataset raster data from /home/runner/.hydromt_data/artifact_data/v0.0.8/ghs_pop_2015.tif
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -711,7 +712,7 @@ GDAL driver. Currently the key difference between both packages, besides the nam
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.collections.QuadMesh at 0x7f882a8d97b0&gt;
+&lt;matplotlib.collections.QuadMesh at 0x7f5f4561f070&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -736,7 +737,16 @@ GDAL driver. Currently the key difference between both packages, besides the nam
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CRS.from_epsg(4326)
+&lt;Geographic 2D CRS: EPSG:4326&gt;
+Name: WGS 84
+Axis Info [ellipsoidal]:
+- Lat[north]: Geodetic latitude (degree)
+- Lon[east]: Geodetic longitude (degree)
+Area of Use:
+- undefined
+Datum: World Geodetic System 1984
+- Ellipsoid: WGS 84
+- Prime Meridian: Greenwich
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -837,7 +847,7 @@ Error: 0.036%
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.collections.QuadMesh at 0x7f882b5b3520&gt;
+&lt;matplotlib.collections.QuadMesh at 0x7f5f463241f0&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -878,8 +888,8 @@ Error: 0.036%
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-2023-02-10 13:17:11,225 - raster data - data_catalog - INFO - DataCatalog: Getting gadm_level3 GeoDataFrame vector data from /home/runner/.hydromt_data/artifact_data/v0.0.8/gadm_level3.gpkg
-2023-02-10 13:17:11,226 - raster data - geodataframe - INFO - GeoDataFrame: Read vector data.
+2023-02-10 15:11:48,428 - raster data - data_catalog - INFO - DataCatalog: Getting gadm_level3 GeoDataFrame vector data from /home/runner/.hydromt_data/artifact_data/v0.0.8/gadm_level3.gpkg
+2023-02-10 15:11:48,430 - raster data - geodataframe - INFO - GeoDataFrame: Read vector data.
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1008,9 +1018,9 @@ valid values surrounding the data gaps is build using voronoi triangulation. The
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-2023-02-10 13:17:27,702 - raster data - data_catalog - INFO - DataCatalog: Getting soilgrids RasterDataset raster data from /home/runner/.hydromt_data/artifact_data/v0.0.8/soilgrids/{variable}.tif
-2023-02-10 13:17:27,717 - raster data - rasterdataset - DEBUG - RasterDataset: Clip with bbox - [12.700, 45.600, 13.000, 45.800]
-2023-02-10 13:17:27,719 - raster data - rasterdataset - DEBUG - RasterDataset: Convert units for 1 variables.
+2023-02-10 15:12:05,050 - raster data - data_catalog - INFO - DataCatalog: Getting soilgrids RasterDataset raster data from /home/runner/.hydromt_data/artifact_data/v0.0.8/soilgrids/{variable}.tif
+2023-02-10 15:12:05,068 - raster data - rasterdataset - DEBUG - RasterDataset: Clip with bbox - [12.700, 45.600, 13.000, 45.800]
+2023-02-10 15:12:05,071 - raster data - rasterdataset - DEBUG - RasterDataset: Convert units for 1 variables.
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -1019,7 +1029,7 @@ valid values surrounding the data gaps is build using voronoi triangulation. The
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.collections.QuadMesh at 0x7f880caec370&gt;
+&lt;matplotlib.collections.QuadMesh at 0x7f5f2c878550&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1044,7 +1054,7 @@ valid values surrounding the data gaps is build using voronoi triangulation. The
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.collections.QuadMesh at 0x7f880c9d09d0&gt;
+&lt;matplotlib.collections.QuadMesh at 0x7f5f2c910910&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1087,12 +1097,12 @@ valid values surrounding the data gaps is build using voronoi triangulation. The
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-2023-02-10 13:17:28,237 - raster data - data_catalog - INFO - DataCatalog: Getting merit_hydro RasterDataset raster data from /home/runner/.hydromt_data/artifact_data/v0.0.8/merit_hydro/{variable}.tif
-2023-02-10 13:17:28,251 - raster data - rasterdataset - DEBUG - RasterDataset: Clip with bbox - [12.200, 45.300, 13.000, 45.800]
+2023-02-10 15:12:05,601 - raster data - data_catalog - INFO - DataCatalog: Getting merit_hydro RasterDataset raster data from /home/runner/.hydromt_data/artifact_data/v0.0.8/merit_hydro/{variable}.tif
+2023-02-10 15:12:05,619 - raster data - rasterdataset - DEBUG - RasterDataset: Clip with bbox - [12.200, 45.300, 13.000, 45.800]
 resolution MERIT Hydro: 0.00083
-2023-02-10 13:17:28,257 - raster data - data_catalog - INFO - DataCatalog: Getting gebco RasterDataset raster data from /home/runner/.hydromt_data/artifact_data/v0.0.8/gebco.tif
+2023-02-10 15:12:05,625 - raster data - data_catalog - INFO - DataCatalog: Getting gebco RasterDataset raster data from /home/runner/.hydromt_data/artifact_data/v0.0.8/gebco.tif
 resolution GEBCO: 0.00417
-2023-02-10 13:17:28,274 - raster data - data_catalog - INFO - DataCatalog: Getting mdt_cnes_cls18 RasterDataset raster data from /home/runner/.hydromt_data/artifact_data/v0.0.8/mdt_cnes_cls18.tif
+2023-02-10 15:12:05,644 - raster data - data_catalog - INFO - DataCatalog: Getting mdt_cnes_cls18 RasterDataset raster data from /home/runner/.hydromt_data/artifact_data/v0.0.8/mdt_cnes_cls18.tif
 resolution MDT: 0.12500
 </pre></div></div>
 </div>
@@ -1102,7 +1112,7 @@ resolution MDT: 0.12500
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.collections.QuadMesh at 0x7f880c8d4400&gt;
+&lt;matplotlib.collections.QuadMesh at 0x7f5f2c7f6e90&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1139,7 +1149,7 @@ resolution reprojected GEBCO: 0.00083
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.collections.QuadMesh at 0x7f880c77ba90&gt;
+&lt;matplotlib.collections.QuadMesh at 0x7f5f2c6cecb0&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1247,10 +1257,10 @@ Band 1 Block=960x1 Type=Float64, ColorInterp=Gray
           <p class="prev-next-title">Statistical methods</p>
       </div>
   </a>
-  <a class='right-next' id="next-link" href="working_with_flow_directions.html" title="next page">
+  <a class='right-next' id="next-link" href="working_with_geodatasets.html" title="next page">
   <div class="prev-next-info">
       <p class="prev-next-subtitle">next</p>
-      <p class="prev-next-title">Example: Working with flow direction data</p>
+      <p class="prev-next-title">Example: Working with geodatasets</p>
   </div>
   <i class="fa-solid fa-angle-right"></i>
   </a>

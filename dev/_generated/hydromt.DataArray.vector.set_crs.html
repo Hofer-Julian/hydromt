@@ -46,7 +46,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="hydromt.DataArray.vector.set_spatial_dims" href="hydromt.DataArray.vector.set_spatial_dims.html" />
-    <link rel="prev" title="hydromt.DataArray.vector.geometry" href="hydromt.DataArray.vector.geometry.html" />
+    <link rel="prev" title="hydromt.Dataset.vector.to_wkt" href="hydromt.Dataset.vector.to_wkt.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="docsearch:language" content="en">
   </head>
@@ -604,34 +604,70 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="hydromt.DataArray.vector.from_gdf.html">hydromt.DataArray.vector.from_gdf</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hydromt.DataArray.vector.to_gdf.html">hydromt.DataArray.vector.to_gdf</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hydromt.DataArray.vector.from_netcdf.html">hydromt.DataArray.vector.from_netcdf</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hydromt.DataArray.vector.to_netcdf.html">hydromt.DataArray.vector.to_netcdf</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hydromt.Dataset.vector.from_gdf.html">hydromt.Dataset.vector.from_gdf</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hydromt.Dataset.vector.to_gdf.html">hydromt.Dataset.vector.to_gdf</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hydromt.Dataset.vector.from_netcdf.html">hydromt.Dataset.vector.from_netcdf</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hydromt.Dataset.vector.to_netcdf.html">hydromt.Dataset.vector.to_netcdf</a></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="hydromt.DataArray.vector.attrs.html">hydromt.DataArray.vector.attrs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hydromt.DataArray.vector.crs.html">hydromt.DataArray.vector.crs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hydromt.DataArray.vector.index_dim.html">hydromt.DataArray.vector.index_dim</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hydromt.DataArray.vector.time_dim.html">hydromt.DataArray.vector.time_dim</a></li>
-<li class="toctree-l1"><a class="reference internal" href="hydromt.DataArray.vector.y_dim.html">hydromt.DataArray.vector.y_dim</a></li>
-<li class="toctree-l1"><a class="reference internal" href="hydromt.DataArray.vector.x_dim.html">hydromt.DataArray.vector.x_dim</a></li>
-<li class="toctree-l1"><a class="reference internal" href="hydromt.DataArray.vector.xcoords.html">hydromt.DataArray.vector.xcoords</a></li>
-<li class="toctree-l1"><a class="reference internal" href="hydromt.DataArray.vector.ycoords.html">hydromt.DataArray.vector.ycoords</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hydromt.DataArray.vector.x_name.html">hydromt.DataArray.vector.x_name</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hydromt.DataArray.vector.y_name.html">hydromt.DataArray.vector.y_name</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hydromt.DataArray.vector.geom_name.html">hydromt.DataArray.vector.geom_name</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hydromt.DataArray.vector.geom_type.html">hydromt.DataArray.vector.geom_type</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hydromt.DataArray.vector.geom_format.html">hydromt.DataArray.vector.geom_format</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hydromt.DataArray.vector.index.html">hydromt.DataArray.vector.index</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hydromt.DataArray.vector.bounds.html">hydromt.DataArray.vector.bounds</a></li>
-<li class="toctree-l1"><a class="reference internal" href="hydromt.DataArray.vector.total_bounds.html">hydromt.DataArray.vector.total_bounds</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hydromt.DataArray.vector.size.html">hydromt.DataArray.vector.size</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hydromt.DataArray.vector.sindex.html">hydromt.DataArray.vector.sindex</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hydromt.DataArray.vector.geometry.html">hydromt.DataArray.vector.geometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hydromt.Dataset.vector.attrs.html">hydromt.Dataset.vector.attrs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hydromt.Dataset.vector.crs.html">hydromt.Dataset.vector.crs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hydromt.Dataset.vector.index_dim.html">hydromt.Dataset.vector.index_dim</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hydromt.Dataset.vector.time_dim.html">hydromt.Dataset.vector.time_dim</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hydromt.Dataset.vector.x_name.html">hydromt.Dataset.vector.x_name</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hydromt.Dataset.vector.y_name.html">hydromt.Dataset.vector.y_name</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hydromt.Dataset.vector.geom_name.html">hydromt.Dataset.vector.geom_name</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hydromt.Dataset.vector.geom_type.html">hydromt.Dataset.vector.geom_type</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hydromt.Dataset.vector.geom_format.html">hydromt.Dataset.vector.geom_format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hydromt.Dataset.vector.index.html">hydromt.Dataset.vector.index</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hydromt.Dataset.vector.bounds.html">hydromt.Dataset.vector.bounds</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hydromt.Dataset.vector.size.html">hydromt.Dataset.vector.size</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hydromt.Dataset.vector.sindex.html">hydromt.Dataset.vector.sindex</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hydromt.Dataset.vector.geometry.html">hydromt.Dataset.vector.geometry</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="hydromt.DataArray.vector.ogr_compliant.html">hydromt.DataArray.vector.ogr_compliant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hydromt.DataArray.vector.update_geometry.html">hydromt.DataArray.vector.update_geometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hydromt.DataArray.vector.to_geom.html">hydromt.DataArray.vector.to_geom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hydromt.DataArray.vector.to_xy.html">hydromt.DataArray.vector.to_xy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hydromt.DataArray.vector.to_wkt.html">hydromt.DataArray.vector.to_wkt</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hydromt.Dataset.vector.ogr_compliant.html">hydromt.Dataset.vector.ogr_compliant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hydromt.Dataset.vector.update_geometry.html">hydromt.Dataset.vector.update_geometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hydromt.Dataset.vector.to_geom.html">hydromt.Dataset.vector.to_geom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hydromt.Dataset.vector.to_xy.html">hydromt.Dataset.vector.to_xy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hydromt.Dataset.vector.to_wkt.html">hydromt.Dataset.vector.to_wkt</a></li>
 </ul>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">hydromt.DataArray.vector.set_crs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hydromt.DataArray.vector.set_spatial_dims.html">hydromt.DataArray.vector.set_spatial_dims</a></li>
-<li class="toctree-l1"><a class="reference internal" href="hydromt.DataArray.vector.reset_spatial_dims_attrs.html">hydromt.DataArray.vector.reset_spatial_dims_attrs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hydromt.Dataset.vector.set_crs.html">hydromt.Dataset.vector.set_crs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hydromt.Dataset.vector.set_spatial_dims.html">hydromt.Dataset.vector.set_spatial_dims</a></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="hydromt.DataArray.vector.clip_bbox.html">hydromt.DataArray.vector.clip_bbox</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hydromt.DataArray.vector.clip_geom.html">hydromt.DataArray.vector.clip_geom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hydromt.Dataset.vector.clip_bbox.html">hydromt.Dataset.vector.clip_bbox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hydromt.Dataset.vector.clip_geom.html">hydromt.Dataset.vector.clip_geom</a></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="hydromt.DataArray.vector.to_crs.html">hydromt.DataArray.vector.to_crs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hydromt.Dataset.vector.to_crs.html">hydromt.Dataset.vector.to_crs</a></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="hydromt.flw.flwdir_from_da.html">hydromt.flw.flwdir_from_da</a></li>
@@ -721,7 +757,7 @@
 <h1>hydromt.DataArray.vector.set_crs<a class="headerlink" href="#hydromt-dataarray-vector-set-crs" title="Permalink to this heading">#</a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="hydromt.DataArray.vector.set_crs">
-<span class="sig-prename descclassname"><span class="pre">DataArray.vector.</span></span><span class="sig-name descname"><span class="pre">set_crs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_crs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.11)"><span class="pre">Union</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.11)"><span class="pre">dict</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://rasterio.readthedocs.io/en/latest/api/rasterio.crs.html#rasterio.crs.CRS" title="(in rasterio)"><span class="pre">CRS</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#hydromt.DataArray.vector.set_crs" title="Permalink to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">DataArray.vector.</span></span><span class="sig-name descname"><span class="pre">set_crs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_crs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hydromt.DataArray.vector.set_crs" title="Permalink to this definition">#</a></dt>
 <dd><p>Set the Coordinate Reference System.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -740,11 +776,11 @@
             <footer class="bd-footer-article">
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-  <a class='left-prev' id="prev-link" href="hydromt.DataArray.vector.geometry.html" title="previous page">
+  <a class='left-prev' id="prev-link" href="hydromt.Dataset.vector.to_wkt.html" title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
           <p class="prev-next-subtitle">previous</p>
-          <p class="prev-next-title">hydromt.DataArray.vector.geometry</p>
+          <p class="prev-next-title">hydromt.Dataset.vector.to_wkt</p>
       </div>
   </a>
   <a class='right-next' id="next-link" href="hydromt.DataArray.vector.set_spatial_dims.html" title="next page">
