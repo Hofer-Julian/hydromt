@@ -343,6 +343,7 @@
 
 <li class="toctree-l1"><a class="reference internal" href="reading_tabular_data.html">Example: Reading 2D tabular data (DataFrame)</a></li>
 
+<li class="toctree-l1"><a class="reference internal" href="working_with_tiled_raster_data.html">Example: Reading tiled raster data with different zoom levels</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Working with models in HydroMT</span></p>
 <ul class="current nav bd-sidenav">
@@ -682,7 +683,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-2023-02-10 16:02:13,099 - working with models - log - INFO - HydroMT version: 0.6.1.dev
+2023-02-13 13:10:58,298 - working with models - log - INFO - HydroMT version: 0.6.1.dev
 </pre></div></div>
 </div>
 <section id="Available-models-in-HydroMT">
@@ -1130,7 +1131,7 @@ dl.xr-attrs {
 </style><pre class='xr-text-repr-fallback'>&lt;xarray.Dataset&gt;
 Dimensions:  ()
 Data variables:
-    *empty*</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-5e82a4e8-cbb8-494b-90d9-e80e90f68a81' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-5e82a4e8-cbb8-494b-90d9-e80e90f68a81' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-31245971-5df8-4e09-87cb-ba984544ed7c' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-31245971-5df8-4e09-87cb-ba984544ed7c' class='xr-section-summary'  title='Expand/collapse section'>Coordinates: <span>(0)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'></ul></div></li><li class='xr-section-item'><input id='section-9d43dcd8-0abd-433b-8444-3f4eeca08d2f' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-9d43dcd8-0abd-433b-8444-3f4eeca08d2f' class='xr-section-summary'  title='Expand/collapse section'>Data variables: <span>(0)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'></ul></div></li><li class='xr-section-item'><input id='section-9df88204-d3da-4358-a2e2-ea114cbd0a2a' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-9df88204-d3da-4358-a2e2-ea114cbd0a2a' class='xr-section-summary'  title='Expand/collapse section'>Indexes: <span>(0)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'></ul></div></li><li class='xr-section-item'><input id='section-e656f46c-0490-4bed-a61c-64abcc2c357f' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-e656f46c-0490-4bed-a61c-64abcc2c357f' class='xr-section-summary'  title='Expand/collapse section'>Attributes: <span>(0)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'></dl></div></li></ul></div></div></div>
+    *empty*</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-60596814-5d69-4c2b-a44e-cfed1120991b' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-60596814-5d69-4c2b-a44e-cfed1120991b' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-416eef60-6999-41ec-9ba8-68e23b9a61ff' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-416eef60-6999-41ec-9ba8-68e23b9a61ff' class='xr-section-summary'  title='Expand/collapse section'>Coordinates: <span>(0)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'></ul></div></li><li class='xr-section-item'><input id='section-acf337ab-646e-4fdf-92e0-2a49b6dcdeb5' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-acf337ab-646e-4fdf-92e0-2a49b6dcdeb5' class='xr-section-summary'  title='Expand/collapse section'>Data variables: <span>(0)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'></ul></div></li><li class='xr-section-item'><input id='section-64ea17f5-dd48-48ca-933e-6d5f07db7059' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-64ea17f5-dd48-48ca-933e-6d5f07db7059' class='xr-section-summary'  title='Expand/collapse section'>Indexes: <span>(0)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'></ul></div></li><li class='xr-section-item'><input id='section-e7753795-f674-4412-9bd8-490cecb78d17' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-e7753795-f674-4412-9bd8-490cecb78d17' class='xr-section-summary'  title='Expand/collapse section'>Attributes: <span>(0)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'></dl></div></li></ul></div></div></div>
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
@@ -1177,11 +1178,11 @@ Data variables:
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-2023-02-10 16:02:13,233 - working with models - data_catalog - INFO - Reading data catalog artifact_data v0.0.8 from archive
-2023-02-10 16:02:13,234 - working with models - data_catalog - INFO - Parsing data catalog from /home/runner/.hydromt_data/artifact_data/v0.0.8/data_catalog.yml
-2023-02-10 16:02:13,315 - working with models - data_catalog - INFO - Parsing data catalog from data/vito_reclass.yml
-2023-02-10 16:02:13,319 - working with models - log - DEBUG - Writing log messages to new file /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model_py/hydromt.log.
-2023-02-10 16:02:13,320 - working with models - model_api - INFO - Initializing grid_model model from hydromt (v0.6.1.dev).
+2023-02-13 13:10:58,423 - working with models - data_catalog - INFO - Reading data catalog artifact_data v0.0.8 from archive
+2023-02-13 13:10:58,423 - working with models - data_catalog - INFO - Parsing data catalog from /home/runner/.hydromt_data/artifact_data/v0.0.8/data_catalog.yml
+2023-02-13 13:10:58,507 - working with models - data_catalog - INFO - Parsing data catalog from data/vito_reclass.yml
+2023-02-13 13:10:58,510 - working with models - log - DEBUG - Writing log messages to new file /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model_py/hydromt.log.
+2023-02-13 13:10:58,511 - working with models - model_api - INFO - Initializing grid_model model from hydromt (v0.6.1.dev).
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -1204,10 +1205,10 @@ Data variables:
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-2023-02-10 16:02:13,329 - working with models - basin_mask - DEBUG - Parsed region (kind=subbasin): {&#39;strord&#39;: 7, &#39;xy&#39;: [12.2051, 45.8331]}
-2023-02-10 16:02:13,330 - working with models - data_catalog - INFO - DataCatalog: Getting merit_hydro RasterDataset raster data from /home/runner/.hydromt_data/artifact_data/v0.0.8/merit_hydro/{variable}.tif
-2023-02-10 16:02:13,547 - working with models - basin_mask - DEBUG - Getting basin IDs at point locations.
-2023-02-10 16:02:18,592 - working with models - basin_mask - INFO - subbasin bbox: [11.7750, 45.8042, 12.7450, 46.6900]
+2023-02-13 13:10:58,519 - working with models - basin_mask - DEBUG - Parsed region (kind=subbasin): {&#39;strord&#39;: 7, &#39;xy&#39;: [12.2051, 45.8331]}
+2023-02-13 13:10:58,521 - working with models - data_catalog - INFO - DataCatalog: Getting merit_hydro RasterDataset raster data from /home/runner/.hydromt_data/artifact_data/v0.0.8/merit_hydro/{variable}.tif
+2023-02-13 13:10:58,739 - working with models - basin_mask - DEBUG - Getting basin IDs at point locations.
+2023-02-13 13:11:03,787 - working with models - basin_mask - INFO - subbasin bbox: [11.7750, 45.8042, 12.7450, 46.6900]
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1297,7 +1298,7 @@ Data variables:
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-2023-02-10 16:02:18,878 - working with models - model_api - DEBUG - Setting model config options.
+2023-02-13 13:11:04,093 - working with models - model_api - DEBUG - Setting model config options.
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1337,14 +1338,14 @@ Delft3D-FM that will interpolate input data on the fly to the model mesh, or aux
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-2023-02-10 16:02:18,888 - working with models - model_api - INFO - Preparing maps data from raster source merit_hydro_1k
-2023-02-10 16:02:18,889 - working with models - data_catalog - INFO - DataCatalog: Getting merit_hydro_1k RasterDataset raster data from /home/runner/.hydromt_data/artifact_data/v0.0.8/merit_hydro_1k/{variable}.tif
-2023-02-10 16:02:18,917 - working with models - rasterdataset - DEBUG - RasterDataset: Clip with geom - [11.775, 45.804, 12.745, 46.690]
-2023-02-10 16:02:18,942 - working with models - model_api - INFO - Preparing map data by reclassifying the data in vito based on vito_reclass
-2023-02-10 16:02:18,944 - working with models - data_catalog - INFO - DataCatalog: Getting vito RasterDataset raster data from /home/runner/.hydromt_data/artifact_data/v0.0.8/vito.tif
-2023-02-10 16:02:18,969 - working with models - rasterdataset - DEBUG - RasterDataset: Clip with geom - [11.775, 45.804, 12.745, 46.690]
-2023-02-10 16:02:18,997 - working with models - data_catalog - INFO - DataCatalog: Getting vito_reclass DataFrame csv data from /home/runner/work/hydromt/hydromt/docs/_examples/data/vito_reclass.csv
-2023-02-10 16:02:18,998 - working with models - dataframe - INFO - DataFrame: Read csv data.
+2023-02-13 13:11:04,104 - working with models - model_api - INFO - Preparing maps data from raster source merit_hydro_1k
+2023-02-13 13:11:04,107 - working with models - data_catalog - INFO - DataCatalog: Getting merit_hydro_1k RasterDataset raster data from /home/runner/.hydromt_data/artifact_data/v0.0.8/merit_hydro_1k/{variable}.tif
+2023-02-13 13:11:04,137 - working with models - rasterdataset - DEBUG - RasterDataset: Clip with geom - [11.775, 45.804, 12.745, 46.690]
+2023-02-13 13:11:04,159 - working with models - model_api - INFO - Preparing map data by reclassifying the data in vito based on vito_reclass
+2023-02-13 13:11:04,161 - working with models - data_catalog - INFO - DataCatalog: Getting vito RasterDataset raster data from /home/runner/.hydromt_data/artifact_data/v0.0.8/vito.tif
+2023-02-13 13:11:04,188 - working with models - rasterdataset - DEBUG - RasterDataset: Clip with geom - [11.775, 45.804, 12.745, 46.690]
+2023-02-13 13:11:04,217 - working with models - data_catalog - INFO - DataCatalog: Getting vito_reclass DataFrame csv data from /home/runner/work/hydromt/hydromt/docs/_examples/data/vito_reclass.csv
+2023-02-13 13:11:04,219 - working with models - dataframe - INFO - DataFrame: Read csv data.
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -1742,7 +1743,7 @@ Coordinates:
     spatial_ref  int64 0
     mask         (y, x) bool False False False False ... False False False False
 Attributes:
-    _FillValue:  nan</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.DataArray</div><div class='xr-array-name'>'manning'</div><ul class='xr-dim-list'><li><span class='xr-has-index'>y</span>: 897</li><li><span class='xr-has-index'>x</span>: 981</li></ul></div><ul class='xr-sections'><li class='xr-section-item'><div class='xr-array-wrap'><input id='section-90f0c7da-bf6b-48cb-be15-22c30909dc1e' class='xr-array-in' type='checkbox' checked><label for='section-90f0c7da-bf6b-48cb-be15-22c30909dc1e' title='Show/hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-array-preview xr-preview'><span>dask.array&lt;chunksize=(897, 981), meta=np.ndarray&gt;</span></div><div class='xr-array-data'><table>
+    _FillValue:  nan</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.DataArray</div><div class='xr-array-name'>'manning'</div><ul class='xr-dim-list'><li><span class='xr-has-index'>y</span>: 897</li><li><span class='xr-has-index'>x</span>: 981</li></ul></div><ul class='xr-sections'><li class='xr-section-item'><div class='xr-array-wrap'><input id='section-70f0c568-4856-4845-8ec6-b5727d9664f8' class='xr-array-in' type='checkbox' checked><label for='section-70f0c568-4856-4845-8ec6-b5727d9664f8' title='Show/hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-array-preview xr-preview'><span>dask.array&lt;chunksize=(897, 981), meta=np.ndarray&gt;</span></div><div class='xr-array-data'><table>
     <tr>
         <td>
             <table style="border-collapse: collapse;">
@@ -1797,13 +1798,13 @@ Attributes:
 </svg>
         </td>
     </tr>
-</table></div></div></li><li class='xr-section-item'><input id='section-604e01df-9aa3-4205-a143-eca3279002d3' class='xr-section-summary-in' type='checkbox'  checked><label for='section-604e01df-9aa3-4205-a143-eca3279002d3' class='xr-section-summary' >Coordinates: <span>(4)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>x</span></div><div class='xr-var-dims'>(x)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>11.77 11.77 11.78 ... 12.75 12.75</div><input id='attrs-52f426e8-ff3c-43c0-9e69-bb3853d9723b' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-52f426e8-ff3c-43c0-9e69-bb3853d9723b' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-a35a89f9-7fae-4516-9ea4-8cb104e3540b' class='xr-var-data-in' type='checkbox'><label for='data-a35a89f9-7fae-4516-9ea4-8cb104e3540b' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([11.77381 , 11.774802, 11.775794, ..., 12.744048, 12.74504 , 12.746032])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>y</span></div><div class='xr-var-dims'>(y)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>46.69 46.69 46.69 ... 45.8 45.8</div><input id='attrs-b674d4e6-1dc5-45eb-a3f2-776edd9f17ca' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-b674d4e6-1dc5-45eb-a3f2-776edd9f17ca' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-9530500f-3e21-472f-b925-83dcd981c49f' class='xr-var-data-in' type='checkbox'><label for='data-9530500f-3e21-472f-b925-83dcd981c49f' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([46.691468, 46.690476, 46.689484, ..., 45.804563, 45.803571, 45.802579])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>spatial_ref</span></div><div class='xr-var-dims'>()</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>0</div><input id='attrs-a47908c0-9994-4abb-97d8-514f3feff1c0' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-a47908c0-9994-4abb-97d8-514f3feff1c0' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-50790f29-5e22-4616-b5fa-a12dc91b3061' class='xr-var-data-in' type='checkbox'><label for='data-50790f29-5e22-4616-b5fa-a12dc91b3061' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>crs_wkt :</span></dt><dd>GEOGCS[&quot;WGS 84&quot;,DATUM[&quot;WGS_1984&quot;,SPHEROID[&quot;WGS 84&quot;,6378137,298.257223563,AUTHORITY[&quot;EPSG&quot;,&quot;7030&quot;]],AUTHORITY[&quot;EPSG&quot;,&quot;6326&quot;]],PRIMEM[&quot;Greenwich&quot;,0,AUTHORITY[&quot;EPSG&quot;,&quot;8901&quot;]],UNIT[&quot;degree&quot;,0.0174532925199433,AUTHORITY[&quot;EPSG&quot;,&quot;9122&quot;]],AXIS[&quot;Latitude&quot;,NORTH],AXIS[&quot;Longitude&quot;,EAST],AUTHORITY[&quot;EPSG&quot;,&quot;4326&quot;]]</dd><dt><span>semi_major_axis :</span></dt><dd>6378137.0</dd><dt><span>semi_minor_axis :</span></dt><dd>6356752.314245179</dd><dt><span>inverse_flattening :</span></dt><dd>298.257223563</dd><dt><span>reference_ellipsoid_name :</span></dt><dd>WGS 84</dd><dt><span>longitude_of_prime_meridian :</span></dt><dd>0.0</dd><dt><span>prime_meridian_name :</span></dt><dd>Greenwich</dd><dt><span>geographic_crs_name :</span></dt><dd>WGS 84</dd><dt><span>grid_mapping_name :</span></dt><dd>latitude_longitude</dd><dt><span>spatial_ref :</span></dt><dd>GEOGCS[&quot;WGS 84&quot;,DATUM[&quot;WGS_1984&quot;,SPHEROID[&quot;WGS 84&quot;,6378137,298.257223563,AUTHORITY[&quot;EPSG&quot;,&quot;7030&quot;]],AUTHORITY[&quot;EPSG&quot;,&quot;6326&quot;]],PRIMEM[&quot;Greenwich&quot;,0,AUTHORITY[&quot;EPSG&quot;,&quot;8901&quot;]],UNIT[&quot;degree&quot;,0.0174532925199433,AUTHORITY[&quot;EPSG&quot;,&quot;9122&quot;]],AXIS[&quot;Latitude&quot;,NORTH],AXIS[&quot;Longitude&quot;,EAST],AUTHORITY[&quot;EPSG&quot;,&quot;4326&quot;]]</dd><dt><span>GeoTransform :</span></dt><dd>11.599702380951747 0.000992063492063498 0.0 46.80009920634932 0.0 -0.0009920634920634868</dd><dt><span>x_dim :</span></dt><dd>x</dd><dt><span>y_dim :</span></dt><dd>y</dd></dl></div><div class='xr-var-data'><pre>array(0)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>mask</span></div><div class='xr-var-dims'>(y, x)</div><div class='xr-var-dtype'>bool</div><div class='xr-var-preview xr-preview'>False False False ... False False</div><input id='attrs-3941a063-8a4e-4b77-beaf-51e63787cc77' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-3941a063-8a4e-4b77-beaf-51e63787cc77' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-cfa1a6be-5a62-48ef-bd31-2b2fe295af63' class='xr-var-data-in' type='checkbox'><label for='data-cfa1a6be-5a62-48ef-bd31-2b2fe295af63' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([[False, False, False, ..., False, False, False],
+</table></div></div></li><li class='xr-section-item'><input id='section-1239095c-64a8-44c9-bcb7-160691cc3d38' class='xr-section-summary-in' type='checkbox'  checked><label for='section-1239095c-64a8-44c9-bcb7-160691cc3d38' class='xr-section-summary' >Coordinates: <span>(4)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>x</span></div><div class='xr-var-dims'>(x)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>11.77 11.77 11.78 ... 12.75 12.75</div><input id='attrs-524d042d-ad9d-4783-b243-ba70652aefed' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-524d042d-ad9d-4783-b243-ba70652aefed' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-b92dd3a8-0bf3-4de7-b2a4-cf8c28fc1cca' class='xr-var-data-in' type='checkbox'><label for='data-b92dd3a8-0bf3-4de7-b2a4-cf8c28fc1cca' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([11.77381 , 11.774802, 11.775794, ..., 12.744048, 12.74504 , 12.746032])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>y</span></div><div class='xr-var-dims'>(y)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>46.69 46.69 46.69 ... 45.8 45.8</div><input id='attrs-56179a37-49d0-4622-a38d-756cfba66f32' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-56179a37-49d0-4622-a38d-756cfba66f32' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-f1138069-be3e-4936-9873-181fc6bc411a' class='xr-var-data-in' type='checkbox'><label for='data-f1138069-be3e-4936-9873-181fc6bc411a' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([46.691468, 46.690476, 46.689484, ..., 45.804563, 45.803571, 45.802579])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>spatial_ref</span></div><div class='xr-var-dims'>()</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>0</div><input id='attrs-ee122c7f-11e2-46e8-a154-d255e4bdba15' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-ee122c7f-11e2-46e8-a154-d255e4bdba15' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-5371c5da-a196-4588-b71b-d783d974a867' class='xr-var-data-in' type='checkbox'><label for='data-5371c5da-a196-4588-b71b-d783d974a867' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>crs_wkt :</span></dt><dd>GEOGCS[&quot;WGS 84&quot;,DATUM[&quot;WGS_1984&quot;,SPHEROID[&quot;WGS 84&quot;,6378137,298.257223563,AUTHORITY[&quot;EPSG&quot;,&quot;7030&quot;]],AUTHORITY[&quot;EPSG&quot;,&quot;6326&quot;]],PRIMEM[&quot;Greenwich&quot;,0,AUTHORITY[&quot;EPSG&quot;,&quot;8901&quot;]],UNIT[&quot;degree&quot;,0.0174532925199433,AUTHORITY[&quot;EPSG&quot;,&quot;9122&quot;]],AXIS[&quot;Latitude&quot;,NORTH],AXIS[&quot;Longitude&quot;,EAST],AUTHORITY[&quot;EPSG&quot;,&quot;4326&quot;]]</dd><dt><span>semi_major_axis :</span></dt><dd>6378137.0</dd><dt><span>semi_minor_axis :</span></dt><dd>6356752.314245179</dd><dt><span>inverse_flattening :</span></dt><dd>298.257223563</dd><dt><span>reference_ellipsoid_name :</span></dt><dd>WGS 84</dd><dt><span>longitude_of_prime_meridian :</span></dt><dd>0.0</dd><dt><span>prime_meridian_name :</span></dt><dd>Greenwich</dd><dt><span>geographic_crs_name :</span></dt><dd>WGS 84</dd><dt><span>grid_mapping_name :</span></dt><dd>latitude_longitude</dd><dt><span>spatial_ref :</span></dt><dd>GEOGCS[&quot;WGS 84&quot;,DATUM[&quot;WGS_1984&quot;,SPHEROID[&quot;WGS 84&quot;,6378137,298.257223563,AUTHORITY[&quot;EPSG&quot;,&quot;7030&quot;]],AUTHORITY[&quot;EPSG&quot;,&quot;6326&quot;]],PRIMEM[&quot;Greenwich&quot;,0,AUTHORITY[&quot;EPSG&quot;,&quot;8901&quot;]],UNIT[&quot;degree&quot;,0.0174532925199433,AUTHORITY[&quot;EPSG&quot;,&quot;9122&quot;]],AXIS[&quot;Latitude&quot;,NORTH],AXIS[&quot;Longitude&quot;,EAST],AUTHORITY[&quot;EPSG&quot;,&quot;4326&quot;]]</dd><dt><span>GeoTransform :</span></dt><dd>11.599702380951747 0.000992063492063498 0.0 46.80009920634932 0.0 -0.0009920634920634868</dd><dt><span>x_dim :</span></dt><dd>x</dd><dt><span>y_dim :</span></dt><dd>y</dd></dl></div><div class='xr-var-data'><pre>array(0)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>mask</span></div><div class='xr-var-dims'>(y, x)</div><div class='xr-var-dtype'>bool</div><div class='xr-var-preview xr-preview'>False False False ... False False</div><input id='attrs-f8ad0d7d-a12f-4202-ab36-724412f31120' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-f8ad0d7d-a12f-4202-ab36-724412f31120' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-91d60375-8ec6-41dd-bb27-0992c0c2c55c' class='xr-var-data-in' type='checkbox'><label for='data-91d60375-8ec6-41dd-bb27-0992c0c2c55c' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([[False, False, False, ..., False, False, False],
        [False, False, False, ..., False, False, False],
        [False, False, False, ..., False, False, False],
        ...,
        [False, False, False, ..., False, False, False],
        [False, False, False, ..., False, False, False],
-       [False, False, False, ..., False, False, False]])</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-879ff8cb-111d-4345-88b4-5ca3c0854132' class='xr-section-summary-in' type='checkbox'  ><label for='section-879ff8cb-111d-4345-88b4-5ca3c0854132' class='xr-section-summary' >Indexes: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>x</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-b347f986-d18d-44ac-8b32-c050f8da3df7' class='xr-index-data-in' type='checkbox'/><label for='index-b347f986-d18d-44ac-8b32-c050f8da3df7' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Float64Index([11.773809523808891, 11.774801587300955, 11.775793650793018,
+       [False, False, False, ..., False, False, False]])</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-a6d2a0ca-a8be-403b-a09e-e766b8dd1643' class='xr-section-summary-in' type='checkbox'  ><label for='section-a6d2a0ca-a8be-403b-a09e-e766b8dd1643' class='xr-section-summary' >Indexes: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>x</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-7c9c1c36-d4bb-4c97-ac63-1c030a373ab7' class='xr-index-data-in' type='checkbox'/><label for='index-7c9c1c36-d4bb-4c97-ac63-1c030a373ab7' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Float64Index([11.773809523808891, 11.774801587300955, 11.775793650793018,
               11.776785714285081, 11.777777777777144, 11.778769841269208,
               11.779761904761273, 11.780753968253336,   11.7817460317454,
               11.782738095237463,
@@ -1812,7 +1813,7 @@ Attributes:
               12.740079365078739, 12.741071428570802, 12.742063492062865,
               12.743055555554928, 12.744047619046992, 12.745039682539055,
                12.74603174603112],
-             dtype=&#x27;float64&#x27;, name=&#x27;x&#x27;, length=981))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>y</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-e3b8c747-dd93-4441-a642-fe08f9b80320' class='xr-index-data-in' type='checkbox'/><label for='index-e3b8c747-dd93-4441-a642-fe08f9b80320' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Float64Index([46.691468253968374,  46.69047619047631,  46.68948412698425,
+             dtype=&#x27;float64&#x27;, name=&#x27;x&#x27;, length=981))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>y</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-b6e9ce29-63a8-4688-a4c1-0c90a952099a' class='xr-index-data-in' type='checkbox'/><label for='index-b6e9ce29-63a8-4688-a4c1-0c90a952099a' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Float64Index([46.691468253968374,  46.69047619047631,  46.68948412698425,
               46.688492063492184, 46.687500000000114,  46.68650793650805,
                46.68551587301599, 46.684523809523924,  46.68353174603186,
                 46.6825396825398,
@@ -1821,7 +1822,7 @@ Attributes:
                45.80853174603187, 45.807539682539804,  45.80654761904774,
                45.80555555555568, 45.804563492063615,  45.80357142857155,
                45.80257936507949],
-             dtype=&#x27;float64&#x27;, name=&#x27;y&#x27;, length=897))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-bd0e6660-b6b0-4f60-a291-4b40feb67021' class='xr-section-summary-in' type='checkbox'  checked><label for='section-bd0e6660-b6b0-4f60-a291-4b40feb67021' class='xr-section-summary' >Attributes: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>_FillValue :</span></dt><dd>nan</dd></dl></div></li></ul></div></div></div>
+             dtype=&#x27;float64&#x27;, name=&#x27;y&#x27;, length=897))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-e70126a4-ff97-4b01-9832-123005655f0c' class='xr-section-summary-in' type='checkbox'  checked><label for='section-e70126a4-ff97-4b01-9832-123005655f0c' class='xr-section-summary' >Attributes: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>_FillValue :</span></dt><dd>nan</dd></dl></div></li></ul></div></div></div>
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
@@ -1876,11 +1877,11 @@ Text(0.5, 1.0, &#39;Manning roughness&#39;)
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-2023-02-10 16:02:21,683 - working with models - model_api - INFO - Writing model data to /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model_py
-2023-02-10 16:02:21,685 - working with models - model_api - DEBUG - Writing file maps/elevtn.nc
-2023-02-10 16:02:21,698 - working with models - model_api - DEBUG - Writing file maps/manning.nc
-2023-02-10 16:02:21,812 - working with models - model_api - DEBUG - Writing file geoms/region.geojson
-2023-02-10 16:02:21,872 - working with models - model_api - INFO - Writing model config to /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model_py/model.ini
+2023-02-13 13:11:07,008 - working with models - model_api - INFO - Writing model data to /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model_py
+2023-02-13 13:11:07,009 - working with models - model_api - DEBUG - Writing file maps/elevtn.nc
+2023-02-13 13:11:07,024 - working with models - model_api - DEBUG - Writing file maps/manning.nc
+2023-02-13 13:11:07,137 - working with models - model_api - DEBUG - Writing file geoms/region.geojson
+2023-02-13 13:11:07,207 - working with models - model_api - INFO - Writing model config to /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model_py/model.ini
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -1934,12 +1935,12 @@ tmp_grid_model_py/geoms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-2023-02-10 16:02:21,891 - working with models - model_api - INFO - Initializing grid_model model from hydromt (v0.6.1.dev).
-2023-02-10 16:02:21,893 - working with models - model_api - INFO - Reading model data from /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model_py
-2023-02-10 16:02:21,895 - working with models - model_api - DEBUG - Model config read from /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model_py/model.ini
-2023-02-10 16:02:21,896 - working with models - model_api - DEBUG - Reading model file region.
-2023-02-10 16:02:21,923 - working with models - model_api - DEBUG - Reading model file elevtn.
-2023-02-10 16:02:21,931 - working with models - model_api - DEBUG - Reading model file manning.
+2023-02-13 13:11:07,231 - working with models - model_api - INFO - Initializing grid_model model from hydromt (v0.6.1.dev).
+2023-02-13 13:11:07,233 - working with models - model_api - INFO - Reading model data from /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model_py
+2023-02-13 13:11:07,235 - working with models - model_api - DEBUG - Model config read from /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model_py/model.ini
+2023-02-13 13:11:07,237 - working with models - model_api - DEBUG - Reading model file region.
+2023-02-13 13:11:07,262 - working with models - model_api - DEBUG - Reading model file elevtn.
+2023-02-13 13:11:07,269 - working with models - model_api - DEBUG - Reading model file manning.
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -2023,53 +2024,53 @@ model maps: [&#39;elevtn&#39;, &#39;manning&#39;]
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-2023-02-10 16:02:22,032 - working with models - data_catalog - INFO - Reading data catalog artifact_data v0.0.8 from archive
-2023-02-10 16:02:22,033 - working with models - data_catalog - INFO - Parsing data catalog from /home/runner/.hydromt_data/artifact_data/v0.0.8/data_catalog.yml
-2023-02-10 16:02:22,119 - working with models - data_catalog - INFO - Parsing data catalog from data/vito_reclass.yml
-2023-02-10 16:02:22,122 - working with models - log - DEBUG - Writing log messages to new file /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model_py1/hydromt.log.
-2023-02-10 16:02:22,124 - working with models - model_api - INFO - Initializing grid_model model from hydromt (v0.6.1.dev).
-2023-02-10 16:02:22,126 - working with models - model_api - DEBUG - Setting model config options.
-2023-02-10 16:02:22,127 - working with models - model_api - INFO - setup_region.region: {&#39;subbasin&#39;: [12.2051, 45.8331], &#39;strord&#39;: 7}
-2023-02-10 16:02:22,128 - working with models - model_api - INFO - setup_region.hydrography_fn: merit_hydro
-2023-02-10 16:02:22,130 - working with models - model_api - INFO - setup_region.basin_index_fn: merit_hydro_index
-2023-02-10 16:02:22,131 - working with models - basin_mask - DEBUG - Parsed region (kind=subbasin): {&#39;strord&#39;: 7, &#39;xy&#39;: [12.2051, 45.8331]}
-2023-02-10 16:02:22,132 - working with models - data_catalog - INFO - DataCatalog: Getting merit_hydro RasterDataset raster data from /home/runner/.hydromt_data/artifact_data/v0.0.8/merit_hydro/{variable}.tif
-2023-02-10 16:02:22,289 - working with models - basin_mask - DEBUG - Getting basin IDs at point locations.
-2023-02-10 16:02:22,767 - working with models - basin_mask - INFO - subbasin bbox: [11.7750, 45.8042, 12.7450, 46.6900]
-2023-02-10 16:02:22,816 - working with models - model_api - INFO - setup_maps_from_raster.raster_fn: merit_hydro_1k
-2023-02-10 16:02:22,817 - working with models - model_api - INFO - setup_maps_from_raster.variables: elevtn
-2023-02-10 16:02:22,818 - working with models - model_api - INFO - setup_maps_from_raster.fill_method: None
-2023-02-10 16:02:22,821 - working with models - model_api - INFO - setup_maps_from_raster.name: None
-2023-02-10 16:02:22,822 - working with models - model_api - INFO - setup_maps_from_raster.reproject_method: None
-2023-02-10 16:02:22,823 - working with models - model_api - INFO - setup_maps_from_raster.split_dataset: True
-2023-02-10 16:02:22,826 - working with models - model_api - INFO - Preparing maps data from raster source merit_hydro_1k
-2023-02-10 16:02:22,827 - working with models - data_catalog - INFO - DataCatalog: Getting merit_hydro_1k RasterDataset raster data from /home/runner/.hydromt_data/artifact_data/v0.0.8/merit_hydro_1k/{variable}.tif
-2023-02-10 16:02:22,852 - working with models - rasterdataset - DEBUG - RasterDataset: Clip with geom - [11.775, 45.804, 12.745, 46.690]
-2023-02-10 16:02:22,875 - working with models - model_api - INFO - setup_maps_from_raster_reclass.raster_fn: vito
-2023-02-10 16:02:22,876 - working with models - model_api - INFO - setup_maps_from_raster_reclass.reclass_table_fn: vito_reclass
-2023-02-10 16:02:22,877 - working with models - model_api - INFO - setup_maps_from_raster_reclass.reclass_variables: [&#39;manning&#39;]
-2023-02-10 16:02:22,877 - working with models - model_api - INFO - setup_maps_from_raster_reclass.variable: None
-2023-02-10 16:02:22,878 - working with models - model_api - INFO - setup_maps_from_raster_reclass.fill_method: None
-2023-02-10 16:02:22,878 - working with models - model_api - INFO - setup_maps_from_raster_reclass.reproject_method: None
-2023-02-10 16:02:22,879 - working with models - model_api - INFO - setup_maps_from_raster_reclass.name: None
-2023-02-10 16:02:22,879 - working with models - model_api - INFO - setup_maps_from_raster_reclass.split_dataset: True
-2023-02-10 16:02:22,880 - working with models - model_api - INFO - Preparing map data by reclassifying the data in vito based on vito_reclass
-2023-02-10 16:02:22,881 - working with models - data_catalog - INFO - DataCatalog: Getting vito RasterDataset raster data from /home/runner/.hydromt_data/artifact_data/v0.0.8/vito.tif
-2023-02-10 16:02:22,907 - working with models - rasterdataset - DEBUG - RasterDataset: Clip with geom - [11.775, 45.804, 12.745, 46.690]
-2023-02-10 16:02:22,936 - working with models - data_catalog - INFO - DataCatalog: Getting vito_reclass DataFrame csv data from /home/runner/work/hydromt/hydromt/docs/_examples/data/vito_reclass.csv
-2023-02-10 16:02:22,937 - working with models - dataframe - INFO - DataFrame: Read csv data.
-2023-02-10 16:02:22,949 - working with models - model_api - INFO - write.components: [&#39;config&#39;, &#39;geoms&#39;, &#39;maps&#39;]
-2023-02-10 16:02:22,950 - working with models - model_api - INFO - Writing model data to /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model_py1
-2023-02-10 16:02:22,951 - working with models - model_api - INFO - Writing model config to /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model_py1/model.ini
-2023-02-10 16:02:22,952 - working with models - model_api - DEBUG - Writing file geoms/region.geojson
-2023-02-10 16:02:22,999 - working with models - model_api - DEBUG - Writing file maps/elevtn.nc
-2023-02-10 16:02:23,010 - working with models - model_api - DEBUG - Writing file maps/manning.nc
-2023-02-10 16:02:23,134 - working with models - model_api - INFO - Writing model data to /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model_py1
-2023-02-10 16:02:23,135 - working with models - model_api - INFO - Writing model config to /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model_py1/model.ini
-2023-02-10 16:02:23,138 - working with models - model_grid - DEBUG - No grid data found, skip writing.
-2023-02-10 16:02:23,138 - working with models - model_api - DEBUG - Writing file geoms/region.geojson
-2023-02-10 16:02:23,186 - working with models - model_api - DEBUG - No forcing data found, skip writing.
-2023-02-10 16:02:23,187 - working with models - model_api - DEBUG - No states data found, skip writing.
+2023-02-13 13:11:07,353 - working with models - data_catalog - INFO - Reading data catalog artifact_data v0.0.8 from archive
+2023-02-13 13:11:07,354 - working with models - data_catalog - INFO - Parsing data catalog from /home/runner/.hydromt_data/artifact_data/v0.0.8/data_catalog.yml
+2023-02-13 13:11:07,434 - working with models - data_catalog - INFO - Parsing data catalog from data/vito_reclass.yml
+2023-02-13 13:11:07,438 - working with models - log - DEBUG - Writing log messages to new file /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model_py1/hydromt.log.
+2023-02-13 13:11:07,439 - working with models - model_api - INFO - Initializing grid_model model from hydromt (v0.6.1.dev).
+2023-02-13 13:11:07,441 - working with models - model_api - DEBUG - Setting model config options.
+2023-02-13 13:11:07,443 - working with models - model_api - INFO - setup_region.region: {&#39;subbasin&#39;: [12.2051, 45.8331], &#39;strord&#39;: 7}
+2023-02-13 13:11:07,443 - working with models - model_api - INFO - setup_region.hydrography_fn: merit_hydro
+2023-02-13 13:11:07,445 - working with models - model_api - INFO - setup_region.basin_index_fn: merit_hydro_index
+2023-02-13 13:11:07,446 - working with models - basin_mask - DEBUG - Parsed region (kind=subbasin): {&#39;strord&#39;: 7, &#39;xy&#39;: [12.2051, 45.8331]}
+2023-02-13 13:11:07,447 - working with models - data_catalog - INFO - DataCatalog: Getting merit_hydro RasterDataset raster data from /home/runner/.hydromt_data/artifact_data/v0.0.8/merit_hydro/{variable}.tif
+2023-02-13 13:11:07,617 - working with models - basin_mask - DEBUG - Getting basin IDs at point locations.
+2023-02-13 13:11:08,048 - working with models - basin_mask - INFO - subbasin bbox: [11.7750, 45.8042, 12.7450, 46.6900]
+2023-02-13 13:11:08,096 - working with models - model_api - INFO - setup_maps_from_raster.raster_fn: merit_hydro_1k
+2023-02-13 13:11:08,097 - working with models - model_api - INFO - setup_maps_from_raster.variables: elevtn
+2023-02-13 13:11:08,098 - working with models - model_api - INFO - setup_maps_from_raster.fill_method: None
+2023-02-13 13:11:08,100 - working with models - model_api - INFO - setup_maps_from_raster.name: None
+2023-02-13 13:11:08,102 - working with models - model_api - INFO - setup_maps_from_raster.reproject_method: None
+2023-02-13 13:11:08,103 - working with models - model_api - INFO - setup_maps_from_raster.split_dataset: True
+2023-02-13 13:11:08,104 - working with models - model_api - INFO - Preparing maps data from raster source merit_hydro_1k
+2023-02-13 13:11:08,105 - working with models - data_catalog - INFO - DataCatalog: Getting merit_hydro_1k RasterDataset raster data from /home/runner/.hydromt_data/artifact_data/v0.0.8/merit_hydro_1k/{variable}.tif
+2023-02-13 13:11:08,131 - working with models - rasterdataset - DEBUG - RasterDataset: Clip with geom - [11.775, 45.804, 12.745, 46.690]
+2023-02-13 13:11:08,151 - working with models - model_api - INFO - setup_maps_from_raster_reclass.raster_fn: vito
+2023-02-13 13:11:08,152 - working with models - model_api - INFO - setup_maps_from_raster_reclass.reclass_table_fn: vito_reclass
+2023-02-13 13:11:08,152 - working with models - model_api - INFO - setup_maps_from_raster_reclass.reclass_variables: [&#39;manning&#39;]
+2023-02-13 13:11:08,153 - working with models - model_api - INFO - setup_maps_from_raster_reclass.variable: None
+2023-02-13 13:11:08,154 - working with models - model_api - INFO - setup_maps_from_raster_reclass.fill_method: None
+2023-02-13 13:11:08,155 - working with models - model_api - INFO - setup_maps_from_raster_reclass.reproject_method: None
+2023-02-13 13:11:08,155 - working with models - model_api - INFO - setup_maps_from_raster_reclass.name: None
+2023-02-13 13:11:08,156 - working with models - model_api - INFO - setup_maps_from_raster_reclass.split_dataset: True
+2023-02-13 13:11:08,157 - working with models - model_api - INFO - Preparing map data by reclassifying the data in vito based on vito_reclass
+2023-02-13 13:11:08,158 - working with models - data_catalog - INFO - DataCatalog: Getting vito RasterDataset raster data from /home/runner/.hydromt_data/artifact_data/v0.0.8/vito.tif
+2023-02-13 13:11:08,183 - working with models - rasterdataset - DEBUG - RasterDataset: Clip with geom - [11.775, 45.804, 12.745, 46.690]
+2023-02-13 13:11:08,209 - working with models - data_catalog - INFO - DataCatalog: Getting vito_reclass DataFrame csv data from /home/runner/work/hydromt/hydromt/docs/_examples/data/vito_reclass.csv
+2023-02-13 13:11:08,210 - working with models - dataframe - INFO - DataFrame: Read csv data.
+2023-02-13 13:11:08,222 - working with models - model_api - INFO - write.components: [&#39;config&#39;, &#39;geoms&#39;, &#39;maps&#39;]
+2023-02-13 13:11:08,223 - working with models - model_api - INFO - Writing model data to /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model_py1
+2023-02-13 13:11:08,224 - working with models - model_api - INFO - Writing model config to /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model_py1/model.ini
+2023-02-13 13:11:08,226 - working with models - model_api - DEBUG - Writing file geoms/region.geojson
+2023-02-13 13:11:08,278 - working with models - model_api - DEBUG - Writing file maps/elevtn.nc
+2023-02-13 13:11:08,288 - working with models - model_api - DEBUG - Writing file maps/manning.nc
+2023-02-13 13:11:08,410 - working with models - model_api - INFO - Writing model data to /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model_py1
+2023-02-13 13:11:08,413 - working with models - model_api - INFO - Writing model config to /home/runner/work/hydromt/hydromt/docs/_examples/tmp_grid_model_py1/model.ini
+2023-02-13 13:11:08,414 - working with models - model_grid - DEBUG - No grid data found, skip writing.
+2023-02-13 13:11:08,415 - working with models - model_api - DEBUG - Writing file geoms/region.geojson
+2023-02-13 13:11:08,468 - working with models - model_api - DEBUG - No forcing data found, skip writing.
+2023-02-13 13:11:08,469 - working with models - model_api - DEBUG - No states data found, skip writing.
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">

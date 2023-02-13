@@ -518,6 +518,7 @@
 <li class="toctree-l1"><a class="reference internal" href="_generated/hydromt.io.open_timeseries_from_table.html">hydromt.io.open_timeseries_from_table</a></li>
 </ul>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="_generated/hydromt.DataArray.raster.to_xyz_tiles.html">hydromt.DataArray.raster.to_xyz_tiles</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_generated/hydromt.DataArray.raster.to_raster.html">hydromt.DataArray.raster.to_raster</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_generated/hydromt.Dataset.raster.to_mapstack.html">hydromt.Dataset.raster.to_mapstack</a></li>
 </ul>
@@ -682,6 +683,7 @@
 <li class="toctree-l1"><a class="reference internal" href="_generated/hydromt.flw.dem_adjust.html">hydromt.flw.dem_adjust</a></li>
 </ul>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="_generated/hydromt.gis_utils.create_vrt.html">hydromt.gis_utils.create_vrt</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_generated/hydromt.gis_utils.spread2d.html">hydromt.gis_utils.spread2d</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_generated/hydromt.gis_utils.reggrid_area.html">hydromt.gis_utils.reggrid_area</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_generated/hydromt.gis_utils.cellarea.html">hydromt.gis_utils.cellarea</a></li>
@@ -1405,10 +1407,13 @@
 <h3>Raster writing methods<a class="headerlink" href="#raster-writing-methods" title="Permalink to this heading">#</a></h3>
 <table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="_generated/hydromt.DataArray.raster.to_raster.html#hydromt.DataArray.raster.to_raster" title="hydromt.DataArray.raster.to_raster"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataArray.raster.to_raster</span></code></a>(raster_path[, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="_generated/hydromt.DataArray.raster.to_xyz_tiles.html#hydromt.DataArray.raster.to_xyz_tiles" title="hydromt.DataArray.raster.to_xyz_tiles"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataArray.raster.to_xyz_tiles</span></code></a>(root, ...[, ...])</p></td>
+<td><p>Export rasterdataset to tiles in a xyz structure</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="_generated/hydromt.DataArray.raster.to_raster.html#hydromt.DataArray.raster.to_raster" title="hydromt.DataArray.raster.to_raster"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataArray.raster.to_raster</span></code></a>(raster_path[, ...])</p></td>
 <td><p>Write DataArray object to a gdal-writable raster file.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="_generated/hydromt.Dataset.raster.to_mapstack.html#hydromt.Dataset.raster.to_mapstack" title="hydromt.Dataset.raster.to_mapstack"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Dataset.raster.to_mapstack</span></code></a>(root[, driver, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="_generated/hydromt.Dataset.raster.to_mapstack.html#hydromt.Dataset.raster.to_mapstack" title="hydromt.Dataset.raster.to_mapstack"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Dataset.raster.to_mapstack</span></code></a>(root[, driver, ...])</p></td>
 <td><p>Write the Dataset object to one gdal-writable raster files per variable.</p></td>
 </tr>
 </tbody>
@@ -1923,16 +1928,19 @@ visit the <a class="reference external" href="https://deltares.github.io/pyflwdi
 <h3>Raster<a class="headerlink" href="#raster" title="Permalink to this heading">#</a></h3>
 <table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="_generated/hydromt.gis_utils.spread2d.html#hydromt.gis_utils.spread2d" title="hydromt.gis_utils.spread2d"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gis_utils.spread2d</span></code></a>(da_obs[, da_mask, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="_generated/hydromt.gis_utils.create_vrt.html#hydromt.gis_utils.create_vrt" title="hydromt.gis_utils.create_vrt"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gis_utils.create_vrt</span></code></a>(vrt_path[, ...])</p></td>
+<td><p>Creates a .vrt file from a list op raster datasets by either passing the list directly (file_list_path) or by inferring it by passing a path containing wildcards (files_path) of the location(s) of the raster datasets</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="_generated/hydromt.gis_utils.spread2d.html#hydromt.gis_utils.spread2d" title="hydromt.gis_utils.spread2d"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gis_utils.spread2d</span></code></a>(da_obs[, da_mask, ...])</p></td>
 <td><p>Returns values of <cite>da_obs</cite> spreaded to cells with <cite>nodata</cite> value within <cite>da_mask</cite>, powered by <code class="xref py py-meth docutils literal notranslate"><span class="pre">pyflwdir.gis_utils.spread2d()</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="_generated/hydromt.gis_utils.reggrid_area.html#hydromt.gis_utils.reggrid_area" title="hydromt.gis_utils.reggrid_area"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gis_utils.reggrid_area</span></code></a>(lats, lons)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="_generated/hydromt.gis_utils.reggrid_area.html#hydromt.gis_utils.reggrid_area" title="hydromt.gis_utils.reggrid_area"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gis_utils.reggrid_area</span></code></a>(lats, lons)</p></td>
 <td><p>Returns the cell area [m2] for a regular grid based on its cell centres lat, lon coordinates.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="_generated/hydromt.gis_utils.cellarea.html#hydromt.gis_utils.cellarea" title="hydromt.gis_utils.cellarea"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gis_utils.cellarea</span></code></a>(lat[, xres, yres])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="_generated/hydromt.gis_utils.cellarea.html#hydromt.gis_utils.cellarea" title="hydromt.gis_utils.cellarea"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gis_utils.cellarea</span></code></a>(lat[, xres, yres])</p></td>
 <td><p>Return the area [m2] of cell based on the cell center latitude and its resolution in measured in degrees.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="_generated/hydromt.gis_utils.cellres.html#hydromt.gis_utils.cellres" title="hydromt.gis_utils.cellres"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gis_utils.cellres</span></code></a>(lat[, xres, yres])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="_generated/hydromt.gis_utils.cellres.html#hydromt.gis_utils.cellres" title="hydromt.gis_utils.cellres"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gis_utils.cellres</span></code></a>(lat[, xres, yres])</p></td>
 <td><p>Return the cell (x, y) resolution [m] based on cell center latitude and its resolution measured in degrees.</p></td>
 </tr>
 </tbody>

@@ -380,7 +380,6 @@
         <span class="n">unit_add</span><span class="o">=</span><span class="p">{},</span>
         <span class="n">units</span><span class="o">=</span><span class="p">{},</span>
         <span class="n">meta</span><span class="o">=</span><span class="p">{},</span>
-        <span class="n">placeholders</span><span class="o">=</span><span class="p">{},</span>
         <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
     <span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Initiates data adapter for geospatial raster data.</span>
@@ -418,8 +417,6 @@
 <span class="sd">        meta: dict, optional</span>
 <span class="sd">            Metadata information of dataset, preferably containing the following keys:</span>
 <span class="sd">            {&#39;source_version&#39;, &#39;source_url&#39;, &#39;source_license&#39;, &#39;paper_ref&#39;, &#39;paper_doi&#39;, &#39;category&#39;}</span>
-<span class="sd">        placeholders: dict, optional</span>
-<span class="sd">            Placeholders to expand yaml entry to multiple entries (name and path) based on placeholder values</span>
 <span class="sd">        **kwargs</span>
 <span class="sd">            Additional key-word arguments passed to the driver.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -433,7 +430,6 @@
             <span class="n">unit_mult</span><span class="o">=</span><span class="n">unit_mult</span><span class="p">,</span>
             <span class="n">unit_add</span><span class="o">=</span><span class="n">unit_add</span><span class="p">,</span>
             <span class="n">meta</span><span class="o">=</span><span class="n">meta</span><span class="p">,</span>
-            <span class="n">placeholders</span><span class="o">=</span><span class="n">placeholders</span><span class="p">,</span>
             <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
         <span class="p">)</span>
         <span class="c1"># TODO: see if the units argument can be solved with unit_mult/unit_add</span>
@@ -523,6 +519,7 @@
         <span class="n">bbox</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">geom</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">buffer</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">zoom_level</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">align</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">variables</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">time_tuple</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -540,16 +537,26 @@
 
         <span class="c1"># Extract storage_options from kwargs to instantiate fsspec object correctly</span>
         <span class="k">if</span> <span class="s2">&quot;storage_options&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span><span class="p">:</span>
-            <span class="n">kwargs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;storage_options&quot;</span><span class="p">]</span>
+            <span class="n">so_kwargs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;storage_options&quot;</span><span class="p">]</span>
             <span class="c1"># For s3, anonymous connection still requires --no-sign-request profile to read the data</span>
             <span class="c1"># setting environment variable works</span>
-            <span class="k">if</span> <span class="s2">&quot;anon&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="k">if</span> <span class="s2">&quot;anon&quot;</span> <span class="ow">in</span> <span class="n">so_kwargs</span><span class="p">:</span>
                 <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;AWS_NO_SIGN_REQUEST&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;YES&quot;</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;AWS_NO_SIGN_REQUEST&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;NO&quot;</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">kwargs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
-        <span class="n">fns</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">resolve_paths</span><span class="p">(</span><span class="n">time_tuple</span><span class="o">=</span><span class="n">time_tuple</span><span class="p">,</span> <span class="n">variables</span><span class="o">=</span><span class="n">variables</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+            <span class="n">so_kwargs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+
+        <span class="c1"># resolve path based on time, zoom level and/or variables</span>
+        <span class="n">fns</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">resolve_paths</span><span class="p">(</span>
+            <span class="n">time_tuple</span><span class="o">=</span><span class="n">time_tuple</span><span class="p">,</span>
+            <span class="n">variables</span><span class="o">=</span><span class="n">variables</span><span class="p">,</span>
+            <span class="n">zoom_level</span><span class="o">=</span><span class="n">zoom_level</span><span class="p">,</span>
+            <span class="n">geom</span><span class="o">=</span><span class="n">geom</span><span class="p">,</span>
+            <span class="n">bbox</span><span class="o">=</span><span class="n">bbox</span><span class="p">,</span>
+            <span class="n">logger</span><span class="o">=</span><span class="n">logger</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">so_kwargs</span><span class="p">,</span>
+        <span class="p">)</span>
 
         <span class="n">kwargs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
         <span class="c1"># zarr can use storage options directly, the rest should be converted to file-like objects</span>

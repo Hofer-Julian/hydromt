@@ -341,6 +341,7 @@
 
 <li class="toctree-l1"><a class="reference internal" href="../_examples/reading_tabular_data.html">Example: Reading 2D tabular data (DataFrame)</a></li>
 
+<li class="toctree-l1"><a class="reference internal" href="../_examples/working_with_tiled_raster_data.html">Example: Reading tiled raster data with different zoom levels</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Working with models in HydroMT</span></p>
 <ul class="nav bd-sidenav">
@@ -433,6 +434,8 @@ The <code class="docutils literal notranslate"><span class="pre">rename</span></
 <span class="w">  </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/absolut_path/to/my_dataset.extension OR relative_path/to_my_dataset.extension</span>
 <span class="w">  </span><span class="nt">placeholders</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">[</span><span class="nv">placeholder_key</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">placeholder_values</span><span class="p p-Indicator">]]</span>
+<span class="w">  </span><span class="nt">zoom_levels</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">[</span><span class="nv">zoom_level</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">zoom_resolution</span><span class="p p-Indicator">]</span>
 <span class="w">  </span><span class="nt">rename</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">old_variable_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">new_variable_name</span>
 <span class="w">  </span><span class="nt">unit_add</span><span class="p">:</span>
@@ -479,9 +482,15 @@ Usual categories within HydroMT are <em>geography</em>, <em>topography</em>, <em
 but the user is free to define its own categories.</p></li>
 <li><p><strong>nodata</strong> (required if missing in the data): nodata value of the input data. For Raster- and GeoDatasets this is only used if not inferred from the original input data.
 For GeoDataFrame provided nodata values are converted to nan values.</p></li>
-<li><p><strong>placeholder</strong>: this argument can be used to generate multiple sources with a single entry in the data catalog file. If different files follow a logical
+<li><p><strong>placeholder</strong> (optional): this argument can be used to generate multiple sources with a single entry in the data catalog file. If different files follow a logical
 nomenclature, multiple data sources can be defined by iterating through all possible combinations of the placeholders. The placeholder names should be given in the
-source name and the path and its values listed under the placeholder argument.</p></li>
+source name and the path and its values listed under the placeholder argument.
+<strong>zoom_level</strong> (optional): this argument can be used for a <em>RasterDatasets</em> that contain multiple zoom levels of different resolution.
+It should contain a list of numeric zoom levels that correspond to the <cite>zoom_level</cite> key in file path, e.g.,  <code class="docutils literal notranslate"><span class="pre">&quot;path/to/my/files/{zoom_level}/data.tif&quot;</span></code>
+and corresponding resolution, expressed in the unit of the data crs.
+The <em>crs</em> argument is therefore required when using zoom_levels to correctly interpret the unit of the resolution.
+The required zoom level can be requested from HydroMT as argument to the <cite>DataCatalog.get_rasterdataset</cite> method,
+see <a class="reference internal" href="../_examples/working_with_tiled_raster_data.html"><span class="doc">Reading tiled raster data with different zoom levels</span></a>.</p></li>
 <li><p><strong>rename</strong>: pairs of variable names in the input data (<em>old_variable_name</em>) and the corresponding
 <a class="reference internal" href="data_conventions.html#data-convention"><span class="std std-ref">HydroMT variable naming conventions</span></a> and <a class="reference internal" href="data_types.html#dimensions"><span class="std std-ref">recognized dimension names</span></a> (<em>new_variable_name</em>).</p></li>
 <li><p><strong>units</strong> (optional and for <em>RasterDataset</em> only). specify the units of the input data: supported are [m3], [m], [mm], and [m3/s].
