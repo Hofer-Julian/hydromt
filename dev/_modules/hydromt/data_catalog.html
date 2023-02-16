@@ -353,7 +353,6 @@
 <span class="kn">import</span> <span class="nn">yaml</span>
 <span class="kn">import</span> <span class="nn">logging</span>
 <span class="kn">import</span> <span class="nn">requests</span>
-<span class="kn">from</span> <span class="nn">urllib.parse</span> <span class="kn">import</span> <span class="n">urlparse</span>
 <span class="kn">import</span> <span class="nn">shutil</span>
 <span class="kn">from</span> <span class="nn">packaging.version</span> <span class="kn">import</span> <span class="n">Version</span>
 <span class="kn">import</span> <span class="nn">itertools</span>
@@ -365,6 +364,7 @@
     <span class="n">GeoDataFrameAdapter</span><span class="p">,</span>
     <span class="n">DataFrameAdapter</span><span class="p">,</span>
 <span class="p">)</span>
+<span class="kn">from</span> <span class="nn">.data_adapter.caching</span> <span class="kn">import</span> <span class="n">_uri_validator</span><span class="p">,</span> <span class="n">_copyfile</span><span class="p">,</span> <span class="n">HYDROMT_DATADIR</span>
 
 <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 
@@ -376,13 +376,15 @@
 <div class="viewcode-block" id="DataCatalog"><a class="viewcode-back" href="../../_generated/hydromt.data_catalog.DataCatalog.html#hydromt.data_catalog.DataCatalog">[docs]</a><span class="k">class</span> <span class="nc">DataCatalog</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="c1"># root URL with data_catalog file</span>
     <span class="n">_url</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;https://raw.githubusercontent.com/Deltares/hydromt/main/data/predefined_catalogs.yml&quot;</span>
-    <span class="n">_cache_dir</span> <span class="o">=</span> <span class="n">join</span><span class="p">(</span><span class="n">Path</span><span class="o">.</span><span class="n">home</span><span class="p">(),</span> <span class="s2">&quot;.hydromt_data&quot;</span><span class="p">)</span>
+    <span class="n">_cache_dir</span> <span class="o">=</span> <span class="n">HYDROMT_DATADIR</span>
 
 <div class="viewcode-block" id="DataCatalog.__init__"><a class="viewcode-back" href="../../_generated/hydromt.data_catalog.DataCatalog.html#hydromt.data_catalog.DataCatalog.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">data_libs</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">List</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[],</span>
         <span class="n">fallback_lib</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;artifact_data&quot;</span><span class="p">,</span>
         <span class="n">logger</span><span class="o">=</span><span class="n">logger</span><span class="p">,</span>
+        <span class="n">cache</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">cache_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="o">**</span><span class="n">artifact_keys</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Catalog of DataAdapter sources to easily read from different files</span>
@@ -397,6 +399,11 @@
 <span class="sd">        fallback_lib:</span>
 <span class="sd">            Name of pre-defined data catalog to read if no data_libs are provided, by default &#39;artifact_data&#39;.</span>
 <span class="sd">            If None, no default data catalog is used.</span>
+<span class="sd">        cache: bool, optional</span>
+<span class="sd">            Set to true to cache data locally before reading.</span>
+<span class="sd">            Currently only implemented for tiled rasterdatasets, by default False.</span>
+<span class="sd">        cache_dir: str, Path, optional</span>
+<span class="sd">            Folder root path to cach data to, by default ~/.hydromt_data</span>
 <span class="sd">        artifact_keys:</span>
 <span class="sd">            Deprecated from version v0.5</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -409,6 +416,11 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_used_data</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_fallback_lib</span> <span class="o">=</span> <span class="n">fallback_lib</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">logger</span> <span class="o">=</span> <span class="n">logger</span>
+
+        <span class="c1"># caching</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cache</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span><span class="n">cache</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">cache_dir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_cache_dir</span> <span class="o">=</span> <span class="n">cache_dir</span>
 
         <span class="c1"># legacy code. to be removed</span>
         <span class="k">for</span> <span class="n">lib</span><span class="p">,</span> <span class="n">version</span> <span class="ow">in</span> <span class="n">artifact_keys</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
@@ -538,13 +550,7 @@
             <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
         <span class="c1"># download data if url</span>
         <span class="k">if</span> <span class="n">_uri_validator</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">urlpath</span><span class="p">))</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">isfile</span><span class="p">(</span><span class="n">archive_fn</span><span class="p">):</span>
-            <span class="k">with</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">urlpath</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="k">as</span> <span class="n">r</span><span class="p">:</span>
-                <span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">status_code</span> <span class="o">!=</span> <span class="mi">200</span><span class="p">:</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Data archive not found at </span><span class="si">{</span><span class="n">urlpath</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-                    <span class="k">return</span> <span class="n">r</span><span class="o">.</span><span class="n">status_code</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Downloading data archive file to </span><span class="si">{</span><span class="n">archive_fn</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-                <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">archive_fn</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-                    <span class="n">shutil</span><span class="o">.</span><span class="n">copyfileobj</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">raw</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+            <span class="n">_copyfile</span><span class="p">(</span><span class="n">urlpath</span><span class="p">,</span> <span class="n">archive_fn</span><span class="p">)</span>
         <span class="c1"># unpack data</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">isfile</span><span class="p">(</span><span class="n">yml_fn</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unpacking data from </span><span class="si">{</span><span class="n">archive_fn</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -621,11 +627,13 @@
             <span class="n">meta</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">category</span><span class="o">=</span><span class="n">yml</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;category&quot;</span><span class="p">))</span>
         <span class="c1"># read meta data</span>
         <span class="n">meta</span> <span class="o">=</span> <span class="n">yml</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;meta&quot;</span><span class="p">,</span> <span class="n">meta</span><span class="p">)</span>
+        <span class="n">catalog_name</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">basename</span><span class="p">(</span><span class="n">urlpath</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
         <span class="c1"># TODO keep meta data!! Note only possible if yml files are not merged</span>
         <span class="k">if</span> <span class="n">root</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">root</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;root&quot;</span><span class="p">,</span> <span class="n">dirname</span><span class="p">(</span><span class="n">urlpath</span><span class="p">))</span>
+            <span class="n">root</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;root&quot;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">urlpath</span><span class="p">))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span>
             <span class="n">yml</span><span class="p">,</span>
+            <span class="n">catalog_name</span><span class="o">=</span><span class="n">catalog_name</span><span class="p">,</span>
             <span class="n">root</span><span class="o">=</span><span class="n">root</span><span class="p">,</span>
             <span class="n">category</span><span class="o">=</span><span class="n">meta</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;category&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
             <span class="n">mark_used</span><span class="o">=</span><span class="n">mark_used</span><span class="p">,</span>
@@ -634,6 +642,7 @@
 <div class="viewcode-block" id="DataCatalog.from_dict"><a class="viewcode-back" href="../../_generated/hydromt.data_catalog.DataCatalog.from_dict.html#hydromt.data_catalog.DataCatalog.from_dict">[docs]</a>    <span class="k">def</span> <span class="nf">from_dict</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">data_dict</span><span class="p">:</span> <span class="n">Dict</span><span class="p">,</span>
+        <span class="n">catalog_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
         <span class="n">root</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Path</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">category</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">mark_used</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
@@ -644,6 +653,8 @@
 <span class="sd">        ----------</span>
 <span class="sd">        data_dict: dict</span>
 <span class="sd">            Dictionary of data_sources.</span>
+<span class="sd">        catalog_name: str, optional</span>
+<span class="sd">            Name of data catalog</span>
 <span class="sd">        root: str, Path, optional</span>
 <span class="sd">            Global root for all relative paths in `data_dict`.</span>
 <span class="sd">        category: str, optional</span>
@@ -683,6 +694,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">data_dict</span> <span class="o">=</span> <span class="n">_parse_data_dict</span><span class="p">(</span>
             <span class="n">data_dict</span><span class="p">,</span>
+            <span class="n">catalog_name</span><span class="o">=</span><span class="n">catalog_name</span><span class="p">,</span>
             <span class="n">root</span><span class="o">=</span><span class="n">root</span><span class="p">,</span>
             <span class="n">category</span><span class="o">=</span><span class="n">category</span><span class="p">,</span>
         <span class="p">)</span>
@@ -942,6 +954,7 @@
             <span class="n">variables</span><span class="o">=</span><span class="n">variables</span><span class="p">,</span>
             <span class="n">time_tuple</span><span class="o">=</span><span class="n">time_tuple</span><span class="p">,</span>
             <span class="n">single_var_as_array</span><span class="o">=</span><span class="n">single_var_as_array</span><span class="p">,</span>
+            <span class="n">cache_root</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_cache_dir</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">cache</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
             <span class="n">logger</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">,</span>
         <span class="p">)</span>
         <span class="k">return</span> <span class="n">obj</span></div>
@@ -1115,6 +1128,7 @@
 
 <span class="k">def</span> <span class="nf">_parse_data_dict</span><span class="p">(</span>
     <span class="n">data_dict</span><span class="p">:</span> <span class="n">Dict</span><span class="p">,</span>
+    <span class="n">catalog_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
     <span class="n">root</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Path</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">category</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">:</span>
@@ -1173,19 +1187,19 @@
                 <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">options</span><span class="o">.</span><span class="n">keys</span><span class="p">(),</span> <span class="n">combination</span><span class="p">):</span>
                     <span class="n">path_n</span> <span class="o">=</span> <span class="n">path_n</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;{&quot;</span> <span class="o">+</span> <span class="n">k</span> <span class="o">+</span> <span class="s2">&quot;}&quot;</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
                     <span class="n">name_n</span> <span class="o">=</span> <span class="n">name_n</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;{&quot;</span> <span class="o">+</span> <span class="n">k</span> <span class="o">+</span> <span class="s2">&quot;}&quot;</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
-                <span class="n">data</span><span class="p">[</span><span class="n">name_n</span><span class="p">]</span> <span class="o">=</span> <span class="n">adapter</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="n">path_n</span><span class="p">,</span> <span class="n">meta</span><span class="o">=</span><span class="n">meta</span><span class="p">,</span> <span class="o">**</span><span class="n">source</span><span class="p">)</span>
+                <span class="n">data</span><span class="p">[</span><span class="n">name_n</span><span class="p">]</span> <span class="o">=</span> <span class="n">adapter</span><span class="p">(</span>
+                    <span class="n">path</span><span class="o">=</span><span class="n">path_n</span><span class="p">,</span>
+                    <span class="n">name</span><span class="o">=</span><span class="n">name_n</span><span class="p">,</span>
+                    <span class="n">catalog_name</span><span class="o">=</span><span class="n">catalog_name</span><span class="p">,</span>
+                    <span class="n">meta</span><span class="o">=</span><span class="n">meta</span><span class="p">,</span>
+                    <span class="o">**</span><span class="n">source</span><span class="p">,</span>
+                <span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">data</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">adapter</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="n">path</span><span class="p">,</span> <span class="n">meta</span><span class="o">=</span><span class="n">meta</span><span class="p">,</span> <span class="o">**</span><span class="n">source</span><span class="p">)</span>
+            <span class="n">data</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">adapter</span><span class="p">(</span>
+                <span class="n">path</span><span class="o">=</span><span class="n">path</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">catalog_name</span><span class="o">=</span><span class="n">catalog_name</span><span class="p">,</span> <span class="n">meta</span><span class="o">=</span><span class="n">meta</span><span class="p">,</span> <span class="o">**</span><span class="n">source</span>
+            <span class="p">)</span>
 
     <span class="k">return</span> <span class="n">data</span>
-
-
-<span class="k">def</span> <span class="nf">_uri_validator</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="n">result</span> <span class="o">=</span> <span class="n">urlparse</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-        <span class="k">return</span> <span class="nb">all</span><span class="p">([</span><span class="n">result</span><span class="o">.</span><span class="n">scheme</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">netloc</span><span class="p">])</span>
-    <span class="k">except</span><span class="p">:</span>
-        <span class="k">return</span> <span class="kc">False</span>
 
 
 <span class="k">def</span> <span class="nf">_yml_from_uri_or_path</span><span class="p">(</span><span class="n">uri_or_path</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Path</span><span class="p">,</span> <span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">:</span>

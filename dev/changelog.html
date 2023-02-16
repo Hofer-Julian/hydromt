@@ -373,12 +373,13 @@ method = [‘debruin’, ‘makkink’, ‘penman-monteith_rh_simple’, ‘penm
 <li><p>write raster (DataArray) to tiles in xyz stucture with the RasterDataArray.to_xyz_tiles method</p></li>
 <li><p>add zoom_level to DataCatalog.get_rasterdataset method</p></li>
 <li><p>new write_vrt function in gis_utils to write ‘.vrt’ using GDAL</p></li>
-<li><p>experimental: support for remote data with a new yml data source <code class="docutils literal notranslate"><span class="pre">filesystem</span></code> attribute. Supported filesystems are [local, gcs, s3].
-Profile information can be passed in the data catalog <code class="docutils literal notranslate"><span class="pre">kwargs</span></code> under <strong>storage_options</strong>.</p></li>
 <li><p>new predefined catalog for cmip6 data stored on Google Cloud Storage <code class="docutils literal notranslate"><span class="pre">cmip6_data</span></code>. Requires dependency gcsfs.</p></li>
 <li><p>new predefined catalog for public data stored on Amazon Web Services <code class="docutils literal notranslate"><span class="pre">aws_data</span></code>. Requires dependency s3fs.</p></li>
 <li><p>support for CMIP6 dataset.</p></li>
 <li><p>new DataCatalog preprocess function <code class="docutils literal notranslate"><span class="pre">harmonise_dims</span></code> for manipulation and harmonisation of array dimensions.</p></li>
+<li><p>experimental: support for remote data with a new yml data source <code class="docutils literal notranslate"><span class="pre">filesystem</span></code> attribute. Supported filesystems are [local, gcs, s3].
+Profile information can be passed in the data catalog <code class="docutils literal notranslate"><span class="pre">kwargs</span></code> under <strong>storage_options</strong>.</p></li>
+<li><p>experimental: new caching option for tiled rasterdatasets (’–cache’ from command line)</p></li>
 </ul>
 </section>
 <section id="changed">
@@ -387,7 +388,7 @@ Profile information can be passed in the data catalog <code class="docutils lite
 <li><p>Revamped the GeoDataset (vector.py) to now work with geometry objects and wkt strings besides xy coordinates <a class="reference external" href="https://github.com/Deltares/hydromt/pull/276">PR #276</a></p></li>
 <li><p>GeoDataset can write to .nc that is compliant with ogr</p></li>
 <li><p>Support for rotated grids in RasterDataset/Array, with new rotation and origin properties <a class="reference external" href="https://github.com/Deltares/hydromt/pull/272">PR #272</a></p></li>
-<li><p>If the model root already contains files when setting root, this will cause an error unless force overwrite (mode=’w+’ or –fo/–force-overwrite) from command line <a class="reference external" href="https://github.com/Deltares/hydromt/pull/278">PR #278</a></p></li>
+<li><p>If the model root already contains files when setting root, this will cause an error unless force overwrite (mode=’w+’ or –fo/–force-overwrite from command line) <a class="reference external" href="https://github.com/Deltares/hydromt/pull/278">PR #278</a></p></li>
 <li><p>Removed resolution (‘-r’, ‘–res’) from the hydromt build cli, made region (now ‘-r’) an optional argument <a class="reference external" href="https://github.com/Deltares/hydromt/pull/278">PR #278</a></p></li>
 <li><p>Removed pygeos as an optional dependency, hydromt now relies entirely on shapely 2.0 <a class="reference external" href="https://github.com/Deltares/hydromt/pull/258">PR #258</a></p></li>
 <li><p>Changed shapely to require version ‘2.0.0’ or later</p></li>

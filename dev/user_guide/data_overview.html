@@ -408,6 +408,13 @@ as well as meta data for reproducibility.</p>
 HydroMT will use the data stored in the <a class="reference internal" href="data_existing_cat.html#existing-catalog"><span class="std std-ref">artifact_data</span></a>
 which contains an extract of global data for a small region around the Piave river in Northern Italy.</p>
 </div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Tiles of tiled rasterdatasets which are described by a .vrt file can be cached locally (starting from v0.7.0).
+The requested data tiles will by default be stored to ~/.hydromt_data.
+To use this option from command line add <cite>–cache</cite> to the <cite>hydromt build</cite> or <cite>hydromt update</cite> commands
+In Python the cache is a property of the DataCatalog and can be set at Initialization.</p>
+</div>
 <section id="from-cli">
 <span id="get-data-cli"></span><h2>From CLI<a class="headerlink" href="#from-cli" title="Permalink to this heading">#</a></h2>
 <p>When using the HydroMT command line interface (CLI), one can provide a data catalog by specifying the

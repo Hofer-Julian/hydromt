@@ -686,10 +686,10 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-2023-02-14 15:28:02,685 - tiling - log - INFO - HydroMT version: 0.6.1.dev
-2023-02-14 15:28:02,741 - tiling - data_catalog - INFO - Reading data catalog artifact_data v0.0.8 from archive
-2023-02-14 15:28:02,742 - tiling - data_catalog - INFO - Parsing data catalog from /home/runner/.hydromt_data/artifact_data/v0.0.8/data_catalog.yml
-2023-02-14 15:28:02,814 - tiling - data_catalog - INFO - DataCatalog: Getting merit_hydro RasterDataset raster data from /home/runner/.hydromt_data/artifact_data/v0.0.8/merit_hydro/{variable}.tif
+2023-02-16 13:06:30,088 - tiling - log - INFO - HydroMT version: 0.6.1.dev
+2023-02-16 13:06:30,143 - tiling - data_catalog - INFO - Reading data catalog artifact_data v0.0.8 from archive
+2023-02-16 13:06:30,144 - tiling - data_catalog - INFO - Parsing data catalog from /home/runner/.hydromt_data/artifact_data/v0.0.8/data_catalog.yml
+2023-02-16 13:06:30,216 - tiling - data_catalog - INFO - DataCatalog: Getting merit_hydro RasterDataset raster data from /home/runner/.hydromt_data/artifact_data/v0.0.8/merit_hydro/{variable}.tif
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -710,11 +710,11 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write the database in XYZ stucture</span>
-<span class="n">folder</span> <span class="o">=</span> <span class="s2">&quot;tmpdir&quot;</span>
 <span class="n">name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">source</span><span class="si">}</span><span class="s2">_xyz&quot;</span>
+<span class="n">root</span> <span class="o">=</span> <span class="n">join</span><span class="p">(</span><span class="s2">&quot;tmpdir&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
 <span class="n">zoom_levels</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>  <span class="c1"># note that you can skip a zoom level</span>
 <span class="n">da0</span><span class="o">.</span><span class="n">raster</span><span class="o">.</span><span class="n">to_xyz_tiles</span><span class="p">(</span>
-    <span class="n">root</span><span class="o">=</span><span class="n">join</span><span class="p">(</span><span class="n">folder</span><span class="p">,</span> <span class="n">name</span><span class="p">),</span>
+    <span class="n">root</span><span class="o">=</span><span class="n">root</span><span class="p">,</span>
     <span class="n">tile_size</span><span class="o">=</span><span class="mi">256</span><span class="p">,</span>
     <span class="n">zoom_levels</span><span class="o">=</span><span class="n">zoom_levels</span><span class="p">,</span>
     <span class="n">driver</span><span class="o">=</span><span class="s2">&quot;GTiff&quot;</span><span class="p">,</span>  <span class="c1"># try also &#39;netcdf4&#39;</span>
@@ -768,7 +768,7 @@ Tiles at zoomlevel 5 smaller than tile_size 256
 <span class="kn">from</span> <span class="nn">hydromt</span> <span class="kn">import</span> <span class="n">DataCatalog</span>
 
 <span class="c1"># Load the yml into a DataCatalog</span>
-<span class="n">data_catalog</span> <span class="o">=</span> <span class="n">DataCatalog</span><span class="p">(</span><span class="n">join</span><span class="p">(</span><span class="n">folder</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">.yml&quot;</span><span class="p">),</span> <span class="n">logger</span><span class="o">=</span><span class="n">logger</span><span class="p">)</span>
+<span class="n">data_catalog</span> <span class="o">=</span> <span class="n">DataCatalog</span><span class="p">(</span><span class="n">join</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">.yml&quot;</span><span class="p">),</span> <span class="n">logger</span><span class="o">=</span><span class="n">logger</span><span class="p">)</span>
 
 <span class="c1"># View the structure of the DataCatalog</span>
 <span class="n">data_catalog</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
@@ -780,7 +780,7 @@ Tiles at zoomlevel 5 smaller than tile_size 256
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-2023-02-14 15:28:04,774 - tiling - data_catalog - INFO - Parsing data catalog from tmpdir/merit_hydro_xyz.yml
+2023-02-16 13:06:32,069 - tiling - data_catalog - INFO - Parsing data catalog from tmpdir/merit_hydro_xyz/merit_hydro_xyz.yml
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -793,7 +793,7 @@ crs: 4326
 data_type: RasterDataset
 driver: raster
 filesystem: local
-path: /home/runner/work/hydromt/hydromt/docs/_examples/tmpdir/merit_hydro_xyz/{zoom_level}/merit_hydro_xyz.vrt
+path: /home/runner/work/hydromt/hydromt/docs/_examples/tmpdir/merit_hydro_xyz/merit_hydro_xyz_zl{zoom_level}.vrt
 zoom_levels:
   0: 0.0008333333333325754
   1: 0.0016666666666651508
@@ -817,7 +817,7 @@ zoom_levels:
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-2023-02-14 15:28:04,784 - tiling - data_catalog - INFO - DataCatalog: Getting merit_hydro_xyz RasterDataset raster data from /home/runner/work/hydromt/hydromt/docs/_examples/tmpdir/merit_hydro_xyz/{zoom_level}/merit_hydro_xyz.vrt
+2023-02-16 13:06:32,079 - tiling - data_catalog - INFO - DataCatalog: Getting merit_hydro_xyz RasterDataset raster data from /home/runner/work/hydromt/hydromt/docs/_examples/tmpdir/merit_hydro_xyz/merit_hydro_xyz_zl{zoom_level}.vrt
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -845,10 +845,10 @@ zoom_levels:
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-2023-02-14 15:28:04,807 - tiling - data_catalog - INFO - DataCatalog: Getting merit_hydro_xyz RasterDataset raster data from /home/runner/work/hydromt/hydromt/docs/_examples/tmpdir/merit_hydro_xyz/{zoom_level}/merit_hydro_xyz.vrt
-2023-02-14 15:28:04,808 - tiling - data_adapter - INFO - Getting data for zoom_level 1 based on res (0.0016666666666666668, &#39;degree&#39;)
-2023-02-14 15:28:04,825 - tiling - data_catalog - INFO - DataCatalog: Getting merit_hydro_xyz RasterDataset raster data from /home/runner/work/hydromt/hydromt/docs/_examples/tmpdir/merit_hydro_xyz/{zoom_level}/merit_hydro_xyz.vrt
-2023-02-14 15:28:04,827 - tiling - data_adapter - INFO - Getting data for zoom_level 2 based on res (1000.0, &#39;meter&#39;)
+2023-02-16 13:06:32,101 - tiling - data_catalog - INFO - DataCatalog: Getting merit_hydro_xyz RasterDataset raster data from /home/runner/work/hydromt/hydromt/docs/_examples/tmpdir/merit_hydro_xyz/merit_hydro_xyz_zl{zoom_level}.vrt
+2023-02-16 13:06:32,102 - tiling - data_adapter - INFO - Getting data for zoom_level 1 based on res (0.0016666666666666668, &#39;degree&#39;)
+2023-02-16 13:06:32,118 - tiling - data_catalog - INFO - DataCatalog: Getting merit_hydro_xyz RasterDataset raster data from /home/runner/work/hydromt/hydromt/docs/_examples/tmpdir/merit_hydro_xyz/merit_hydro_xyz_zl{zoom_level}.vrt
+2023-02-16 13:06:32,120 - tiling - data_adapter - INFO - Getting data for zoom_level 2 based on res (1000.0, &#39;meter&#39;)
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -866,7 +866,7 @@ zoom_levels:
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-2023-02-14 15:28:04,847 - tiling - data_catalog - INFO - DataCatalog: Getting merit_hydro_xyz RasterDataset raster data from /home/runner/work/hydromt/hydromt/docs/_examples/tmpdir/merit_hydro_xyz/{zoom_level}/merit_hydro_xyz.vrt
+2023-02-16 13:06:32,141 - tiling - data_catalog - INFO - DataCatalog: Getting merit_hydro_xyz RasterDataset raster data from /home/runner/work/hydromt/hydromt/docs/_examples/tmpdir/merit_hydro_xyz/merit_hydro_xyz_zl{zoom_level}.vrt
 (60, 53)
 </pre></div></div>
 </div>
@@ -900,6 +900,50 @@ Text(0.5, 1.0, &#39;zoomlevel 5&#39;)
 <div class="output_area docutils container">
 <img alt="../_images/_examples_working_with_tiled_raster_data_12_1.png" src="../_images/_examples_working_with_tiled_raster_data_12_1.png" />
 </div>
+</div>
+</section>
+<section id="Caching-tiled-raster-datasets">
+<h2>Caching tiled raster datasets<a class="headerlink" href="#Caching-tiled-raster-datasets" title="Permalink to this heading">#</a></h2>
+<p>Tiles of tiled rasterdatasets which are described by a .vrt file can be cached locally (starting from v0.7.0). The requested data tiles will by default be stored to ~/.hydromt_data.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># set caching to True</span>
+<span class="c1"># NOTE this can also be done at initialization of the DataCatalog</span>
+<span class="n">data_catalog</span><span class="o">.</span><span class="n">cache</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="c1"># request some tiles based on bbox -&gt; note the log messages</span>
+<span class="n">da0</span> <span class="o">=</span> <span class="n">data_catalog</span><span class="o">.</span><span class="n">get_rasterdataset</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">bbox</span><span class="o">=</span><span class="p">[</span><span class="mf">11.6</span><span class="p">,</span> <span class="mf">45.3</span><span class="p">,</span> <span class="mf">12.0</span><span class="p">,</span> <span class="mf">46.0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+2023-02-16 13:06:33,057 - tiling - data_catalog - INFO - DataCatalog: Getting merit_hydro_xyz RasterDataset raster data from /home/runner/work/hydromt/hydromt/docs/_examples/tmpdir/merit_hydro_xyz/merit_hydro_xyz_zl{zoom_level}.vrt
+2023-02-16 13:06:33,065 - tiling - caching - INFO - Downloading 56 tiles to /home/runner/.hydromt_data/merit_hydro_xyz/merit_hydro_xyz
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># if we run the same request again we will use the cached files (and download none)</span>
+<span class="n">da0</span> <span class="o">=</span> <span class="n">data_catalog</span><span class="o">.</span><span class="n">get_rasterdataset</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">bbox</span><span class="o">=</span><span class="p">[</span><span class="mf">11.6</span><span class="p">,</span> <span class="mf">45.3</span><span class="p">,</span> <span class="mf">12.0</span><span class="p">,</span> <span class="mf">46.0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+2023-02-16 13:06:33,096 - tiling - data_catalog - INFO - DataCatalog: Getting merit_hydro_xyz RasterDataset raster data from /home/runner/work/hydromt/hydromt/docs/_examples/tmpdir/merit_hydro_xyz/merit_hydro_xyz_zl{zoom_level}.vrt
+2023-02-16 13:06:33,101 - tiling - caching - INFO - Downloading 0 tiles to /home/runner/.hydromt_data/merit_hydro_xyz/merit_hydro_xyz
+</pre></div></div>
 </div>
 </section>
 </section>
@@ -950,6 +994,11 @@ Text(0.5, 1.0, &#39;zoomlevel 5&#39;)
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#reading-tiled-raster-data-with-zoom-levels">
    reading tiled raster data with zoom levels
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Caching-tiled-raster-datasets">
+   Caching tiled raster datasets
   </a>
  </li>
 </ul>
