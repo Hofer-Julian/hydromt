@@ -575,29 +575,21 @@ Test should be run from the tests folder.</p>
 <section id="creating-a-release">
 <h2>Creating a release<a class="headerlink" href="#creating-a-release" title="Permalink to this heading">#</a></h2>
 <ol class="arabic simple">
-<li><p>Prepare the release by bumping the version number in the __init__.py and updating the docs/changelog.rst file</p></li>
-<li><p>First create a new release on github under <a class="github reference external" href="https://github.com/Deltares/hydromt/releases">Deltares/hydromt</a>. We use semantic versioning and describe the release based on the CHANGELOG.</p></li>
-<li><p>Make sure to update and clean your local git folder. This removes all files which are not tracked by git.</p></li>
+<li><p>Create a new branch with the name “release/&lt;version&gt;” where &lt;version&gt; is the version number, e.g. v0.7.0</p></li>
+<li><p>Bump the version number (without “v”!) in the __init__.py, check and update the docs/changelog.rst file and add a short summary to the changelog for this version.
+Check if all dependencies in the toml are up to date. Commit all changes</p></li>
+<li><p>Create a tag using <cite>git tag &lt;version&gt;</cite>, e.g. git tag v0.7.0</p></li>
+<li><p>Push your changes to github. To include the tag do <cite>git push origin &lt;version&gt;</cite>. This should trigger a test release to test.pypi.org</p></li>
+<li><p>If all tests and the test release have succeeded, merge de branch to main.</p></li>
+<li><p>Create a new release on github under <a class="github reference external" href="https://github.com/Deltares/hydromt/releases">Deltares/hydromt</a>.
+Use the “generate release notes” button and copy the content of the changelog for this version on top of the release notes. This should trigger the release to PyPi.</p></li>
+<li><p>The new PyPi package will trigger a new PR to the <a class="reference external" href="https://github.com/conda-forge/hydromt-feedstock">HydroMT feedstock repos of conda-forge</a>.
+Check if all dependencies are up to date and modify the PR if necessary. Merge the PR to release the new version on conda-forge.</p></li>
 </ol>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>git<span class="w"> </span>pull
-<span class="gp">$ </span>git<span class="w"> </span>clean<span class="w"> </span>-xfd
-</pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In the next PR that get’s merged into main, the version numbers in __init__.py and the changelog should be changed to the next release with “.dev” postfix.</p>
 </div>
-<ol class="arabic simple" start="4">
-<li><p>Build wheels and sdist for the package and check the resulting files in the dist/ directory.</p></li>
-</ol>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>flit<span class="w"> </span>build
-</pre></div>
-</div>
-<ol class="arabic simple" start="5">
-<li><p>Then use publish to pypi. It will prompt you for your username and password.</p></li>
-</ol>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>flit<span class="w"> </span>publish<span class="w"> </span>--repository<span class="w"> </span>pypi
-</pre></div>
-</div>
-<ol class="arabic simple" start="6">
-<li><p>Bump the version number in __init__.py to the next release number with “.dev” postfix and push commit</p></li>
-</ol>
 </section>
 </section>
 
